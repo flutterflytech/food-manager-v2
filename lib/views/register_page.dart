@@ -38,7 +38,7 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
-    pr.style(message: 'Please wait...');
+    pr.style(message: 'Please wait');
 
     /*  firstName = new TextEditingController();
     lastName = new TextEditingController();
@@ -273,7 +273,7 @@ class _RegisterPageState extends State<RegisterPage> {
       showProgressDialog(true);
       dynamic result = await _auth.registerWithEmailAndPassword(
           email, password, empId, firstName, lastName, uid, vendor);
-
+      Navigator.pop(context);
       if (result == null) {
         setState(() {
           error = 'Please supply a valid email';

@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/constants/app_constants.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/auth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/app_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/app_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/splash_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/splash_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -23,7 +27,7 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Galaxy" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_R" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -44,6 +48,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app\src\main\res\drawable" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app" />
     </key>
   </component>
@@ -58,6 +64,9 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -77,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588337144204</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Day-2 User Registration &amp; Email verification">
+      <created>1588597869716</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588597869716</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -95,6 +111,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Day-1 User Login &amp; Registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day-1 User Login &amp; Registration" />
+    <MESSAGE value="Day-2 User Registration &amp; Email verification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day-2 User Registration &amp; Email verification" />
   </component>
 </project>
