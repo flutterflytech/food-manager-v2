@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/splash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/auth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/splash_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/splash_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +80,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588597869716</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Day-3 Login with email and password">
+      <created>1588678680916</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588678680916</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Day-3 Login with email and password">
+      <created>1588678775645</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588678775645</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -112,6 +113,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Day-1 User Login &amp; Registration" />
     <MESSAGE value="Day-2 User Registration &amp; Email verification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day-2 User Registration &amp; Email verification" />
+    <MESSAGE value="Day-3 Login with email and password" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day-3 Login with email and password" />
   </component>
 </project>
