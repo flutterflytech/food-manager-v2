@@ -1,3 +1,6 @@
+
+//TODO Why is this UserData model class inside file name app_constants ?
+
 class UserData{
   final String uid;
   final String firstName;

@@ -6,6 +6,8 @@ import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
+//TODO put string files inside text_constants.dart file
+
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();

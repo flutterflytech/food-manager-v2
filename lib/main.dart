@@ -8,6 +8,8 @@ void main() {
   runApp(MyApp());
 }
 
+//TODO put string files inside text_constants.dart file
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
-
+//TODO put string files inside text_constants.dart file
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {

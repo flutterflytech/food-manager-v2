@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//TODO put string files inside text_constants.dart file
+
 class LoginForm extends StatefulWidget {
 
   @override
