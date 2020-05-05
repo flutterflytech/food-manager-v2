@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/register_page.dart';
-import 'package:food_manager_v2/widgets/login_form_fields.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class LogInPage extends StatefulWidget {
@@ -18,7 +17,6 @@ final _formKey = GlobalKey<FormState>();
   ProgressDialog pr;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pr = new ProgressDialog(context, type: ProgressDialogType.Normal,isDismissible: false,showLogs: false);
     pr.style(
