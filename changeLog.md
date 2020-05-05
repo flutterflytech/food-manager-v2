@@ -2,10 +2,10 @@
 
 ## Tasks Assigned
 
-    - 1. Splash screen
+    ### 1. Splash screen
     ### 2.  Login signup UI
-    ### 3. Firebase configuration
-    ### 4. Email signup with firebase
+### 3. Firebase configuration
+### 4. Email signup with firebase
     ### 5. Email login with firebase
 
 ## Completed
