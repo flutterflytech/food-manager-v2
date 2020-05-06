@@ -16,7 +16,7 @@ class AuthService {
 
   // register with email and password
   Future registerWithEmailAndPassword(
-      String email, String password, String empId, String firstName,String lastName,String uid,int vendor) async {
+      String email, String password, String empId, String firstName,String lastName,int vendor) async {
     try {
 //      print(email+'@'+password+'@'+empId+'@'+firstName+'@'+lastName+'@');
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -28,7 +28,7 @@ class AuthService {
         "empId": empId,
         "fname": firstName,
         "surname": lastName,
-        "uid": uid,
+        "uid": user.uid,
         "vendor": vendor,
 
 

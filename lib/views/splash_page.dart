@@ -16,8 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     FirebaseAuth.instance.currentUser().then((currentUser) {
       if (currentUser == null) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LogInPage()));
+        Navigator.pushReplacementNamed(context, "/login");
       } else {
         Firestore.instance
             .collection("account")
@@ -25,8 +24,7 @@ class _SplashPageState extends State<SplashPage> {
             .get()
             .then((DocumentSnapshot result) {
           if (result != null) {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pushReplacementNamed(context, "/home");
           }
         });
       }

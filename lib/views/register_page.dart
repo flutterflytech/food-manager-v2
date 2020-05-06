@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 //TODO put string files inside text_constants.dart file
@@ -31,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String empId = '';
   String email = '';
   String password = '';
-  String uid = '';
+  // String uid = '';
   int vendor = 0;
 
   @override
@@ -274,8 +275,8 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
       dynamic result = await _auth.registerWithEmailAndPassword(
-          email, password, empId, firstName, lastName, uid, vendor);
-      Navigator.pop(context);
+          email, password, empId, firstName, lastName,  vendor);
+      Navigator.push(context, MaterialPageRoute(builder: (context) => UnverifiedUserUI() ));
       if (result == null) {
         setState(() {
           error = 'Please supply a valid email';

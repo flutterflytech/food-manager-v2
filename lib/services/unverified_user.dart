@@ -3,39 +3,54 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 
-class HomePage extends StatefulWidget {
-//  final String title;
-//  final String uid;
+
+class UnverifiedUserUI extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
 }
-//TODO put string files inside text_constants.dart file
-class _HomePageState extends State<HomePage> {
+
+class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Text('Welcome Verified User'),
-          IconButton(
-            onPressed: (){
-              FirebaseAuth.instance.signOut();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LogInPage(),
-                ),
-              );
-            },
-            icon: Icon(Icons.exit_to_app),
-          )
-        ],
-      ),
+        body: Column(
+          children: _isEmailVerified ? _getVerifiedUserData() : _getUnverifiedUserData(),
+        )
     );
   }
 
- /* _getVerifiedUserData(){
+  _checkVerificationStatus() async{
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
+      userUpdateInfo.displayName = user.displayName;
+      user.updateProfile(userUpdateInfo).then((onValue) {
+        FirebaseAuth.instance.currentUser().then((user) {
+
+          _isEmailVerified = user.isEmailVerified;
+          if (user.isEmailVerified) {
+            setState(() {
+              _isEmailVerified = true;
+            });
+          } else {
+            AppUtils.showToast('You haven\'t verified your email yet!',
+                Colors.red, Colors.white);
+          }
+        });
+      });
+    } catch (e) {
+
+      print('An error occured while trying to check email is verified or not!');
+      AppUtils.showToast(
+          'An error occured while trying to check email is verified or not!',
+          Colors.red,
+          Colors.white);
+      print(e.message);
+    }
+  }
+
+  _getVerifiedUserData(){
     return[
       Center(
         child: Container(
@@ -119,35 +134,4 @@ class _HomePageState extends State<HomePage> {
     }
 
   }
-
-  _checkVerificationStatus() async{
-    try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
-      userUpdateInfo.displayName = user.displayName;
-      user.updateProfile(userUpdateInfo).then((onValue) {
-        FirebaseAuth.instance.currentUser().then((user) {
-
-          _isEmailVerified = user.isEmailVerified;
-          if (user.isEmailVerified) {
-            setState(() {
-              _isEmailVerified = true;
-            });
-          } else {
-            AppUtils.showToast('You haven\'t verified your email yet!',
-                Colors.red, Colors.white);
-          }
-        });
-      });
-    } catch (e) {
-
-      print('An error occured while trying to check email is verified or not!');
-      AppUtils.showToast(
-          'An error occured while trying to check email is verified or not!',
-          Colors.red,
-          Colors.white);
-      print(e.message);
-    }
-  }
-*/
 }

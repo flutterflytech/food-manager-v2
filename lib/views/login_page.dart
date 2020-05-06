@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -125,7 +126,15 @@ final _formKey = GlobalKey<FormState>();
                                 ),
                               ),
                             );
+                          }).catchError((err){
+                            showProgressDialog(false);
+
+                            AppUtils.showToast(err.message,Colors.red[900], Colors.white);
                           });
+                        }).catchError((err){
+                          showProgressDialog(false);
+
+                          AppUtils.showToast(err.message, Colors.red[900], Colors.white);
                         });
                       }
                     },
