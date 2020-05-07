@@ -60,4 +60,20 @@
             ## --
 
 
+    # DAY-5 (date: 07-05-2020)
 
+           New Tasks Assigned:
+           1. Remaining bug fixes
+           2. Home screen with bottom app bar
+           3. Show list of users on home screen
+
+    # Completed:
+
+        1. All bug fixed
+        2. Changed app launcher icon
+        3. Home screen bottom app bar created
+        4. Changed flow of application
+
+    # TODO
+
+        1. Show list of users on home screen

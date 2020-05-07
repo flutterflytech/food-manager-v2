@@ -29,10 +29,17 @@ dependencies:
   fluttertoast: ^4.0.1
   progress_dialog: ^1.2.2
   splashscreen: ^1.2.0
+  flutter_launcher_icons: ^0.7.5
+  font_awesome_flutter: ^8.8.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
+flutter_icons:
+  android: "launcher_icon"
+  image_path: "assets/images/launch-icon.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -46,8 +53,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/launch-icon.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

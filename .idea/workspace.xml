@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/services/register_click.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/launch-icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/auth.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/app_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/app_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/splash_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/splash_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app\src\main\res\drawable" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app" />
@@ -64,9 +64,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -121,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588701069942</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="DAY-4 Flow of app and bug fixes">
+      <created>1588766291630</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588766291630</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -156,6 +160,7 @@
     <MESSAGE value="Day-2 User Registration &amp; Email verification" />
     <MESSAGE value="Day-3 Login with email and password" />
     <MESSAGE value="Code optimisations" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code optimisations" />
+    <MESSAGE value="DAY-4 Flow of app and bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-4 Flow of app and bug fixes" />
   </component>
 </project>

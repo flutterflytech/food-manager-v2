@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/register_page.dart';

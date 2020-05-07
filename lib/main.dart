@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/splash_page.dart';
@@ -18,9 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Food Manager',
       debugShowCheckedModeBanner: false,
       theme: primaryTheme,
-      home: SplashPage(),
+      //home: SplashPage(),
       routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => HomePage(),
+        '/home': (BuildContext context) => UnverifiedUserUI(),
         '/login': (BuildContext context) => LogInPage()
       },
     );

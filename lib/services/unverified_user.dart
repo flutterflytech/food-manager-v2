@@ -1,7 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/views/splash_page.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 
 class UnverifiedUserUI extends StatefulWidget {
@@ -11,11 +14,24 @@ class UnverifiedUserUI extends StatefulWidget {
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
+  ProgressDialog pr;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_){});
+    pr = new ProgressDialog(context, type: ProgressDialogType.Normal,isDismissible: false,showLogs: false);
+    pr.style(message: 'Please wait',);
+    getCurrentUserData();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: _isEmailVerified ? _getVerifiedUserData() : _getUnverifiedUserData(),
+
+        body: SafeArea(
+          child: Column(
+            children: _isEmailVerified ? _getVerifiedUserData() : _getUnverifiedUserData(),
+          ),
         )
     );
   }
@@ -52,11 +68,14 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
   _getVerifiedUserData(){
     return[
+
       Center(
         child: Container(
+
           child: Column(
             children: <Widget>[
-              Text('Welcome Verified User'),
+
+              Text('Welcome Verified User"Unverified"'),
               IconButton(
                 onPressed: (){
                   FirebaseAuth.instance.signOut();
@@ -133,5 +152,18 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       print(e.message);
     }
 
+  }
+
+  void getCurrentUserData() async {
+    try {
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      setState(() {
+
+        _isEmailVerified = user.isEmailVerified;
+      });
+    } catch (e) {
+
+      print("An error occured while trying to get current user.");
+    }
   }
 }
