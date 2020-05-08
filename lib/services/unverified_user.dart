@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/splash_page.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 
@@ -70,28 +70,24 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return[
 
       Center(
-        child: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Welcome Verified User"Home"'),
 
-          child: Column(
-            children: <Widget>[
+                Text('Press icon'),
+                Icon(FontAwesomeIcons.users,),
+                Text('To see registered users')
 
-              Text('Welcome Verified User"Unverified"'),
-              IconButton(
-                onPressed: (){
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LogInPage(),
-                    ),
-                  );
-                },
-                icon: Icon(Icons.exit_to_app),
-              )
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
-      )
+      ),
     ];
   }
 
@@ -116,11 +112,17 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
                 onPressed: _checkVerificationStatus,
 
               ),
-              RaisedButton(
-                child: Text('Login'),
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LogInPage()));
+              IconButton(
+                onPressed: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => LogInPage(),
+                    ),
+                  );
                 },
+                icon: Icon(Icons.exit_to_app),
               )
             ],
           ),

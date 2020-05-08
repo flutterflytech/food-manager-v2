@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'Food Manager',
       debugShowCheckedModeBanner: false,
       theme: primaryTheme,
-      //home: SplashPage(),
+      home: SplashPage(),
       routes: <String, WidgetBuilder>{
-        '/home': (BuildContext context) => UnverifiedUserUI(),
+        '/home': (BuildContext context) => HomePage(),
         '/login': (BuildContext context) => LogInPage()
       },
     );

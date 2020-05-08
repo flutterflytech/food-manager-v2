@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/splash_page.dart';
+import 'package:food_manager_v2/views/bottom_navigation/users_page.dart';
 
 class HomePage extends StatefulWidget {
 //  final String title;
@@ -10,51 +11,112 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 //TODO put string files inside text_constants.dart file
 class _HomePageState extends State<HomePage> {
- // bool _isEmailVerified = false;
+
+  // bool _isEmailVerified = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Food Manager'),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => LogInPage(),
+                ),
+              );
+            },
+            icon: Icon(Icons.exit_to_app),
+          )
+        ],
+      ),
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
         child: Padding(
-          padding: const EdgeInsets.only(top:10,bottom: 10),
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
           child: new Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              IconButton(icon: Icon(FontAwesomeIcons.home,size: 30,color: Colors.blue[300],),tooltip: 'Home', onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => SplashPage()));}),
-              IconButton(icon: Icon(FontAwesomeIcons.utensils,size: 30,color: Colors.blue[300],),tooltip: 'Vendor', onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => SplashPage())); }),
-              IconButton(icon: Icon(FontAwesomeIcons.users,size: 30,color: Colors.blue[300],),tooltip: 'Users', onPressed: (){ Navigator.push(context, MaterialPageRoute(builder: (context) => SplashPage())); }),
-              IconButton(icon: Icon(FontAwesomeIcons.houseUser,size: 30,color: Colors.blue[300],),tooltip: 'Profile', onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => SplashPage())); }),
+              IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.home,
+                    size: 30,
+                    color: Colors.blue[300],
+                  ),
+                  tooltip: 'Home',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SplashPage()));
+                  }),
+              IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.utensils,
+                    size: 30,
+                    color: Colors.blue[300],
+                  ),
+                  tooltip: 'Vendor',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SplashPage()));
+                  }),
+              IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.users,
+                    size: 30,
+                    color: Colors.blue[300],
+                  ),
+                  tooltip: 'Users',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UsersPage()));
+                  }),
+              IconButton(
+                  icon: Icon(
+                    FontAwesomeIcons.houseUser,
+                    size: 30,
+                    color: Colors.blue[300],
+                  ),
+                  tooltip: 'Profile',
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SplashPage()));
+                  }),
             ],
           ),
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Text('Welcome Verified User"Home"'),
-            IconButton(
-              onPressed: (){
-                FirebaseAuth.instance.signOut();
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => LogInPage(),
-                  ),
-                );
-              },
-              icon: Icon(Icons.exit_to_app),
-            )
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Welcome Verified User"Home"'),
+
+                  Text('Press icon'),
+                  Icon(FontAwesomeIcons.users,),
+                  Text('To see registered users')
+
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
- /* _getVerifiedUserData(){
+/* _getVerifiedUserData(){
     return[
       Center(
         child: Container(

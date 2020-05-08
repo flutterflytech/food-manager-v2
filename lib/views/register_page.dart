@@ -90,7 +90,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String employeeIdValidator(String value) {
-    if (value.length != 6) {
+    if (value.length != 3) {
       return 'This is not a valid employee ID';
     } else {
       return null;
@@ -117,20 +117,20 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       validator: firstNameValidator,
                       cursorColor: Colors.blue[900],
-                      onChanged: (value) => firstName = value,
+                      onChanged: (value) => firstName = value.toUpperCase(),
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'First Name*',
+                          labelText: 'First Name*',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0),
+                                color: Colors.transparent, width: 12.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(50.0))),
+                              borderRadius: BorderRadius.circular(20.0))),
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
@@ -138,20 +138,20 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       validator: lastNameValidator,
                       cursorColor: Colors.blue[900],
-                      onChanged: (value) => lastName = value,
+                      onChanged: (value) => lastName = value.toUpperCase(),
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'Last Name*',
+                          labelText: 'Last Name*',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(50.0))),
+                              borderRadius: BorderRadius.circular(20.0))),
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
@@ -159,20 +159,21 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       validator: employeeIdValidator,
                       cursorColor: Colors.blue[900],
-                      onChanged: (value) => empId = value,
+                      onChanged: (value) => empId ='MOB'+value,
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'EmployeeId*',
+                          labelText:'EmployeeId*',
+                          prefixText: 'MOB',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(50.0))),
+                              borderRadius: BorderRadius.circular(20.0))),
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
@@ -182,18 +183,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       cursorColor: Colors.blue[900],
                       onChanged: (value) => email = value,
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'Email*',
+                          labelText: 'Email*',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(50.0))),
+                              borderRadius: BorderRadius.circular(20.0))),
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
@@ -204,18 +205,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       onChanged: (value) => password = value,
                       obscureText: true,
                       decoration: InputDecoration(
-                          fillColor: Colors.white,
+                          fillColor: Colors.blue[100],
                           filled: true,
-                          hintText: 'Password*',
+                          labelText: 'Password*',
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0),
+                            borderRadius: BorderRadius.circular(20.0),
                           ),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
                                   color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(50.0))),
+                              borderRadius: BorderRadius.circular(20.0))),
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
