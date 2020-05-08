@@ -1,13 +1,13 @@
 
 # Tasks Assigned
 
-##1. Splash screen
-##2. Login signup UI
-##3. Firebase configuration
-##4. Email signup with firebase
-##5. Email login with firebase
+## 1. Splash screen
+## 2. Login signup UI
+## 3. Firebase configuration
+## 4. Email signup with firebase
+## 5. Email login with firebase
 
-#Completed
+# Completed
 
 # DAY-1 (date: 01-05-2020)
 
@@ -29,7 +29,7 @@
 
 ## TODO
 
-##1. Email login with firebase
+## 1. Email login with firebase
 
 # DAY-3 (date: 05-05-2020)
 
@@ -57,35 +57,35 @@
 ## 8. I have verified still I am getting the verify screen next time I logged In
 
 ## TODO
-            ## --
 
+## No TODO
 
 # DAY-5 (date: 07-05-2020)
 
-New Tasks Assigned:
-##1. Remaining bug fixes
-##2. Home screen with bottom app bar
-##3. Show list of users on home screen
+# New Tasks Assigned:
+## 1. Remaining bug fixes
+## 2. Home screen with bottom app bar
+## 3. Show list of users on home screen
 
-#Completed
+# Completed
 
-##1. All bug fixed
-##2. Changed app launcher icon
-##3. Home screen bottom app bar created
-##4. Changed flow of application
+## 1. All bug fixed
+## 2. Changed app launcher icon
+## 3. Home screen bottom app bar created
+## 4. Changed flow of application
 
 ## TODO
 
-##1. Show list of users on home screen
+## 1. Show list of users on home screen
 
-#DAY-6 (date:08-05-2020)
+# DAY-6 (date:08-05-2020)
 
-##1.All bug fixed.
-##2.Forgot password feature enabled.
-##3.All registered users are visible after login in Users Bottom Tab.
-##4.Tried Showing First character from first name and last Name instead of fixed Network Image for each registered user.
+## 1.All bug fixed.
+## 2.Forgot password feature enabled.
+## 3.All registered users are visible after login in Users Bottom Tab.
+## 4.Tried Showing First character from first name and last Name instead of fixed Network Image for each registered user.
 
-##TODO
+## TODO
 
-##1. Code Modularity
-##2. Profile Section of application
+## 1. Code Modularity
+## 2. Profile Section of application
