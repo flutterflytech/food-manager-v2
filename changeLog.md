@@ -85,7 +85,7 @@
 ### 3.All registered users are visible after login in Users Bottom Tab.
 ### 4.Tried Showing First character from first name and last Name instead of fixed Network Image for each registered user.
 
-## TODO
+### TODO
 
 ### 1. Code Modularity
 ### 2. Profile Section of application
