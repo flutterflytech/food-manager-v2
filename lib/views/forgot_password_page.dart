@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 
+//TODO put string files inside text_constants.dart file
+
 class ForgotPassword extends StatefulWidget {
   @override
   _ForgotPasswordState createState() => _ForgotPasswordState();
