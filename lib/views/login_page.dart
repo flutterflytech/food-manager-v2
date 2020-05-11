@@ -16,7 +16,7 @@ class LogInPage extends StatefulWidget {
 
 class _LogInPageState extends State<LogInPage> {
 final _formKey = GlobalKey<FormState>();
-  String email;
+  String email = 'neeraj@yopmail.com';
   String password;
   ProgressDialog pr;
   @override
