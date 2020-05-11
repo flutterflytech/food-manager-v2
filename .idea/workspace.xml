@@ -2,8 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/profile.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/profile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/views/wrapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/register_click.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/register_click.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="development" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,8 +51,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\bottom_navigation" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\bottom_navigation" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app\src\main\res\drawable" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app" />
@@ -162,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589122390182</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="DAY-7 PR">
+      <created>1589168216156</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1589168216156</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +217,7 @@
     <MESSAGE value="DAY-4 Flow of app and bug fixes" />
     <MESSAGE value="DAY-5 Bug fixes, Bottom App bar, launcher icon" />
     <MESSAGE value="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled" />
+    <MESSAGE value="DAY-7 PR" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-7 PR" />
   </component>
 </project>

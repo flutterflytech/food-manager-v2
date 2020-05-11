@@ -9,3 +9,8 @@ class UserData{
   UserData({this.uid,this.firstName,this.lastName,this.empId,this.email});
 
 }
+
+class User {
+  final String uid;
+  User({this.uid});
+}

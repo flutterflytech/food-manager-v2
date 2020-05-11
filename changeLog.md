@@ -85,7 +85,20 @@
 ### 3.All registered users are visible after login in Users Bottom Tab.
 ### 4.Tried Showing First character from first name and last Name instead of fixed Network Image for each registered user.
 
-### TODO
+## TODO
 
 ### 1. Code Modularity
 ### 2. Profile Section of application
+
+# DAY-7 (date:11-05-2020)
+
+Completed Tasks:
+
+###1. New Branch created for User Profile
+###2. User profile screen complete
+###3. Bug fixed of back button
+###4. Pull request created
+
+##TODO:
+
+###1. Making User Profile screen dynamic (Worked on it, getting some errors and trying to fix them)

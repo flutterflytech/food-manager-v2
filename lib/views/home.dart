@@ -1,11 +1,15 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_manager_v2/views/bottom_navigation/user_profile_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/splash_page.dart';
 import 'package:food_manager_v2/views/bottom_navigation/users_page.dart';
 
 class HomePage extends StatefulWidget {
+  final String user;
+
+  const HomePage({Key key, this.user}) : super(key: key);
 //  final String title;
 //  final String uid;
   @override
@@ -14,8 +18,15 @@ class HomePage extends StatefulWidget {
 
 //TODO put string files inside text_constants.dart file
 class _HomePageState extends State<HomePage> {
+  String loggedInUserUid = '';
+  String loggedInUserFname = '';
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getLoggedInUserData();
+  }
 
-  // bool _isEmailVerified = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,8 +64,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   tooltip: 'Home',
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SplashPage()));
+
                   }),
               IconButton(
                   icon: Icon(
@@ -64,8 +74,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                   tooltip: 'Vendor',
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SplashPage()));
                   }),
               IconButton(
                   icon: Icon(
@@ -87,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                   tooltip: 'Profile',
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SplashPage()));
+                        MaterialPageRoute(builder: (context) => UserProfile(user:widget.user,)));
                   }),
             ],
           ),
@@ -101,7 +109,7 @@ class _HomePageState extends State<HomePage> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text('Welcome Verified User"Home"'),
+                  Text('Welcome'+' '+loggedInUserFname),
 
                   Text('Press icon'),
                   Icon(FontAwesomeIcons.users,),
@@ -231,4 +239,19 @@ class _HomePageState extends State<HomePage> {
     }
   }
 */
+  getLoggedInUserData() async {
+    await Firestore.instance
+        .collection('account')
+        .document(widget.user)
+        .get()
+        .then((DocumentSnapshot snapshot) {
+
+          print(snapshot.data);
+      setState(() {
+        loggedInUserUid = snapshot.data['uid'];
+        loggedInUserFname = snapshot.data['fname'];
+
+      });
+    });
+  }
 }
