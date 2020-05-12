@@ -76,7 +76,7 @@ String passwordValidator(String value) {
                   ),
                   CustomTextFormField(
                     hintText: 'Email',
-                    Validator: emailValidator(email),
+
 
                   ),
                   SizedBox(

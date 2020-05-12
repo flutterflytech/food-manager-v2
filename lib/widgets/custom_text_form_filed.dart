@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String hintText;
-  final String Validator;
+  final String validator;
   final bool obscure;
 
 
-  const CustomTextFormField({Key key, this.hintText,this.Validator,this.obscure=false}) : super(key: key);
+  const CustomTextFormField({Key key, this.hintText,this.validator,this.obscure=false}) : super(key: key);
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
 }
