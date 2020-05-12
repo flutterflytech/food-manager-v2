@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
@@ -77,7 +78,6 @@ String passwordValidator(String value) {
                   CustomTextFormField(
                     hintText: 'Email',
 
-
                   ),
                   SizedBox(
                     height: screenData.height * 0.01,
@@ -128,24 +128,24 @@ String passwordValidator(String value) {
                             }).catchError((err){
                               showProgressDialog(false);
 
-                              AppUtils.showToast(err.message,Colors.red[900], Colors.white);
+                              AppUtils.showToast(err.message,errorMessageColor, white);
                             });
                           }).catchError((err){
                             showProgressDialog(false);
 
-                            AppUtils.showToast(err.message, Colors.red[900], Colors.white);
+                            AppUtils.showToast(err.message, errorMessageColor, white);
                           });
                         }
                       },
                       child: Container(
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                                colors: [Colors.blue[700], Colors.blue[200]]),
+                                colors: [buttonColor1,buttonColor2]),
                             borderRadius: BorderRadius.circular(50)),
                         child: Center(
                             child: Text(
                               "LOGIN",
-                              style: TextStyle(color: Colors.white, fontSize: 20),
+                              style: TextStyle(color: white, fontSize: 20),
                             )
                         ),
                       ),

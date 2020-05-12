@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 
 class CustomTextFormField extends StatefulWidget {
   final String hintText;
-  final String validator;
+
   final bool obscure;
 
 
-  const CustomTextFormField({Key key, this.hintText,this.validator,this.obscure=false}) : super(key: key);
+  const CustomTextFormField({Key key, this.hintText,this.obscure=false}) : super(key: key);
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
 }
@@ -16,15 +17,16 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget build(BuildContext context) {
     return Container(
       child: TextFormField(
+
         onChanged: (value) {
           setState(() {
 
           });
         },
-        cursorColor: Colors.blue[900],
+        cursorColor: cursorColor,
         obscureText: widget.obscure,
         decoration: InputDecoration(
-            fillColor: Colors.white,
+            fillColor: white,
             filled: true,
             hintText: widget.hintText,
             enabledBorder: OutlineInputBorder(

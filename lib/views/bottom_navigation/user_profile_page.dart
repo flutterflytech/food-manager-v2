@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/widgets/custome_text_widget_user_profile.dart';
 
 class UserProfile extends StatefulWidget {
@@ -27,7 +28,7 @@ class _UserProfileState extends State<UserProfile> {
     var screenData = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color.fromRGBO(26, 36, 33, 1.0),
+        backgroundColor: bgColor,
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -38,7 +39,7 @@ class _UserProfileState extends State<UserProfile> {
                 height: screenData.height*0.03,
                 width: 200,
                 child: Divider(
-                  color: Colors.white,
+                  color: white,
                 ),
               ),
               StreamBuilder<QuerySnapshot>(
@@ -76,7 +77,7 @@ class _UserProfileState extends State<UserProfile> {
                 height: screenData.height*0.03,
                 width: 200,
                 child: Divider(
-                  color: Colors.white,
+                  color: white,
                 ),
               ),
               Column(

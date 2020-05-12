@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/views/bottom_navigation/user_profile_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.home,
                     size: 30,
-                    color: Colors.blue[300],
+                    color: bottomIconColor,
                   ),
                   tooltip: 'Home',
                   onPressed: () {}),
@@ -68,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.utensils,
                     size: 30,
-                    color: Colors.blue[300],
+                    color: bottomIconColor,
                   ),
                   tooltip: 'Vendor',
                   onPressed: () {}),
@@ -76,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.users,
                     size: 30,
-                    color: Colors.blue[300],
+                    color: bottomIconColor,
                   ),
                   tooltip: 'Users',
                   onPressed: () {
@@ -87,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.houseUser,
                     size: 30,
-                    color: Colors.blue[300],
+                    color: bottomIconColor,
                   ),
                   tooltip: 'Profile',
                   onPressed: () {

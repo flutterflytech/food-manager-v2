@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 
 class CustomeTextWidget extends StatefulWidget {
   final title;
@@ -19,12 +20,12 @@ class _CustomeTextWidgetState extends State<CustomeTextWidget> {
         children: <Widget>[
           Text(
             widget.title,
-            style: TextStyle(color: Colors.white, fontSize: 20),
+            style: TextStyle(color: white, fontSize: 20),
           ),
           Text(
             widget.titleData,
             style: TextStyle(
-                color: Colors.white, fontSize: 40, fontWeight: FontWeight.w100),
+                color: white, fontSize: 40, fontWeight: FontWeight.w100),
           ),
         ],
       ),

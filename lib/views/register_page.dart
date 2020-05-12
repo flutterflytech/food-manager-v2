@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
@@ -151,12 +152,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [Colors.blue[700], Colors.blue[200]]),
+                                  colors: [buttonColor1, buttonColor2]),
                               borderRadius: BorderRadius.circular(50)),
                           child: Center(
                               child: Text(
                             "Register",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
+                            style: TextStyle(color: white, fontSize: 20),
                           )),
                         ),
                       ),
@@ -196,7 +197,7 @@ class _RegisterPageState extends State<RegisterPage> {
       dynamic result = await _auth.registerWithEmailAndPassword(
           email, password, empId, firstName, lastName,  vendor);
       Navigator.pop(context);
-      AppUtils.showToast(registerToast, Colors.green[900], Colors.white);
+      AppUtils.showToast(registerToast, successMessageColor, white);
       if (result == null) {
         setState(() {
           error = registerErrorToast;
@@ -214,8 +215,8 @@ class _RegisterPageState extends State<RegisterPage> {
           print(sendMailErrorToast);
           AppUtils.showToast(
               sendMailErrorToast,
-              Colors.red,
-              Colors.white);
+              errorMessageColor,
+              white);
           print(e.message);
         }
       });
