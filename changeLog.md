@@ -109,6 +109,4 @@ Completed Tasks:
 ###2. code formatting and optimization
 ###3. Code modularity
 
-## TODO:
 
-### no todo
