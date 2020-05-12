@@ -102,3 +102,13 @@ Completed Tasks:
 ##TODO:
 
 ###1. Making User Profile screen dynamic (Worked on it, getting some errors and trying to fix them)
+
+# DAY-8 (date: 12-05-2020)
+
+###1. User Profile screen dynamic data
+###2. code formatting and optimization
+###3. Code modularity
+
+## TODO:
+
+### no todo

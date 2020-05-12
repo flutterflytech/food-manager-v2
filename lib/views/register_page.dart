@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 //TODO put string files inside text_constants.dart file
@@ -19,11 +21,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-/*  TextEditingController firstName;
-  TextEditingController lastName;
-  TextEditingController email;
-  TextEditingController empId;
-  TextEditingController password;*/
+
 
   String error = '';
   String firstName = '';
@@ -40,13 +38,9 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
-    pr.style(message: 'Please wait');
+    pr.style(message: toastMsg);
 
-    /*  firstName = new TextEditingController();
-    lastName = new TextEditingController();
-    email = new TextEditingController();
-    empId = new TextEditingController();
-    password = new TextEditingController();*/
+
   }
 
   showProgressDialog(bool isShow) {
@@ -59,7 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String emailValidator(String value) {
     if (value.isEmpty) {
-      return 'Please enter a valid email.';
+      return emailVal;
     } else {
       return null;
     }
@@ -67,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String pwdValidator(String value) {
     if (value.length < 8) {
-      return 'Password must be longer than 8 characters.';
+      return pwdVal;
     } else {
       return null;
     }
@@ -75,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String firstNameValidator(String value) {
     if (value.length == 0) {
-      return 'Please enter your first name';
+      return fNameVal;
     } else {
       return null;
     }
@@ -83,7 +77,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String lastNameValidator(String value) {
     if (value.length == 0) {
-      return 'Please enter your last name';
+      return lNameVal;
     } else {
       return null;
     }
@@ -91,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String employeeIdValidator(String value) {
     if (value.length != 3) {
-      return 'This is not a valid employee ID';
+      return empVal;
     } else {
       return null;
     }
@@ -102,7 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('REGISTER'),
+        title: Text(title),
         centerTitle: true,
       ),
       body: Center(
@@ -114,109 +108,34 @@ class _RegisterPageState extends State<RegisterPage> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    TextFormField(
-                      validator: firstNameValidator,
-                      cursorColor: Colors.blue[900],
-                      onChanged: (value) => firstName = value.toUpperCase(),
-                      decoration: InputDecoration(
-                          fillColor: Colors.blue[100],
-                          filled: true,
-                          labelText: 'First Name*',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 12.0),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0))),
+                    CustomTextFormField(
+
+                      hintText: 'First Name*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
-                    TextFormField(
-                      validator: lastNameValidator,
-                      cursorColor: Colors.blue[900],
-                      onChanged: (value) => lastName = value.toUpperCase(),
-                      decoration: InputDecoration(
-                          fillColor: Colors.blue[100],
-                          filled: true,
-                          labelText: 'Last Name*',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0))),
+                    CustomTextFormField(
+                      hintText: 'Last Name*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
-                    TextFormField(
-                      validator: employeeIdValidator,
-                      cursorColor: Colors.blue[900],
-                      onChanged: (value) => empId ='MOB'+value,
-                      decoration: InputDecoration(
-                          fillColor: Colors.blue[100],
-                          filled: true,
-                          labelText:'EmployeeId*',
-                          prefixText: 'MOB',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0))),
+                    CustomTextFormField(
+                      hintText: 'Employee Id*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
-                    TextFormField(
-                      validator: emailValidator,
-                      cursorColor: Colors.blue[900],
-                      onChanged: (value) => email = value,
-                      decoration: InputDecoration(
-                          fillColor: Colors.blue[100],
-                          filled: true,
-                          labelText: 'Email*',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0))),
+                    CustomTextFormField(
+                      hintText: 'Email*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
-                    TextFormField(
-                      validator: pwdValidator,
-                      cursorColor: Colors.blue[900],
-                      onChanged: (value) => password = value,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          fillColor: Colors.blue[100],
-                          filled: true,
-                          labelText: 'Password*',
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(20.0),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color: Colors.transparent, width: 2.0),
-                              borderRadius: BorderRadius.circular(20.0))),
+                    CustomTextFormField(
+                      hintText: 'Password*',
+                      obscure: true,
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
@@ -245,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     SizedBox(
                       height: screenData.height * 0.02,
                     ),
-                    Text("Already have an account?"),
+                    Text(existingAccount),
                     SizedBox(
                       height: screenData.height * 0.03,
                     ),
@@ -257,7 +176,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                 builder: (context) => LogInPage()));
                       },
                       child: Text(
-                        'Login here!',
+                        loginButton,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                     )
@@ -277,10 +196,10 @@ class _RegisterPageState extends State<RegisterPage> {
       dynamic result = await _auth.registerWithEmailAndPassword(
           email, password, empId, firstName, lastName,  vendor);
       Navigator.pop(context);
-      AppUtils.showToast('Registered Successfully', Colors.green[900], Colors.white);
+      AppUtils.showToast(registerToast, Colors.green[900], Colors.white);
       if (result == null) {
         setState(() {
-          error = 'Please supply a valid email';
+          error = registerErrorToast;
         });
       } else {
         Navigator.pop(context);
@@ -292,9 +211,9 @@ class _RegisterPageState extends State<RegisterPage> {
           currentUser.user.sendEmailVerification();
         } catch (e) {
           showProgressDialog(false);
-          print('An error occured while sending verificartion email');
+          print(sendMailErrorToast);
           AppUtils.showToast(
-              'An error occured while sending verification email',
+              sendMailErrorToast,
               Colors.red,
               Colors.white);
           print(e.message);

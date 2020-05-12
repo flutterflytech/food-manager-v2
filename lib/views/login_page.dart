@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/register_page.dart';
+import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 //TODO put string files inside text_constants.dart file
@@ -16,7 +18,7 @@ class LogInPage extends StatefulWidget {
 
 class _LogInPageState extends State<LogInPage> {
 final _formKey = GlobalKey<FormState>();
-  String email = 'neeraj@yopmail.com';
+  String email = '';
   String password;
   ProgressDialog pr;
   @override
@@ -27,6 +29,22 @@ final _formKey = GlobalKey<FormState>();
       message: 'Please wait...'
     );
   }
+
+String emailValidator(String value) {
+  if (value.length == 0) {
+    return emailVal;
+  } else {
+    return null;
+  }
+}
+
+String passwordValidator(String value) {
+  if (value.length>7) {
+    return emailVal;
+  } else {
+    return null;
+  }
+}
 
   showProgressDialog(bool isShow){
     if(isShow){
@@ -56,55 +74,17 @@ final _formKey = GlobalKey<FormState>();
                   SizedBox(
                     height: screenData.height*0.2,
                   ),
-                  TextFormField(
-                    validator: (value) => value.isEmpty ? 'Enter email' : null,
-                    onChanged: (value) {
-                      setState(() {
-                        email = value;
-                      });
-                    },
-                    cursorColor: Colors.blue[900],
-                    decoration: InputDecoration(
+                  CustomTextFormField(
+                    hintText: 'Email',
+                    Validator: emailValidator(email),
 
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Email*',
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.transparent, width: 2.0),
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0))),
                   ),
                   SizedBox(
                     height: screenData.height * 0.01,
                   ),
-                  TextFormField(
-                    validator: (value) => value.length < 8 ? 'Enter strong password' : null,
-                    onChanged: (value){
-                      setState(() {
-                        password = value;
-                      });
-                    },
-                    cursorColor: Colors.blue[900],
-                    obscureText: true,
-                    decoration: InputDecoration(
-
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Password*',
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Colors.transparent, width: 2.0),
-                          borderRadius: BorderRadius.circular(50.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0))),
+                  CustomTextFormField(
+                    hintText: 'Password',
+                    obscure: true,
                   ),
 
 
@@ -113,7 +93,7 @@ final _formKey = GlobalKey<FormState>();
                     child: Padding(
                       padding: const EdgeInsets.only(left: 180.0,top: 8.0),
                       child: InkWell(
-                        child: Text('Forgot Password?'),
+                        child: Text(forgotPassword),
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
                         },
@@ -174,7 +154,7 @@ final _formKey = GlobalKey<FormState>();
                   SizedBox(
                     height: screenData.height * 0.02,
                   ),
-                  Text("Don't have an account yet?"),
+                  Text(createAccount),
                   SizedBox(
                     height: screenData.height * 0.03,
                   ),
@@ -182,7 +162,7 @@ final _formKey = GlobalKey<FormState>();
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterPage()));
                     },
-                    child: Text('Register here!',style: TextStyle(
+                    child: Text(registerButton,style: TextStyle(
                       fontWeight: FontWeight.bold
                     ),),
                   )
