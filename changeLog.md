@@ -94,23 +94,23 @@
 
 Completed Tasks:
 
-###1. New Branch created for User Profile
-###2. User profile screen complete
-###3. Bug fixed of back button
-###4. Pull request created
+### 1. New Branch created for User Profile
+### 2. User profile screen complete
+### 3. Bug fixed of back button
+### 4. Pull request created
 
 ##TODO:
 
-###1. Making User Profile screen dynamic (Worked on it, getting some errors and trying to fix them)
+### 1. Making User Profile screen dynamic (Worked on it, getting some errors and trying to fix them)
 
 # DAY-8 (date: 12-05-2020)
 
-###1. User Profile screen dynamic data
-###2. code formatting and optimization
-###3. Code modularity
+### 1. User Profile screen dynamic data
+### 2. code formatting and optimization
+### 3. Code modularity
 
 # DAY-9 (date: 13-05-2020)
 
-###1. Code optimization
-###2. Code formatting
-###3. Suggested topics learned-Constructors
+### 1. Code optimization
+### 2. Code formatting
+### 3. Suggested topics learned-Constructors
