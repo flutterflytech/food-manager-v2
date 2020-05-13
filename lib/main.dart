@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+
 //import 'package:food_manager_v2/models/user_model.dart';
 import 'package:food_manager_v2/services/auth.dart';
-import 'package:food_manager_v2/user.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/splash_page.dart';
@@ -20,7 +21,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User>.value(
-
       value: AuthService().user,
       child: MaterialApp(
 //        title: 'Food Manager',
@@ -35,5 +35,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

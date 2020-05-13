@@ -3,13 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/app_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/app_constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/constants/color_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/color_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/style_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/style_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/text_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/text_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/register_click.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/users_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/splash_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/splash_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/wrapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/wrapper.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/custome_text_widget_user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custome_text_widget_user_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,11 +63,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\models" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\bottom_navigation" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app\src\main\res\drawable" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -213,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589299797024</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="DAY-8 User Profile, Bug Fixes, const creation">
+      <created>1589304090948</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1589304090949</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,6 +274,7 @@
     <MESSAGE value="DAY-7 PR" />
     <MESSAGE value="DAY-7 User Profile, PR, Bug Fixes" />
     <MESSAGE value="DAY-8 User Profile, Bug Fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-8 User Profile, Bug Fixes" />
+    <MESSAGE value="DAY-8 User Profile, Bug Fixes, const creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-8 User Profile, Bug Fixes, const creation" />
   </component>
 </project>

@@ -1,31 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:food_manager_v2/constants/color_constants.dart';
+import 'package:food_manager_v2/constants/style_constants.dart';
 
-class CustomeTextWidget extends StatefulWidget {
+class CustomTextWidget extends StatefulWidget {
   final title;
   final titleData;
 
-  const CustomeTextWidget({Key key, this.title, this.titleData})
+  const CustomTextWidget({Key key, this.title, this.titleData})
       : super(key: key);
 
   @override
-  _CustomeTextWidgetState createState() => _CustomeTextWidgetState();
+  _CustomTextWidgetState createState() => _CustomTextWidgetState();
 }
 
-class _CustomeTextWidgetState extends State<CustomeTextWidget> {
+class _CustomTextWidgetState extends State<CustomTextWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: const EdgeInsets.only(left: 30, right: 30),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
             widget.title,
-            style: TextStyle(color: white, fontSize: 20),
+            style: body20,
           ),
           Text(
             widget.titleData,
-            style: TextStyle(
-                color: white, fontSize: 40, fontWeight: FontWeight.w100),
+            style: body40,
           ),
         ],
       ),

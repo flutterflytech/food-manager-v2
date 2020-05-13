@@ -49,22 +49,22 @@ class _UserProfileState extends State<UserProfile> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      CustomeTextWidget(
+                      CustomTextWidget(
                         title: 'NAME',
                         titleData: loggedInUserFirstName+' '+loggedInUserLastName,
                       ),
                       SizedBox(height: 10,),
-                      CustomeTextWidget(
+                      CustomTextWidget(
                         title: 'JOB TITLE',
                         titleData: 'Software Trainee',
                       ),
                       SizedBox(height: 10,),
-                      CustomeTextWidget(
+                      CustomTextWidget(
                         title: 'EMPLOYEE ID',
                         titleData: loggedInUserEmployeeId,
                       ),
                       SizedBox(height: 10,),
-                      CustomeTextWidget(
+                      CustomTextWidget(
                         title:'EMAIL' ,
                         titleData: loggedInUserEmail,
                       ),

@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.home,
                     size: 30,
-                    color: bottomIconColor,
+                    color: lightBlue1,
                   ),
                   tooltip: 'Home',
                   onPressed: () {}),
@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.utensils,
                     size: 30,
-                    color: bottomIconColor,
+                    color: lightBlue1,
                   ),
                   tooltip: 'Vendor',
                   onPressed: () {}),
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.users,
                     size: 30,
-                    color: bottomIconColor,
+                    color: lightBlue1,
                   ),
                   tooltip: 'Users',
                   onPressed: () {
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(
                     FontAwesomeIcons.houseUser,
                     size: 30,
-                    color: bottomIconColor,
+                    color: lightBlue1,
                   ),
                   tooltip: 'Profile',
                   onPressed: () {
@@ -132,12 +132,13 @@ class _HomePageState extends State<HomePage> {
         .document(widget.user)
         .get()
         .then((DocumentSnapshot snapshot) {
-          //TODO User details are available only after restart.
-          if(snapshot.data != null){
-      print(snapshot.data);
-      setState(() {
-        loggedInUserFname = snapshot.data['fname'];
-      });}
+      //TODO User details are available only after restart.
+      if (snapshot.data != null) {
+        print(snapshot.data);
+        setState(() {
+          loggedInUserFname = snapshot.data['fname'];
+        });
+      }
     });
   }
 }

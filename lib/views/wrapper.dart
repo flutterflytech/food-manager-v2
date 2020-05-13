@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_manager_v2/user.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:provider/provider.dart';

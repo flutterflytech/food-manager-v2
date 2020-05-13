@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
+import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
@@ -9,7 +10,6 @@ import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-//TODO put string files inside text_constants.dart file
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -22,14 +22,13 @@ class _RegisterPageState extends State<RegisterPage> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-
-
   String error = '';
   String firstName = '';
   String lastName = '';
   String empId = '';
   String email = '';
   String password = '';
+
   // String uid = '';
   int vendor = 0;
 
@@ -40,8 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
     pr.style(message: toastMsg);
-
-
   }
 
   showProgressDialog(bool isShow) {
@@ -54,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String emailValidator(String value) {
     if (value.isEmpty) {
-      return emailVal;
+      return emailValMsg;
     } else {
       return null;
     }
@@ -62,7 +59,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String pwdValidator(String value) {
     if (value.length < 8) {
-      return pwdVal;
+      return pwdValMsg;
     } else {
       return null;
     }
@@ -70,7 +67,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String firstNameValidator(String value) {
     if (value.length == 0) {
-      return fNameVal;
+      return nameValMsg;
     } else {
       return null;
     }
@@ -78,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String lastNameValidator(String value) {
     if (value.length == 0) {
-      return lNameVal;
+      return nameValMsg;
     } else {
       return null;
     }
@@ -86,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String employeeIdValidator(String value) {
     if (value.length != 3) {
-      return empVal;
+      return empValMsg;
     } else {
       return null;
     }
@@ -110,31 +107,60 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Column(
                   children: <Widget>[
                     CustomTextFormField(
-
+                      validator: firstNameValidator,
+                      onChanged: (value) {
+                        setState(() {
+                          firstName = value;
+                        });
+                      },
                       hintText: 'First Name*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
                     CustomTextFormField(
+                      validator: lastNameValidator,
+                      onChanged: (value) {
+                        setState(() {
+                          lastName = value;
+                        });
+                      },
                       hintText: 'Last Name*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
                     CustomTextFormField(
+                      validator: employeeIdValidator,
+                      onChanged: (value) {
+                        setState(() {
+                          empId = value;
+                        });
+                      },
                       hintText: 'Employee Id*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
                     CustomTextFormField(
+                      validator: emailValidator,
+                      onChanged: (value) {
+                        setState(() {
+                          email = value;
+                        });
+                      },
                       hintText: 'Email*',
                     ),
                     SizedBox(
                       height: screenData.height * 0.01,
                     ),
                     CustomTextFormField(
+                      validator: pwdValidator,
+                      onChanged: (value) {
+                        setState(() {
+                          password = value;
+                        });
+                      },
                       hintText: 'Password*',
                       obscure: true,
                     ),
@@ -152,12 +178,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Container(
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                  colors: [buttonColor1, buttonColor2]),
+                                  colors: [darkBlue2, lightBlue2]),
                               borderRadius: BorderRadius.circular(50)),
                           child: Center(
                               child: Text(
                             "Register",
-                            style: TextStyle(color: white, fontSize: 20),
+                            style: body20,
                           )),
                         ),
                       ),
@@ -178,7 +204,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       },
                       child: Text(
                         loginButton,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: bold,
                       ),
                     )
                   ],
@@ -195,9 +221,9 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
       dynamic result = await _auth.registerWithEmailAndPassword(
-          email, password, empId, firstName, lastName,  vendor);
+          email, password, empId, firstName, lastName, vendor);
       Navigator.pop(context);
-      AppUtils.showToast(registerToast, successMessageColor, white);
+      AppUtils.showToast(registerToast, green, white);
       if (result == null) {
         setState(() {
           error = registerErrorToast;
@@ -213,10 +239,7 @@ class _RegisterPageState extends State<RegisterPage> {
         } catch (e) {
           showProgressDialog(false);
           print(sendMailErrorToast);
-          AppUtils.showToast(
-              sendMailErrorToast,
-              errorMessageColor,
-              white);
+          AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }
       });
