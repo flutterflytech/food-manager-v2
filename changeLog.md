@@ -109,4 +109,8 @@ Completed Tasks:
 ###2. code formatting and optimization
 ###3. Code modularity
 
+# DAY-9 (date: 13-05-2020)
 
+###1. Code optimization
+###2. Code formatting
+###3. Suggested topics learned-Constructors
