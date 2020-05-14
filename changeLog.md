@@ -114,3 +114,9 @@
 ### 1. Code optimization
 ### 2. Code formatting
 ### 3. Suggested topics learned-Constructors
+
+# DAY-10 (date: 14-05-2020)
+
+### 1. Bottom Navigation Bar
+### 2. Load page in between appBar and Navigation Bar
+### 3. Studied and practice Constructors 

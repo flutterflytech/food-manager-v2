@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-import 'package:food_manager_v2/services/auth.dart';
+import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
