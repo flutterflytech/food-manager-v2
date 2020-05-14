@@ -92,7 +92,7 @@
 
 # DAY-7 (date:11-05-2020)
 
-Completed Tasks:
+# Completed Tasks:
 
 ### 1. New Branch created for User Profile
 ### 2. User profile screen complete
