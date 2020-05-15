@@ -183,7 +183,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           child: Center(
                               child: Text(
                             "Register",
-                            style: body20,
+                            style: body15,
                           )),
                         ),
                       ),

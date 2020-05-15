@@ -161,7 +161,7 @@ class _LogInPageState extends State<LogInPage> {
                         child: Center(
                             child: Text(
                           "LOGIN",
-                          style: body20,
+                          style: body15,
                         )),
                       ),
                     ),

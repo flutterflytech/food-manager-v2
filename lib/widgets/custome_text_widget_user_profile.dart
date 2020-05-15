@@ -4,8 +4,9 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 class CustomTextWidget extends StatefulWidget {
   final title;
   final titleData;
+  final color;
 
-  const CustomTextWidget({Key key, this.title, this.titleData})
+  const CustomTextWidget({Key key, this.title, this.titleData, this.color})
       : super(key: key);
 
   @override
@@ -15,20 +16,28 @@ class CustomTextWidget extends StatefulWidget {
 class _CustomTextWidgetState extends State<CustomTextWidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 30, right: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(
-            widget.title,
-            style: body20,
-          ),
-          Text(
-            widget.titleData,
-            style: body40,
-          ),
-        ],
+    var screenData = MediaQuery.of(context).size;
+    return Container(
+      width: screenData.width*1.0,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0),
+          color: widget.color
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(18.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              widget.title,
+              style: body15,
+            ),
+            Text(
+              widget.titleData,
+              style: body40White,
+            ),
+          ],
+        ),
       ),
     );
   }
