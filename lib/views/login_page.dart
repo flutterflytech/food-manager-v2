@@ -11,6 +11,7 @@ import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
+
 class LogInPage extends StatefulWidget {
   @override
   _LogInPageState createState() => _LogInPageState();
@@ -160,7 +161,7 @@ class _LogInPageState extends State<LogInPage> {
                         child: Center(
                             child: Text(
                           "LOGIN",
-                          style: body20,
+                          style: body15,
                         )),
                       ),
                     ),
