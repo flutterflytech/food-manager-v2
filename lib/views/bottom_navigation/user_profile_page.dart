@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +20,7 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  File _image;
-  File _coppedImage;
-
+  File _imageFile;
   String loggedInUserEmail = '';
   String loggedInUserFirstName = '';
   String loggedInUserLastName = '';
@@ -34,33 +31,38 @@ class _UserProfileState extends State<UserProfile> {
     getLoggedInUserData();
     super.initState();
   }
-  Future _getImage() async{
-    File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-    if(image != null){
-     File croppedImage =await ImageCropper.cropImage(sourcePath:image.path,
-          aspectRatio:CropAspectRatio(
-            ratioX: 1, ratioY: 1,
-          ),
-          maxHeight: 700,
-          maxWidth: 700,
-          compressQuality: 100,
-          compressFormat:ImageCompressFormat.jpg,
-          androidUiSettings: AndroidUiSettings(
-              toolbarColor: Colors.blue,
-              toolbarTitle: 'Cropper',
-              statusBarColor: Colors.green,
-              backgroundColor: Colors.white
-          )
-      );
 
+  Future<void> _getImage(ImageSource source) async {
+    var image = await ImagePicker.pickImage(source: source);
+    if (image != null) {
+      setState(() {
+        _cropImage(image);
+      });
     }
-
-    setState(() {
-      _image = image;
-//      print('_image: $_image');
-
-    });
+    Navigator.pop(context);
   }
+
+  _cropImage(File image) async {
+    File cropped = await ImageCropper.cropImage(
+        sourcePath: image.path,
+        aspectRatio: CropAspectRatio(ratioY: 1.0, ratioX: 1.0));
+    if (cropped != null) {
+      setState(() {
+        _imageFile = cropped;
+      });
+    }
+  }
+
+/*Future uploadImage() async{
+    String fileName = (_imageFile.path);
+    StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
+    StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
+    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
+    setState(() {
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
+    });
+}*/
+
   @override
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
@@ -81,14 +83,21 @@ class _UserProfileState extends State<UserProfile> {
                       child: Container(
                         height: 200,
                         width: 200,
-                        child:_image == null ?  Icon(FontAwesomeIcons.solidUserCircle,size: 190,) : Image.file(_image),
+                        child: _imageFile == null
+                            ? Icon(
+                                FontAwesomeIcons.solidUserCircle,
+                                size: 190,
+                              )
+                            : Image.file(
+                                _imageFile,
+                                fit: BoxFit.fill,
+                              ),
                       )),
                   Positioned(
                     right: 10.0,
                     bottom: 5.0,
                     child: GestureDetector(
-
-                      onTap: _getImage,
+                      onTap: _onButtonPressed,
                       child: Container(
                           height: 50,
                           width: 50,
@@ -173,5 +182,41 @@ class _UserProfileState extends State<UserProfile> {
         loggedInUserEmployeeId = snapshot.data['empId'];
       });
     }
+  }
+
+  _onButtonPressed() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: 150,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () => _getImage(ImageSource.camera),
+                    icon: Icon(
+                      FontAwesomeIcons.cameraRetro,
+                      size: 50,
+                    ),
+                    color: lightBlue1,
+                    tooltip: 'Camera',
+                  ),
+                  IconButton(
+                    onPressed: () => _getImage(ImageSource.gallery),
+                    icon: Icon(
+                      FontAwesomeIcons.fileImage,
+                      size: 50,
+                    ),
+                    color: lightBlue1,
+                    tooltip: 'Gallery',
+                  )
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

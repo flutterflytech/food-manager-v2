@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/models/bottom_sheet_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/services/firebase_services/login_service.dart" afterDir="false" />
+    <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="DAY-11 Bottom Image picker,Profile UI">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/color_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/color_constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/style_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/style_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custome_text_widget_user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custome_text_widget_user_profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -283,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589458245456</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="DAY-11 Bottom Image picker,Profile UI">
+      <created>1589555784663</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1589555784663</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,6 +327,7 @@
     <MESSAGE value="DAY-8 User Profile, Bug Fixes, const creation" />
     <MESSAGE value="DAY-9 Code Review and formatting" />
     <MESSAGE value="DAY-10 Bottom Navigation Functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-10 Bottom Navigation Functionality" />
+    <MESSAGE value="DAY-11 Bottom Image picker,Profile UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-11 Bottom Image picker,Profile UI" />
   </component>
 </project>

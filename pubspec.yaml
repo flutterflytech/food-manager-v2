@@ -34,7 +34,8 @@ dependencies:
   provider: ^4.0.4
   image_picker: ^0.6.6+1
   image_cropper: ^1.2.2
-
+  firebase_storage: ^3.1.5
+  path: ^1.6.4
 
 dev_dependencies:
   flutter_test:
