@@ -133,3 +133,10 @@
 ### 2. Image cropper implemented
 ### 3. FireStore Storage Setup
 ### 4. Uploading image in fireStore Storage ( OnGoing )
+
+# DAY-13 (date: 19-05-2020)
+
+### 1. Uploading image in fireStore Storage
+### 2. Storing Image url into database
+### 3. Displaying Image on User list
+### 4. Displaying user profile photo in profile section

@@ -28,6 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String empId = '';
   String email = '';
   String password = '';
+  String url = '';
 
   // String uid = '';
   int vendor = 0;
@@ -221,7 +222,7 @@ class _RegisterPageState extends State<RegisterPage> {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
       dynamic result = await _auth.registerWithEmailAndPassword(
-          email, password, empId, firstName, lastName, vendor);
+          email, password, empId, firstName, lastName, vendor, url);
       Navigator.pop(context);
       AppUtils.showToast(registerToast, green, white);
       if (result == null) {
