@@ -18,7 +18,7 @@ class AuthService {
 
   // register with email and password
   Future registerWithEmailAndPassword(String email, String password,
-      String empId, String firstName, String lastName, int vendor) async {
+      String empId, String firstName, String lastName, int vendor,String url) async {
     try {
 //      print(email+'@'+password+'@'+empId+'@'+firstName+'@'+lastName+'@');
       AuthResult result = await _auth.createUserWithEmailAndPassword(
@@ -31,6 +31,7 @@ class AuthService {
         "surname": lastName,
         "uid": user.uid,
         "vendor": vendor,
+        "url": url,
       });
       return _userFromFirebaseUser(user);
     } catch (error) {

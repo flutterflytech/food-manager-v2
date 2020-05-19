@@ -120,3 +120,23 @@
 ### 1. Bottom Navigation Bar
 ### 2. Load page in between appBar and Navigation Bar
 ### 3. Studied and practice Constructors 
+
+# DAY-11 (date: 15-05-2020)
+
+### 1. Profile New UI
+### 2. Image Picker
+### 3. Image Cropper
+
+# DAY-12 (date: 18-05-2020)
+
+### 1. BottomModelSheet to get image from camera and gallery
+### 2. Image cropper implemented
+### 3. FireStore Storage Setup
+### 4. Uploading image in fireStore Storage ( OnGoing )
+
+# DAY-13 (date: 19-05-2020)
+
+### 1. Uploading image in fireStore Storage
+### 2. Storing Image url into database
+### 3. Displaying Image on User list
+### 4. Displaying user profile photo in profile section

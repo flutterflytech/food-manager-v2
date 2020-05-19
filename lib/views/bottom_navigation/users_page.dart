@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 
 class UsersPage extends StatefulWidget {
@@ -60,17 +61,24 @@ class _UsersPageState extends State<UsersPage> {
           padding: const EdgeInsets.all(10),
           child: Row(
             children: <Widget>[
-              Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: new BoxDecoration(
-                  image: new DecorationImage(
-                    image: new NetworkImage(
-                        "https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png"),
-                    fit: BoxFit.cover,
-                  ),
-                ),
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(200.0),
+                  clipBehavior: Clip.hardEdge,
+                  child: Container(
+                      height: 60,
+                      width: 60,
+                      child: document['url'] == null
+                          ? Image(
+                        image: NetworkImage('https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                        fit: BoxFit.fill,
+                      )
+                          : Image(
+                        image: NetworkImage(document['url']),
+                        fit: BoxFit.fill,
+                      )/*,*/
+                  )
               ),
+
               SizedBox(
                 width: 20,
               ),

@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/views/bottom_navigation/dashboard_page.dart';
 import 'package:food_manager_v2/views/bottom_navigation/user_profile_page.dart';
 import 'package:food_manager_v2/views/bottom_navigation/vendor_page.dart';
