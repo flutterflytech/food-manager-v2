@@ -69,141 +69,124 @@ class _UserProfileState extends State<UserProfile> {
     var url = downUrl.toString();
     print('$url');
     await uploadTask.onComplete;
-   /* setState(() {
+    setState(() {
       imageUrl = url.toString();
-    });*/
+    });
     AppUtils.showToast('Picture Uploaded', green, white);
-    /*storageReference.getDownloadURL().then((fileURL) {
-      setState(() {
-        uploadedFileURL = fileURL;
-      });
-    }*/
+
     Firestore.instance
         .collection('account')
         .document(widget.user)
         .updateData({"url": url});
   }
 
-/*Future uploadImage() async{
-    String fileName = (_imageFile.path);
-    StorageReference firebaseStorageRef = FirebaseStorage.instance.ref().child(fileName);
-    StorageUploadTask uploadTask = firebaseStorageRef.putFile(_imageFile);
-    StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-    setState(() {
-      Scaffold.of(context).showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
-    });
-}*/
-
   @override
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: screenData.height * 0.03,
-                width: 200,
-              ),
-              Stack(
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(200.0),
-                      clipBehavior: Clip.hardEdge,
-                      child: Container(
-                          height: 200,
-                          width: 200,
-                          child: loggedInUserProfileImage == null
-                              ? Image(
-                                  image: NetworkImage(
-                                      'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                                  fit: BoxFit.fill,
-                                )
-                              : Image(
-                                  image: NetworkImage(/*imageUrl.toString()*/loggedInUserProfileImage),
-                                  fit: BoxFit.fill,
-                                ) /*,*/
-                          )),
-                  Positioned(
-                    right: 10.0,
-                    bottom: 5.0,
-                    child: GestureDetector(
-                      onTap: _onButtonPressed,
-                      child: Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: lightBlue1),
-                          margin: EdgeInsets.only(left: 51, top: 51),
-                          child: Icon(
-                            FontAwesomeIcons.camera,
-                            color: white,
-                          )),
-                    ),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: screenData.height * 0.03,
+              width: 200,
+            ),
+            Stack(
+              children: <Widget>[
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(200.0),
+                    clipBehavior: Clip.hardEdge,
+                    child: Container(
+                        height: 200,
+                        width: 200,
+                        child: loggedInUserProfileImage == null
+                            ? Image(
+                                image: NetworkImage(
+                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                fit: BoxFit.fill,
+                              )
+                            : Image(
+                                image: NetworkImage(/*imageUrl.toString()*/
+                                    loggedInUserProfileImage),
+                                fit: BoxFit.fill,
+                              ) /*,*/
+                        )),
+                Positioned(
+                  right: 10.0,
+                  bottom: 5.0,
+                  child: GestureDetector(
+                    onTap: _onButtonPressed,
+                    child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: lightBlue1),
+                        margin: EdgeInsets.only(left: 51, top: 51),
+                        child: Icon(
+                          FontAwesomeIcons.camera,
+                          color: white,
+                        )),
                   ),
-                ],
-              ),
-              /* RaisedButton(
-                child: Text('Upload'),
-                onPressed: uploadFile,
-              ),*/
-
-              Text(
-                loggedInUserFirstName.toUpperCase() +
-                    ' ' +
-                    loggedInUserLastName.toUpperCase(),
-                style: body40,
-              ),
-              SizedBox(
-                height: screenData.height * 0.03,
-                width: 200,
-                child: Divider(
-                  color: white,
                 ),
+              ],
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              loggedInUserFirstName.toUpperCase() +
+                  ' ' +
+                  loggedInUserLastName.toUpperCase(),
+              style: body40,
+            ),
+            SizedBox(
+              height: screenData.height * 0.03,
+              width: 200,
+              child: Divider(
+                color: white,
               ),
-              StreamBuilder<QuerySnapshot>(
-                  stream: null,
-                  builder: (context, snapshot) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CustomTextWidget(
-                            color: lightRed,
-                            title: 'JOB TITLE',
-                            titleData: 'Software Trainee',
-                          ),
+            ),
+            StreamBuilder<QuerySnapshot>(
+                stream: null,
+                builder: (context, snapshot) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomTextWidget(
+                          color: lightRed,
+                          title: 'JOB TITLE',
+                          titleData: 'Software Trainee',
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CustomTextWidget(
-                            color: tealGreen,
-                            title: 'EMPLOYEE ID',
-                            titleData: loggedInUserEmployeeId,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomTextWidget(
+                          color: tealGreen,
+                          title: 'EMPLOYEE ID',
+                          titleData: loggedInUserEmployeeId,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CustomTextWidget(
-                            color: violet,
-                            title: 'EMAIL',
-                            titleData: loggedInUserEmail,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: CustomTextWidget(
+                          color: violet,
+                          title: 'EMAIL',
+                          titleData: loggedInUserEmail,
                         ),
-                      ],
-                    );
-                  }),
-              SizedBox(
-                height: screenData.height * 0.03,
-                width: 200,
-                child: Divider(
-                  color: white,
-                ),
+                      ),
+                    ],
+                  );
+                }),
+            SizedBox(
+              height: screenData.height * 0.03,
+              width: 200,
+              child: Divider(
+                color: white,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

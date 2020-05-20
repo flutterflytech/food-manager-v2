@@ -140,3 +140,10 @@
 ### 2. Storing Image url into database
 ### 3. Displaying Image on User list
 ### 4. Displaying user profile photo in profile section
+
+# DAY-14 (date: 20-05-2020)
+
+### 1. Changed App Display Name
+### 2. Tried changing apk name
+### 3. Created New Page UserDisplay Page
+### 4. Bug Fixes
