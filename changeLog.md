@@ -147,3 +147,10 @@
 ### 2. Tried changing apk name
 ### 3. Created New Page UserDisplay Page
 ### 4. Bug Fixes
+
+# DAY-15 (date: 21-05-2020)
+
+### 1. Admin Login and Normal user Login
+### 2. New pages created for Payment and Meal details
+### 3. Code reusable of profilePage
+### 4. Previous Bug fixes

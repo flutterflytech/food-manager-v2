@@ -1,24 +1,29 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
+  final bool isAdmin;
+
+  const UnverifiedUserUI({Key key, this.isAdmin}) : super(key: key);
+
+
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
 }
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
+  bool isAdmin = true;
   ProgressDialog pr;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
@@ -32,13 +37,10 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: _isEmailVerified
-            ? _getVerifiedUserData()
-            : _getUnverifiedUserData(),
-      ),
-    ));
+        body: _isEmailVerified
+              ? _getVerifiedUserData()
+              : _getUnverifiedUserData(),
+        );
   }
 
   _checkVerificationStatus() async {
@@ -60,9 +62,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         });
       });
     } catch (e) {
-      print('An error occured while trying to check email is verified or not!');
+      print('An error occurred while trying to check email is verified or not!');
       AppUtils.showToast(
-          'An error occured while trying to check email is verified or not!',
+          'An error occurred while trying to check email is verified or not!',
           red,
           white);
       print(e.message);
@@ -70,34 +72,14 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
   _getVerifiedUserData() {
-    return [
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Welcome Verified User"Home"'),
-                Text('Press icon'),
-                Icon(
-                  FontAwesomeIcons.users,
-                ),
-                Text('To see registered users')
-              ],
-            ),
-          ],
-        ),
-      ),
-    ];
+    return HomePage(isAdmin: isAdmin,);
   }
 
   _getUnverifiedUserData() {
-    return [
-      Center(
-        child: Container(
+    return Center(
+      child: Container(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               RaisedButton(
                 child: Text('Resend Email'),
@@ -126,23 +108,23 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
             ],
           ),
         ),
-      )
-    ];
+    );
+
   }
 
   _sendMailAgain() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       user.sendEmailVerification().then((_) {
-        AppUtils.showToast('Email verification link send successfuly.',
+        AppUtils.showToast('Email verification link send successfully.',
             green,white);
       }).catchError((error) {
         print(error.message);
       });
     } catch (e) {
-      print("An error occured while trying to send email verification");
+      print("An error occurred while trying to send email verification");
       AppUtils.showToast(
-          'An error occured while trying to send email verification',
+          'An error occurred while trying to send email verification',
           red,
           white);
       print(e.message);
@@ -156,7 +138,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         _isEmailVerified = user.isEmailVerified;
       });
     } catch (e) {
-      print("An error occured while trying to get current user.");
+      print("An error occurred while trying to get current user.");
     }
   }
 }

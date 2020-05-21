@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/views/user_profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/meal_detail_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/payment_detail_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/profilr_view_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/users_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -299,7 +297,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589890561076</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="DAY-14 AppDisplayLabel, userDisplay, bugFixes">
+      <created>1589977131746</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589977131746</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -346,6 +351,7 @@
     <MESSAGE value="DAY-11 Bottom Image picker,Profile UI" />
     <MESSAGE value="DAY-12 BottomModelSheet,ImageCropper,FireStoreStorageSetup" />
     <MESSAGE value="DAY-13 Uploading image into storage, Showing image in profile" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-13 Uploading image into storage, Showing image in profile" />
+    <MESSAGE value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
   </component>
 </project>

@@ -4,6 +4,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/views/bottom_navigation/dashboard_page.dart';
+import 'package:food_manager_v2/views/bottom_navigation/meal_detail_page.dart';
+import 'package:food_manager_v2/views/bottom_navigation/payment_detail_page.dart';
 import 'package:food_manager_v2/views/bottom_navigation/user_profile_page.dart';
 import 'package:food_manager_v2/views/bottom_navigation/vendor_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
@@ -11,14 +13,16 @@ import 'package:food_manager_v2/views/bottom_navigation/users_page.dart';
 
 class HomePage extends StatefulWidget {
   final String user;
+  final bool isAdmin;
 
-  const HomePage({Key key, this.user}) : super(key: key);
+  const HomePage({Key key, this.user, this.isAdmin}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isAdmin = true ;
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -28,19 +32,42 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   List<Widget> _childern = [];
 
-  //to be removed
-  static String loggedInUserLastName = '';
-  static String loggedInUserFirstName = '';
-  static String loggedInUserEmail = '';
-  static String loggedInUserEmployeeId = '';
-  static String loggedInUserUid = '';
-
-  //to be removed
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    _childern = [
+
+    if(isAdmin){
+      _childern=[
+        Dashboard(user: widget.user,),
+        VendorPage(),
+        UsersPage(user: widget.user,),
+        UserProfile(user: widget.user,),
+      ];
+    }else{
+      _childern=[
+        Dashboard(user: widget.user,),
+        PaymentPage(),
+        MealPage(),
+        UserProfile(user: widget.user,),
+      ];
+    }
+
+
+
+
+
+/*    _childern[0]=Dashboard(user: widget.user,);
+    _childern[1]=MealPage();
+    _childern[2]=PaymentPage();
+    _childern[3]=UserProfile(user: widget.user,);
+if(widget.isAdmin){
+  _childern[1]=VendorPage();
+  _childern[2]=UsersPage(
+    user: widget.user,
+  );
+}*/
+
+    /*_childern = [
       Dashboard(
         user: widget.user,
       ),
@@ -51,7 +78,7 @@ class _HomePageState extends State<HomePage> {
       UserProfile(
         user: widget.user,
       ),
-    ];
+    ]*/
   }
 
   @override
@@ -80,6 +107,7 @@ class _HomePageState extends State<HomePage> {
         onTap: onTabTapped,
         elevation: 0,
         currentIndex: _currentIndex,
+
         items: [
           BottomNavigationBarItem(
               icon: Icon(
@@ -114,28 +142,6 @@ class _HomePageState extends State<HomePage> {
               title: Text('Profile', style: bold)),
         ],
       ),
-      /*SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(welcome + ' ' + loggedInUserName.toUpperCase()),
-                  Text(iconInfo),
-                  Icon(
-                    FontAwesomeIcons.users,
-                  ),
-                  Text(iconAction)
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),*/
     );
   }
-
-
 }

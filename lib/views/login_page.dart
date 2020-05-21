@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/home.dart';
@@ -136,7 +137,7 @@ class _LogInPageState extends State<LogInPage> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomePage(),
+                                  builder: (context) => UnverifiedUserUI(),
                                 ),
                               );
                             }).catchError((err) {
