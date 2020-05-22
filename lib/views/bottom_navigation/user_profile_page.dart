@@ -192,7 +192,7 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
-
+// Fetching data of Logged In user
   getLoggedInUserData() async {
     LoginService loginService = LoginService();
     DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);

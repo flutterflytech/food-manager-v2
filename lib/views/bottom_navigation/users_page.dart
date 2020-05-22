@@ -35,6 +35,9 @@ class _UsersPageState extends State<UsersPage> {
                         return Padding(
                           padding: const EdgeInsets.only(
                               bottom: 10, left: 10, right: 10),
+
+//                          Should I be using ListView.Builder??
+
                           child: new ListView(
                             children: snapshot.data.documents
                                 .map((DocumentSnapshot document) {
@@ -50,7 +53,7 @@ class _UsersPageState extends State<UsersPage> {
       ),
     );
   }
-
+// Fetching All users data and showing in List as Cards
   _userCardView(document) {
     if (document['email'] == widget.user) {
       return null;

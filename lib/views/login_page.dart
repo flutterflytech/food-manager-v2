@@ -121,6 +121,7 @@ class _LogInPageState extends State<LogInPage> {
                     width: screenData.width * 1.0,
                     child: GestureDetector(
                       onTap: () {
+//                        Signing in using email and password and fetching collection uid
                         if (_formKey.currentState.validate()) {
                           showProgressDialog(true);
                           FirebaseAuth.instance

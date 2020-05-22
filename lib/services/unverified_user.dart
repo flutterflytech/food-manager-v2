@@ -2,16 +2,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
+import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
-  final bool isAdmin;
-
-  const UnverifiedUserUI({Key key, this.isAdmin}) : super(key: key);
-
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
@@ -19,7 +16,6 @@ class UnverifiedUserUI extends StatefulWidget {
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
-  bool isAdmin = false;
   ProgressDialog pr;
 
   @override
@@ -39,16 +35,16 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return Scaffold(
         body: _isEmailVerified
               ? _getVerifiedUserData()
-              : _getUnverifiedUserData(),
+              : _getUnverifiedUserScreen(),
         );
   }
 // To check email id is verified or not
   _checkVerificationStatus() async {
     try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
-      userUpdateInfo.displayName = user.displayName;
-      user.updateProfile(userUpdateInfo).then((onValue) {
+//      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+//      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
+//      userUpdateInfo.displayName = user.displayName;
+//      user.updateProfile(userUpdateInfo).then((onValue) {
         FirebaseAuth.instance.currentUser().then((user) {
           _isEmailVerified = user.isEmailVerified;
           if (user.isEmailVerified) {
@@ -56,26 +52,22 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
               _isEmailVerified = true;
             });
           } else {
-            AppUtils.showToast('You haven\'t verified your email yet!',
-                red, white);
+            AppUtils.showToast(notVerified, red, white);
           }
         });
-      });
+//      });
     } catch (e) {
-      print('An error occurred while trying to check email is verified or not!');
-      AppUtils.showToast(
-          'An error occurred while trying to check email is verified or not!',
-          red,
-          white);
+      print(errorVerification);
+      AppUtils.showToast( errorVerification, red, white);
       print(e.message);
     }
   }
 // This will be return on display if user has verified email id and login
   _getVerifiedUserData() {
-    return HomePage(isAdmin: isAdmin,);
+    return HomePage();
   }
 // This will be return on display if email is not verified by user
-  _getUnverifiedUserData() {
+  _getUnverifiedUserScreen() {
     return Center(
       child: Container(
           child: Column(
@@ -94,6 +86,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
                 onPressed: _checkVerificationStatus,
               ),
               IconButton(
+                tooltip: 'Logout',
                 onPressed: () {
                   FirebaseAuth.instance.signOut();
                   Navigator.pushReplacement(
@@ -116,15 +109,15 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       user.sendEmailVerification().then((_) {
-        AppUtils.showToast('Email verification link send successfully.',
+        AppUtils.showToast(sendMail,
             green,white);
       }).catchError((error) {
         print(error.message);
       });
     } catch (e) {
-      print("An error occurred while trying to send email verification");
+      print(sendMailErrorToast);
       AppUtils.showToast(
-          'An error occurred while trying to send email verification',
+          sendMailErrorToast,
           red,
           white);
       print(e.message);
@@ -138,7 +131,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         _isEmailVerified = user.isEmailVerified;
       });
     } catch (e) {
-      print("An error occurred while trying to get current user.");
+      print(userError);
     }
   }
 }

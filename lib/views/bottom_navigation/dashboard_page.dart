@@ -45,11 +45,10 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-
+// Fetching data of Logged In user
   getLoggedInUserData() async {
     LoginService loginService = LoginService();
     DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    //TODO User details are available only after restart.
     if (snapshot.data != null) {
       setState(() {
         loggedInUserName = snapshot.data['fname'];

@@ -154,3 +154,9 @@
 ### 2. New pages created for Payment and Meal details
 ### 3. Code reusable of profilePage
 ### 4. Previous Bug fixes
+
+# DAY-16 (date: 22-05-2020)
+
+### 1. Admin Login and Normal user Login
+### 2. Bug Fixes
+### 3. Code Formatting for review

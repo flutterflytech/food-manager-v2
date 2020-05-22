@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
@@ -34,7 +33,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
@@ -216,7 +214,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-
+// Registering user
   void onRegisterClick() async {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
@@ -231,7 +229,7 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         Navigator.pop(context);
       }
-      FirebaseAuth.instance
+     /* FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then((currentUser) {
         try {
@@ -242,7 +240,7 @@ class _RegisterPageState extends State<RegisterPage> {
           AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }
-      });
+      }*/
     }
   }
 }

@@ -13,9 +13,8 @@ import 'package:food_manager_v2/views/bottom_navigation/users_page.dart';
 
 class HomePage extends StatefulWidget {
   final String user;
-  final bool isAdmin;
 
-  const HomePage({Key key, this.user, this.isAdmin}) : super(key: key);
+  const HomePage({Key key, this.user}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -23,6 +22,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isAdmin = true;
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -35,51 +35,24 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
-    if(isAdmin){
-      _childern=[
+// If user is admin, these pages will be Navigated
+    if (isAdmin) {
+      _childern = [
         Dashboard(user: widget.user,),
         VendorPage(),
         UsersPage(user: widget.user,),
         UserProfile(user: widget.user,),
       ];
-    }else{
-      _childern=[
+    }
+//    if user is not admin, these pages will be navigated
+    else {
+      _childern = [
         Dashboard(user: widget.user,),
         PaymentPage(),
         MealPage(),
         UserProfile(user: widget.user,),
       ];
     }
-
-
-
-
-
-/*    _childern[0]=Dashboard(user: widget.user,);
-    _childern[1]=MealPage();
-    _childern[2]=PaymentPage();
-    _childern[3]=UserProfile(user: widget.user,);
-if(widget.isAdmin){
-  _childern[1]=VendorPage();
-  _childern[2]=UsersPage(
-    user: widget.user,
-  );
-}*/
-
-    /*_childern = [
-      Dashboard(
-        user: widget.user,
-      ),
-      VendorPage(),
-      UsersPage(
-        user: widget.user,
-      ),
-      UserProfile(
-        user: widget.user,
-      ),
-    ]*/
-
   }
 
   @override
@@ -108,7 +81,6 @@ if(widget.isAdmin){
         onTap: onTabTapped,
         elevation: 0,
         currentIndex: _currentIndex,
-
         items: [
           BottomNavigationBarItem(
               icon: Icon(
@@ -122,18 +94,22 @@ if(widget.isAdmin){
               )),
           BottomNavigationBarItem(
               icon: Icon(
-                FontAwesomeIcons.utensils,
+                isAdmin
+                    ? FontAwesomeIcons.utensils
+                    : FontAwesomeIcons.moneyBill,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text('Vendors', style: bold)),
+              title: Text(isAdmin ? 'Vendors' : 'Payment', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
-                FontAwesomeIcons.users,
+                isAdmin
+                    ? FontAwesomeIcons.users
+                    : FontAwesomeIcons.pizzaSlice,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text('Users', style: bold)),
+              title: Text(isAdmin ? 'Users' : 'Meals', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -146,8 +122,7 @@ if(widget.isAdmin){
     );
   }
 
-  logout(){
+  logout() {
     FirebaseAuth.instance.signOut();
   }
-
 }
