@@ -18,11 +18,9 @@ class _CustomTextWidgetState extends State<CustomTextWidget> {
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
     return Container(
-      width: screenData.width*1.0,
+      width: screenData.width * 1.0,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-          color: widget.color
-      ),
+          borderRadius: BorderRadius.circular(10.0), color: widget.color),
       child: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Column(

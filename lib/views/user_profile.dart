@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/widgets/custome_text_widget_user_profile.dart';
+import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 
 class UserProfile extends StatefulWidget {
   final email;

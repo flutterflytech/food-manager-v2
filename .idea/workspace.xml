@@ -2,14 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/meal_detail_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/payment_detail_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widgets/profilr_view_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/bottom_sheet_model.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/firebase_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/firebase_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/dashboard_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/dashboard_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/bottom_navigation/user_profile_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/splash_page.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custome_text_widget_user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_widget_user_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/login_form_fields.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/profilr_view_widget.dart" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -304,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589977131746</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="DAY-15 Admin Login, Normal User Login, bugFixes">
+      <created>1590063349599</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1590063349599</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -352,6 +368,7 @@
     <MESSAGE value="DAY-12 BottomModelSheet,ImageCropper,FireStoreStorageSetup" />
     <MESSAGE value="DAY-13 Uploading image into storage, Showing image in profile" />
     <MESSAGE value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
+    <MESSAGE value="DAY-15 Admin Login, Normal User Login, bugFixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-15 Admin Login, Normal User Login, bugFixes" />
   </component>
 </project>

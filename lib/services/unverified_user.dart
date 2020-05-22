@@ -19,7 +19,7 @@ class UnverifiedUserUI extends StatefulWidget {
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
-  bool isAdmin = true;
+  bool isAdmin = false;
   ProgressDialog pr;
 
   @override
@@ -42,7 +42,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
               : _getUnverifiedUserData(),
         );
   }
-
+// To check email id is verified or not
   _checkVerificationStatus() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
@@ -70,11 +70,11 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       print(e.message);
     }
   }
-
+// This will be return on display if user has verified email id and login
   _getVerifiedUserData() {
     return HomePage(isAdmin: isAdmin,);
   }
-
+// This will be return on display if email is not verified by user
   _getUnverifiedUserData() {
     return Center(
       child: Container(
@@ -111,7 +111,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     );
 
   }
-
+// If user wants to send verification mail to registered email id
   _sendMailAgain() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
@@ -130,7 +130,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       print(e.message);
     }
   }
-
+// Check if user email is verified or not
   void getCurrentUserData() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();

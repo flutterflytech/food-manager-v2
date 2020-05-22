@@ -238,7 +238,7 @@ class _RegisterPageState extends State<RegisterPage> {
           currentUser.user.sendEmailVerification();
         } catch (e) {
           showProgressDialog(false);
-          print(sendMailErrorToast);
+//          print(sendMailErrorToast);
           AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }

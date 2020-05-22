@@ -22,7 +22,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isAdmin = true ;
+  bool isAdmin = true;
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -79,6 +79,7 @@ if(widget.isAdmin){
         user: widget.user,
       ),
     ]*/
+
   }
 
   @override
@@ -90,7 +91,7 @@ if(widget.isAdmin){
         actions: <Widget>[
           IconButton(
             onPressed: () {
-              FirebaseAuth.instance.signOut();
+              logout();
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -144,4 +145,9 @@ if(widget.isAdmin){
       ),
     );
   }
+
+  logout(){
+    FirebaseAuth.instance.signOut();
+  }
+
 }

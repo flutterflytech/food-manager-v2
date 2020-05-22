@@ -16,7 +16,7 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-  // register with email and password
+//  register with email and password
   Future registerWithEmailAndPassword(String email, String password,
       String empId, String firstName, String lastName, int vendor,String url) async {
     try {
@@ -40,6 +40,6 @@ class AuthService {
     }
   }
 
-  //password reset
+//  password reset
 
 }

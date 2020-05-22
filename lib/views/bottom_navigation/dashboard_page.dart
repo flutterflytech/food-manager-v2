@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-
-
+import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 
 class Dashboard extends StatefulWidget {
   final String user;
@@ -45,23 +44,16 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
-
-
   }
 
   getLoggedInUserData() async {
-    await Firestore.instance
-        .collection('account')
-        .document(widget.user)
-        .get()
-        .then((DocumentSnapshot snapshot) {
-      //TODO User details are available only after restart.
-      if (snapshot.data != null) {
-        print(snapshot.data);
-        setState(() {
-          loggedInUserName = snapshot.data['fname'];
-        });
-      }
-    });
+    LoginService loginService = LoginService();
+    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    //TODO User details are available only after restart.
+    if (snapshot.data != null) {
+      setState(() {
+        loggedInUserName = snapshot.data['fname'];
+      });
+    }
   }
 }

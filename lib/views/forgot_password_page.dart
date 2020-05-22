@@ -72,7 +72,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       FirebaseAuth.instance
-                          .sendPasswordResetEmail(email: email)
+                          .sendPasswordResetEmail(email:email)
                           .then((_) {
                         AppUtils.showToast('Check Your Email to reset password',
                             Colors.green[700], Colors.white);
@@ -90,24 +90,5 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ),
       ),
     );
-  }
-
-  _sendMailAgain() async {
-    try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      user.sendEmailVerification().then((_) {
-        AppUtils.showToast('Email verification link send successfuly.',
-            Colors.green, Colors.white);
-      }).catchError((error) {
-        print(error.message);
-      });
-    } catch (e) {
-      print("An error occured while trying to send email verification");
-      AppUtils.showToast(
-          'An error occured while trying to send email verification',
-          Colors.red,
-          Colors.white);
-      print(e.message);
-    }
   }
 }

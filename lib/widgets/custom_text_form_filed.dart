@@ -7,9 +7,14 @@ class CustomTextFormField extends StatefulWidget {
   final Function(String) onChanged;
   final Function(String) validator;
 
+  const CustomTextFormField({
+    Key key,
+    this.hintText,
+    this.obscure = false,
+    this.onChanged,
+    this.validator,
+  }) : super(key: key);
 
-
-  const CustomTextFormField({Key key, this.hintText,this.obscure=false, this.onChanged, this.validator,}) : super(key: key);
   @override
   _CustomTextFormFieldState createState() => _CustomTextFormFieldState();
 }
@@ -28,13 +33,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             filled: true,
             hintText: widget.hintText,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Colors.transparent, width: 2.0),
+              borderSide: BorderSide(color: Colors.transparent, width: 2.0),
               borderRadius: BorderRadius.circular(50.0),
             ),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: Colors.transparent, width: 2.0),
+                borderSide: BorderSide(color: Colors.transparent, width: 2.0),
                 borderRadius: BorderRadius.circular(50.0))),
       ),
     );

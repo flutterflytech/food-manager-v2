@@ -8,7 +8,7 @@ import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
-import 'package:food_manager_v2/widgets/custome_text_widget_user_profile.dart';
+import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
@@ -37,7 +37,7 @@ class _UserProfileState extends State<UserProfile> {
     getLoggedInUserData();
     super.initState();
   }
-
+// getting image from device or from camera
   Future<void> _getImage(ImageSource source) async {
     var image = await ImagePicker.pickImage(source: source);
     if (image != null) {
@@ -47,7 +47,7 @@ class _UserProfileState extends State<UserProfile> {
     }
     Navigator.pop(context);
   }
-
+// Crop fetched image
   _cropImage(File image) async {
     File cropped = await ImageCropper.cropImage(
         sourcePath: image.path,
@@ -59,7 +59,7 @@ class _UserProfileState extends State<UserProfile> {
       });
     }
   }
-
+// Upload image file to firestrore Storage and get image URL
   Future uploadFile() async {
     StorageReference storageReference = FirebaseStorage.instance
         .ref()
@@ -67,13 +67,14 @@ class _UserProfileState extends State<UserProfile> {
     StorageUploadTask uploadTask = storageReference.putFile(_imageFile);
     var downUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
     var url = downUrl.toString();
-    print('$url');
+//    print('$url');
     await uploadTask.onComplete;
     setState(() {
       imageUrl = url.toString();
     });
+//    Show message on successful image upload
     AppUtils.showToast('Picture Uploaded', green, white);
-
+//    Updating database with Image URL
     Firestore.instance
         .collection('account')
         .document(widget.user)
@@ -106,11 +107,11 @@ class _UserProfileState extends State<UserProfile> {
                                 fit: BoxFit.fill,
                               )
                             : Image(
-                                image: NetworkImage(/*imageUrl.toString()*/
-                                    loggedInUserProfileImage),
+                                image: NetworkImage(loggedInUserProfileImage),
                                 fit: BoxFit.fill,
-                              ) /*,*/
-                        )),
+                              )
+                        )
+                ),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,
@@ -206,7 +207,7 @@ class _UserProfileState extends State<UserProfile> {
       });
     }
   }
-
+//  Button action to select image from camera or from storage
   _onButtonPressed() {
     showModalBottomSheet(
         context: context,

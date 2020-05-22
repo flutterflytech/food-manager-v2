@@ -7,7 +7,6 @@ import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
-import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -30,6 +29,7 @@ class _LogInPageState extends State<LogInPage> {
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
     pr.style(message: 'Please wait...');
+
   }
 
   String emailValidator(String value) {
