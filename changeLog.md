@@ -160,3 +160,11 @@
 ### 1. Admin Login and Normal user Login
 ### 2. Bug Fixes
 ### 3. Code Formatting for review
+
+# DAY-17 (date: 25-05-2020)
+
+
+### 1. created folder structure for admin, vendor, and user
+### 2. relevant pages according to logged in user
+### 3. Connectivity between them
+### 4. Miner changes

@@ -1,31 +1,36 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/bottom_navigation/dashboard_page.dart';
-import 'package:food_manager_v2/views/bottom_navigation/meal_detail_page.dart';
-import 'package:food_manager_v2/views/bottom_navigation/payment_detail_page.dart';
-import 'package:food_manager_v2/views/bottom_navigation/user_profile_page.dart';
-import 'package:food_manager_v2/views/bottom_navigation/vendor_page.dart';
+import 'package:food_manager_v2/services/firebase_services/login_service.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/dashboard_page.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/user/screens/meal_detail_page.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/user/screens/payment_detail_page.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/user_profile_page.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/vendor_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/bottom_navigation/users_page.dart';
+import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/users_page.dart';
 
 class HomePage extends StatefulWidget {
   final String user;
+  final int userType;
 
-  const HomePage({Key key, this.user}) : super(key: key);
+  const HomePage({Key key, this.user, this.userType}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isAdmin = true;
+//  bool isAdmin = true;
+  int userType;
 
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
+      getLoggedInUserData();
     });
   }
 
@@ -36,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 // If user is admin, these pages will be Navigated
-    if (isAdmin) {
+    if (userType == 1) {
       _childern = [
         Dashboard(user: widget.user,),
         VendorPage(),
@@ -94,22 +99,22 @@ class _HomePageState extends State<HomePage> {
               )),
           BottomNavigationBarItem(
               icon: Icon(
-                isAdmin
+                userType == 1
                     ? FontAwesomeIcons.utensils
                     : FontAwesomeIcons.moneyBill,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text(isAdmin ? 'Vendors' : 'Payment', style: bold)),
+              title: Text(userType == 1 ? 'Vendors' : 'Payment', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
-                isAdmin
+                userType == 1
                     ? FontAwesomeIcons.users
                     : FontAwesomeIcons.pizzaSlice,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text(isAdmin ? 'Users' : 'Meals', style: bold)),
+              title: Text(userType == 1 ? 'Users' : 'Meals', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -122,6 +127,17 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  getLoggedInUserData() async {
+    LoginService loginService = LoginService();
+    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    if (snapshot.data != null) {
+      setState(() {
+
+        userType = snapshot.data['vendor'];
+        print(userType);
+      });
+    }
+  }
   logout() {
     FirebaseAuth.instance.signOut();
   }

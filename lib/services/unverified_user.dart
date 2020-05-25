@@ -1,14 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
-import 'package:food_manager_v2/views/home.dart';
 import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/views/user/home_page_user.dart';
+import 'package:food_manager_v2/views/vendor/home_page_vendor.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
+import 'firebase_services/login_service.dart';
+
 class UnverifiedUserUI extends StatefulWidget {
+
+  final String user;
+  final int userType;
+
+  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
@@ -16,6 +25,7 @@ class UnverifiedUserUI extends StatefulWidget {
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
+  int userType;
   ProgressDialog pr;
 
   @override
@@ -34,7 +44,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: _isEmailVerified
-              ? _getVerifiedUserData()
+              ? _getVerifiedUserData(userType)
               : _getUnverifiedUserScreen(),
         );
   }
@@ -63,8 +73,17 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     }
   }
 // This will be return on display if user has verified email id and login
-  _getVerifiedUserData() {
-    return HomePage();
+  _getVerifiedUserData(int userType) {
+    if(userType == 0){
+      return HomePageUser();
+    }
+    else if(userType == 1){
+      return HomePageUser();
+    }
+    else {
+      return HomePageVendor();
+    }
+
   }
 // This will be return on display if email is not verified by user
   _getUnverifiedUserScreen() {
@@ -132,6 +151,15 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       });
     } catch (e) {
       print(userError);
+    }
+  }
+  getLoggedInUserData() async {
+    LoginService loginService = LoginService();
+    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    if (snapshot.data != null) {
+      setState(() {
+        userType = snapshot.data['vendor'];
+      });
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
@@ -229,18 +230,19 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         Navigator.pop(context);
       }
-     /* FirebaseAuth.instance
+//      sending  verification mail
+      FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then((currentUser) {
         try {
           currentUser.user.sendEmailVerification();
         } catch (e) {
           showProgressDialog(false);
-//          print(sendMailErrorToast);
           AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }
-      }*/
+      }
+      );
     }
   }
 }
