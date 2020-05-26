@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
@@ -11,8 +12,11 @@ import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-
 class LogInPage extends StatefulWidget {
+  final String user;
+
+  const LogInPage({Key key, this.user}) : super(key: key);
+
   @override
   _LogInPageState createState() => _LogInPageState();
 }
@@ -21,6 +25,13 @@ class _LogInPageState extends State<LogInPage> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password;
+  String fName;
+  String userEmail;
+  String userEmpId;
+  String userSurname;
+  String photoUrl;
+  String userUid;
+  int userType;
   ProgressDialog pr;
 
   @override
@@ -29,7 +40,6 @@ class _LogInPageState extends State<LogInPage> {
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
     pr.style(message: 'Please wait...');
-
   }
 
   String emailValidator(String value) {
@@ -128,37 +138,42 @@ class _LogInPageState extends State<LogInPage> {
                               .signInWithEmailAndPassword(
                                   email: email, password: password)
                               .then((currentUser) {
+                            print('*@#' + currentUser.user.uid.toString());
                             showProgressDialog(true);
                             Firestore.instance
                                 .collection("account")
                                 .document(currentUser.user.uid)
                                 .get()
-                                .then((DocumentSnapshot result) {
+                                .then((DocumentSnapshot snapshot) {
                               showProgressDialog(false);
+                              print("@#@" + snapshot.data.toString());
+                              if (snapshot.data != null) {
+                                userType = snapshot.data['vendor'];
+                              }
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => UnverifiedUserUI(),
+                                  builder: (context) => UnverifiedUserUI(
+                                    userType: userType,
+                                  ),
                                 ),
                               );
                             }).catchError((err) {
                               showProgressDialog(false);
 
-                              AppUtils.showToast(
-                                  err.message, red, white);
+                              AppUtils.showToast(err.message, red, white);
                             });
                           }).catchError((err) {
                             showProgressDialog(false);
 
-                            AppUtils.showToast(
-                                err.message, red, white);
+                            AppUtils.showToast(err.message, red, white);
                           });
                         }
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [darkBlue2, lightBlue2]),
+                            gradient:
+                                LinearGradient(colors: [darkBlue2, lightBlue2]),
                             borderRadius: BorderRadius.circular(50)),
                         child: Center(
                             child: Text(

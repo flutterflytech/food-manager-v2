@@ -5,13 +5,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/dashboard_page.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/user/screens/meal_detail_page.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/user/screens/payment_detail_page.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/user_profile_page.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/vendor_page.dart';
+import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'file:///C:/Users/NEERAJ/Documents/office-flutter/food-manager-v2/lib/views/admin/screens/users_page.dart';
+import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
+import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
+import 'admin/screens/user_profile_page_admin.dart';
 
 class HomePage extends StatefulWidget {
   final String user;
@@ -43,19 +41,25 @@ class _HomePageState extends State<HomePage> {
 // If user is admin, these pages will be Navigated
     if (userType == 1) {
       _childern = [
-        Dashboard(user: widget.user,),
-        VendorPage(),
-        UsersPage(user: widget.user,),
-        UserProfile(user: widget.user,),
+        Dashboard(
+          user: widget.user,
+        ),
+        UserProfile(
+          user: widget.user,
+        ),
       ];
     }
 //    if user is not admin, these pages will be navigated
     else {
       _childern = [
-        Dashboard(user: widget.user,),
+        Dashboard(
+          user: widget.user,
+        ),
         PaymentPage(),
         MealPage(),
-        UserProfile(user: widget.user,),
+        UserProfile(
+          user: widget.user,
+        ),
       ];
     }
   }
@@ -132,12 +136,12 @@ class _HomePageState extends State<HomePage> {
     DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
     if (snapshot.data != null) {
       setState(() {
-
         userType = snapshot.data['vendor'];
-        print(userType);
+//        print(userType);
       });
     }
   }
+
   logout() {
     FirebaseAuth.instance.signOut();
   }

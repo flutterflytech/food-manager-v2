@@ -32,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(welcome + ' ' + loggedInUserName.toUpperCase()),
+                Text(welcome + ' ' + widget.user),
                 Text(iconInfo),
                 Icon(
                   FontAwesomeIcons.users,

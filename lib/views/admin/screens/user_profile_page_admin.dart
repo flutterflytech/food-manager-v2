@@ -15,8 +15,13 @@ import 'package:path/path.dart' as Path;
 
 class UserProfile extends StatefulWidget {
   final String user;
+  final String fName;
+  final String userEmail;
+  final String userEmpId;
+  final String userSurname;
+  final String photoUrl;
 
-  const UserProfile({Key key, this.user}) : super(key: key);
+  const UserProfile({Key key, this.user, this.fName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl}) : super(key: key);
 
   @override
   _UserProfileState createState() => _UserProfileState();
@@ -25,16 +30,10 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
   File _imageFile;
   String imageUrl;
-  String uploadedFileURL;
-  String loggedInUserEmail = '';
-  String loggedInUserFirstName = '';
-  String loggedInUserLastName = '';
-  String loggedInUserEmployeeId = '';
-  String loggedInUserProfileImage = '';
+
 
   @override
   void initState() {
-    getLoggedInUserData();
     super.initState();
   }
 // getting image from device or from camera
@@ -100,14 +99,14 @@ class _UserProfileState extends State<UserProfile> {
                     child: Container(
                         height: 200,
                         width: 200,
-                        child: loggedInUserProfileImage == null
+                        child: widget.photoUrl == null
                             ? Image(
                                 image: NetworkImage(
                                     'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
                                 fit: BoxFit.fill,
                               )
                             : Image(
-                                image: NetworkImage(loggedInUserProfileImage),
+                                image: NetworkImage(widget.photoUrl),
                                 fit: BoxFit.fill,
                               )
                         )
@@ -135,9 +134,9 @@ class _UserProfileState extends State<UserProfile> {
               height: 20.0,
             ),
             Text(
-              loggedInUserFirstName.toUpperCase() +
+              widget.fName.toUpperCase() +
                   ' ' +
-                  loggedInUserLastName.toUpperCase(),
+                  widget.userSurname.toUpperCase(),
               style: body40,
             ),
             SizedBox(
@@ -166,7 +165,7 @@ class _UserProfileState extends State<UserProfile> {
                         child: CustomTextWidget(
                           color: tealGreen,
                           title: 'EMPLOYEE ID',
-                          titleData: loggedInUserEmployeeId,
+                          titleData: widget.userEmpId,
                         ),
                       ),
                       Padding(
@@ -174,7 +173,7 @@ class _UserProfileState extends State<UserProfile> {
                         child: CustomTextWidget(
                           color: violet,
                           title: 'EMAIL',
-                          titleData: loggedInUserEmail,
+                          titleData: widget.userEmail,
                         ),
                       ),
                     ],
@@ -193,20 +192,7 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 // Fetching data of Logged In user
-  getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    if (snapshot.data != null) {
-      print(snapshot.data);
-      setState(() {
-        loggedInUserEmail = snapshot.data['email'];
-        loggedInUserFirstName = snapshot.data['fname'];
-        loggedInUserLastName = snapshot.data['surname'];
-        loggedInUserEmployeeId = snapshot.data['empId'];
-        loggedInUserProfileImage = snapshot.data['url'];
-      });
-    }
-  }
+
 //  Button action to select image from camera or from storage
   _onButtonPressed() {
     showModalBottomSheet(
