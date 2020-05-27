@@ -14,12 +14,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String loggedInUserName = '';
+
 
   @override
   void initState() {
     super.initState();
-    getLoggedInUserData();
+
   }
 
   @override
@@ -46,13 +46,5 @@ class _DashboardState extends State<Dashboard> {
     );
   }
 // Fetching data of Logged In user
-  getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    if (snapshot.data != null) {
-      setState(() {
-        loggedInUserName = snapshot.data['fname'];
-      });
-    }
-  }
+
 }

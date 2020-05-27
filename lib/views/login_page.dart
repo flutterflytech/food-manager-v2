@@ -162,7 +162,6 @@ class _LogInPageState extends State<LogInPage> {
 
                             }).catchError((err) {
                               showProgressDialog(false);
-
                               AppUtils.showToast(err.message, red, white);
                             });
                           }).catchError((err) {

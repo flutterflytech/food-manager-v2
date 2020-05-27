@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/views/user_profile.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class UsersPage extends StatefulWidget {
   final String user;
@@ -13,6 +14,16 @@ class UsersPage extends StatefulWidget {
 }
 
 class _UsersPageState extends State<UsersPage> {
+  List type = [];
+
+  ProgressDialog pr;
+  showProgressDialog(bool isShow) {
+    if (isShow) {
+      pr.show();
+    } else {
+      pr.hide();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
@@ -23,27 +34,22 @@ class _UsersPageState extends State<UsersPage> {
             child: Container(
                 height: screenData.height * 1.0,
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.instance.collection('account').snapshots(),
+                  stream: Firestore.instance.collection('account').where('vendor', isEqualTo: type).limit(1).snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError)
                       return new Text('Error: ${snapshot.error}');
                     switch (snapshot.connectionState) {
                       case ConnectionState.waiting:
-                        return new Text('Loading...');
+                        return showProgressDialog(true);
                       default:
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 10, left: 10, right: 10),
+                        return new ListView(
 
-//                          Should I be using ListView.Builder??
+                          children: snapshot.data.documents
+                              .map((DocumentSnapshot document) {
 
-                          child: new ListView(
-                            children: snapshot.data.documents
-                                .map((DocumentSnapshot document) {
-                              return Container(child: _userCardView(document));
-                            }).toList(),
-                          ),
+                            return Container(child: _userCardView(document));
+                          }).toList(),
                         );
                     }
                   },
@@ -53,8 +59,11 @@ class _UsersPageState extends State<UsersPage> {
       ),
     );
   }
+
 // Fetching All users data and showing in List as Cards
   _userCardView(document) {
+    type = document.where((document)=>document['vendor']==0);
+//    print('0000000000000'+ type.toString());
     if (document['email'] == widget.user) {
       return null;
     } else

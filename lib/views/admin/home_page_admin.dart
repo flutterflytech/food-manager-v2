@@ -43,7 +43,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
 
     _childern = [
       Dashboard(
-        user: widget.userName,
+        user: widget.user,
       ),
 
       UserProfile(

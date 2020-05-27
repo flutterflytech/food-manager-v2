@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
+import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 
 class HomePageUser extends StatefulWidget {
   final String user;
+  final String userName;
+  final String userEmail;
+  final String userEmpId;
+  final String userSurname;
+  final String photoUrl;
 
-  const HomePageUser({Key key, this.user}) : super(key: key);
+  const HomePageUser({Key key, this.user, this.userName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl}) : super(key: key);
 
   @override
   _HomePageUserState createState() => _HomePageUserState();
@@ -35,13 +40,18 @@ class _HomePageUserState extends State<HomePageUser> {
 //    if user is not admin, these pages will be navigated
 
     _childern = [
-      Dashboard(
+      DashboardUser(
         user: widget.user,
       ),
       PaymentPage(),
       MealPage(),
       UserProfile(
         user: widget.user,
+        fName: widget.userName,
+        photoUrl: widget.photoUrl,
+        userEmail: widget.userEmail,
+        userEmpId: widget.userEmpId,
+        userSurname: widget.userSurname,
       ),
     ];
   }

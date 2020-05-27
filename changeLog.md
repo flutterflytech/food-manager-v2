@@ -167,3 +167,16 @@
 ### 2. relevant pages according to logged in user
 ### 3. Connectivity between them
 ### 4. Miner changes
+
+# DAY-18 (date: 26-05-2020)
+
+### 1. Popup Menu 
+### 2. Separate Views for registered admins, vendors and users, only accessible to admin
+### 3. Modification of previous integration according to new flow
+### 4. Managing view according to different users
+
+# DAY-19 (date: 27-05-2020)
+
+### 1. BugFixes on login_page & unverified_user
+### 2. Showing different list of Different types of users
+### 3. Profile page data every time fetching problem resolved

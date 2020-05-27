@@ -85,8 +85,30 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     String userName,
     String photoUrl,
   ) {
+
+    /*switch(userType){
+      case 0 : HomePageUser();
+      break;
+      case 1 : HomePageAdmin(
+        user: widget.user,
+        userName: userName,
+        userSurname: userSurname,
+        userEmpId: userEmpId,
+        userEmail: userEmail,
+        photoUrl: photoUrl,);
+      break;
+      default : HomePageVendor();
+      break;
+    }*/
+
+
     if (userType == 0) {
-      return HomePageUser();
+      return HomePageUser(user: widget.user,
+        userName: userName,
+        userSurname: userSurname,
+        userEmpId: userEmpId,
+        userEmail: userEmail,
+        photoUrl: photoUrl,);
     } else if (userType == 1) {
       return HomePageAdmin(
         user: widget.user,
