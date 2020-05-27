@@ -146,18 +146,20 @@ class _LogInPageState extends State<LogInPage> {
                                 .get()
                                 .then((DocumentSnapshot snapshot) {
                               showProgressDialog(false);
+                              int userType;
                               print("@#@" + snapshot.data.toString());
                               if (snapshot.data != null) {
                                 userType = snapshot.data['vendor'];
-                              }
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => UnverifiedUserUI(
-                                    userType: userType,
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => UnverifiedUserUI(
+                                      userType: userType,
+                                    ),
                                   ),
-                                ),
-                              );
+                                );
+                              }
+
                             }).catchError((err) {
                               showProgressDialog(false);
 

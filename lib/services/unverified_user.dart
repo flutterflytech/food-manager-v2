@@ -36,6 +36,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   @override
   void initState() {
     super.initState();
+    print('User Type : '+ widget.userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -84,9 +85,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     String userName,
     String photoUrl,
   ) {
-    if (widget.userType == 0) {
+    if (userType == 0) {
       return HomePageUser();
-    } else if (widget.userType == 1) {
+    } else if (userType == 1) {
       return HomePageAdmin(
         user: widget.user,
         userName: userName,
