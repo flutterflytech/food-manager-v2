@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
@@ -22,6 +22,7 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
+  final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password;
@@ -130,47 +131,7 @@ class _LogInPageState extends State<LogInPage> {
                     height: screenData.height * 0.07,
                     width: screenData.width * 1.0,
                     child: GestureDetector(
-                      onTap: () {
-//                        Signing in using email and password and fetching collection uid
-                        if (_formKey.currentState.validate()) {
-                          showProgressDialog(true);
-                          FirebaseAuth.instance
-                              .signInWithEmailAndPassword(
-                                  email: email, password: password)
-                              .then((currentUser) {
-                            print('*@#' + currentUser.user.uid.toString());
-                            showProgressDialog(true);
-                            Firestore.instance
-                                .collection("account")
-                                .document(currentUser.user.uid)
-                                .get()
-                                .then((DocumentSnapshot snapshot) {
-                              showProgressDialog(false);
-                              int userType;
-                              print("@#@" + snapshot.data.toString());
-                              if (snapshot.data != null) {
-                                userType = snapshot.data['vendor'];
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => UnverifiedUserUI(
-                                      userType: userType,
-                                    ),
-                                  ),
-                                );
-                              }
-
-                            }).catchError((err) {
-                              showProgressDialog(false);
-                              AppUtils.showToast(err.message, red, white);
-                            });
-                          }).catchError((err) {
-                            showProgressDialog(false);
-
-                            AppUtils.showToast(err.message, red, white);
-                          });
-                        }
-                      },
+                      onTap: _onLogInClick,
                       child: Container(
                         decoration: BoxDecoration(
                             gradient:
@@ -210,5 +171,22 @@ class _LogInPageState extends State<LogInPage> {
         ),
       ),
     );
+  }
+
+  _onLogInClick() async {
+    if (_formKey.currentState.validate()) {
+      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+      AppUtils.showToast('Login Successful', green, white);
+      LoginService loginService = LoginService();
+      DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+      if (result != null) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => UnverifiedUserUI(),
+          ),
+        );
+      }
+    }
   }
 }

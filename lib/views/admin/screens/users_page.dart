@@ -17,6 +17,7 @@ class _UsersPageState extends State<UsersPage> {
   List type = [];
 
   ProgressDialog pr;
+
   showProgressDialog(bool isShow) {
     if (isShow) {
       pr.show();
@@ -24,6 +25,7 @@ class _UsersPageState extends State<UsersPage> {
       pr.hide();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
@@ -34,7 +36,9 @@ class _UsersPageState extends State<UsersPage> {
             child: Container(
                 height: screenData.height * 1.0,
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.instance.collection('account').where('vendor', isEqualTo: type).limit(1).snapshots(),
+                  stream: Firestore.instance
+                      .collection('account')
+                      .snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError)
@@ -43,11 +47,10 @@ class _UsersPageState extends State<UsersPage> {
                       case ConnectionState.waiting:
                         return showProgressDialog(true);
                       default:
-                        return new ListView(
 
+                        return new ListView(
                           children: snapshot.data.documents
                               .map((DocumentSnapshot document) {
-
                             return Container(child: _userCardView(document));
                           }).toList(),
                         );
@@ -62,7 +65,7 @@ class _UsersPageState extends State<UsersPage> {
 
 // Fetching All users data and showing in List as Cards
   _userCardView(document) {
-    type = document.where((document)=>document['vendor']==0);
+    type = document.where((document) => document['vendor'] == 0);
 //    print('0000000000000'+ type.toString());
     if (document['email'] == widget.user) {
       return null;

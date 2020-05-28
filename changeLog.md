@@ -180,3 +180,9 @@
 ### 1. BugFixes on login_page & unverified_user
 ### 2. Showing different list of Different types of users
 ### 3. Profile page data every time fetching problem resolved
+
+# DAY-20 (date: 28-05-2020)
+
+### 1. Model Class
+### 2. Firebase Services Class
+### 3. Code Optimization and bug Fixes
