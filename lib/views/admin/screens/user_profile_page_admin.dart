@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/services/edit_profile.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -20,7 +21,15 @@ class UserProfile extends StatefulWidget {
   final String userSurname;
   final String photoUrl;
 
-  const UserProfile({Key key, this.user, this.fName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl}) : super(key: key);
+  const UserProfile(
+      {Key key,
+      this.user,
+      this.fName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl})
+      : super(key: key);
 
   @override
   _UserProfileState createState() => _UserProfileState();
@@ -30,11 +39,12 @@ class _UserProfileState extends State<UserProfile> {
   File _imageFile;
   String imageUrl;
 
-
   @override
   void initState() {
+//    var userData = AllUserData.formFireStore();
     super.initState();
   }
+
 // getting image from device or from camera
   Future<void> _getImage(ImageSource source) async {
     var image = await ImagePicker.pickImage(source: source);
@@ -45,6 +55,7 @@ class _UserProfileState extends State<UserProfile> {
     }
     Navigator.pop(context);
   }
+
 // Crop fetched image
   _cropImage(File image) async {
     File cropped = await ImageCropper.cropImage(
@@ -57,6 +68,7 @@ class _UserProfileState extends State<UserProfile> {
       });
     }
   }
+
 // Upload image file to firestrore Storage and get image URL
   Future uploadFile() async {
     StorageReference storageReference = FirebaseStorage.instance
@@ -107,9 +119,7 @@ class _UserProfileState extends State<UserProfile> {
                             : Image(
                                 image: NetworkImage(widget.photoUrl),
                                 fit: BoxFit.fill,
-                              )
-                        )
-                ),
+                              ))),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,
@@ -127,6 +137,32 @@ class _UserProfileState extends State<UserProfile> {
                         )),
                   ),
                 ),
+                Positioned(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfilePage(
+                                    userSurname: widget.userSurname,
+                                    userFName: widget.fName,
+                                    userEmpId: widget.userEmpId,
+                                    userEmail: widget.userEmail,
+                                    user: widget.user,
+                                  )));
+                    },
+                    child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle, color: lightRed),
+                        margin: EdgeInsets.only(left: 10, top: 10),
+                        child: Icon(
+                          FontAwesomeIcons.edit,
+                          color: white,
+                        )),
+                  ),
+                ),
               ],
             ),
             SizedBox(
@@ -136,7 +172,7 @@ class _UserProfileState extends State<UserProfile> {
               widget.fName.toUpperCase() +
                   ' ' +
                   widget.userSurname.toUpperCase(),
-              style: body40,
+              style: body30,
             ),
             SizedBox(
               height: screenData.height * 0.03,
@@ -165,6 +201,8 @@ class _UserProfileState extends State<UserProfile> {
                           color: tealGreen,
                           title: 'EMPLOYEE ID',
                           titleData: widget.userEmpId,
+                          user: widget.user,
+                          empId: 'empId',
                         ),
                       ),
                       Padding(
@@ -173,6 +211,7 @@ class _UserProfileState extends State<UserProfile> {
                           color: violet,
                           title: 'EMAIL',
                           titleData: widget.userEmail,
+                          email: 'displayName',
                         ),
                       ),
                     ],
@@ -190,6 +229,7 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
+
 // Fetching data of Logged In user
 
 //  Button action to select image from camera or from storage

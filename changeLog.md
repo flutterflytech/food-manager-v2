@@ -2,9 +2,9 @@
 # Tasks Assigned
 
 ### 1. Splash screen
-### 2. Login signup UI
+### 2. Login signUp UI
 ### 3. Firebase configuration
-### 4. Email signup with firebase
+### 4. Email signUp with firebase
 ### 5. Email login with firebase
 
 # Completed
@@ -12,18 +12,18 @@
 # DAY-1 (date: 01-05-2020)
 
 ### 1. Splash Screen
-### 2. Login Signup UI
+### 2. Login SignUp UI
 ### 3. Firebase configuration
 
 ## TODO
 
-### 1. Email signup with firebase
+### 1. Email signUp with firebase
 ### 2. Email login with firebase
 
 # DAY-2 (date: 04-05-2020)
 
-### 1. Email siginup with firebase
-### 2. Save user details in firestore databasse
+### 1. Email signUp with firebase
+### 2. Save user details in fireStore dataBase
 ### 3. progressDialog implementation
 ### 4. email verification via sending link to registered email id
 
@@ -186,3 +186,16 @@
 ### 1. Model Class
 ### 2. Firebase Services Class
 ### 3. Code Optimization and bug Fixes
+
+# DAY-21 (date: 29-05-2020)
+
+### 1. Editable User Profile
+### 2. Save data on model class
+### 3. Bug Fixes
+
+# DAY-22 (date: 01-06-2020)
+
+### 1. New Edit Profile Page
+### 2. Storing data into Model Class
+### 3. Provider Method 
+### 4. Display AppInfo in popup menu

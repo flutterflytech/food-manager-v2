@@ -46,7 +46,7 @@ class _UserProfileState extends State<UserProfile> {
               ),
               Text(
                 widget.fName.toUpperCase() + ' ' + widget.surname.toUpperCase(),
-                style: body40,
+                style: body30,
               ),
               SizedBox(
                 height: screenData.height * 0.03,

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
-import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
@@ -23,10 +23,13 @@ class LogInPage extends StatefulWidget {
 
 class _LogInPageState extends State<LogInPage> {
   final AuthService _auth = AuthService();
+
+//  AllUserData _userData = AllUserData();
+  Map userData;
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password;
-  String fName;
+  String userFName;
   String userEmail;
   String userEmpId;
   String userSurname;
@@ -127,11 +130,11 @@ class _LogInPageState extends State<LogInPage> {
                   SizedBox(
                     height: screenData.height * 0.05,
                   ),
-                  SizedBox(
-                    height: screenData.height * 0.07,
-                    width: screenData.width * 1.0,
-                    child: GestureDetector(
-                      onTap: _onLogInClick,
+                  InkWell(
+                    onTap: _onLogInClick,
+                    child: SizedBox(
+                      height: screenData.height * 0.07,
+                      width: screenData.width * 1.0,
                       child: Container(
                         decoration: BoxDecoration(
                             gradient:
@@ -144,6 +147,7 @@ class _LogInPageState extends State<LogInPage> {
                         )),
                       ),
                     ),
+                    highlightColor: lightBlue1,
                   ),
                   SizedBox(
                     height: screenData.height * 0.02,
@@ -176,9 +180,8 @@ class _LogInPageState extends State<LogInPage> {
   _onLogInClick() async {
     if (_formKey.currentState.validate()) {
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-      AppUtils.showToast('Login Successful', green, white);
-      LoginService loginService = LoginService();
-      DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+      LoginService();
+
       if (result != null) {
         Navigator.pushReplacement(
           context,

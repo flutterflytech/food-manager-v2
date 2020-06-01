@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/admin/home_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
@@ -14,9 +15,8 @@ import 'firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
-  final int userType;
 
-  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
+  const UnverifiedUserUI({Key key, this.user}) : super(key: key);
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
@@ -35,8 +35,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
   @override
   void initState() {
+    getLoggedInUserData();
     super.initState();
-    print('User Type : '+ widget.userType.toString());
+    print('User@@@Type : '+ userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -44,7 +45,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       message: 'Please wait',
     );
     getCurrentUserData();
-    getLoggedInUserData();
+
   }
 
   @override
@@ -108,7 +109,8 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         userSurname: userSurname,
         userEmpId: userEmpId,
         userEmail: userEmail,
-        photoUrl: photoUrl,);
+        photoUrl: photoUrl,
+      );
     } else if (userType == 1) {
       return HomePageAdmin(
         user: widget.user,
@@ -194,15 +196,16 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
     if (snapshot.data != null) {
       setState(() {
-        userType = snapshot.data['vendor'];
-        userName = snapshot.data['fname'];
-        userEmail = snapshot.data['email'];
-        userEmpId = snapshot.data['empId'];
-        userName = snapshot.data['fname'];
-        userSurname = snapshot.data['surname'];
-        photoUrl = snapshot.data['url'];
-        uid = snapshot.data['uid'];
-        print('#@#' + widget.userType.toString());
+        var userData = AllUserData.formFireStore(snapshot.data);
+        print('data from model class'+userData.userType.toString());
+        userType = userData.userType;
+        userName = userData.userFName;
+        userEmail = userData.userEmail;
+        userEmpId = userData.userEmpId;
+        userSurname = userData.userSurname;
+        photoUrl = userData.photoUrl;
+//        uid = snapshot.data['uid'];
+//        print('#@#' + widget.userType.toString());
       });
     }
   }

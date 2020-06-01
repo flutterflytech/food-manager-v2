@@ -2,13 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/services/edit_profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/style_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/style_constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/user_profile_page_admin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/screens/user_profile_page_admin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/users_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/screens/users_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user/screens/profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_widget_user_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_widget_user_profile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -352,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590589994653</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="DAY-20">
+      <created>1590686340760</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1590686340760</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -406,6 +421,7 @@
     <MESSAGE value="DAY-18 popup menu, userView according to user type" />
     <MESSAGE value="DAY-19 launcher_icon" />
     <MESSAGE value="DAY-19" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-19" />
+    <MESSAGE value="DAY-20" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-20" />
   </component>
 </project>

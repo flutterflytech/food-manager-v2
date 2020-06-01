@@ -16,8 +16,9 @@ class HomePageUser extends StatefulWidget {
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
+  final int userType;
 
-  const HomePageUser({Key key, this.user, this.userName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl}) : super(key: key);
+  const HomePageUser({Key key, this.user, this.userName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl, this.userType}) : super(key: key);
 
   @override
   _HomePageUserState createState() => _HomePageUserState();

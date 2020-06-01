@@ -8,7 +8,7 @@ class User {
 
 // user model for receiving data and using it everywhere whenever needed
 
-class UserData {
+class AllUserData {
   final String userFName;
   final String userSurname;
   final String userEmail;
@@ -16,6 +16,27 @@ class UserData {
   final String photoUrl;
   final int userType;
 
-  UserData(this.userFName, this.userSurname, this.userEmail, this.userEmpId,
+  AllUserData(this.userFName, this.userSurname, this.userEmail, this.userEmpId,
       this.photoUrl, this.userType);
+
+  AllUserData.formFireStore(Map<String, dynamic> data)
+      : userFName = data['fname'],
+        userSurname = data['surname'],
+        userEmail = data['email'],
+        userEmpId = data['empId'],
+        photoUrl = data['url'],
+        userType = data['vendor'];
+
+  Map<String, dynamic> toJson() =>
+      {
+        'fname': userFName,
+        'surname': userSurname,
+        'email': userEmail,
+        'empId': userEmpId,
+        'url': photoUrl,
+        'vendor': userType
+      };
+
+
 }
+

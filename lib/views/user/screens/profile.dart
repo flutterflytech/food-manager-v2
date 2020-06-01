@@ -138,7 +138,7 @@ class _UserProfileState extends State<UserProfile> {
               loggedInUserFirstName.toUpperCase() +
                   ' ' +
                   loggedInUserLastName.toUpperCase(),
-              style: body40,
+              style: body30,
             ),
             SizedBox(
               height: screenData.height * 0.03,
