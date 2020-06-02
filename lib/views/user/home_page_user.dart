@@ -8,6 +8,7 @@ import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
 
 class HomePageUser extends StatefulWidget {
   final String user;
@@ -18,7 +19,16 @@ class HomePageUser extends StatefulWidget {
   final String photoUrl;
   final int userType;
 
-  const HomePageUser({Key key, this.user, this.userName, this.userEmail, this.userEmpId, this.userSurname, this.photoUrl, this.userType}) : super(key: key);
+  const HomePageUser(
+      {Key key,
+      this.user,
+      this.userName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl,
+      this.userType})
+      : super(key: key);
 
   @override
   _HomePageUserState createState() => _HomePageUserState();
@@ -46,6 +56,11 @@ class _HomePageUserState extends State<HomePageUser> {
       ),
       PaymentPage(),
       MealPage(),
+      QRPage(
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
+        userEmpId: widget.userEmpId,
+      ),
       UserProfile(
         user: widget.user,
         fName: widget.userName,
@@ -108,6 +123,13 @@ class _HomePageUserState extends State<HomePageUser> {
                 color: lightBlue1,
               ),
               title: Text('Meals', style: bold)),
+          BottomNavigationBarItem(
+              icon: Icon(
+                FontAwesomeIcons.qrcode,
+                size: 30,
+                color: lightBlue1,
+              ),
+              title: Text('QR Code', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,

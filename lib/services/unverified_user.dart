@@ -37,7 +37,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   void initState() {
     getLoggedInUserData();
     super.initState();
-    print('User@@@Type : '+ userType.toString());
+    print('User@@@Type : ' + userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -45,7 +45,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
       message: 'Please wait',
     );
     getCurrentUserData();
-
   }
 
   @override
@@ -53,7 +52,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return Scaffold(
       body: _isEmailVerified
           ? _getVerifiedUserData(
-              userSurname, userEmpId, userEmail, userName, photoUrl)
+              userSurname, userEmpId, userEmail, userName, photoUrl, userType)
           : _getUnverifiedUserScreen(),
     );
   }
@@ -79,32 +78,43 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // This will be return on display if user has verified email id and login
-  _getVerifiedUserData(
-    String userSurname,
-    String userEmpId,
-    String userEmail,
-    String userName,
-    String photoUrl,
-  ) {
+  _getVerifiedUserData(String userSurname, String userEmpId, String userEmail,
+      String userName, String photoUrl, int userType) {
+    switch (userType) {
+      case 1:
+        return HomePageAdmin(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
 
-    /*switch(userType){
-      case 0 : HomePageUser();
-      break;
-      case 1 : HomePageAdmin(
+      case 2:
+        return HomePageVendor(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+
+      case 0:
+        return HomePageUser(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+    }
+
+    /*if (userType == 0) {
+      return HomePageUser(
         user: widget.user,
-        userName: userName,
-        userSurname: userSurname,
-        userEmpId: userEmpId,
-        userEmail: userEmail,
-        photoUrl: photoUrl,);
-      break;
-      default : HomePageVendor();
-      break;
-    }*/
-
-
-    if (userType == 0) {
-      return HomePageUser(user: widget.user,
         userName: userName,
         userSurname: userSurname,
         userEmpId: userEmpId,
@@ -120,9 +130,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         userEmail: userEmail,
         photoUrl: photoUrl,
       );
-    } else {
+    } else if(userType == 2) {
       return HomePageVendor();
-    }
+    }*/
   }
 
 // This will be return on display if email is not verified by user
@@ -197,8 +207,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class'+userData.userType.toString());
+        print('data from model class' + userData.userType.toString());
         userType = userData.userType;
+        print('data @@@ from model class' + userType.toString());
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;

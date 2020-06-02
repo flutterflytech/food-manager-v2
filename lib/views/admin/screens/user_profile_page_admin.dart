@@ -88,7 +88,7 @@ class _UserProfileState extends State<UserProfile> {
     Firestore.instance
         .collection('account')
         .document(widget.user)
-        .updateData({"url": url});
+        .updateData({"url": imageUrl});
   }
 
   @override
