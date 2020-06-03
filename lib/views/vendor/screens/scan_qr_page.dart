@@ -20,11 +20,13 @@ class _ScanQrState extends State<ScanQr> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: RaisedButton(
-        onPressed: (){
-          _scan();
-        },
-        child: Text('Scan'),
+      child: Center(
+        child: RaisedButton(
+          onPressed: (){
+            _scan();
+          },
+          child: Text('Scan'),
+        ),
       ),
     );
   }

@@ -1,9 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
@@ -37,6 +36,13 @@ class _LogInPageState extends State<LogInPage> {
   String userUid;
   int userType;
   ProgressDialog pr;
+  bool obscure = true;
+
+  void _toggleVisibility(){
+    setState(() {
+      obscure = !obscure;
+    });
+  }
 
   @override
   void initState() {
@@ -102,7 +108,8 @@ class _LogInPageState extends State<LogInPage> {
                   SizedBox(
                     height: screenData.height * 0.01,
                   ),
-                  CustomTextFormField(
+                  /*CustomTextFormField(
+
                     validator: passwordValidator,
                     onChanged: (value) {
                       setState(() {
@@ -111,6 +118,36 @@ class _LogInPageState extends State<LogInPage> {
                     },
                     hintText: 'Password',
                     obscure: true,
+                  )*/
+                  TextFormField(
+                    validator: passwordValidator,
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    },
+                    cursorColor: darkBlue,
+                    obscureText: obscure,
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(50.0),
+                      ),
+                        suffixIcon:IconButton(
+                          splashColor: white,
+                          onPressed: _toggleVisibility,
+                          icon: obscure ? Icon(FontAwesomeIcons.eye) : Icon(FontAwesomeIcons.eyeSlash),
+                        ) ,
+                        fillColor: white,
+                        filled: true,
+                        hintText: 'Password',
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.transparent, width: 2.0),
+                          borderRadius: BorderRadius.circular(50.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors.transparent, width: 2.0),
+                            borderRadius: BorderRadius.circular(50.0))),
                   ),
                   SizedBox(
                     height: screenData.height * 0.05,

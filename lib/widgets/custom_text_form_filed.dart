@@ -23,11 +23,13 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       child: TextFormField(
         validator: widget.validator,
         onChanged: widget.onChanged,
         cursorColor: darkBlue,
         obscureText: widget.obscure,
+
         decoration: InputDecoration(
             fillColor: white,
             filled: true,

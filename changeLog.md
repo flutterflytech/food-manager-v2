@@ -207,3 +207,10 @@
 ### 3. QR code scanned by vendor
 ### 4. Bug Fixes
 ### 5. New bottom Navigation for both user and vendor login to read and generate QR
+
+# DAY-24 (date: 03-06-2020)
+
+### 1. QR Scanner complete
+### 2. Show password icon in password input field
+### 3. Debugging
+### 4. bug fixes
