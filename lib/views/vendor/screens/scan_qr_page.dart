@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:qrscan/qrscan.dart' as scanner;
+
 import 'package:food_manager_v2/constants/color_constants.dart';
 
 class ScanQr extends StatefulWidget {
@@ -9,17 +10,20 @@ class ScanQr extends StatefulWidget {
 
 class _ScanQrState extends State<ScanQr> {
   String qrCode;
-  Future scanBarcode() async{
-    String scanResult = await FlutterBarcodeScanner.scanBarcode('0xFF1976D2', 'Terminate', true, ScanMode.QR);
+  Future _scan() async {
+    String barcode = await scanner.scan();
     setState(() {
-          qrCode = scanResult;
+      qrCode = barcode;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: RaisedButton(
-        onPressed: scanBarcode,
+        onPressed: (){
+          _scan();
+        },
         child: Text('Scan'),
       ),
     );

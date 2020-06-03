@@ -18,6 +18,7 @@ class _QRPageState extends State<QRPage> {
     return Container(
       child: Center(
         child: QrImage(
+
           foregroundColor: darkBlue,
           data: widget.userFName.toUpperCase()+' '+widget.userSurname.toUpperCase()+'/'+widget.userEmpId+'/'+now.toString(),
           version: QrVersions.auto,
