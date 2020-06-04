@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_text_form_filed.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,7 +18,9 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_API_R" />
+  <component name="FavoritesManager">
+    <favorites_list name="food-manager-v2" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -21,9 +29,26 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="development" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1bI9GbFG9fXahVDUERRr7K45qHT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
@@ -33,24 +58,12 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\bottom_navigation" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app\src\main\res\drawable" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\android\app" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\admin\screens" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\screens" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\user\screens" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\services\firebase_services" />
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\models" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -140,7 +153,231 @@
       <option name="project" value="LOCAL" />
       <updated>1589122302523</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
+      <created>1589122365689</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1589122365689</updated>
+    </task>
+    <task id="LOCAL-00013" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
+      <created>1589122390182</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1589122390182</updated>
+    </task>
+    <task id="LOCAL-00014" summary="DAY-7 PR">
+      <created>1589168216156</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1589168216156</updated>
+    </task>
+    <task id="LOCAL-00015" summary="DAY-7 User Profile, PR, Bug Fixes">
+      <created>1589200978910</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1589200978911</updated>
+    </task>
+    <task id="LOCAL-00016" summary="DAY-8 User Profile, Bug Fixes">
+      <created>1589297700103</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1589297700103</updated>
+    </task>
+    <task id="LOCAL-00017" summary="DAY-8 User Profile, Bug Fixes">
+      <created>1589297880185</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1589297880185</updated>
+    </task>
+    <task id="LOCAL-00018" summary="DAY-8 User Profile, Bug Fixes">
+      <created>1589299603680</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299603680</updated>
+    </task>
+    <task id="LOCAL-00019" summary="DAY-8 User Profile, Bug Fixes">
+      <created>1589299797024</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299797024</updated>
+    </task>
+    <task id="LOCAL-00020" summary="DAY-8 User Profile, Bug Fixes, const creation">
+      <created>1589304090948</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1589304090949</updated>
+    </task>
+    <task id="LOCAL-00021" summary="DAY-9 Code Review and formatting">
+      <created>1589368495261</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1589368495261</updated>
+    </task>
+    <task id="LOCAL-00022" summary="DAY-9 Code Review and formatting">
+      <created>1589384892434</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1589384892434</updated>
+    </task>
+    <task id="LOCAL-00023" summary="DAY-9 Code Review and formatting">
+      <created>1589385006621</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1589385006621</updated>
+    </task>
+    <task id="LOCAL-00024" summary="DAY-9 Code Review and formatting">
+      <created>1589385044898</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1589385044898</updated>
+    </task>
+    <task id="LOCAL-00025" summary="DAY-9 Code Review and formatting">
+      <created>1589425712583</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1589425712583</updated>
+    </task>
+    <task id="LOCAL-00026" summary="DAY-9 Code Review and formatting">
+      <created>1589425962356</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1589425962356</updated>
+    </task>
+    <task id="LOCAL-00027" summary="DAY-10 Bottom Navigation Functionality">
+      <created>1589458245456</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1589458245456</updated>
+    </task>
+    <task id="LOCAL-00028" summary="DAY-11 Bottom Image picker,Profile UI">
+      <created>1589555784663</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1589555784663</updated>
+    </task>
+    <task id="LOCAL-00029" summary="DAY-12 BottomModelSheet,ImageCropper,FireStoreStorageSetup">
+      <created>1589804899757</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1589804899761</updated>
+    </task>
+    <task id="LOCAL-00030" summary="DAY-13 Uploading image into storage, Showing image in profile">
+      <created>1589890561075</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1589890561076</updated>
+    </task>
+    <task id="LOCAL-00031" summary="DAY-14 AppDisplayLabel, userDisplay, bugFixes">
+      <created>1589977131746</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1589977131746</updated>
+    </task>
+    <task id="LOCAL-00032" summary="DAY-15 Admin Login, Normal User Login, bugFixes">
+      <created>1590063349599</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1590063349599</updated>
+    </task>
+    <task id="LOCAL-00033" summary="DAY-16 code formatting and debugging">
+      <created>1590142254223</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1590142254224</updated>
+    </task>
+    <task id="LOCAL-00034" summary="DAY-16 code formatting and debugging">
+      <created>1590150772980</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1590150772980</updated>
+    </task>
+    <task id="LOCAL-00035" summary="DAY-17 folder structure, new admin, user, and vendor">
+      <created>1590408853109</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1590408853110</updated>
+    </task>
+    <task id="LOCAL-00036" summary="DAY-18 popup menu, userView according to user type">
+      <created>1590505380484</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1590505380484</updated>
+    </task>
+    <task id="LOCAL-00037" summary="DAY-19 launcher_icon">
+      <created>1590554012383</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1590554012385</updated>
+    </task>
+    <task id="LOCAL-00038" summary="DAY-19">
+      <created>1590589994652</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1590589994653</updated>
+    </task>
+    <task id="LOCAL-00039" summary="DAY-20">
+      <created>1590686340760</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1590686340760</updated>
+    </task>
+    <task id="LOCAL-00040" summary="DAY-22">
+      <created>1591016154941</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1591016154941</updated>
+    </task>
+    <task id="LOCAL-00041" summary="DAY-23">
+      <created>1591105444497</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1591105444497</updated>
+    </task>
+    <task id="LOCAL-00042" summary="DAY-24 QR Scanner">
+      <created>1591164034834</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1591164034834</updated>
+    </task>
+    <task id="LOCAL-00043" summary="DAY-24 QR Scanner, Password toggle button">
+      <created>1591200913574</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1591200913574</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,13 +408,137 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Day-1 User Login &amp; Registration" />
-    <MESSAGE value="Day-2 User Registration &amp; Email verification" />
-    <MESSAGE value="Day-3 Login with email and password" />
     <MESSAGE value="Code optimisations" />
     <MESSAGE value="DAY-4 Flow of app and bug fixes" />
     <MESSAGE value="DAY-5 Bug fixes, Bottom App bar, launcher icon" />
     <MESSAGE value="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled" />
+    <MESSAGE value="DAY-7 PR" />
+    <MESSAGE value="DAY-7 User Profile, PR, Bug Fixes" />
+    <MESSAGE value="DAY-8 User Profile, Bug Fixes" />
+    <MESSAGE value="DAY-8 User Profile, Bug Fixes, const creation" />
+    <MESSAGE value="DAY-9 Code Review and formatting" />
+    <MESSAGE value="DAY-10 Bottom Navigation Functionality" />
+    <MESSAGE value="DAY-11 Bottom Image picker,Profile UI" />
+    <MESSAGE value="DAY-12 BottomModelSheet,ImageCropper,FireStoreStorageSetup" />
+    <MESSAGE value="DAY-13 Uploading image into storage, Showing image in profile" />
+    <MESSAGE value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
+    <MESSAGE value="DAY-15 Admin Login, Normal User Login, bugFixes" />
+    <MESSAGE value="DAY-16 code formatting and debugging" />
+    <MESSAGE value="DAY-17 folder structure, new admin, user, and vendor" />
+    <MESSAGE value="DAY-18 popup menu, userView according to user type" />
+    <MESSAGE value="DAY-19 launcher_icon" />
+    <MESSAGE value="DAY-19" />
+    <MESSAGE value="DAY-20" />
+    <MESSAGE value="DAY-22" />
+    <MESSAGE value="DAY-23" />
+    <MESSAGE value="DAY-24 QR Scanner" />
+    <MESSAGE value="DAY-24 QR Scanner, Password toggle button" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-24 QR Scanner, Password toggle button" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591025492193">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1591025492193" />
+    <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591081763645">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591081763645" />
+    <state x="360" y="6" key="CommitChangelistDialog2" timestamp="1591200912664">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="360" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591200912664" />
+    <state width="426" height="466" key="DebuggerActiveHint" timestamp="1591088113457">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="426" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1591088113457" />
+    <state width="1183" height="398" key="GridCell.Tab.0.bottom" timestamp="1591273748463">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1183" height="398" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591273748463" />
+    <state width="1183" height="398" key="GridCell.Tab.0.center" timestamp="1591273748463">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1183" height="398" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591273748463" />
+    <state width="1183" height="398" key="GridCell.Tab.0.left" timestamp="1591273748462">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1183" height="398" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591273748462" />
+    <state width="1183" height="398" key="GridCell.Tab.0.right" timestamp="1591273748463">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1183" height="398" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591273748463" />
+    <state x="89" y="58" key="SettingsEditor" timestamp="1591075819185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="89" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591075819185" />
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591200917212">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591200917212" />
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1591240319591">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1591240319591" />
+    <state x="252" y="190" key="run.anything.popup" timestamp="1591081056173">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="252" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1591081056173" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>135</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>136</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>137</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>138</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>139</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>140</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>141</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>142</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>143</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/views/admin/home_page_admin.dart</url>
+          <line>184</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

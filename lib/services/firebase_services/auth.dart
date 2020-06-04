@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../user.dart';
+import '../../models/user.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,11 +16,10 @@ class AuthService {
     return _auth.onAuthStateChanged.map(_userFromFirebaseUser);
   }
 
-  // register with email and password
+//  register with email and password
   Future registerWithEmailAndPassword(String email, String password,
-      String empId, String firstName, String lastName, int vendor) async {
+      String empId, String firstName, String lastName, int vendor,String url) async {
     try {
-//      print(email+'@'+password+'@'+empId+'@'+firstName+'@'+lastName+'@');
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
@@ -31,6 +30,7 @@ class AuthService {
         "surname": lastName,
         "uid": user.uid,
         "vendor": vendor,
+        "url": url,
       });
       return _userFromFirebaseUser(user);
     } catch (error) {
@@ -38,4 +38,19 @@ class AuthService {
       return null;
     }
   }
+
+//  signIn with email and password
+
+Future signInWithEmailAndPassword(String email, String password) async{
+  try{
+    AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+    FirebaseUser user = result.user;
+    return user;
+  }catch(error){
+    print(error.toString());
+    return null;
+  }
+}
+
+
 }

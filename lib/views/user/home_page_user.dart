@@ -1,34 +1,43 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
-import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
-import 'admin/screens/user_profile_page_admin.dart';
+import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePageUser extends StatefulWidget {
   final String user;
+  final String userName;
+  final String userEmail;
+  final String userEmpId;
+  final String userSurname;
+  final String photoUrl;
   final int userType;
 
-  const HomePage({Key key, this.user, this.userType}) : super(key: key);
+  const HomePageUser(
+      {Key key,
+      this.user,
+      this.userName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl,
+      this.userType})
+      : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageUserState createState() => _HomePageUserState();
 }
 
-class _HomePageState extends State<HomePage> {
-//  bool isAdmin = true;
-  int userType;
-
+class _HomePageUserState extends State<HomePageUser> {
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-      getLoggedInUserData();
     });
   }
 
@@ -38,30 +47,29 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-// If user is admin, these pages will be Navigated
-    if (userType == 1) {
-      _childern = [
-        Dashboard(
-          user: widget.user,
-        ),
-        UserProfile(
-          user: widget.user,
-        ),
-      ];
-    }
+
 //    if user is not admin, these pages will be navigated
-    else {
-      _childern = [
-        Dashboard(
-          user: widget.user,
-        ),
-        PaymentPage(),
-        MealPage(),
-        UserProfile(
-          user: widget.user,
-        ),
-      ];
-    }
+
+    _childern = [
+      DashboardUser(
+        user: widget.user,
+      ),
+      PaymentPage(),
+      MealPage(),
+      QRPage(
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
+        userEmpId: widget.userEmpId,
+      ),
+      UserProfile(
+        user: widget.user,
+        fName: widget.userName,
+        photoUrl: widget.photoUrl,
+        userEmail: widget.userEmail,
+        userEmpId: widget.userEmpId,
+        userSurname: widget.userSurname,
+      ),
+    ];
   }
 
   @override
@@ -103,22 +111,25 @@ class _HomePageState extends State<HomePage> {
               )),
           BottomNavigationBarItem(
               icon: Icon(
-                userType == 1
-                    ? FontAwesomeIcons.utensils
-                    : FontAwesomeIcons.moneyBill,
+                FontAwesomeIcons.moneyBill,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text(userType == 1 ? 'Vendors' : 'Payment', style: bold)),
+              title: Text('Payment', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
-                userType == 1
-                    ? FontAwesomeIcons.users
-                    : FontAwesomeIcons.pizzaSlice,
+                FontAwesomeIcons.pizzaSlice,
                 size: 30,
                 color: lightBlue1,
               ),
-              title: Text(userType == 1 ? 'Users' : 'Meals', style: bold)),
+              title: Text('Meals', style: bold)),
+          BottomNavigationBarItem(
+              icon: Icon(
+                FontAwesomeIcons.qrcode,
+                size: 30,
+                color: lightBlue1,
+              ),
+              title: Text('QR Code', style: bold)),
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -129,17 +140,6 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    if (snapshot.data != null) {
-      setState(() {
-        userType = snapshot.data['vendor'];
-//        print(userType);
-      });
-    }
   }
 
   logout() {
