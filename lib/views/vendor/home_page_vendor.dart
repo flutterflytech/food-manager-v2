@@ -6,7 +6,6 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
-import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
 
 class HomePageVendor extends StatefulWidget {

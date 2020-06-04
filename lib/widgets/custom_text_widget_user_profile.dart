@@ -44,9 +44,7 @@ class _CustomTextWidgetState extends State<CustomTextWidget> {
                 ),
               ],
             ),
-
           ],
-
         ),
       ),
     );
