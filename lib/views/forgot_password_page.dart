@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-
-//TODO put string files inside text_constants.dart file
 
 class ForgotPassword extends StatefulWidget {
   @override
@@ -33,7 +32,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       padding: EdgeInsets.all(10.0),
                       decoration: BoxDecoration(color: Colors.blue[200]),
                       child: Text(
-                        'We will send you a password reset link to your registered email Id.',
+                        displayMessage,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25),
                       )),
@@ -70,9 +69,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 RaisedButton(
                   child: Text('Send Email'),
                   onPressed: () {
+//                    sending mail to reset password
                     if (_formKey.currentState.validate()) {
                       FirebaseAuth.instance
-                          .sendPasswordResetEmail(email: email)
+                          .sendPasswordResetEmail(email:email)
                           .then((_) {
                         AppUtils.showToast('Check Your Email to reset password',
                             Colors.green[700], Colors.white);
@@ -90,24 +90,5 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         ),
       ),
     );
-  }
-
-  _sendMailAgain() async {
-    try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      user.sendEmailVerification().then((_) {
-        AppUtils.showToast('Email verification link send successfuly.',
-            Colors.green, Colors.white);
-      }).catchError((error) {
-        print(error.message);
-      });
-    } catch (e) {
-      print("An error occured while trying to send email verification");
-      AppUtils.showToast(
-          'An error occured while trying to send email verification',
-          Colors.red,
-          Colors.white);
-      print(e.message);
-    }
   }
 }

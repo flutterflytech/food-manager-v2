@@ -2,8 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-
-
+import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 
 class Dashboard extends StatefulWidget {
   final String user;
@@ -15,12 +14,12 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  String loggedInUserName = '';
+
 
   @override
   void initState() {
     super.initState();
-    getLoggedInUserData();
+
   }
 
   @override
@@ -33,7 +32,7 @@ class _DashboardState extends State<Dashboard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(welcome + ' ' + loggedInUserName.toUpperCase()),
+                Text(welcome + ' ' + widget.user),
                 Text(iconInfo),
                 Icon(
                   FontAwesomeIcons.users,
@@ -45,23 +44,7 @@ class _DashboardState extends State<Dashboard> {
         ),
       ),
     );
-
-
   }
+// Fetching data of Logged In user
 
-  getLoggedInUserData() async {
-    await Firestore.instance
-        .collection('account')
-        .document(widget.user)
-        .get()
-        .then((DocumentSnapshot snapshot) {
-      //TODO User details are available only after restart.
-      if (snapshot.data != null) {
-        print(snapshot.data);
-        setState(() {
-          loggedInUserName = snapshot.data['fname'];
-        });
-      }
-    });
-  }
 }

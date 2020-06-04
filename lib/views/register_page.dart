@@ -10,7 +10,6 @@ import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
-
 class RegisterPage extends StatefulWidget {
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -35,7 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: true, showLogs: false);
@@ -135,7 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       validator: employeeIdValidator,
                       onChanged: (value) {
                         setState(() {
-                          empId = value;
+                          empId = 'MOB' + value;
                         });
                       },
                       hintText: 'Employee Id*',
@@ -217,7 +215,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-
+// Registering user
   void onRegisterClick() async {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
@@ -232,6 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
       } else {
         Navigator.pop(context);
       }
+//      sending  verification mail
       FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password)
           .then((currentUser) {
@@ -239,11 +238,11 @@ class _RegisterPageState extends State<RegisterPage> {
           currentUser.user.sendEmailVerification();
         } catch (e) {
           showProgressDialog(false);
-          print(sendMailErrorToast);
           AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }
-      });
+      }
+      );
     }
   }
 }

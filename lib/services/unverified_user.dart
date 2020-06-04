@@ -1,25 +1,44 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
+import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/views/admin/home_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/views/user/home_page_user.dart';
+import 'package:food_manager_v2/views/vendor/home_page_vendor.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
+  final String user;
+  final String userType;
+
+  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
+
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
 }
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   bool _isEmailVerified = false;
+  int userType;
+  String userName;
+  String userEmail;
+  String userEmpId;
+  String userSurname;
+  String photoUrl;
+  String uid;
   ProgressDialog pr;
 
   @override
   void initState() {
-    // TODO: implement initState
+    getLoggedInUserData();
     super.initState();
+    print('User@@@Type : ' + userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -32,123 +51,146 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Column(
-        children: _isEmailVerified
-            ? _getVerifiedUserData()
-            : _getUnverifiedUserData(),
-      ),
-    ));
+      body: _isEmailVerified
+          ? _getVerifiedUserData(
+              userSurname, userEmpId, userEmail, userName, photoUrl, userType)
+          : _getUnverifiedUserScreen(),
+    );
   }
 
+// To check email id is verified or not
   _checkVerificationStatus() async {
     try {
-      FirebaseUser user = await FirebaseAuth.instance.currentUser();
-      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
-      userUpdateInfo.displayName = user.displayName;
-      user.updateProfile(userUpdateInfo).then((onValue) {
-        FirebaseAuth.instance.currentUser().then((user) {
-          _isEmailVerified = user.isEmailVerified;
-          if (user.isEmailVerified) {
-            setState(() {
-              _isEmailVerified = true;
-            });
-          } else {
-            AppUtils.showToast('You haven\'t verified your email yet!',
-                red, white);
-          }
-        });
+      FirebaseAuth.instance.currentUser().then((user) {
+        _isEmailVerified = user.isEmailVerified;
+        if (user.isEmailVerified) {
+          setState(() {
+            _isEmailVerified = true;
+          });
+        } else {
+          AppUtils.showToast(notVerified, red, white);
+        }
       });
     } catch (e) {
-      print('An error occured while trying to check email is verified or not!');
-      AppUtils.showToast(
-          'An error occured while trying to check email is verified or not!',
-          red,
-          white);
+      print(errorVerification);
+      AppUtils.showToast(errorVerification, red, white);
       print(e.message);
     }
   }
 
-  _getVerifiedUserData() {
-    return [
-      Center(
+// This will be return on display if user has verified email id and login
+  _getVerifiedUserData(String userSurname, String userEmpId, String userEmail,
+      String userName, String photoUrl, int userType) {
+    switch (userType) {
+      case 1:
+        return HomePageAdmin(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+
+      case 2:
+        return HomePageVendor(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+
+      case 0:
+        return HomePageUser(
+          user: widget.user,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+    }
+
+    /*if (userType == 0) {
+      return HomePageUser(
+        user: widget.user,
+        userName: userName,
+        userSurname: userSurname,
+        userEmpId: userEmpId,
+        userEmail: userEmail,
+        photoUrl: photoUrl,
+      );
+    } else if (userType == 1) {
+      return HomePageAdmin(
+        user: widget.user,
+        userName: userName,
+        userSurname: userSurname,
+        userEmpId: userEmpId,
+        userEmail: userEmail,
+        photoUrl: photoUrl,
+      );
+    } else if(userType == 2) {
+      return HomePageVendor();
+    }*/
+  }
+
+// This will be return on display if email is not verified by user
+  _getUnverifiedUserScreen() {
+    return Center(
+      child: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Welcome Verified User"Home"'),
-                Text('Press icon'),
-                Icon(
-                  FontAwesomeIcons.users,
-                ),
-                Text('To see registered users')
-              ],
+            RaisedButton(
+              child: Text('Resend Email'),
+              color: Theme.of(context).primaryColor,
+              textColor: white,
+              onPressed: _sendMailAgain,
             ),
+            RaisedButton(
+              color: Theme.of(context).primaryColor,
+              child: Text('Already Verified'),
+              textColor: white,
+              onPressed: _checkVerificationStatus,
+            ),
+            IconButton(
+              tooltip: 'Logout',
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LogInPage(),
+                  ),
+                );
+              },
+              icon: Icon(Icons.exit_to_app),
+            )
           ],
         ),
       ),
-    ];
+    );
   }
 
-  _getUnverifiedUserData() {
-    return [
-      Center(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              RaisedButton(
-                child: Text('Resend Email'),
-                color: Theme.of(context).primaryColor,
-                textColor: white,
-                onPressed: _sendMailAgain,
-              ),
-              RaisedButton(
-                color: Theme.of(context).primaryColor,
-                child: Text('Already Verified'),
-                textColor: white,
-                onPressed: _checkVerificationStatus,
-              ),
-              IconButton(
-                onPressed: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => LogInPage(),
-                    ),
-                  );
-                },
-                icon: Icon(Icons.exit_to_app),
-              )
-            ],
-          ),
-        ),
-      )
-    ];
-  }
-
+// If user wants to send verification mail to registered email id
   _sendMailAgain() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       user.sendEmailVerification().then((_) {
-        AppUtils.showToast('Email verification link send successfuly.',
-            green,white);
+        AppUtils.showToast(sendMail, green, white);
       }).catchError((error) {
         print(error.message);
       });
     } catch (e) {
-      print("An error occured while trying to send email verification");
-      AppUtils.showToast(
-          'An error occured while trying to send email verification',
-          red,
-          white);
+      print(sendMailErrorToast);
+      AppUtils.showToast(sendMailErrorToast, red, white);
       print(e.message);
     }
   }
 
+// Check if user email is verified or not
   void getCurrentUserData() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
@@ -156,7 +198,27 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         _isEmailVerified = user.isEmailVerified;
       });
     } catch (e) {
-      print("An error occured while trying to get current user.");
+      print(userError);
+    }
+  }
+
+  getLoggedInUserData() async {
+    LoginService loginService = LoginService();
+    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    if (snapshot.data != null) {
+      setState(() {
+        var userData = AllUserData.formFireStore(snapshot.data);
+        print('data from model class' + userData.userType.toString());
+        userType = userData.userType;
+        print('data @@@ from model class' + userType.toString());
+        userName = userData.userFName;
+        userEmail = userData.userEmail;
+        userEmpId = userData.userEmpId;
+        userSurname = userData.userSurname;
+        photoUrl = userData.photoUrl;
+//        uid = snapshot.data['uid'];
+//        print('#@#' + widget.userType.toString());
+      });
     }
   }
 }

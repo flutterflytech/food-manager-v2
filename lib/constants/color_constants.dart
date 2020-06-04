@@ -1,4 +1,4 @@
-//Put all your color constants here
+// All color constants here
 import 'package:flutter/material.dart';
 
 const Color white = Color(0xFFFFFFFF);
