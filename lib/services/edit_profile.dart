@@ -137,6 +137,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   update() {
+    //TODO use model class to update data instead of "{'fname': fNameController.text,'surname':surNameController.text,'jobTitle':jobTitleController.text}"
     Firestore.instance
         .collection('account')
         .document(widget.user)
