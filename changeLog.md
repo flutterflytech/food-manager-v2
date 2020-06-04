@@ -214,3 +214,9 @@
 ### 2. Show password icon in password input field
 ### 3. Debugging
 ### 4. bug fixes
+
+# DAY-25 (date:04-06-2020)
+
+### 1. UI improvements
+### 2. Logout Bug Fixed
+### 3. Saving QR data through Json (Ongoing)

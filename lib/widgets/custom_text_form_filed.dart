@@ -35,12 +35,15 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             filled: true,
             hintText: widget.hintText,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.transparent, width: 2.0),
+              borderSide:
+              BorderSide(color: lightBlue2, width: 2.0),
               borderRadius: BorderRadius.circular(50.0),
             ),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.transparent, width: 2.0),
-                borderRadius: BorderRadius.circular(50.0))),
+                borderSide: BorderSide(
+                    color: darkBlue2, width: 2.0),
+                borderRadius: BorderRadius.circular(50.0))
+        ),
       ),
     );
   }

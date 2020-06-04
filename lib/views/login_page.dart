@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
@@ -130,6 +132,8 @@ class _LogInPageState extends State<LogInPage> {
                     obscureText: obscure,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(borderRadius: BorderRadius.circular(50.0),
+                        borderSide:
+                        BorderSide(color: Colors.amber, width: 2.0),
                       ),
                         suffixIcon:IconButton(
                           splashColor: white,
@@ -141,13 +145,14 @@ class _LogInPageState extends State<LogInPage> {
                         hintText: 'Password',
                         enabledBorder: OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: Colors.transparent, width: 2.0),
+                              BorderSide(color: lightBlue2, width: 2.0),
                           borderRadius: BorderRadius.circular(50.0),
                         ),
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                                color: Colors.transparent, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0))),
+                                color: darkBlue2, width: 2.0),
+                            borderRadius: BorderRadius.circular(50.0))
+                    ),
                   ),
                   SizedBox(
                     height: screenData.height * 0.05,
@@ -223,10 +228,25 @@ class _LogInPageState extends State<LogInPage> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => UnverifiedUserUI(),
+            builder: (context) => UnverifiedUserUI(userType: userType.toString(),),
           ),
         );
       }
+    }
+  }
+  getLoggedInUserData() async {
+    LoginService loginService = LoginService();
+    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    if (snapshot.data != null) {
+      setState(() {
+        var userData = AllUserData.formFireStore(snapshot.data);
+        print('data from model class' + userData.userType.toString());
+        userType = userData.userType;
+        print('data @@@ from model class' + userType.toString());
+
+//        uid = snapshot.data['uid'];
+//        print('#@#' + widget.userType.toString());
+      });
     }
   }
 }

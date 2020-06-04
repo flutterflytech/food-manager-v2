@@ -15,8 +15,9 @@ import 'firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
+  final String userType;
 
-  const UnverifiedUserUI({Key key, this.user}) : super(key: key);
+  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
