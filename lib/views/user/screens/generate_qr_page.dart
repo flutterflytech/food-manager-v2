@@ -13,24 +13,26 @@ class QRPage extends StatefulWidget {
 }
 class _QRPageState extends State<QRPage> {
   var now = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: QrImage(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            QrImage(
 
-          foregroundColor: darkBlue,
-          data: widget.userFName.toUpperCase()+' '+widget.userSurname.toUpperCase()+'/'+widget.userEmpId+'/'+now.toString(),
-          version: QrVersions.auto,
-          size: 400.0,
+              foregroundColor: darkBlue,
+              data: widget.userFName.toUpperCase()+' '+widget.userSurname.toUpperCase()+'/'+widget.userEmpId+'/'+now.toString(),
+              version: QrVersions.auto,
+              size: 400.0,
+            ),
+            Text('Show this QR Code to Food Vendor')
+          ],
         ),
       ),
     );
-  }
-
-  _date(){
-    var now = DateTime.now();
-    print(now);
   }
 
 }

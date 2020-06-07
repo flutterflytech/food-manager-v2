@@ -220,3 +220,10 @@
 ### 1. UI improvements
 ### 2. Logout Bug Fixed
 ### 3. Saving QR data through Json (Ongoing)
+
+# DAY-26 (date: 05-06-2020)
+
+### 1. Saving Scanned Data
+### 2. Mapping Scanned Data into Json
+### 3. Creating collection of bookings
+### 4. Storing scanned data into bookings collection
