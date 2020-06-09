@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
+import 'package:food_manager_v2/views/user/screens/profile_page_users.dart';
+import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 
 class HomePageUser extends StatefulWidget {
-  final String user;
   final String userName;
   final String userEmail;
   final String userEmpId;
@@ -21,7 +20,6 @@ class HomePageUser extends StatefulWidget {
 
   const HomePageUser(
       {Key key,
-      this.user,
       this.userName,
       this.userEmail,
       this.userEmpId,
@@ -52,7 +50,8 @@ class _HomePageUserState extends State<HomePageUser> {
 
     _childern = [
       DashboardUser(
-        user: widget.user,
+        userName: widget.userName,
+        userSurname: widget.userSurname,
       ),
       PaymentPage(),
       MealPage(),
@@ -61,8 +60,7 @@ class _HomePageUserState extends State<HomePageUser> {
         userSurname: widget.userSurname,
         userEmpId: widget.userEmpId,
       ),
-      UserProfile(
-        user: widget.user,
+      UserProfileUsers(
         fName: widget.userName,
         photoUrl: widget.photoUrl,
         userEmail: widget.userEmail,

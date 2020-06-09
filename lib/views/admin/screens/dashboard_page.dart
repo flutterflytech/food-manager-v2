@@ -1,25 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 
 class Dashboard extends StatefulWidget {
-  final String user;
+  final String userName;
+  final String userSurname;
 
-  const Dashboard({Key key, this.user}) : super(key: key);
+  const Dashboard({Key key, this.userName, this.userSurname, }) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
-
-
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -32,7 +28,7 @@ class _DashboardState extends State<Dashboard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(welcome + ' ' + widget.user),
+                Text(welcome + ' ' + widget.userName +' '+widget.userSurname),
                 Text(iconInfo),
                 Icon(
                   FontAwesomeIcons.users,

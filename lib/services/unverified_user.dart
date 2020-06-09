@@ -15,9 +15,8 @@ import 'firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
-  final String userType;
 
-  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
+  const UnverifiedUserUI({Key key, this.user}) : super(key: key);
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
@@ -38,7 +37,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   void initState() {
     getLoggedInUserData();
     super.initState();
-    print('User@@@Type : ' + userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -53,7 +51,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return Scaffold(
       body: _isEmailVerified
           ? _getVerifiedUserData(
-              userSurname, userEmpId, userEmail, userName, photoUrl, userType)
+              userName, userSurname, userEmpId, userEmail, photoUrl, userType)
           : _getUnverifiedUserScreen(),
     );
   }
@@ -79,9 +77,19 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // This will be return on display if user has verified email id and login
-  _getVerifiedUserData(String userSurname, String userEmpId, String userEmail,
-      String userName, String photoUrl, int userType) {
+  _getVerifiedUserData(String userName, String userSurname, String userEmpId,
+      String userEmail, String photoUrl, int userType) {
     switch (userType) {
+
+      case 0:
+        return HomePageUser(
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+
       case 1:
         return HomePageAdmin(
           user: widget.user,
@@ -94,7 +102,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
       case 2:
         return HomePageVendor(
-          user: widget.user,
           userName: userName,
           userSurname: userSurname,
           userEmpId: userEmpId,
@@ -102,38 +109,10 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           photoUrl: photoUrl,
         );
 
-      case 0:
-        return HomePageUser(
-          user: widget.user,
-          userName: userName,
-          userSurname: userSurname,
-          userEmpId: userEmpId,
-          userEmail: userEmail,
-          photoUrl: photoUrl,
-        );
+      default:
+        return Center(child: Text('Oops, Something Unexpected occurred'));
+
     }
-
-    /*if (userType == 0) {
-      return HomePageUser(
-        user: widget.user,
-        userName: userName,
-        userSurname: userSurname,
-        userEmpId: userEmpId,
-        userEmail: userEmail,
-        photoUrl: photoUrl,
-      );
-    } else if (userType == 1) {
-      return HomePageAdmin(
-        user: widget.user,
-        userName: userName,
-        userSurname: userSurname,
-        userEmpId: userEmpId,
-        userEmail: userEmail,
-        photoUrl: photoUrl,
-      );
-    } else if(userType == 2) {
-      return HomePageVendor();
-    }*/
   }
 
 // This will be return on display if email is not verified by user
@@ -210,7 +189,11 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         var userData = AllUserData.formFireStore(snapshot.data);
         print('data from model class' + userData.userType.toString());
         userType = userData.userType;
-        print('data @@@ from model class' + userType.toString());
+        print('data @@@ from model class' + userName.toString());
+        print('data @@@ from model class' + userSurname.toString());
+        print('data @@@ from model class' + userEmpId.toString());
+        print('data @@@ from model class' + userEmail.toString());
+        print('data @@@ from model class' + photoUrl.toString());
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;

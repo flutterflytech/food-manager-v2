@@ -24,7 +24,7 @@ class _ScanQrState extends State<ScanQr> {
     String barcodeScanRes;
     // Platform messages may fail, so we use a try/catch PlatformException.
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-        "#42f5ef", "Cancel", true, ScanMode.QR);
+        "#ffffff", "Cancel", true, ScanMode.QR);
     print(barcodeScanRes);
 
     Timestamp timestamp = Timestamp.now();

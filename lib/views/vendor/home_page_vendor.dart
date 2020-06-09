@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/vendor/screens/dashboard_page_vendor.dart';
+import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
 
 class HomePageVendor extends StatefulWidget {
-  final String user;
   final String userName;
   final String userEmail;
   final String userEmpId;
@@ -19,7 +18,6 @@ class HomePageVendor extends StatefulWidget {
 
   const HomePageVendor(
       {Key key,
-        this.user,
         this.userName,
         this.userEmail,
         this.userEmpId,
@@ -49,15 +47,15 @@ class _HomePageVendorState extends State<HomePageVendor> {
 //    if user is not admin, these pages will be navigated
 
     _childern = [
-      DashboardUser(
-        user: widget.user,
+      DashboardVendor(
+        userName: widget.userName,
+        userSurname: widget.userSurname,
       ),
 
       ScanQr(
 
       ),
-      UserProfile(
-        user: widget.user,
+      UserProfileVendor(
         fName: widget.userName,
         photoUrl: widget.photoUrl,
         userEmail: widget.userEmail,

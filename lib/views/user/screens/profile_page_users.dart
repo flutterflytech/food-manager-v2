@@ -13,7 +13,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 
-class UserProfile extends StatefulWidget {
+class UserProfileUsers extends StatefulWidget {
   final String user;
   final String fName;
   final String userEmail;
@@ -21,21 +21,21 @@ class UserProfile extends StatefulWidget {
   final String userSurname;
   final String photoUrl;
 
-  const UserProfile(
+  const UserProfileUsers(
       {Key key,
-      this.user,
-      this.fName,
-      this.userEmail,
-      this.userEmpId,
-      this.userSurname,
-      this.photoUrl})
+        this.user,
+        this.fName,
+        this.userEmail,
+        this.userEmpId,
+        this.userSurname,
+        this.photoUrl})
       : super(key: key);
 
   @override
-  _UserProfileState createState() => _UserProfileState();
+  _UserProfileUsersState createState() => _UserProfileUsersState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserProfileUsersState extends State<UserProfileUsers> {
   File _imageFile;
   String imageUrl;
 
@@ -112,14 +112,14 @@ class _UserProfileState extends State<UserProfile> {
                         width: 200,
                         child: widget.photoUrl == null
                             ? Image(
-                                image: NetworkImage(
-                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                                fit: BoxFit.fill,
-                              )
+                          image: NetworkImage(
+                              'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                          fit: BoxFit.fill,
+                        )
                             : Image(
-                                image: NetworkImage(widget.photoUrl),
-                                fit: BoxFit.fill,
-                              ))),
+                          image: NetworkImage(widget.photoUrl),
+                          fit: BoxFit.fill,
+                        ))),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,
@@ -144,12 +144,12 @@ class _UserProfileState extends State<UserProfile> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => EditProfilePage(
-                                    userSurname: widget.userSurname,
-                                    userFName: widget.fName,
-                                    userEmpId: widget.userEmpId,
-                                    userEmail: widget.userEmail,
-                                    user: widget.user,
-                                  )));
+                                userSurname: widget.userSurname,
+                                userFName: widget.fName,
+                                userEmpId: widget.userEmpId,
+                                userEmail: widget.userEmail,
+                                user: widget.user,
+                              )));
                     },
                     child: Container(
                         height: 50,

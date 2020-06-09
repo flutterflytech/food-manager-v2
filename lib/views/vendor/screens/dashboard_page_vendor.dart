@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class DashboardUser extends StatefulWidget {
+class DashboardVendor extends StatefulWidget {
   final String userName;
   final String userSurname;
 
-  const DashboardUser({Key key, this.userName, this.userSurname}) : super(key: key);
+  const DashboardVendor({Key key,this.userSurname, this.userName}) : super(key: key);
 
   @override
-  _DashboardUserState createState() => _DashboardUserState();
+  _DashboardVendorState createState() => _DashboardVendorState();
 }
 
-class _DashboardUserState extends State<DashboardUser> {
+class _DashboardVendorState extends State<DashboardVendor> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +21,7 @@ class _DashboardUserState extends State<DashboardUser> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('welcome' +' '+ widget.userName+' '+widget.userSurname),
+                Text('welcome' + ' ' + widget.userName+' '+widget.userSurname),
                 Text('iconInfo'),
                 Text('iconAction')
               ],

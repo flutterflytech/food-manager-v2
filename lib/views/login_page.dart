@@ -12,6 +12,7 @@ import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:food_manager_v2/utils/app_utils.dart';
 
 class LogInPage extends StatefulWidget {
   final String user;
@@ -40,7 +41,7 @@ class _LogInPageState extends State<LogInPage> {
   ProgressDialog pr;
   bool obscure = true;
 
-  void _toggleVisibility(){
+  void _toggleVisibility() {
     setState(() {
       obscure = !obscure;
     });
@@ -51,7 +52,7 @@ class _LogInPageState extends State<LogInPage> {
     super.initState();
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
-    pr.style(message: 'Please wait...');
+    pr.style(message: 'Logging you in...');
   }
 
   String emailValidator(String value) {
@@ -131,28 +132,29 @@ class _LogInPageState extends State<LogInPage> {
                     cursorColor: darkBlue,
                     obscureText: obscure,
                     decoration: InputDecoration(
-                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(50.0),
-                        borderSide:
-                        BorderSide(color: Colors.amber, width: 2.0),
-                      ),
-                        suffixIcon:IconButton(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(50.0),
+                          borderSide:
+                              BorderSide(color: Colors.amber, width: 2.0),
+                        ),
+                        suffixIcon: IconButton(
                           splashColor: white,
                           onPressed: _toggleVisibility,
-                          icon: obscure ? Icon(FontAwesomeIcons.eye) : Icon(FontAwesomeIcons.eyeSlash),
-                        ) ,
+                          icon: obscure
+                              ? Icon(FontAwesomeIcons.eye)
+                              : Icon(FontAwesomeIcons.eyeSlash),
+                        ),
                         fillColor: white,
                         filled: true,
                         hintText: 'Password',
                         enabledBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: lightBlue2, width: 2.0),
+                          borderSide: BorderSide(color: lightBlue2, width: 2.0),
                           borderRadius: BorderRadius.circular(50.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: darkBlue2, width: 2.0),
-                            borderRadius: BorderRadius.circular(50.0))
-                    ),
+                            borderSide:
+                                BorderSide(color: darkBlue2, width: 2.0),
+                            borderRadius: BorderRadius.circular(50.0))),
                   ),
                   SizedBox(
                     height: screenData.height * 0.05,
@@ -221,19 +223,21 @@ class _LogInPageState extends State<LogInPage> {
 
   _onLogInClick() async {
     if (_formKey.currentState.validate()) {
+      showProgressDialog(true);
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
       LoginService();
-
       if (result != null) {
+        showProgressDialog(false);
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => UnverifiedUserUI(userType: userType.toString(),),
+            builder: (context) => UnverifiedUserUI(),
           ),
         );
       }
     }
   }
+
   getLoggedInUserData() async {
     LoginService loginService = LoginService();
     DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
