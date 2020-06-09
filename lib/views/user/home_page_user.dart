@@ -17,6 +17,7 @@ class HomePageUser extends StatefulWidget {
   final String userSurname;
   final String photoUrl;
   final int userType;
+  final String user;
 
   const HomePageUser(
       {Key key,
@@ -25,7 +26,7 @@ class HomePageUser extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.userType})
+      this.userType, this.user})
       : super(key: key);
 
   @override
@@ -56,8 +57,7 @@ class _HomePageUserState extends State<HomePageUser> {
       PaymentPage(),
       MealPage(),
       QRPage(
-        userFName: widget.userName,
-        userSurname: widget.userSurname,
+        user: widget.user,
         userEmpId: widget.userEmpId,
       ),
       UserProfileUsers(
@@ -142,5 +142,6 @@ class _HomePageUserState extends State<HomePageUser> {
 
   logout() {
     FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LogInPage() ));
   }
 }

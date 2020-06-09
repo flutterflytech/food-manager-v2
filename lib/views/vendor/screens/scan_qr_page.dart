@@ -8,12 +8,15 @@ import 'package:food_manager_v2/models/record.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 
 class ScanQr extends StatefulWidget {
+  final String user;
+
+  const ScanQr({Key key, this.user}) : super(key: key);
   @override
   _ScanQrState createState() => _ScanQrState();
 }
 
 class _ScanQrState extends State<ScanQr> {
-  String _scanQRCode = '';
+  String _scanQRCode;
   List<dynamic> bookingList = List();
   String qrCode;
   String userJson =
@@ -27,23 +30,30 @@ class _ScanQrState extends State<ScanQr> {
         "#ffffff", "Cancel", true, ScanMode.QR);
     print(barcodeScanRes);
 
-    Timestamp timestamp = Timestamp.now();
+setState(() {
+  Firestore.instance.collection('bookings').document(widget.user).setData({
+    "bookingData": bookingList
+  }).then((result){});
+  _scanQRCode = barcodeScanRes;
+});
+
+  /*  Timestamp timestamp = Timestamp.now();
     var date = new DateTime.fromMillisecondsSinceEpoch(
         timestamp.millisecondsSinceEpoch);
     var formatter = new DateFormat('yyyy-MM-dd');
     String formatted = formatter.format(date);
-    print(formatted);
+    print(formatted);*/
 
-    Map map = jsonDecode(barcodeScanRes);
+/*    Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
-    if (record.qrData.compareTo(record.uid + formatted) != 0) {
+    if (record.qrData.compareTo(record.uid ) != 0) {
       AppUtils.showToast('Invalid QR code', Colors.red, Colors.white);
       return;
     }
 
     if (bookingList.contains(record.uid)) {
       AppUtils.showToast(
-          'Dear ${record.userFName}, You have already recieved your lunch.',
+          'Dear ${record.userFName}, You have already received your lunch.',
           Colors.red,
           Colors.white);
     } else {
@@ -51,7 +61,7 @@ class _ScanQrState extends State<ScanQr> {
       setState(() {
         Firestore.instance
             .collection(AppConstants.DB_KEY_BOOKING_DATA)
-            .document(formatted)
+            .document('bookings')
             .setData({
           AppConstants.KEY_BOOKING_LIST: bookingList,
         }).then((result) {});
@@ -59,7 +69,7 @@ class _ScanQrState extends State<ScanQr> {
         AppUtils.showToast('Dear ${record.userFName}, Enjoy your lunch.😋',
             Colors.green, Colors.white);
       });
-    }
+    }*/
   }
 
   /*Future _scan() async {

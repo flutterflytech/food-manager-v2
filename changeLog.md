@@ -227,3 +227,15 @@
 ### 2. Mapping Scanned Data into Json
 ### 3. Creating collection of bookings
 ### 4. Storing scanned data into bookings collection
+
+# DAY-27 (date: 08-06-2020)
+
+### 1. Bug Fixes
+### 2. Creating QR data
+### 3. Storing data into collection in firebase
+
+# DAY-28 (date: 09-06-2020)
+
+### 1. Changes in Data Stored in QR
+### 2. Array in FireStore to save multiple qr records
+### 3. BugFixes

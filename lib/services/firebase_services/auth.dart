@@ -51,6 +51,15 @@ Future signInWithEmailAndPassword(String email, String password) async{
     return null;
   }
 }
+//sign out
 
+  Future signOut() async{
+    try{
+      return await _auth.signOut();
+    }catch(e){
+      print(e.toString());
+      return null;
+    }
+  }
 
 }

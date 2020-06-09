@@ -8,6 +8,8 @@ import 'package:food_manager_v2/views/admin/screens/registered_admins.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_users.dart';
 import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
 
+import '../login_page.dart';
+
 class HomePageAdmin extends StatefulWidget {
   final String user;
   final String userName;
@@ -33,6 +35,7 @@ class HomePageAdmin extends StatefulWidget {
 }
 
 class _HomePageAdminState extends State<HomePageAdmin> {
+//  final AuthService _auth = AuthService();
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -114,9 +117,11 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     );
   }
 
+
+
   logout() {
     FirebaseAuth.instance.signOut();
-    Navigator.pop(context);
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LogInPage() ));
   }
 
   // ignore: non_constant_identifier_names

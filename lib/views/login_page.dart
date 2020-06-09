@@ -12,7 +12,6 @@ import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-import 'package:food_manager_v2/utils/app_utils.dart';
 
 class LogInPage extends StatefulWidget {
   final String user;

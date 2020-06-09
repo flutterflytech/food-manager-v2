@@ -51,7 +51,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return Scaffold(
       body: _isEmailVerified
           ? _getVerifiedUserData(
-              userName, userSurname, userEmpId, userEmail, photoUrl, userType)
+              uid,userName, userSurname, userEmpId, userEmail, photoUrl, userType)
           : _getUnverifiedUserScreen(),
     );
   }
@@ -77,12 +77,13 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // This will be return on display if user has verified email id and login
-  _getVerifiedUserData(String userName, String userSurname, String userEmpId,
+  _getVerifiedUserData(String uid,String userName, String userSurname, String userEmpId,
       String userEmail, String photoUrl, int userType) {
     switch (userType) {
 
       case 0:
         return HomePageUser(
+          user: uid,
           userName: userName,
           userSurname: userSurname,
           userEmpId: userEmpId,
@@ -102,6 +103,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
       case 2:
         return HomePageVendor(
+          user: widget.user,
           userName: userName,
           userSurname: userSurname,
           userEmpId: userEmpId,
@@ -189,16 +191,13 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         var userData = AllUserData.formFireStore(snapshot.data);
         print('data from model class' + userData.userType.toString());
         userType = userData.userType;
-        print('data @@@ from model class' + userName.toString());
-        print('data @@@ from model class' + userSurname.toString());
-        print('data @@@ from model class' + userEmpId.toString());
-        print('data @@@ from model class' + userEmail.toString());
-        print('data @@@ from model class' + photoUrl.toString());
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;
         userSurname = userData.userSurname;
         photoUrl = userData.photoUrl;
+        uid = userData.uid;
+        print('!@#@@'+uid);
 //        uid = snapshot.data['uid'];
 //        print('#@#' + widget.userType.toString());
       });

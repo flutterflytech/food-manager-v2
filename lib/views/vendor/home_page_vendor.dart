@@ -14,6 +14,7 @@ class HomePageVendor extends StatefulWidget {
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
+  final String user;
   final int userType;
 
   const HomePageVendor(
@@ -23,7 +24,7 @@ class HomePageVendor extends StatefulWidget {
         this.userEmpId,
         this.userSurname,
         this.photoUrl,
-        this.userType})
+        this.userType, this.user})
       : super(key: key);
 
   @override
@@ -53,7 +54,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
       ),
 
       ScanQr(
-
+        user: widget.user,
       ),
       UserProfileVendor(
         fName: widget.userName,
@@ -126,5 +127,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
 
   logout() {
     FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LogInPage() ));
+
   }
 }
