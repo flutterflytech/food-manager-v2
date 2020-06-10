@@ -8,6 +8,7 @@ import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/services/edit_profile.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/utils/profile_image_utils.dart';
 import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
@@ -38,6 +39,7 @@ class UserProfileUsers extends StatefulWidget {
 class _UserProfileUsersState extends State<UserProfileUsers> {
   File _imageFile;
   String imageUrl;
+  Image imageFromPreferences;
 
   @override
   void initState() {
@@ -89,6 +91,17 @@ class _UserProfileUsersState extends State<UserProfileUsers> {
         .collection('account')
         .document(widget.user)
         .updateData({"url": imageUrl});
+// image from preferences
+    loadImageFromPreferences() {
+      Utility.getImageFromPreferences().then((img) {
+        if (null == img) {
+          return;
+        }
+        setState(() {
+          imageFromPreferences = Utility.imageFromBase64String(img);
+        });
+      });
+    }
   }
 
   @override
@@ -137,32 +150,7 @@ class _UserProfileUsersState extends State<UserProfileUsers> {
                         )),
                   ),
                 ),
-                Positioned(
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EditProfilePage(
-                                userSurname: widget.userSurname,
-                                userFName: widget.fName,
-                                userEmpId: widget.userEmpId,
-                                userEmail: widget.userEmail,
-                                user: widget.user,
-                              )));
-                    },
-                    child: Container(
-                        height: 50,
-                        width: 50,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: lightRed),
-                        margin: EdgeInsets.only(left: 10, top: 10),
-                        child: Icon(
-                          FontAwesomeIcons.edit,
-                          color: white,
-                        )),
-                  ),
-                ),
+
               ],
             ),
             SizedBox(
@@ -214,6 +202,38 @@ class _UserProfileUsersState extends State<UserProfileUsers> {
                           email: 'displayName',
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child:GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfilePage(
+                                      userSurname: widget.userSurname,
+                                      userFName: widget.fName,
+                                      userEmpId: widget.userEmpId,
+                                      userEmail: widget.userEmail,
+                                      user: widget.user,
+                                    )));
+                          },
+                          child: SizedBox(
+                            height: screenData.height * 0.07,
+                            width: screenData.width * 0.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  gradient:
+                                  LinearGradient(colors: [darkBlue2, lightBlue2]),
+                                  borderRadius: BorderRadius.circular(30)),
+                              child: Center(
+                                  child: Text(
+                                    "Edit Profile",
+                                    style: body15,
+                                  )),
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   );
                 }),
@@ -224,6 +244,7 @@ class _UserProfileUsersState extends State<UserProfileUsers> {
                 color: white,
               ),
             ),
+
           ],
         ),
       ),

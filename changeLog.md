@@ -239,3 +239,10 @@
 ### 1. Changes in Data Stored in QR
 ### 2. Array in FireStore to save multiple qr records
 ### 3. BugFixes
+
+#DAY-29 (date: 10-06-2020)
+
+### 1. User ProfileImage stored in shared preferences as String
+### 2. Edit profile UI changed
+### 3. HomePage according to user using shared preferences
+### 4. Exception Handling

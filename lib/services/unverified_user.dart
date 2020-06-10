@@ -189,7 +189,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class' + userData.userType.toString());
+        print('data from model class ' + userData.userType.toString());
         userType = userData.userType;
         userName = userData.userFName;
         userEmail = userData.userEmail;

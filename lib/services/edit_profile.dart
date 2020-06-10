@@ -60,8 +60,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      labelText: 'First Name',
+                    labelText: 'First Name',
                     hintText: widget.userFName.toUpperCase(),
+
                   ),
                   controller: fNameController,
                 ),
@@ -112,20 +113,47 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    RaisedButton(
-                      color: red,
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: (){
                         Navigator.pop(context);
                       },
-                      child: Text('CANCEL'),
+                      child: SizedBox(
+                        height: screenData.height * 0.07,
+                        width: screenData.width * 0.2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              gradient:
+                              LinearGradient(colors: [darkBlue2, lightBlue2]),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                              child: Text(
+                                "Cancel",
+                                style: body15,
+                              )),
+                        ),
+                      ),
                     ),
-                    RaisedButton(
-                      color: green,
-                      onPressed: () {
+                    GestureDetector(
+                      onTap: (){
                         update();
                       },
-                      child: Text('SAVE'),
+                      child: SizedBox(
+                        height: screenData.height * 0.07,
+                        width: screenData.width * 0.2,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              gradient:
+                              LinearGradient(colors: [lightBlue2,darkBlue2]),
+                              borderRadius: BorderRadius.circular(30)),
+                          child: Center(
+                              child: Text(
+                                "Save",
+                                style: body15,
+                              )),
+                        ),
+                      ),
                     ),
+
                   ],
                 )
               ],

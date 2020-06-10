@@ -52,6 +52,7 @@ class _LogInPageState extends State<LogInPage> {
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
     pr.style(message: 'Logging you in...');
+    getLoggedInUserData();
   }
 
   String emailValidator(String value) {
@@ -243,9 +244,9 @@ class _LogInPageState extends State<LogInPage> {
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class' + userData.userType.toString());
+        print('data from model class*&' + userData.userType.toString());
         userType = userData.userType;
-        print('data @@@ from model class' + userType.toString());
+        print('data @@@ from model class ' + userType.toString());
 
 //        uid = snapshot.data['uid'];
 //        print('#@#' + widget.userType.toString());

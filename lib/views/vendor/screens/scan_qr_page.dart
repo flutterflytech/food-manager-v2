@@ -1,11 +1,11 @@
-import 'dart:convert';
-import 'package:food_manager_v2/constants/app_constants.dart';
-import 'package:intl/intl.dart';
+//import 'dart:convert';
+//import 'package:food_manager_v2/constants/app_constants.dart';
+//import 'package:intl/intl.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:food_manager_v2/models/record.dart';
-import 'package:food_manager_v2/utils/app_utils.dart';
+//import 'package:food_manager_v2/models/record.dart';
+//import 'package:food_manager_v2/utils/app_utils.dart';
 
 class ScanQr extends StatefulWidget {
   final String user;
