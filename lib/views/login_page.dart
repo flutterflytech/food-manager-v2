@@ -1,10 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
@@ -52,7 +50,6 @@ class _LogInPageState extends State<LogInPage> {
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
     pr.style(message: 'Logging you in...');
-    getLoggedInUserData();
   }
 
   String emailValidator(String value) {
@@ -235,22 +232,6 @@ class _LogInPageState extends State<LogInPage> {
           ),
         );
       }
-    }
-  }
-
-  getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    if (snapshot.data != null) {
-      setState(() {
-        var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class*&' + userData.userType.toString());
-        userType = userData.userType;
-        print('data @@@ from model class ' + userType.toString());
-
-//        uid = snapshot.data['uid'];
-//        print('#@#' + widget.userType.toString());
-      });
     }
   }
 }

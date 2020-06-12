@@ -253,3 +253,10 @@
 ### 2. HomePage according to user using shared preferences
 ### 3. update data on UI without page reload
 ### 4. CachedNetworkImage
+
+# DAY-31 (date:12-06-2020)
+
+### 1. Read few suggested topics
+### 2. Storing QR data in Json
+### 3. Passing Json to generate QR
+### 4. Updating bookings collection according to QR data

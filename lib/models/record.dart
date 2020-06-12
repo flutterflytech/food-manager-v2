@@ -8,6 +8,9 @@ class Record {
   String qrData;
   String uid;
 
+  Record(this.userEmail, this.userEmpId, this.userSurname, this.userFName,
+      this.qrData, this.uid);
+
   Record.fromMap(Map<String, dynamic> map)
       : uid = map['uid'],
         qrData = map['qrData'],
@@ -24,6 +27,13 @@ class Record {
     userFName = json['fname'];
     userSurname = json['surname'];
   }
+
+  Map<String, dynamic> toJson() =>
+      {
+        'uid' : uid,
+        'qrData' : qrData,
+        'userEmpId' : userEmpId
+      };
 
   Record.fromSnapshot(DocumentSnapshot snapshot) : this.fromMap(snapshot.data);
 

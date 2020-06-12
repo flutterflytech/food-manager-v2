@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
+import 'package:food_manager_v2/models/record.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class QRPage extends StatefulWidget {
@@ -12,7 +13,12 @@ class QRPage extends StatefulWidget {
   _QRPageState createState() => _QRPageState();
 }
 class _QRPageState extends State<QRPage> {
+
+
+
   var now = DateTime.now();
+  String userJson ='{"email": "", "uid": "test", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
+  Record userProfileData;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class _QRPageState extends State<QRPage> {
             QrImage(
 
               foregroundColor: darkBlue,
-              data: widget.user+'/'+widget.userEmpId+'/'+now.toString(),
+              data: userJson,
               version: QrVersions.auto,
               size: 400.0,
             ),

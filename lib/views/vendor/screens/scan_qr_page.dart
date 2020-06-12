@@ -1,16 +1,14 @@
-//import 'dart:convert';
-//import 'package:food_manager_v2/constants/app_constants.dart';
-//import 'package:intl/intl.dart';
+import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-//import 'package:food_manager_v2/models/record.dart';
-//import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/models/record.dart';
 
 class ScanQr extends StatefulWidget {
   final String user;
 
   const ScanQr({Key key, this.user}) : super(key: key);
+
   @override
   _ScanQrState createState() => _ScanQrState();
 }
@@ -22,22 +20,22 @@ class _ScanQrState extends State<ScanQr> {
   String userJson =
       '{"email": "", "uid": "test", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
 
-
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         "#ffffff", "Cancel", true, ScanMode.QR);
-    print(barcodeScanRes);
+//    print(barcodeScanRes);
+    Map map = jsonDecode(barcodeScanRes);
+    Record record = Record.fromJson(map);
+    setState(() {
+      Firestore.instance
+          .collection('bookings')
+          .document(widget.user)
+          .setData({"bookingData": bookingList}).then((result) {});
+      _scanQRCode = record.qrData;
+    });
 
-setState(() {
-  Firestore.instance.collection('bookings').document(widget.user).setData({
-    "bookingData": bookingList
-  }).then((result){});
-  _scanQRCode = barcodeScanRes;
-});
-
-  /*  Timestamp timestamp = Timestamp.now();
+    /*  Timestamp timestamp = Timestamp.now();
     var date = new DateTime.fromMillisecondsSinceEpoch(
         timestamp.millisecondsSinceEpoch);
     var formatter = new DateFormat('yyyy-MM-dd');
@@ -100,8 +98,8 @@ setState(() {
     return Container(
       child: Center(
         child: RaisedButton(
-          onPressed: (){
-           scanBarcodeNormal();
+          onPressed: () {
+            scanBarcodeNormal();
           },
           child: Text('Scan'),
         ),

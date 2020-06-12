@@ -19,8 +19,6 @@ class UnverifiedUserUI extends StatefulWidget {
 
   const UnverifiedUserUI({Key key, this.user}) : super(key: key);
 
-
-
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
 }
@@ -55,7 +53,13 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     return Scaffold(
       body: _isEmailVerified
           ? _getVerifiedUserData(
-              uid,userName, userSurname, userEmpId, userEmail, photoUrl, userType)
+              uid,
+              userName,
+              userSurname,
+              userEmpId,
+              userEmail,
+              photoUrl,
+            )
           : _getUnverifiedUserScreen(),
     );
   }
@@ -82,17 +86,16 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
 // This will be return on display if user has verified email id and login
   _getVerifiedUserData(
-     String uid,
-     String userName,
-     String userSurname,
-     String userEmpId,
-     String userEmail,
-     String photoUrl,
-     int userType) {
-  sharedPreferences();
+    String uid,
+    String userName,
+    String userSurname,
+    String userEmpId,
+    String userEmail,
+    String photoUrl,
+  ) {
+    sharedPreferences();
 
-    switch (user) {
-
+    switch (userType) {
       case 0:
         return HomePageUser(
           user: uid,
@@ -125,14 +128,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
       default:
         return Center(child: Text('Oops, Something Unexpected occurred'));
-
     }
-  }
-
-  sharedPreferences() async{
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('userType', userType);
-    user = prefs.getInt('userType');
   }
 
 // This will be return on display if email is not verified by user
@@ -215,10 +211,16 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         userSurname = userData.userSurname;
         photoUrl = userData.photoUrl;
         uid = userData.uid;
-        print('!@#@@'+uid);
+        print('!@#@@' + uid);
 //        uid = snapshot.data['uid'];
 //        print('#@#' + widget.userType.toString());
       });
     }
+  }
+
+  sharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('userType', userType);
+    userType = prefs.getInt('userType');
   }
 }
