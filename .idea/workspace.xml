@@ -6,17 +6,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/utils/profile_image_utils.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/image-placeholder.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/widgets/profile_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profile.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profile.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/changeLog.md" beforeDir="false" afterPath="$PROJECT_DIR$/changeLog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/services/edit_profile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/edit_profile.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/user/screens/dashboard_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/dashboard_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/profile_page_admin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/screens/profile_page_admin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/user/screens/profile_page_users.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/profile_page_users.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/profile_page_vendor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/profile_page_vendor.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -71,11 +74,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\admin\screens" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\screens" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\user\screens" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\services\firebase_services" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -424,7 +427,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591713232144</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="DAY-29">
+      <created>1591811520542</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1591811520542</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -455,7 +465,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="DAY-7 PR" />
     <MESSAGE value="DAY-7 User Profile, PR, Bug Fixes" />
     <MESSAGE value="DAY-8 User Profile, Bug Fixes" />
     <MESSAGE value="DAY-8 User Profile, Bug Fixes, const creation" />
@@ -480,7 +489,8 @@
     <MESSAGE value="DAY-26" />
     <MESSAGE value="DAY-27" />
     <MESSAGE value="DAY-28" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-28" />
+    <MESSAGE value="DAY-29" />
+    <option name="LAST_COMMIT_MESSAGE" value="DAY-29" />
   </component>
   <component name="WindowStateProjectService">
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1591540939331">
@@ -491,30 +501,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591081763645" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1591713230961">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1591811518867">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591713230961" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591811518867" />
     <state width="426" height="466" key="DebuggerActiveHint" timestamp="1591088113457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="426" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1591088113457" />
-    <state width="1147" height="463" key="GridCell.Tab.0.bottom" timestamp="1591791434241">
+    <state width="1134" height="84" key="GridCell.Tab.0.bottom" timestamp="1591879071802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1147" height="463" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591791434241" />
-    <state width="1147" height="463" key="GridCell.Tab.0.center" timestamp="1591791434241">
+    <state width="1134" height="84" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591879071802" />
+    <state width="1134" height="84" key="GridCell.Tab.0.center" timestamp="1591879071802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1147" height="463" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591791434241" />
-    <state width="1147" height="463" key="GridCell.Tab.0.left" timestamp="1591791434241">
+    <state width="1134" height="84" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591879071802" />
+    <state width="1134" height="84" key="GridCell.Tab.0.left" timestamp="1591879071801">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1147" height="463" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591791434241" />
-    <state width="1147" height="463" key="GridCell.Tab.0.right" timestamp="1591791434241">
+    <state width="1134" height="84" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591879071801" />
+    <state width="1134" height="84" key="GridCell.Tab.0.right" timestamp="1591879071802">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1147" height="463" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591791434241" />
+    <state width="1134" height="84" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591879071802" />
     <state x="193" y="155" key="IDE.errors.dialog" timestamp="1591595932252">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -523,14 +533,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="55" width="914" height="714" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591761052395" />
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591713236544">
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591811524680">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591713236544" />
-    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1591811247438">
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591811524680" />
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1591931724698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1591811247438" />
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1591931724698" />
     <state x="432" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591339684939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

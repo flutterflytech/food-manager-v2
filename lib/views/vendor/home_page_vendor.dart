@@ -57,6 +57,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
         user: widget.user,
       ),
       UserProfileVendor(
+        user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
         userEmail: widget.userEmail,

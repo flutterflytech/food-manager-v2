@@ -61,6 +61,7 @@ class _HomePageUserState extends State<HomePageUser> {
         userEmpId: widget.userEmpId,
       ),
       UserProfileUsers(
+        user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
         userEmail: widget.userEmail,
