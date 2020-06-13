@@ -30,7 +30,7 @@ class _QRPageState extends State<QRPage> {
             QrImage(
 
               foregroundColor: darkBlue,
-              data: userJson,
+              data: widget.user+'/'+widget.userEmpId+'/'+now.toString(),
               version: QrVersions.auto,
               size: 400.0,
             ),
