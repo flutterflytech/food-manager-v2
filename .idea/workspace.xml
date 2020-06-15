@@ -7,7 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/record.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/record.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/unverified_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/user/screens/generate_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/generate_qr_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,13 +88,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588306872026</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Day-2 User Registration &amp; Email verification">
-      <created>1588597869716</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1588597869716</updated>
     </task>
     <task id="LOCAL-00003" summary="Day-3 Login with email and password">
       <created>1588678680916</created>
@@ -427,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1591962295999</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="DAY-31">
+      <created>1592068931542</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1592068931543</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,46 +503,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591081763645" />
-    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1591962294979">
+    <state x="265" y="0" key="CommitChangelistDialog2" timestamp="1592068930429">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1591962294979" />
+    <state x="265" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592068930429" />
     <state width="426" height="466" key="DebuggerActiveHint" timestamp="1591088113457">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="426" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1591088113457" />
-    <state width="1142" height="175" key="GridCell.Tab.0.bottom" timestamp="1591962507510">
+    <state width="1144" height="173" key="GridCell.Tab.0.bottom" timestamp="1592212604772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1142" height="175" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591962507510" />
-    <state width="1142" height="175" key="GridCell.Tab.0.center" timestamp="1591962507510">
+    <state width="1144" height="173" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1592212604772" />
+    <state width="1144" height="173" key="GridCell.Tab.0.center" timestamp="1592212604772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1142" height="175" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591962507510" />
-    <state width="1142" height="175" key="GridCell.Tab.0.left" timestamp="1591962507509">
+    <state width="1144" height="173" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1592212604772" />
+    <state width="1144" height="173" key="GridCell.Tab.0.left" timestamp="1592212604772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1142" height="175" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591962507509" />
-    <state width="1142" height="175" key="GridCell.Tab.0.right" timestamp="1591962507510">
+    <state width="1144" height="173" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1592212604772" />
+    <state width="1144" height="173" key="GridCell.Tab.0.right" timestamp="1592212604772">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1142" height="175" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591962507510" />
+    <state width="1144" height="173" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592212604772" />
     <state x="193" y="155" key="IDE.errors.dialog" timestamp="1591595932252">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="193" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1591595932252" />
-    <state x="0" y="55" width="914" height="714" key="SettingsEditor" timestamp="1591961747627">
+    <state x="0" y="55" width="914" height="714" key="SettingsEditor" timestamp="1592199629721">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="55" width="914" height="714" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591961747627" />
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1591962324330">
+    <state x="0" y="55" width="914" height="714" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592199629721" />
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1592068935796">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591962324330" />
-    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1591931724698">
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592068935796" />
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1592190751034">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1591931724698" />
+    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1592190751034" />
     <state x="432" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591339684939">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

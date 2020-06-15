@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/models/record.dart';
@@ -14,11 +16,25 @@ class QRPage extends StatefulWidget {
 }
 class _QRPageState extends State<QRPage> {
 
-
-
   var now = DateTime.now();
-  String userJson ='{"email": "", "uid": "test", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
-  Record userProfileData;
+  String userJson;
+
+//  var qrData = Record.parsedJson);
+
+  parseJSON(String userJson){
+    Map parsedJson = json.decode(userJson);
+    var qrData = Record.fromMap(parsedJson);
+  }
+
+  @override
+  void initState() {
+
+    userJson ='{"uid": "${widget.user}", "time": "$now","empId" : "${widget.userEmpId}"}';
+
+
+    super.initState();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +46,7 @@ class _QRPageState extends State<QRPage> {
             QrImage(
 
               foregroundColor: darkBlue,
-              data: widget.user+'/'+widget.userEmpId+'/'+now.toString(),
+              data: userJson,
               version: QrVersions.auto,
               size: 400.0,
             ),

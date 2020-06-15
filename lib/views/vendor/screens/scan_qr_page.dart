@@ -17,8 +17,8 @@ class _ScanQrState extends State<ScanQr> {
   String _scanQRCode;
   List<dynamic> bookingList = List();
   String qrCode;
-  String userJson =
-      '{"email": "", "uid": "test", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
+//  String userJson =
+//      '{"email": "", "uid": "${widget.user}", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
 
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
@@ -27,6 +27,11 @@ class _ScanQrState extends State<ScanQr> {
 //    print(barcodeScanRes);
     Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
+    print('record from json'+ record.uid +' '+record.userEmpId+' '+record.time);
+    qrCode = record.uid;
+    bookingList..add(record.uid)
+    ..add(record.time)
+    ..add(record.userEmpId);
     setState(() {
       Firestore.instance
           .collection('bookings')
@@ -34,64 +39,7 @@ class _ScanQrState extends State<ScanQr> {
           .setData({"bookingData": bookingList}).then((result) {});
       _scanQRCode = record.qrData;
     });
-
-    /*  Timestamp timestamp = Timestamp.now();
-    var date = new DateTime.fromMillisecondsSinceEpoch(
-        timestamp.millisecondsSinceEpoch);
-    var formatter = new DateFormat('yyyy-MM-dd');
-    String formatted = formatter.format(date);
-    print(formatted);*/
-
-/*    Map map = jsonDecode(barcodeScanRes);
-    Record record = Record.fromJson(map);
-    if (record.qrData.compareTo(record.uid ) != 0) {
-      AppUtils.showToast('Invalid QR code', Colors.red, Colors.white);
-      return;
-    }
-
-    if (bookingList.contains(record.uid)) {
-      AppUtils.showToast(
-          'Dear ${record.userFName}, You have already received your lunch.',
-          Colors.red,
-          Colors.white);
-    } else {
-      bookingList.add(record.uid);
-      setState(() {
-        Firestore.instance
-            .collection(AppConstants.DB_KEY_BOOKING_DATA)
-            .document('bookings')
-            .setData({
-          AppConstants.KEY_BOOKING_LIST: bookingList,
-        }).then((result) {});
-        _scanQRCode = barcodeScanRes;
-        AppUtils.showToast('Dear ${record.userFName}, Enjoy your lunch.😋',
-            Colors.green, Colors.white);
-      });
-    }*/
   }
-
-  /*Future _scan() async {
-    String barcodeScanRes;
-    barcodeScanRes = await FlutterBarcodeScanner.scanBarcode("#467af2", "Cancel", true, ScanMode.QR);
-    print(barcodeScanRes);
-
-
-    Map map = jsonDecode(barcodeScanRes);
-    Record record = Record.fromJson(map);
-
-    setState(() {
-      Firestore.instance
-          .collection('bookings')
-          .document()
-          .setData({
-        'booking_list': bookingList,
-      }).then((result) {});
-      _scanQRCode = barcodeScanRes;
-      AppUtils.showToast('Dear ${record.userFName}, Enjoy your lunch.😋',
-          Colors.green, Colors.white);
-      });
-
-  }*/
 
   @override
   Widget build(BuildContext context) {

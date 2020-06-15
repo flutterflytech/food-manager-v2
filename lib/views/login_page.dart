@@ -28,13 +28,6 @@ class _LogInPageState extends State<LogInPage> {
   final _formKey = GlobalKey<FormState>();
   String email = '';
   String password;
-  String userFName;
-  String userEmail;
-  String userEmpId;
-  String userSurname;
-  String photoUrl;
-  String userUid;
-  int userType;
   ProgressDialog pr;
   bool obscure = true;
 
@@ -108,17 +101,6 @@ class _LogInPageState extends State<LogInPage> {
                   SizedBox(
                     height: screenData.height * 0.01,
                   ),
-                  /*CustomTextFormField(
-
-                    validator: passwordValidator,
-                    onChanged: (value) {
-                      setState(() {
-                        password = value;
-                      });
-                    },
-                    hintText: 'Password',
-                    obscure: true,
-                  )*/
                   TextFormField(
                     validator: passwordValidator,
                     onChanged: (value) {

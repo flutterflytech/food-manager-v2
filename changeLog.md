@@ -260,3 +260,10 @@
 ### 2. Storing QR data in Json
 ### 3. Passing Json to generate QR
 ### 4. Updating bookings collection according to QR data
+
+# DAY-32 (date:15-16-2020)
+
+### 1. Storing QR data in Json
+### 2. Passing Json to generate QR
+### 3. Updating bookings collection according to QR data
+### 4. Bug fixes

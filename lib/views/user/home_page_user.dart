@@ -143,6 +143,5 @@ class _HomePageUserState extends State<HomePageUser> {
 
   logout() {
     FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LogInPage() ));
   }
 }

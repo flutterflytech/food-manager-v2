@@ -48,6 +48,14 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     getCurrentUserData();
   }
 
+  showProgressDialog(bool isShow) {
+    if (isShow) {
+      pr.show();
+    } else {
+      pr.hide();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
