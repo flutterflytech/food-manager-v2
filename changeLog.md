@@ -267,3 +267,11 @@
 ### 2. Passing Json to generate QR
 ### 3. Updating bookings collection according to QR data
 ### 4. Bug fixes
+
+# DAY-33 (date:16-06-2020)
+
+### 1. Designing Database for storing scanned data
+### 2. Storing data into database according to QR code and vendor
+### 3. New View on Vendor login to show no. of users taken their meal
+### 4. Populating database with Qr data
+### 5. BloC blog update with new posters

@@ -16,6 +16,7 @@ class ScanQr extends StatefulWidget {
 class _ScanQrState extends State<ScanQr> {
   String _scanQRCode;
   List<dynamic> bookingList = List();
+  List<dynamic> userList = List();
   String qrCode;
 //  String userJson =
 //      '{"email": "", "uid": "${widget.user}", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
@@ -29,14 +30,17 @@ class _ScanQrState extends State<ScanQr> {
     Record record = Record.fromJson(map);
     print('record from json'+ record.uid +' '+record.userEmpId+' '+record.time);
     qrCode = record.uid;
-    bookingList..add(record.uid)
-    ..add(record.time)
-    ..add(record.userEmpId);
+    userList..add(record.time);
+    bookingList..add(record.time);
+//    ..add(record.userEmpId);
     setState(() {
-      Firestore.instance
-          .collection('bookings')
-          .document(widget.user)
-          .setData({"bookingData": bookingList}).then((result) {});
+      DocumentReference docRef = Firestore.instance.collection('bookings').document();
+      docRef.setData({
+        "bookingId":docRef.documentID,
+        "timeStamp": record.time,
+        "userId": record.uid,
+        "vendorId": widget.user,
+      });
       _scanQRCode = record.qrData;
     });
   }
