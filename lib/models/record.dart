@@ -28,15 +28,10 @@ class Record {
     userEmpId = json['empId'];
     userFName = json['fname'];
     userSurname = json['surname'];
-
   }
 
   Map<String, dynamic> toJson() =>
       {'uid': uid, 'time': qrData, 'userEmpId': userEmpId};
 
   Record.fromSnapshot(DocumentSnapshot snapshot) : this.fromMap(snapshot.data);
-
- /* String toString() {
-    return '{"email": "$userEmail", "empId": "$userEmpId", "fname": "$userFName","surname": "$userSurname", "qrData":"$qrData", "uid":"$uid" , "time":"$time"}';
-  }*/
 }

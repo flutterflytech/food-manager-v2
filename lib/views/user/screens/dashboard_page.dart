@@ -21,7 +21,7 @@ class _DashboardUserState extends State<DashboardUser> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('welcome' +' '+ widget.userName.toUpperCase()/*+' '+widget.userSurname.toUpperCase()*/),
+                Text('welcome' +' '+ widget.userName.toUpperCase() /*+' '+widget.userSurname.toUpperCase()*/),
               ],
             ),
           ],

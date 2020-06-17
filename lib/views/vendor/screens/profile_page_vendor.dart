@@ -11,12 +11,12 @@ class UserProfileVendor extends StatefulWidget {
 
   const UserProfileVendor(
       {Key key,
-        this.user,
-        this.fName,
-        this.userEmail,
-        this.userEmpId,
-        this.userSurname,
-        this.photoUrl})
+      this.user,
+      this.fName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl})
       : super(key: key);
 
   @override

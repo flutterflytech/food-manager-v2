@@ -53,14 +53,5 @@ class AllUserData {
 
 }
 
-class BookingId{
 
-  String bookingId;
-  String vendorId;
-  String userId;
-  String timeStamp;
-
-  BookingId(this.bookingId, this.vendorId, this.userId, this.timeStamp);
-
-}
 

@@ -9,6 +9,7 @@ class RegisteredUsers extends StatefulWidget {
   final int userType;
 
   const RegisteredUsers({Key key, this.user, this.userType}) : super(key: key);
+
   @override
   _RegisteredUsersState createState() => _RegisteredUsersState();
 }
@@ -20,39 +21,39 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          child: SingleChildScrollView(
-            child: Container(
-                height: screenData.height * 1.0,
-                child: StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.instance.collection('account').snapshots(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasError)
-                      return new Text('Error: ${snapshot.error}');
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return new Text('Loading...');
-                      default:
-                        return Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 10, left: 10, right: 10),
-
-//                          Should I be using ListView.Builder??
-
-                          child: new ListView(
-                            children: snapshot.data.documents
-                                .map((DocumentSnapshot document) {
-                              return Container(child: _userCardView(document));
-                            }).toList(),
-                          ),
-                        );
-                    }
-                  },
-                )),
-          ) ),
-        ),
-      );
-      }
+            child: SingleChildScrollView(
+          child: Container(
+              height: screenData.height * 1.0,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance
+                    .collection('account')
+                    .where("vendor", isEqualTo: 0)
+                    .snapshots(),
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.hasError)
+                    return new Text('Error: ${snapshot.error}');
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.waiting:
+                      return new Text('Loading...');
+                    default:
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            bottom: 10, left: 10, right: 10),
+                        child: new ListView(
+                          children: snapshot.data.documents
+                              .map((DocumentSnapshot document) {
+                            return Container(child: _userCardView(document));
+                          }).toList(),
+                        ),
+                      );
+                  }
+                },
+              )),
+        )),
+      ),
+    );
+  }
 
   _userCardView(document) {
     if (document['email'] == widget.user) {
@@ -63,12 +64,12 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
             context,
             MaterialPageRoute(
                 builder: (context) => UserProfile(
-                  email: document['email'],
-                  fName: document['fname'],
-                  surname: document['surname'],
-                  empId: document['empId'],
-                  url: document['url'],
-                ))),
+                      email: document['email'],
+                      fName: document['fname'],
+                      surname: document['surname'],
+                      empId: document['empId'],
+                      url: document['url'],
+                    ))),
         child: Card(
           elevation: 10,
           child: Padding(
@@ -83,15 +84,15 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                         width: 60,
                         child: document['url'] == null
                             ? Image(
-                          image: NetworkImage(
-                              'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                          fit: BoxFit.fill,
-                        )
+                                image: NetworkImage(
+                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                fit: BoxFit.fill,
+                              )
                             : Image(
-                          image: NetworkImage(document['url']),
-                          fit: BoxFit.fill,
-                        ) /*,*/
-                    )),
+                                image: NetworkImage(document['url']),
+                                fit: BoxFit.fill,
+                              ) /*,*/
+                        )),
                 SizedBox(
                   width: 20,
                 ),

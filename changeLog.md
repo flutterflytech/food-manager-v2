@@ -275,3 +275,10 @@
 ### 3. New View on Vendor login to show no. of users taken their meal
 ### 4. Populating database with Qr data
 ### 5. BloC blog update with new posters
+
+# DAY-34 (date: 17-06-2020)
+
+### 1. Bug fixing
+### 2. Retrieving data of booked meals
+### 3. Fetching registered users, admins, and vendors on different screens
+### 4. code formatting and commenting

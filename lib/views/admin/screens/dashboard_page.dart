@@ -6,7 +6,11 @@ class Dashboard extends StatefulWidget {
   final String userName;
   final String userSurname;
 
-  const Dashboard({Key key, this.userName, this.userSurname, }) : super(key: key);
+  const Dashboard({
+    Key key,
+    this.userName,
+    this.userSurname,
+  }) : super(key: key);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -28,7 +32,8 @@ class _DashboardState extends State<Dashboard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(welcome + ' ' + widget.userName +' '+widget.userSurname),
+                Text(
+                    welcome + ' ' + widget.userName + ' ' + widget.userSurname),
                 Text(iconInfo),
                 Icon(
                   FontAwesomeIcons.users,

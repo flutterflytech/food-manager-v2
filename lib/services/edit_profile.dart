@@ -12,9 +12,13 @@ class EditProfilePage extends StatefulWidget {
   final userEmpId;
   final user;
 
-
   const EditProfilePage(
-      {Key key, this.userEmail, this.userFName, this.userSurname, this.userEmpId, this.user})
+      {Key key,
+      this.userEmail,
+      this.userFName,
+      this.userSurname,
+      this.userEmpId,
+      this.user})
       : super(key: key);
 
   @override
@@ -62,7 +66,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   decoration: InputDecoration(
                     labelText: 'First Name',
                     hintText: widget.userFName.toUpperCase(),
-
                   ),
                   controller: fNameController,
                 ),
@@ -72,8 +75,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 TextField(
                   decoration: InputDecoration(
                       hintText: widget.userSurname.toUpperCase(),
-                    labelText: 'Last Name'
-                  ),
+                      labelText: 'Last Name'),
                   controller: surNameController,
                 ),
                 SizedBox(
@@ -81,31 +83,23 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: 'Job Title',
-                      hintText: widget.userFName
-                  ),
+                      labelText: 'Job Title', hintText: widget.userFName),
                   controller: jobTitleController,
-                ),
-                SizedBox(
-                  height: 30.0,
-                ),
-                TextField(
-                    decoration: InputDecoration(
-                        enabled: false,
-                        hintText:  widget.userEmpId
-                    ),
-                  controller: jobTitleController,
-
                 ),
                 SizedBox(
                   height: 30.0,
                 ),
                 TextField(
                   decoration: InputDecoration(
-                      enabled: false,
-                      hintText:  widget.userEmail
-                  ),
-
+                      enabled: false, hintText: widget.userEmpId),
+                  controller: jobTitleController,
+                ),
+                SizedBox(
+                  height: 30.0,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      enabled: false, hintText: widget.userEmail),
                 ),
                 SizedBox(
                   height: 30.0,
@@ -114,7 +108,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       child: SizedBox(
@@ -122,19 +116,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         width: screenData.width * 0.2,
                         child: Container(
                           decoration: BoxDecoration(
-                              gradient:
-                              LinearGradient(colors: [darkBlue2, lightBlue2]),
+                              gradient: LinearGradient(
+                                  colors: [darkBlue2, lightBlue2]),
                               borderRadius: BorderRadius.circular(30)),
                           child: Center(
                               child: Text(
-                                "Cancel",
-                                style: body15,
-                              )),
+                            "Cancel",
+                            style: body15,
+                          )),
                         ),
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         update();
                       },
                       child: SizedBox(
@@ -142,18 +136,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         width: screenData.width * 0.2,
                         child: Container(
                           decoration: BoxDecoration(
-                              gradient:
-                              LinearGradient(colors: [lightBlue2,darkBlue2]),
+                              gradient: LinearGradient(
+                                  colors: [lightBlue2, darkBlue2]),
                               borderRadius: BorderRadius.circular(30)),
                           child: Center(
                               child: Text(
-                                "Save",
-                                style: body15,
-                              )),
+                            "Save",
+                            style: body15,
+                          )),
                         ),
                       ),
                     ),
-
                   ],
                 )
               ],
@@ -166,12 +159,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   update() {
     //TODO use model class to update data instead of "{'fname': fNameController.text,'surname':surNameController.text,'jobTitle':jobTitleController.text}"
-    Firestore.instance
-        .collection('account')
-        .document(widget.user)
-        .updateData({'fname': fNameController.text,'surname':surNameController.text,'jobTitle':jobTitleController.text});
+    Firestore.instance.collection('account').document(widget.user).updateData({
+      'fname': fNameController.text,
+      'surname': surNameController.text,
+      'jobTitle': jobTitleController.text
+    });
     AppUtils.showToast('Update Successful', green, white);
     Navigator.pop(context);
   }
-
 }

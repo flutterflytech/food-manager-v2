@@ -4,7 +4,8 @@ class DashboardVendor extends StatefulWidget {
   final String userName;
   final String userSurname;
 
-  const DashboardVendor({Key key,this.userSurname, this.userName}) : super(key: key);
+  const DashboardVendor({Key key, this.userSurname, this.userName})
+      : super(key: key);
 
   @override
   _DashboardVendorState createState() => _DashboardVendorState();
@@ -21,7 +22,11 @@ class _DashboardVendorState extends State<DashboardVendor> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('welcome' + ' ' + widget.userName+' '+widget.userSurname),
+                Text('welcome' +
+                    ' ' +
+                    widget.userName +
+                    ' ' +
+                    widget.userSurname),
                 Text('iconInfo'),
                 Text('iconAction')
               ],

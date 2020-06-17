@@ -10,7 +10,14 @@ class CustomTextWidget extends StatefulWidget {
   final email;
   final empId;
 
-  const CustomTextWidget({Key key, this.title, this.titleData, this.color, this.user, this.email, this.empId})
+  const CustomTextWidget(
+      {Key key,
+      this.title,
+      this.titleData,
+      this.color,
+      this.user,
+      this.email,
+      this.empId})
       : super(key: key);
 
   @override
@@ -18,7 +25,6 @@ class CustomTextWidget extends StatefulWidget {
 }
 
 class _CustomTextWidgetState extends State<CustomTextWidget> {
-
   @override
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
@@ -49,5 +55,4 @@ class _CustomTextWidgetState extends State<CustomTextWidget> {
       ),
     );
   }
-
 }

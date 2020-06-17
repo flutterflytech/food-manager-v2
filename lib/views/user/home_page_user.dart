@@ -26,7 +26,8 @@ class HomePageUser extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.userType, this.user})
+      this.userType,
+      this.user})
       : super(key: key);
 
   @override

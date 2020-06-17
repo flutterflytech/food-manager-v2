@@ -23,27 +23,22 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       child: TextFormField(
         validator: widget.validator,
         onChanged: widget.onChanged,
         cursorColor: darkBlue,
         obscureText: widget.obscure,
-
         decoration: InputDecoration(
             fillColor: white,
             filled: true,
             hintText: widget.hintText,
             enabledBorder: OutlineInputBorder(
-              borderSide:
-              BorderSide(color: lightBlue2, width: 2.0),
+              borderSide: BorderSide(color: lightBlue2, width: 2.0),
               borderRadius: BorderRadius.circular(50.0),
             ),
             focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: darkBlue2, width: 2.0),
-                borderRadius: BorderRadius.circular(50.0))
-        ),
+                borderSide: BorderSide(color: darkBlue2, width: 2.0),
+                borderRadius: BorderRadius.circular(50.0))),
       ),
     );
   }

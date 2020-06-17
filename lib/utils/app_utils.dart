@@ -1,9 +1,9 @@
 //Put all your utils static methods here
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-class AppUtils{
 
-  static void showToast(String message, Color alertColor, Color textColor){
+class AppUtils {
+  static void showToast(String message, Color alertColor, Color textColor) {
     Fluttertoast.showToast(
         msg: message,
         toastLength: Toast.LENGTH_SHORT,
@@ -13,6 +13,4 @@ class AppUtils{
         textColor: textColor,
         fontSize: 16.0);
   }
-
-
 }

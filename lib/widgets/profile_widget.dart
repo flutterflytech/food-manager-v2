@@ -24,12 +24,12 @@ class UserProfileWidget extends StatefulWidget {
 
   const UserProfileWidget(
       {Key key,
-        this.user,
-        this.fName,
-        this.userEmail,
-        this.userEmpId,
-        this.userSurname,
-        this.photoUrl})
+      this.user,
+      this.fName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl})
       : super(key: key);
 
   @override
@@ -113,13 +113,13 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                         width: 200,
                         child: widget.photoUrl == null
                             ? Image(
-                          image: NetworkImage(
-                              'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                          fit: BoxFit.fill,
-                        )
+                                image: NetworkImage(
+                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                fit: BoxFit.fill,
+                              )
                             : CachedNetworkImage(
-                          imageUrl: widget.photoUrl,
-                        ))),
+                                imageUrl: widget.photoUrl,
+                              ))),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,
@@ -137,7 +137,6 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                         )),
                   ),
                 ),
-
               ],
             ),
             SizedBox(
@@ -191,32 +190,32 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child:GestureDetector(
+                        child: GestureDetector(
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => EditProfilePage(
-                                      userSurname: widget.userSurname,
-                                      userFName: widget.fName,
-                                      userEmpId: widget.userEmpId,
-                                      userEmail: widget.userEmail,
-                                      user: widget.user,
-                                    )));
+                                          userSurname: widget.userSurname,
+                                          userFName: widget.fName,
+                                          userEmpId: widget.userEmpId,
+                                          userEmail: widget.userEmail,
+                                          user: widget.user,
+                                        )));
                           },
                           child: SizedBox(
                             height: screenData.height * 0.07,
                             width: screenData.width * 0.5,
                             child: Container(
                               decoration: BoxDecoration(
-                                  gradient:
-                                  LinearGradient(colors: [darkBlue2, lightBlue2]),
+                                  gradient: LinearGradient(
+                                      colors: [darkBlue2, lightBlue2]),
                                   borderRadius: BorderRadius.circular(30)),
                               child: Center(
                                   child: Text(
-                                    "Edit Profile",
-                                    style: body15,
-                                  )),
+                                "Edit Profile",
+                                style: body15,
+                              )),
                             ),
                           ),
                         ),

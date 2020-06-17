@@ -7,6 +7,7 @@ import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_admins.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_users.dart';
 import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
+import 'package:food_manager_v2/views/admin/screens/registered_vendors.dart';
 
 import '../login_page.dart';
 
@@ -117,11 +118,10 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     );
   }
 
-
-
   logout() {
     FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LogInPage() ));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 
   // ignore: non_constant_identifier_names
@@ -138,7 +138,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => RegisteredAdmins(),
+          builder: (context) => RegisteredVendors(),
         ));
   }
 

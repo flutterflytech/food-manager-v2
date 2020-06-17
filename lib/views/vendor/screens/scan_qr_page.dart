@@ -18,30 +18,23 @@ class _ScanQrState extends State<ScanQr> {
   List<dynamic> bookingList = List();
   List<dynamic> userList = List();
   String qrCode;
-//  String userJson =
-//      '{"email": "", "uid": "${widget.user}", "userFName": "", "surName": "", "qrData": "", "reference": ""}';
 
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;
     barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         "#ffffff", "Cancel", true, ScanMode.QR);
-//    print(barcodeScanRes);
     Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
-    print('record from json'+ record.uid +' '+record.userEmpId+' '+record.time);
-    qrCode = record.uid;
-    userList..add(record.time);
-    bookingList..add(record.time);
-//    ..add(record.userEmpId);
+//    setting Data received from QrR code into firebase collection
     setState(() {
-      DocumentReference docRef = Firestore.instance.collection('bookings').document();
+      DocumentReference docRef =
+          Firestore.instance.collection('bookings').document();
       docRef.setData({
-        "bookingId":docRef.documentID,
+        "bookingId": docRef.documentID,
         "timeStamp": record.time,
         "userId": record.uid,
         "vendorId": widget.user,
       });
-      _scanQRCode = record.qrData;
     });
   }
 
