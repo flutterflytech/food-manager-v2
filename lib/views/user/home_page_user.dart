@@ -60,6 +60,8 @@ class _HomePageUserState extends State<HomePageUser> {
       QRPage(
         user: widget.user,
         userEmpId: widget.userEmpId,
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
       ),
       UserProfileUsers(
         user: widget.user,

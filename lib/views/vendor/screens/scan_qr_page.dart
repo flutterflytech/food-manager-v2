@@ -25,7 +25,7 @@ class _ScanQrState extends State<ScanQr> {
         "#ffffff", "Cancel", true, ScanMode.QR);
     Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
-//    setting Data received from QrR code into firebase collection
+//    setting Data received from QR code into firebase collection
     setState(() {
       DocumentReference docRef =
           Firestore.instance.collection('bookings').document();

@@ -7,8 +7,10 @@ import 'package:qr_flutter/qr_flutter.dart';
 class QRPage extends StatefulWidget {
   final userEmpId;
   final user;
+  final userFName;
+  final userSurname;
 
-  const QRPage({Key key, this.userEmpId, this.user}) : super(key: key);
+  const QRPage({Key key, this.userEmpId, this.user, this.userFName, this.userSurname}) : super(key: key);
 
   @override
   _QRPageState createState() => _QRPageState();
@@ -28,7 +30,7 @@ class _QRPageState extends State<QRPage> {
     timeStamp = formatter.format(date);
 //    passing user QR data to JSON for future uses
     userJson =
-        '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}"}';
+        '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}", "userName":"${widget.userFName}", "userSurname": "${widget.userSurname}"}';
 
     super.initState();
   }

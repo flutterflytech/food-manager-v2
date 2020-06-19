@@ -43,19 +43,13 @@ class _BookingsState extends State<Bookings> {
   }
 
   _userCardView(document) {
-    if (document['email'] == widget.user) {
-      return null;
-    } else
+
       return GestureDetector(
         onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => UserProfile(
-                      email: document['email'],
-                      fName: document['fname'],
-                      surname: document['surname'],
-                      empId: document['empId'],
-                      url: document['url'],
+//                     Todo click page references
                     ))),
         child: Card(
           elevation: 10,

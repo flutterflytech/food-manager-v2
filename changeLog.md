@@ -282,3 +282,15 @@
 ### 2. Retrieving data of booked meals
 ### 3. Fetching registered users, admins, and vendors on different screens
 ### 4. code formatting and commenting
+
+# DAY-35 (date:18-06-2020)
+
+### 1. Debugging
+### 2. counting booking frequency per user
+
+# DAY-36 (date:19-06-2020)
+
+### 1. Learned BloC
+### 2. Made sample on provider with BLoC
+### 3. Learned Canvas Painting
+### 4. Made sample on canvas
