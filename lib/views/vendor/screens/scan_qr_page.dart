@@ -6,8 +6,10 @@ import 'package:food_manager_v2/models/record.dart';
 
 class ScanQr extends StatefulWidget {
   final String user;
+  final String userFName;
+  final String userSurname;
 
-  const ScanQr({Key key, this.user}) : super(key: key);
+  const ScanQr({Key key, this.user, this.userFName, this.userSurname}) : super(key: key);
 
   @override
   _ScanQrState createState() => _ScanQrState();
@@ -34,6 +36,10 @@ class _ScanQrState extends State<ScanQr> {
         "timeStamp": record.time,
         "userId": record.uid,
         "vendorId": widget.user,
+        "userFName": record.userFName,
+        "vendorFName": widget.userFName,
+        "userLName": record.userSurname,
+        "vendorLName": widget.userSurname,
       });
     });
   }

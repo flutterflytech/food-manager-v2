@@ -56,6 +56,8 @@ class _HomePageVendorState extends State<HomePageVendor> {
       ),
       ScanQr(
         user: widget.user,
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
       ),
       Bookings(
         user: widget.user,

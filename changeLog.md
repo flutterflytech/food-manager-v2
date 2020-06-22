@@ -294,3 +294,10 @@
 ### 2. Made sample on provider with BLoC
 ### 3. Learned Canvas Painting
 ### 4. Made sample on canvas
+
+# DAY-37 (date: 22-06-2020)
+
+### 1. Storing UserName and VendorName into bookings collection'
+### 2. Storing Images for the same
+### 3. Checking whether booking is already done in the same date
+### 4. Booking chart at Home page (ongoing)
