@@ -16,7 +16,7 @@ class ScanQr extends StatefulWidget {
 }
 
 class _ScanQrState extends State<ScanQr> {
-  String _scanQRCode;
+
   List<dynamic> bookingList = List();
   List<dynamic> userList = List();
   String qrCode;
@@ -27,6 +27,7 @@ class _ScanQrState extends State<ScanQr> {
         "#ffffff", "Cancel", true, ScanMode.QR);
     Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
+
 //    setting Data received from QR code into firebase collection
     setState(() {
       DocumentReference docRef =

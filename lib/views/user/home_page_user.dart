@@ -52,6 +52,7 @@ class _HomePageUserState extends State<HomePageUser> {
 
     _childern = [
       DashboardUser(
+        user: widget.user,
         userName: widget.userName,
         userSurname: widget.userSurname,
       ),

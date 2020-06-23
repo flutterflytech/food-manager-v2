@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 
@@ -63,11 +64,17 @@ class _BookingsState extends State<Bookings> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(document['userId'], style: bold15),
+                    Text(document['userFName'].toUpperCase()+' '+document['userLName'].toUpperCase(), style: bold15),
                     SizedBox(
                       height: 5,
                     ),
-                    Text(document['bookingId'], style: font15),
+                    Row(
+                      children: <Widget>[
+                        Text(document['bookingId'], style: font15),
+                        SizedBox(width: 20.0,),
+                        Text(document['timeStamp'])
+                      ],
+                    ),
                   ],
                 ),
               ],

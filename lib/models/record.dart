@@ -35,3 +35,10 @@ class Record {
 
   Record.fromSnapshot(DocumentSnapshot snapshot) : this.fromMap(snapshot.data);
 }
+
+class Bookings{
+  final String date;
+  final int sales;
+
+  Bookings(this.date, this.sales);
+}

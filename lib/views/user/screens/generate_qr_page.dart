@@ -30,7 +30,7 @@ class _QRPageState extends State<QRPage> {
     timeStamp = formatter.format(date);
 //    passing user QR data to JSON for future uses
     userJson =
-        '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}", "userName":"${widget.userFName}", "userSurname": "${widget.userSurname}"}';
+        '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}"}';
 
     super.initState();
   }

@@ -301,3 +301,9 @@
 ### 2. Storing Images for the same
 ### 3. Checking whether booking is already done in the same date
 ### 4. Booking chart at Home page (ongoing)
+
+# DAY-38 (date: 23-06-2020)
+
+### 1. Making Chart with booking data
+### 2. Sorting bookings (latest one on top of the list)
+### 3. Showing Name of vendor and user on booking list tile
