@@ -3,29 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/vendor/screens/bookings_page.dart';
+import 'package:food_manager_v2/views/vendor/screens/dashboard_page_vendor.dart';
+import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
 
 class HomePageVendor extends StatefulWidget {
-  final String user;
   final String userName;
   final String userEmail;
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
+  final String user;
   final int userType;
 
   const HomePageVendor(
       {Key key,
-        this.user,
-        this.userName,
-        this.userEmail,
-        this.userEmpId,
-        this.userSurname,
-        this.photoUrl,
-        this.userType})
+      this.userName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl,
+      this.userType,
+      this.user})
       : super(key: key);
 
   @override
@@ -49,14 +50,19 @@ class _HomePageVendorState extends State<HomePageVendor> {
 //    if user is not admin, these pages will be navigated
 
     _childern = [
-      DashboardUser(
+      DashboardVendor(
+        userName: widget.userName,
+        userSurname: widget.userSurname,
+      ),
+      ScanQr(
+        user: widget.user,
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
+      ),
+      Bookings(
         user: widget.user,
       ),
-
-      ScanQr(
-
-      ),
-      UserProfile(
+      UserProfileVendor(
         user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
@@ -113,6 +119,14 @@ class _HomePageVendorState extends State<HomePageVendor> {
                 color: lightBlue1,
               ),
               title: Text('Scan QR', style: bold)),
+//        Bookings
+          BottomNavigationBarItem(
+              icon: Icon(
+                FontAwesomeIcons.bootstrap,
+                size: 30,
+                color: lightBlue1,
+              ),
+              title: Text('Bookings', style: bold)),
 //          Profile
           BottomNavigationBarItem(
               icon: Icon(
@@ -128,5 +142,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
 
   logout() {
     FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 }

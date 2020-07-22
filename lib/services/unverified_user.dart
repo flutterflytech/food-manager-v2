@@ -11,13 +11,13 @@ import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/home_page_user.dart';
 import 'package:food_manager_v2/views/vendor/home_page_vendor.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
-  final String userType;
 
-  const UnverifiedUserUI({Key key, this.user, this.userType}) : super(key: key);
+  const UnverifiedUserUI({Key key, this.user}) : super(key: key);
 
   @override
   _UnverifiedUserUIState createState() => _UnverifiedUserUIState();
@@ -33,12 +33,12 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   String photoUrl;
   String uid;
   ProgressDialog pr;
+  int user;
 
   @override
   void initState() {
     getLoggedInUserData();
     super.initState();
-    print('User@@@Type : ' + userType.toString());
     WidgetsBinding.instance.addPostFrameCallback((_) {});
     pr = new ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: false);
@@ -48,12 +48,26 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     getCurrentUserData();
   }
 
+  showProgressDialog(bool isShow) {
+    if (isShow) {
+      pr.show();
+    } else {
+      pr.hide();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _isEmailVerified
           ? _getVerifiedUserData(
-              userSurname, userEmpId, userEmail, userName, photoUrl, userType)
+              uid,
+              userName,
+              userSurname,
+              userEmpId,
+              userEmail,
+              photoUrl,
+            )
           : _getUnverifiedUserScreen(),
     );
   }
@@ -79,9 +93,27 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // This will be return on display if user has verified email id and login
-  _getVerifiedUserData(String userSurname, String userEmpId, String userEmail,
-      String userName, String photoUrl, int userType) {
+  _getVerifiedUserData(
+    String uid,
+    String userName,
+    String userSurname,
+    String userEmpId,
+    String userEmail,
+    String photoUrl,
+  ) {
+    sharedPreferences();
+
     switch (userType) {
+      case 0:
+        return HomePageUser(
+          user: uid,
+          userName: userName,
+          userSurname: userSurname,
+          userEmpId: userEmpId,
+          userEmail: userEmail,
+          photoUrl: photoUrl,
+        );
+
       case 1:
         return HomePageAdmin(
           user: widget.user,
@@ -102,38 +134,9 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           photoUrl: photoUrl,
         );
 
-      case 0:
-        return HomePageUser(
-          user: widget.user,
-          userName: userName,
-          userSurname: userSurname,
-          userEmpId: userEmpId,
-          userEmail: userEmail,
-          photoUrl: photoUrl,
-        );
+      default:
+        return Center(child: Text('Oops, Something Unexpected occurred'));
     }
-
-    /*if (userType == 0) {
-      return HomePageUser(
-        user: widget.user,
-        userName: userName,
-        userSurname: userSurname,
-        userEmpId: userEmpId,
-        userEmail: userEmail,
-        photoUrl: photoUrl,
-      );
-    } else if (userType == 1) {
-      return HomePageAdmin(
-        user: widget.user,
-        userName: userName,
-        userSurname: userSurname,
-        userEmpId: userEmpId,
-        userEmail: userEmail,
-        photoUrl: photoUrl,
-      );
-    } else if(userType == 2) {
-      return HomePageVendor();
-    }*/
   }
 
 // This will be return on display if email is not verified by user
@@ -208,17 +211,24 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class' + userData.userType.toString());
+        print('data from model class ' + userData.userType.toString());
         userType = userData.userType;
-        print('data @@@ from model class' + userType.toString());
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;
         userSurname = userData.userSurname;
         photoUrl = userData.photoUrl;
+        uid = userData.uid;
+        print('!@#@@' + uid);
 //        uid = snapshot.data['uid'];
 //        print('#@#' + widget.userType.toString());
       });
     }
+  }
+
+  sharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('userType', userType);
+    userType = prefs.getInt('userType');
   }
 }

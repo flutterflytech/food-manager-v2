@@ -3,7 +3,6 @@ import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/views/wrapper.dart';
 import 'package:provider/provider.dart';
-
 import 'constants/theme_constants.dart';
 
 void main() {

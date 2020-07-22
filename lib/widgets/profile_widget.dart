@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,37 +7,45 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
+import 'package:food_manager_v2/services/edit_profile.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 
-class UserProfile extends StatefulWidget {
+class UserProfileWidget extends StatefulWidget {
   final String user;
+  final String fName;
+  final String userEmail;
+  final String userEmpId;
+  final String userSurname;
+  final String photoUrl;
 
-  const UserProfile({Key key, this.user}) : super(key: key);
+  const UserProfileWidget(
+      {Key key,
+      this.user,
+      this.fName,
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.photoUrl})
+      : super(key: key);
 
   @override
-  _UserProfileState createState() => _UserProfileState();
+  _UserProfileWidgetState createState() => _UserProfileWidgetState();
 }
 
-class _UserProfileState extends State<UserProfile> {
+class _UserProfileWidgetState extends State<UserProfileWidget> {
   File _imageFile;
   String imageUrl;
-  String uploadedFileURL;
-  String loggedInUserEmail = '';
-  String loggedInUserFirstName = '';
-  String loggedInUserLastName = '';
-  String loggedInUserEmployeeId = '';
-  String loggedInUserProfileImage = '';
 
   @override
   void initState() {
-    getLoggedInUserData();
+//    var userData = AllUserData.formFireStore();
     super.initState();
   }
+
 // getting image from device or from camera
   Future<void> _getImage(ImageSource source) async {
     var image = await ImagePicker.pickImage(source: source);
@@ -47,6 +56,7 @@ class _UserProfileState extends State<UserProfile> {
     }
     Navigator.pop(context);
   }
+
 // Crop fetched image
   _cropImage(File image) async {
     File cropped = await ImageCropper.cropImage(
@@ -59,7 +69,8 @@ class _UserProfileState extends State<UserProfile> {
       });
     }
   }
-// Upload image file to firestrore Storage and get image URL
+
+// Upload image file to fireStore Storage and get image URL
   Future uploadFile() async {
     StorageReference storageReference = FirebaseStorage.instance
         .ref()
@@ -78,7 +89,7 @@ class _UserProfileState extends State<UserProfile> {
     Firestore.instance
         .collection('account')
         .document(widget.user)
-        .updateData({"url": url});
+        .updateData({"url": imageUrl});
   }
 
   @override
@@ -100,18 +111,15 @@ class _UserProfileState extends State<UserProfile> {
                     child: Container(
                         height: 200,
                         width: 200,
-                        child: loggedInUserProfileImage == null
+                        child: widget.photoUrl == null
                             ? Image(
-                          image: NetworkImage(
-                              'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                          fit: BoxFit.fill,
-                        )
-                            : Image(
-                          image: NetworkImage(loggedInUserProfileImage),
-                          fit: BoxFit.fill,
-                        )
-                    )
-                ),
+                                image: NetworkImage(
+                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                fit: BoxFit.fill,
+                              )
+                            : CachedNetworkImage(
+                                imageUrl: widget.photoUrl,
+                              ))),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,
@@ -135,9 +143,9 @@ class _UserProfileState extends State<UserProfile> {
               height: 20.0,
             ),
             Text(
-              loggedInUserFirstName.toUpperCase() +
+              widget.fName.toUpperCase() +
                   ' ' +
-                  loggedInUserLastName.toUpperCase(),
+                  widget.userSurname.toUpperCase(),
               style: body30,
             ),
             SizedBox(
@@ -166,7 +174,9 @@ class _UserProfileState extends State<UserProfile> {
                         child: CustomTextWidget(
                           color: tealGreen,
                           title: 'EMPLOYEE ID',
-                          titleData: loggedInUserEmployeeId,
+                          titleData: widget.userEmpId,
+                          user: widget.user,
+                          empId: 'empId',
                         ),
                       ),
                       Padding(
@@ -174,9 +184,42 @@ class _UserProfileState extends State<UserProfile> {
                         child: CustomTextWidget(
                           color: violet,
                           title: 'EMAIL',
-                          titleData: loggedInUserEmail,
+                          titleData: widget.userEmail,
+                          email: 'displayName',
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfilePage(
+                                          userSurname: widget.userSurname,
+                                          userFName: widget.fName,
+                                          userEmpId: widget.userEmpId,
+                                          userEmail: widget.userEmail,
+                                          user: widget.user,
+                                        )));
+                          },
+                          child: SizedBox(
+                            height: screenData.height * 0.07,
+                            width: screenData.width * 0.5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      colors: [darkBlue2, lightBlue2]),
+                                  borderRadius: BorderRadius.circular(30)),
+                              child: Center(
+                                  child: Text(
+                                "Edit Profile",
+                                style: body15,
+                              )),
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   );
                 }),
@@ -192,21 +235,9 @@ class _UserProfileState extends State<UserProfile> {
       ),
     );
   }
+
 // Fetching data of Logged In user
-  getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
-    if (snapshot.data != null) {
-      print(snapshot.data);
-      setState(() {
-        loggedInUserEmail = snapshot.data['email'];
-        loggedInUserFirstName = snapshot.data['fname'];
-        loggedInUserLastName = snapshot.data['surname'];
-        loggedInUserEmployeeId = snapshot.data['empId'];
-        loggedInUserProfileImage = snapshot.data['url'];
-      });
-    }
-  }
+
 //  Button action to select image from camera or from storage
   _onButtonPressed() {
     showModalBottomSheet(

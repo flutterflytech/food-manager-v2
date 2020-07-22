@@ -220,3 +220,90 @@
 ### 1. UI improvements
 ### 2. Logout Bug Fixed
 ### 3. Saving QR data through Json (Ongoing)
+
+# DAY-26 (date: 05-06-2020)
+
+### 1. Saving Scanned Data
+### 2. Mapping Scanned Data into Json
+### 3. Creating collection of bookings
+### 4. Storing scanned data into bookings collection
+
+# DAY-27 (date: 08-06-2020)
+
+### 1. Bug Fixes
+### 2. Creating QR data
+### 3. Storing data into collection in firebase
+
+# DAY-28 (date: 09-06-2020)
+
+### 1. Changes in Data Stored in QR
+### 2. Array in FireStore to save multiple qr records
+### 3. BugFixes
+
+# DAY-29 (date: 10-06-2020)
+
+### 1. User ProfileImage stored in shared preferences as String
+### 2. Edit profile UI changed
+### 3. HomePage according to user using shared preferences
+### 4. Exception Handling
+
+# DAY-30 (date: 11-06-2020)
+
+### 1. Code reusability of profile page
+### 2. HomePage according to user using shared preferences
+### 3. update data on UI without page reload
+### 4. CachedNetworkImage
+
+# DAY-31 (date:12-06-2020)
+
+### 1. Read few suggested topics
+### 2. Storing QR data in Json
+### 3. Passing Json to generate QR
+### 4. Updating bookings collection according to QR data
+
+# DAY-32 (date:15-16-2020)
+
+### 1. Storing QR data in Json
+### 2. Passing Json to generate QR
+### 3. Updating bookings collection according to QR data
+### 4. Bug fixes
+
+# DAY-33 (date:16-06-2020)
+
+### 1. Designing Database for storing scanned data
+### 2. Storing data into database according to QR code and vendor
+### 3. New View on Vendor login to show no. of users taken their meal
+### 4. Populating database with Qr data
+### 5. BloC blog update with new posters
+
+# DAY-34 (date: 17-06-2020)
+
+### 1. Bug fixing
+### 2. Retrieving data of booked meals
+### 3. Fetching registered users, admins, and vendors on different screens
+### 4. code formatting and commenting
+
+# DAY-35 (date:18-06-2020)
+
+### 1. Debugging
+### 2. counting booking frequency per user
+
+# DAY-36 (date:19-06-2020)
+
+### 1. Learned BloC
+### 2. Made sample on provider with BLoC
+### 3. Learned Canvas Painting
+### 4. Made sample on canvas
+
+# DAY-37 (date: 22-06-2020)
+
+### 1. Storing UserName and VendorName into bookings collection'
+### 2. Storing Images for the same
+### 3. Checking whether booking is already done in the same date
+### 4. Booking chart at Home page (ongoing)
+
+# DAY-38 (date: 23-06-2020)
+
+### 1. Making Chart with booking data
+### 2. Sorting bookings (latest one on top of the list)
+### 3. Showing Name of vendor and user on booking list tile

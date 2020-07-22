@@ -6,13 +6,14 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_admins.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_users.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
-import 'package:food_manager_v2/views/login_page.dart';
+import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
+import 'package:food_manager_v2/views/admin/screens/registered_vendors.dart';
+
+import '../login_page.dart';
 
 class HomePageAdmin extends StatefulWidget {
   final String user;
   final String userName;
-  final String fName;
   final String userEmail;
   final String userEmpId;
   final String userSurname;
@@ -23,7 +24,6 @@ class HomePageAdmin extends StatefulWidget {
       {Key key,
       this.user,
       this.userName,
-      this.fName,
       this.userEmail,
       this.userEmpId,
       this.userSurname,
@@ -36,6 +36,7 @@ class HomePageAdmin extends StatefulWidget {
 }
 
 class _HomePageAdminState extends State<HomePageAdmin> {
+//  final AuthService _auth = AuthService();
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -51,10 +52,8 @@ class _HomePageAdminState extends State<HomePageAdmin> {
 // If user is admin, these pages will be Navigated
 
     _childern = [
-      Dashboard(
-        user: widget.userName,
-      ),
-      UserProfile(
+      Dashboard(userName: widget.userName, userSurname: widget.userSurname),
+      UserProfileAdmin(
         user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
@@ -107,20 +106,6 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                 'Home',
                 style: bold,
               )),
-          /* BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.utensils,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('Vendors', style: bold)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.users,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('Users', style: bold)),*/
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -136,11 +121,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   logout() {
     FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LogInPage(),
-      ),
-    );
+        context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 
   // ignore: non_constant_identifier_names
@@ -157,7 +138,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => RegisteredAdmins(),
+          builder: (context) => RegisteredVendors(),
         ));
   }
 

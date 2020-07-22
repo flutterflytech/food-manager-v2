@@ -36,9 +36,7 @@ class _UsersPageState extends State<UsersPage> {
             child: Container(
                 height: screenData.height * 1.0,
                 child: StreamBuilder<QuerySnapshot>(
-                  stream: Firestore.instance
-                      .collection('account')
-                      .snapshots(),
+                  stream: Firestore.instance.collection('account').snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError)
@@ -47,7 +45,6 @@ class _UsersPageState extends State<UsersPage> {
                       case ConnectionState.waiting:
                         return showProgressDialog(true);
                       default:
-
                         return new ListView(
                           children: snapshot.data.documents
                               .map((DocumentSnapshot document) {

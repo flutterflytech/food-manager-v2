@@ -215,6 +215,7 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
+
 // Registering user
   void onRegisterClick() async {
     if (_formKey.currentState.validate()) {
@@ -241,8 +242,7 @@ class _RegisterPageState extends State<RegisterPage> {
           AppUtils.showToast(sendMailErrorToast, red, white);
           print(e.message);
         }
-      }
-      );
+      });
     }
   }
 }
