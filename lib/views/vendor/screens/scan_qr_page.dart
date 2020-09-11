@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:food_manager_v2/main.dart';
 import 'package:food_manager_v2/models/record.dart';
 
 class ScanQr extends StatefulWidget {
@@ -20,13 +21,16 @@ class _ScanQrState extends State<ScanQr> {
   List<dynamic> bookingList = List();
   List<dynamic> userList = List();
   String qrCode;
+  bool paymentStatus = false;
 
   Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
-    barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+    // String barcodeScanRes;
+    String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         "#ffffff", "Cancel", true, ScanMode.QR);
     Map map = jsonDecode(barcodeScanRes);
+    print(barcodeScanRes);
     Record record = Record.fromJson(map);
+    print(record.toString());
 
 //    setting Data received from QR code into firebase collection
     setState(() {
@@ -41,6 +45,10 @@ class _ScanQrState extends State<ScanQr> {
         "vendorFName": widget.userFName,
         "userLName": record.userSurname,
         "vendorLName": widget.userSurname,
+        "mealType": record.mealType,
+        "mealPrice":priceList[record.mealType].price,
+        "mealName":priceList[record.mealType].foodName,
+        "paymentStatus":paymentStatus,
       });
     });
   }

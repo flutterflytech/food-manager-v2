@@ -56,8 +56,10 @@ class _HomePageUserState extends State<HomePageUser> {
         userName: widget.userName,
         userSurname: widget.userSurname,
       ),
-      PaymentPage(),
-      MealPage(),
+      PaymentPage(
+        user: widget.user,
+      ),
+      MealPage(user: widget.user,),
       QRPage(
         user: widget.user,
         userEmpId: widget.userEmpId,
@@ -82,6 +84,18 @@ class _HomePageUserState extends State<HomePageUser> {
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
+          PopupMenuButton<String>(
+            icon: Icon(FontAwesomeIcons.filter),
+            onSelected: handleClick,
+            itemBuilder: (BuildContext context) {
+              return {'Paid', 'Unpaid'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
           IconButton(
             onPressed: () {
               logout();
@@ -147,5 +161,13 @@ class _HomePageUserState extends State<HomePageUser> {
 
   logout() {
     FirebaseAuth.instance.signOut();
+  }
+  void handleClick(String value) {
+    switch (value) {
+      case 'Paid':
+        break;
+      case 'Unpaid':
+        break;
+    }
   }
 }
