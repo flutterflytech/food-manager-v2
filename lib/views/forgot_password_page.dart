@@ -72,7 +72,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 //                    sending mail to reset password
                     if (_formKey.currentState.validate()) {
                       FirebaseAuth.instance
-                          .sendPasswordResetEmail(email:email)
+                          .sendPasswordResetEmail(email: email)
                           .then((_) {
                         AppUtils.showToast('Check Your Email to reset password',
                             Colors.green[700], Colors.white);

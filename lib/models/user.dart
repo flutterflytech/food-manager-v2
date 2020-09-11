@@ -15,10 +15,11 @@ class AllUserData {
   String userEmpId;
   String photoUrl;
   String qrData;
+  String uid;
   int userType;
 
   AllUserData(this.userFName, this.userSurname, this.userEmail, this.userEmpId,
-      this.photoUrl, this.qrData ,this.userType);
+      this.photoUrl, this.qrData,this.uid ,this.userType);
 
   AllUserData.formFireStore(Map<String, dynamic> data)
       : userFName = data['fname'],
@@ -26,6 +27,7 @@ class AllUserData {
         userEmail = data['email'],
         userEmpId = data['empId'],
         photoUrl = data['url'],
+        uid = data['uid'],
         userType = data['vendor'];
 
   AllUserData.fromJson(Map<String, dynamic> json){
@@ -50,4 +52,6 @@ class AllUserData {
 
 
 }
+
+
 

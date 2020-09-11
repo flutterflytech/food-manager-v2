@@ -9,7 +9,7 @@ import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
-import 'admin/screens/user_profile_page_admin.dart';
+import 'admin/screens/profile_page_admin.dart';
 
 class HomePage extends StatefulWidget {
   final String user;
@@ -42,9 +42,9 @@ class _HomePageState extends State<HomePage> {
     if (userType == 1) {
       _childern = [
         Dashboard(
-          user: widget.user,
+          userName: widget.user,
         ),
-        UserProfile(
+        UserProfileAdmin(
           user: widget.user,
         ),
       ];
@@ -53,11 +53,11 @@ class _HomePageState extends State<HomePage> {
     else {
       _childern = [
         Dashboard(
-          user: widget.user,
+          userName: widget.user,
         ),
         PaymentPage(),
         MealPage(),
-        UserProfile(
+        UserProfileAdmin(
           user: widget.user,
         ),
       ];

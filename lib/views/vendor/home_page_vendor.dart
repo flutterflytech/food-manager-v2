@@ -1,31 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_manager_v2/bloc/meal_bloc.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
+import 'package:food_manager_v2/models/price_list.dart';
 import 'package:food_manager_v2/views/login_page.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
+import 'package:food_manager_v2/views/vendor/screens/bookings_page.dart';
+import 'package:food_manager_v2/views/vendor/screens/dashboard_page_vendor.dart';
+import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
+import 'package:food_manager_v2/main.dart';
 
 class HomePageVendor extends StatefulWidget {
-  final String user;
   final String userName;
   final String userEmail;
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
+  final String user;
   final int userType;
 
   const HomePageVendor(
       {Key key,
-        this.user,
         this.userName,
         this.userEmail,
         this.userEmpId,
         this.userSurname,
         this.photoUrl,
-        this.userType})
+        this.userType,
+        this.user})
       : super(key: key);
 
   @override
@@ -42,6 +46,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
   int _currentIndex = 0;
   List<Widget> _childern = [];
 
+
   @override
   void initState() {
     super.initState();
@@ -49,14 +54,20 @@ class _HomePageVendorState extends State<HomePageVendor> {
 //    if user is not admin, these pages will be navigated
 
     _childern = [
-      DashboardUser(
+      DashboardVendor(
+        userName: widget.userName,
+        userSurname: widget.userSurname,
+      ),
+      ScanQr(
+        user: widget.user,
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
+
+      ),
+      Bookings(
         user: widget.user,
       ),
-
-      ScanQr(
-
-      ),
-      UserProfile(
+      UserProfileVendor(
         user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
@@ -74,6 +85,15 @@ class _HomePageVendorState extends State<HomePageVendor> {
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
+          IconButton(
+            onPressed: (){
+
+              openDialog(context);
+
+            },
+            icon: Icon(FontAwesomeIcons.rupeeSign),
+            tooltip: 'Set Price',
+          ),
           IconButton(
             onPressed: () {
               logout();
@@ -113,6 +133,14 @@ class _HomePageVendorState extends State<HomePageVendor> {
                 color: lightBlue1,
               ),
               title: Text('Scan QR', style: bold)),
+//        Bookings
+          BottomNavigationBarItem(
+              icon: Icon(
+                FontAwesomeIcons.bootstrap,
+                size: 30,
+                color: lightBlue1,
+              ),
+              title: Text('Bookings', style: bold)),
 //          Profile
           BottomNavigationBarItem(
               icon: Icon(
@@ -126,7 +154,81 @@ class _HomePageVendorState extends State<HomePageVendor> {
     );
   }
 
+  openDialog(BuildContext context) {
+    // final myController = TextEditingController();
+    PriceList dropdownValue = priceList[0];
+    final mealBloc = MealBloc();
+    return showDialog(
+        context: context,
+        child: Dialog(
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          child: Container(
+            height: 200,
+            width: 200,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(13.0),
+                  child: Text(
+                    'Price List',
+                    style: TextStyle(fontSize: 28.0),
+                  ),
+                ),
+                StreamBuilder<PriceList>(
+                  stream: mealBloc.choiceStream,
+                  builder: (context,snapshot){
+                    return Column(
+                      children: [
+                        DropdownButton<PriceList>(
+                          value: dropdownValue,
+                          icon: Icon(Icons.expand_more),
+                          iconSize: 24,
+                          elevation: 16,
+                          underline: Container(
+                            height: 2,
+                            color: Colors.blueAccent,
+                          ),
+                          onChanged: (PriceList newValue) {
+                            dropdownValue = newValue;
+                            mealBloc.choiceSink.add(dropdownValue);
+                            // print(dropdownValue.foodName);
+                            // print(dropdownValue.price);
+                          },
+                          items: priceList
+                              .map<DropdownMenuItem<PriceList>>((PriceList value) {
+                            return DropdownMenuItem<PriceList>(
+                              value: value,
+                              child: Text(value.foodName),
+                            );
+                          }).toList(),
+                        ),
+
+                        Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: Stack(
+                            children: [
+                              Image.asset('assets/images/price-tag.png', height: 70,width: 70,),
+                                  Padding(
+                                    padding: const EdgeInsets.all(28.0),
+                                    child: Text(dropdownValue.price.toString()),
+                                  )
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ));
+  }
+
   logout() {
     FirebaseAuth.instance.signOut();
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 }

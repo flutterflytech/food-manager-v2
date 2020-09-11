@@ -3,31 +3,31 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/views/admin/screens/user_profile_page_admin.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
+import 'package:food_manager_v2/views/user/screens/profile_page_users.dart';
+import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 
 class HomePageUser extends StatefulWidget {
-  final String user;
   final String userName;
   final String userEmail;
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
   final int userType;
+  final String user;
 
   const HomePageUser(
       {Key key,
-      this.user,
       this.userName,
       this.userEmail,
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.userType})
+      this.userType,
+      this.user})
       : super(key: key);
 
   @override
@@ -53,15 +53,20 @@ class _HomePageUserState extends State<HomePageUser> {
     _childern = [
       DashboardUser(
         user: widget.user,
+        userName: widget.userName,
+        userSurname: widget.userSurname,
       ),
-      PaymentPage(),
-      MealPage(),
+      PaymentPage(
+        user: widget.user,
+      ),
+      MealPage(user: widget.user,),
       QRPage(
+        user: widget.user,
+        userEmpId: widget.userEmpId,
         userFName: widget.userName,
         userSurname: widget.userSurname,
-        userEmpId: widget.userEmpId,
       ),
-      UserProfile(
+      UserProfileUsers(
         user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,
@@ -79,6 +84,18 @@ class _HomePageUserState extends State<HomePageUser> {
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
+          PopupMenuButton<String>(
+            icon: Icon(FontAwesomeIcons.filter),
+            onSelected: handleClick,
+            itemBuilder: (BuildContext context) {
+              return {'Paid', 'Unpaid'}.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList();
+            },
+          ),
           IconButton(
             onPressed: () {
               logout();
@@ -144,5 +161,13 @@ class _HomePageUserState extends State<HomePageUser> {
 
   logout() {
     FirebaseAuth.instance.signOut();
+  }
+  void handleClick(String value) {
+    switch (value) {
+      case 'Paid':
+        break;
+      case 'Unpaid':
+        break;
+    }
   }
 }
