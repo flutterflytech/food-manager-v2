@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,139 +37,182 @@ class HomePageUser extends StatefulWidget {
 }
 
 class _HomePageUserState extends State<HomePageUser> {
-  void onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
-
-  int _currentIndex = 0;
-  List<Widget> _childern = [];
+  StreamController<int> _paymentFilterStreamController =
+      StreamController<int>();
+  StreamController<int> _bottomTabController = StreamController<int>();
 
   @override
   void initState() {
     super.initState();
 
 //    if user is not admin, these pages will be navigated
+  }
 
-    _childern = [
-      DashboardUser(
-        user: widget.user,
-        userName: widget.userName,
-        userSurname: widget.userSurname,
-      ),
-      PaymentPage(
-        user: widget.user,
-      ),
-      MealPage(user: widget.user,),
-      QRPage(
-        user: widget.user,
-        userEmpId: widget.userEmpId,
-        userFName: widget.userName,
-        userSurname: widget.userSurname,
-      ),
-      UserProfileUsers(
-        user: widget.user,
-        fName: widget.userName,
-        photoUrl: widget.photoUrl,
-        userEmail: widget.userEmail,
-        userEmpId: widget.userEmpId,
-        userSurname: widget.userSurname,
-      ),
-    ];
+  @override
+  void dispose() {
+    _paymentFilterStreamController.close();
+    _bottomTabController.close();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Food Manager'),
-        centerTitle: true,
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            icon: Icon(FontAwesomeIcons.filter),
-            onSelected: handleClick,
-            itemBuilder: (BuildContext context) {
-              return {'Paid', 'Unpaid'}.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-          IconButton(
-            onPressed: () {
-              logout();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LogInPage(),
+    return StreamBuilder<Object>(
+        stream: _bottomTabController.stream,
+        initialData: 0,
+        builder: (context, snapshot) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Food Manager'),
+              centerTitle: true,
+              actions: <Widget>[
+                snapshot.data == 1
+                    ? PopupMenuButton<String>(
+                        icon: Icon(FontAwesomeIcons.filter),
+                        onSelected: handleClick,
+                        itemBuilder: (BuildContext context) {
+                          return {
+                            'All',
+                            'Paid',
+                            'Unpaid',
+                          }.map((String choice) {
+                            return PopupMenuItem<String>(
+                              value: choice,
+                              child: Text(choice),
+                            );
+                          }).toList();
+                        },
+                      )
+                    : Container(),
+                IconButton(
+                  onPressed: () {
+                    logout();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LogInPage(),
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.exit_to_app),
                 ),
-              );
-            },
-            icon: Icon(Icons.exit_to_app),
-          )
-        ],
-      ),
-      body: _childern[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        elevation: 0,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.home,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text(
-                'Home',
-                style: bold,
-              )),
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.moneyBill,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('Payment', style: bold)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.pizzaSlice,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('Meals', style: bold)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.qrcode,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('QR Code', style: bold)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                FontAwesomeIcons.houseUser,
-                size: 30,
-                color: lightBlue1,
-              ),
-              title: Text('Profile', style: bold)),
-        ],
-      ),
-    );
+              ],
+            ),
+            body: getChildWidgetOnBottomBarClicked(snapshot.data),
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: onTabTapped,
+              elevation: 0,
+              currentIndex: snapshot.data,
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      FontAwesomeIcons.home,
+                      size: 30,
+                      color: lightBlue1,
+                    ),
+                    title: Text(
+                      'Home',
+                      style: bold,
+                    )),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      FontAwesomeIcons.moneyBill,
+                      size: 30,
+                      color: lightBlue1,
+                    ),
+                    title: Text('Payment', style: bold)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      FontAwesomeIcons.pizzaSlice,
+                      size: 30,
+                      color: lightBlue1,
+                    ),
+                    title: Text('Meals', style: bold)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      FontAwesomeIcons.qrcode,
+                      size: 30,
+                      color: lightBlue1,
+                    ),
+                    title: Text('QR Code', style: bold)),
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      FontAwesomeIcons.houseUser,
+                      size: 30,
+                      color: lightBlue1,
+                    ),
+                    title: Text('Profile', style: bold)),
+              ],
+            ),
+          );
+        });
+  }
+
+  void onTabTapped(int index) {
+    _bottomTabController.sink.add(index);
   }
 
   logout() {
     FirebaseAuth.instance.signOut();
   }
+
   void handleClick(String value) {
+    print('Handle Click');
     switch (value) {
+      case 'All':
+        _paymentFilterStreamController.sink.add(0);
+        break;
       case 'Paid':
+        _paymentFilterStreamController.sink.add(1);
         break;
       case 'Unpaid':
+        _paymentFilterStreamController.sink.add(2);
         break;
+    }
+  }
+
+  getChildWidgetOnBottomBarClicked(int position) {
+    switch (position) {
+      case 0:
+        return DashboardUser(
+          user: widget.user,
+          userName: widget.userName,
+          userSurname: widget.userSurname,
+        );
+      case 1:
+        if (!_paymentFilterStreamController.isClosed) {
+          _paymentFilterStreamController.close();
+        }
+        _paymentFilterStreamController = StreamController<int>();
+        return StreamBuilder<Object>(
+            stream: _paymentFilterStreamController.stream,
+            initialData: 0,
+            builder: (context, snapshot) {
+              return PaymentPage(
+                user: widget.user,
+                filterState: snapshot.data,
+              );
+            });
+      case 2:
+        return MealPage(
+          user: widget.user,
+        );
+      case 3:
+        return QRPage(
+          user: widget.user,
+          userEmpId: widget.userEmpId,
+          userFName: widget.userName,
+          userSurname: widget.userSurname,
+        );
+      case 4:
+        return UserProfileUsers(
+          user: widget.user,
+          fName: widget.userName,
+          photoUrl: widget.photoUrl,
+          userEmail: widget.userEmail,
+          userEmpId: widget.userEmpId,
+          userSurname: widget.userSurname,
+        );
     }
   }
 }

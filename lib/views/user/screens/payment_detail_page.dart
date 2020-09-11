@@ -3,14 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/models/booking_list.dart';
+import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/loading_shimmer.dart';
 
 import '../../user_profile.dart';
 
 class PaymentPage extends StatefulWidget {
   final user;
+  final filterState;
 
-  const PaymentPage({Key key, this.user}) : super(key: key);
+  const PaymentPage({Key key, this.user, this.filterState}) : super(key: key);
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
@@ -31,22 +34,47 @@ class _PaymentPageState extends State<PaymentPage> {
             case ConnectionState.waiting:
               return LoadingListPage();
             default:
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                child: new ListView(
-                  children:
-                      snapshot.data.documents.map((DocumentSnapshot document) {
-                    return Container(child: _userCardView(document));
-                  }).toList(),
-                ),
-              );
+              {
+                List<BookingList> bookingList = snapshot.data.documents
+                    .map((e) => BookingList.fromJson(e.data))
+                    .toList();
+                switch (widget.filterState) {
+                  case 0:
+                    break;
+                  case 1:
+                    bookingList = bookingList.where((element) => element.paymentStatus).toList();
+                    break;
+                  case 2:
+                    bookingList = bookingList.where((element) => !element.paymentStatus).toList();
+                    break;
+                }
+                print('Call recieved');
+
+                // List<BookingList> filteredUnpaid = bookingList
+                //     .where((booking) => !booking.paymentStatus)
+                //     .toList();
+                // List<BookingList> filteredPaid = bookingList
+                //     .where((booking) => booking.paymentStatus)
+                //     .toList();
+
+                // List<BookingList> filteredList = filtered.toList();
+                // print(filteredUnpaid.toString());
+                // print(filteredPaid.toString());
+                return Padding(
+                    padding:
+                        const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                    child: new ListView(
+                        children: bookingList.map((BookingList document) {
+                      return Container(child: _userCardView(document));
+                    }).toList()));
+              }
           }
         },
       ),
     );
   }
 
-  _userCardView(document) {
+  _userCardView(BookingList document) {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
@@ -66,14 +94,14 @@ class _PaymentPageState extends State<PaymentPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          document['mealName'],
+                          document.mealName,
                           style: body20Black,
                         ),
                         SizedBox(
                           height: 10.0,
                         ),
                         Text(
-                          'From : ' + document['vendorFName'],
+                          'From : ' + document.vendorName,
                           style: body20Black,
                         )
                       ],
@@ -84,7 +112,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                   Container(
                       // width: screenData.width*0.85,
-                      child: document['paymentStatus'] == false
+                      child: document.paymentStatus == false
                           ? Image.asset(
                               'assets/images/unpaid.png',
                               height: 40,
@@ -103,7 +131,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Text(document['timeStamp'], style: font15),
+                        Text(document.timestamp, style: font15),
                         // Expanded(child: Container(),),
 
                         Stack(
@@ -125,7 +153,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     FontAwesomeIcons.rupeeSign,
                                     size: 20.0,
                                   ),
-                                  Text(document['mealPrice'].toString(),
+                                  Text(document.mealPrice.toString(),
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold))
