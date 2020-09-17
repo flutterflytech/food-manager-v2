@@ -45,6 +45,9 @@ Future signInWithEmailAndPassword(String email, String password) async{
   try{
     AuthResult result = await _auth.signInWithEmailAndPassword(email: email, password: password);
     FirebaseUser user = result.user;
+    // QuerySnapshot querySnapshot = await Firestore.instance.collection("account").getDocuments();
+    // var list = querySnapshot.documents;
+    // print(list);
     return user;
   }catch(error){
     print(error.toString());

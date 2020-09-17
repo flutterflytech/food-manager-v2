@@ -90,20 +90,23 @@ class _QRPageState extends State<QRPage> {
                           );
                         }).toList(),
                       ),
-                      QrImage(
-                        foregroundColor: darkBlue,
-                        data: userJson,
-                        version: QrVersions.auto,
-                        size: 350.0,
+                      Card(
+                        elevation:10.0,
+                        child: QrImage(
+                          foregroundColor: darkBlue,
+                          data: userJson,
+                          version: QrVersions.auto,
+                          size: 350.0,
+                        ),
                       ),
-                      SizedBox(height: 20.0,),
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       Text('Show this QR Code for $mealName to Food Vendor')
                     ],
                   );
                 }),
 //            Generating QR code in user login
-
-
           ],
         ),
       ),

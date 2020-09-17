@@ -12,8 +12,17 @@ class Record {
   int mealPrice;
   String mealName;
 
-  Record(this.userEmail, this.userEmpId, this.userSurname, this.userFName,
-      this.qrData, this.uid, this.time, this.mealType, this.mealPrice, this.mealName);
+  Record(
+      this.userEmail,
+      this.userEmpId,
+      this.userSurname,
+      this.userFName,
+      this.qrData,
+      this.uid,
+      this.time,
+      this.mealType,
+      this.mealPrice,
+      this.mealName);
 
   Record.fromMap(Map<String, dynamic> map)
       : uid = map['uid'],
@@ -22,7 +31,6 @@ class Record {
         userEmpId = map['empId'],
         userFName = map['fname'],
         userSurname = map['surname'];
-
 
   Record.fromJson(Map<String, dynamic> json) {
     uid = json['uid'];
@@ -48,7 +56,7 @@ class Record {
   }
 }
 
-class Bookings{
+class Bookings {
   final String date;
   final int sales;
 

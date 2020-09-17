@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
+import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
@@ -204,9 +206,14 @@ class _LogInPageState extends State<LogInPage> {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
       dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-      LoginService();
+      CollectionReference ref = Firestore.instance.collection('account');
+      QuerySnapshot eventsQuery = await ref.getDocuments();
+      print(eventsQuery.documents);
+      // LoginService();
       if (result != null) {
         showProgressDialog(false);
+         // Firestore.instance.collection('account').snapshots();
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -217,3 +224,4 @@ class _LogInPageState extends State<LogInPage> {
     }
   }
 }
+

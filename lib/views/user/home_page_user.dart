@@ -66,7 +66,7 @@ class _HomePageUserState extends State<HomePageUser> {
               title: Text('Food Manager'),
               centerTitle: true,
               actions: <Widget>[
-                snapshot.data == 1
+                snapshot.data == 0
                     ? PopupMenuButton<String>(
                         icon: Icon(FontAwesomeIcons.filter),
                         onSelected: handleClick,
@@ -74,7 +74,7 @@ class _HomePageUserState extends State<HomePageUser> {
                           return {
                             'All',
                             'Paid',
-                            'Unpaid',
+                            'Due',
                           }.map((String choice) {
                             return PopupMenuItem<String>(
                               value: choice,
@@ -104,16 +104,16 @@ class _HomePageUserState extends State<HomePageUser> {
               elevation: 0,
               currentIndex: snapshot.data,
               items: [
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      FontAwesomeIcons.home,
-                      size: 30,
-                      color: lightBlue1,
-                    ),
-                    title: Text(
-                      'Home',
-                      style: bold,
-                    )),
+                // BottomNavigationBarItem(
+                //     icon: Icon(
+                //       FontAwesomeIcons.home,
+                //       size: 30,
+                //       color: lightBlue1,
+                //     ),
+                //     title: Text(
+                //       'Home',
+                //       style: bold,
+                //     )),
                 BottomNavigationBarItem(
                     icon: Icon(
                       FontAwesomeIcons.moneyBill,
@@ -157,7 +157,7 @@ class _HomePageUserState extends State<HomePageUser> {
   }
 
   void handleClick(String value) {
-    print('Handle Click');
+    // print('Handle Click');
     switch (value) {
       case 'All':
         _paymentFilterStreamController.sink.add(0);
@@ -165,7 +165,7 @@ class _HomePageUserState extends State<HomePageUser> {
       case 'Paid':
         _paymentFilterStreamController.sink.add(1);
         break;
-      case 'Unpaid':
+      case 'Due':
         _paymentFilterStreamController.sink.add(2);
         break;
     }
@@ -173,13 +173,13 @@ class _HomePageUserState extends State<HomePageUser> {
 
   getChildWidgetOnBottomBarClicked(int position) {
     switch (position) {
+      // case 0:
+      //   return DashboardUser(
+      //     user: widget.user,
+      //     userName: widget.userName,
+      //     userSurname: widget.userSurname,
+      //   );
       case 0:
-        return DashboardUser(
-          user: widget.user,
-          userName: widget.userName,
-          userSurname: widget.userSurname,
-        );
-      case 1:
         if (!_paymentFilterStreamController.isClosed) {
           _paymentFilterStreamController.close();
         }
@@ -193,18 +193,18 @@ class _HomePageUserState extends State<HomePageUser> {
                 filterState: snapshot.data,
               );
             });
-      case 2:
+      case 1:
         return MealPage(
           user: widget.user,
         );
-      case 3:
+      case 2:
         return QRPage(
           user: widget.user,
           userEmpId: widget.userEmpId,
           userFName: widget.userName,
           userSurname: widget.userSurname,
         );
-      case 4:
+      case 3:
         return UserProfileUsers(
           user: widget.user,
           fName: widget.userName,

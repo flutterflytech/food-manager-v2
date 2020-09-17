@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/bloc/user_type.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/models/user.dart';
@@ -24,6 +25,7 @@ class UnverifiedUserUI extends StatefulWidget {
 }
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
+  UserType userValue = UserType();
   bool _isEmailVerified = false;
   int userType;
   String userName;
@@ -33,7 +35,8 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   String photoUrl;
   String uid;
   ProgressDialog pr;
-  int user;
+
+  // int user;
 
   @override
   void initState() {
@@ -59,17 +62,19 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _isEmailVerified
-          ? _getVerifiedUserData(
-              uid,
-              userName,
-              userSurname,
-              userEmpId,
-              userEmail,
-              photoUrl,
-            )
-          : _getUnverifiedUserScreen(),
-    );
+            body: _isEmailVerified
+                ? _getVerifiedUserData(
+                    userType,
+                    uid,
+                    userName,
+                    userSurname,
+                    userEmpId,
+                    userEmail,
+                    photoUrl,
+                  )
+                : _getUnverifiedUserScreen(),
+          );
+
   }
 
 // To check email id is verified or not
@@ -94,6 +99,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
 // This will be return on display if user has verified email id and login
   _getVerifiedUserData(
+    int userType,
     String uid,
     String userName,
     String userSurname,
@@ -123,7 +129,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           userEmail: userEmail,
           photoUrl: photoUrl,
         );
-
       case 2:
         return HomePageVendor(
           user: widget.user,
@@ -134,8 +139,12 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           photoUrl: photoUrl,
         );
 
+      // case 2:
       default:
-        return Center(child: Text('Oops, Something Unexpected occurred'));
+        return Center(child: Text('Switch Default Case'));
+
+      // default:
+      //   return Center(child: Text('Oops, Something Unexpected occurred'));
     }
   }
 
@@ -213,6 +222,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         var userData = AllUserData.formFireStore(snapshot.data);
         print('data from model class ' + userData.userType.toString());
         userType = userData.userType;
+        // userValue.userSink.add(userType);
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;
@@ -220,6 +230,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         photoUrl = userData.photoUrl;
         uid = userData.uid;
         print('!@#@@' + uid);
+        print(snapshot.data.toString());
 //        uid = snapshot.data['uid'];
 //        print('#@#' + widget.userType.toString());
       });

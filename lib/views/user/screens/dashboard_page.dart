@@ -9,7 +9,8 @@ class DashboardUser extends StatefulWidget {
   final String userSurname;
   final String user;
 
-  const DashboardUser({Key key, this.userName, this.userSurname, this.user}) : super(key: key);
+  const DashboardUser({Key key, this.userName, this.userSurname, this.user})
+      : super(key: key);
 
   @override
   _DashboardUserState createState() => _DashboardUserState();
@@ -17,7 +18,8 @@ class DashboardUser extends StatefulWidget {
 
 class _DashboardUserState extends State<DashboardUser> {
   List<charts.Series> seriesList;
-  static List<charts.Series<Bookings, String>> _createRandomData(){
+
+  static List<charts.Series<Bookings, String>> _createRandomData() {
     final random = Random();
     final desktopSalesData = [
       Bookings('MON', random.nextInt(10)),
@@ -38,8 +40,8 @@ class _DashboardUserState extends State<DashboardUser> {
         },
       )
     ];
-
   }
+
   barChart() {
     return charts.BarChart(
       seriesList,
@@ -47,11 +49,13 @@ class _DashboardUserState extends State<DashboardUser> {
       vertical: true,
     );
   }
+
   @override
   void initState() {
     seriesList = _createRandomData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -62,7 +66,10 @@ class _DashboardUserState extends State<DashboardUser> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('welcome' +' '+ widget.userName.toUpperCase() /*+' '+widget.userSurname.toUpperCase()*/),
+                Text('welcome' +
+                    ' ' +
+                    widget.userName
+                        .toUpperCase() /*+' '+widget.userSurname.toUpperCase()*/),
                 Container(
                   height: 200,
                   width: 200,

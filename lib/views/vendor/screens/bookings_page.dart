@@ -17,6 +17,7 @@ class Bookings extends StatefulWidget {
 
 class _BookingsState extends State<Bookings> {
   final paymentStatus = PaymentStatus();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,6 +50,10 @@ class _BookingsState extends State<Bookings> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      color: Colors.lime[100],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
+      ),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -94,7 +99,7 @@ class _BookingsState extends State<Bookings> {
                   width: screenData.width * 0.7,
                   child: Row(
                     children: <Widget>[
-                      Text(document['mealName'], style: body30),
+                      Text(document['mealName'], style: body20Black),
                       Expanded(
                         child: Container(),
                       ),
@@ -162,22 +167,22 @@ class _BookingsState extends State<Bookings> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           StreamBuilder<bool>(
-                            stream: paymentStatus.choiceStream,
-                            builder: (context, snapshot) {
-                              return IconButton(
-                                icon: Icon(
-                                  FontAwesomeIcons.checkCircle,
-                                  color: Colors.green,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-                                  paymentStatus.paymentConformation(document['bookingId']);
-                                  print(paymentStatus);
-                                  Navigator.pop(context);
-                                },
-                              );
-                            }
-                          ),
+                              stream: paymentStatus.choiceStream,
+                              builder: (context, snapshot) {
+                                return IconButton(
+                                  icon: Icon(
+                                    FontAwesomeIcons.checkCircle,
+                                    color: Colors.green,
+                                    size: 35,
+                                  ),
+                                  onPressed: () {
+                                    paymentStatus.paymentConformation(
+                                        document['bookingId']);
+                                    print(paymentStatus);
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }),
                           // SizedBox(width: 20.0,),
                           IconButton(
                             icon: Icon(
