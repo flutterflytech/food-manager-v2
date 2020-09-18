@@ -17,9 +17,9 @@ User Screens
 ====
 
 ### 1. User can See payment status of their bookings by using filter icon on AppBar
-### 1. User can See bookings with unique booking ID and other details.
-### 1. User can Generate QR code for all meal types and only one booking of an item is granted for a single day.
-### 1. User profile page.
+### 2. User can See bookings with unique booking ID and other details.
+### 3. User can Generate QR code for all meal types and only one booking of an item is granted for a single day.
+### 4. User profile page.
 
 <img src="assets/images/3.png" width="200"/> <img src="assets/images/3.1.png" width="200"/> <img src="assets/images/4.png" width="200"/> <img src="assets/images/5.png" width="200"/> <img src="assets/images/6.png" width="200"/>
 
