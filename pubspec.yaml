@@ -78,7 +78,7 @@ flutter:
     - assets/images/unpaid.png
     - assets/flare/scan_qr.flr
     - assets/flare/Success Check.flr
-    - assets/flare/failure.flr
+    - assets/flare/failure-check.flr
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

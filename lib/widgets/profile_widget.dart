@@ -48,6 +48,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
 
 // getting image from device or from camera
   Future<void> _getImage(ImageSource source) async {
+    // ignore: deprecated_member_use
     var image = await ImagePicker.pickImage(source: source);
     if (image != null) {
       setState(() {

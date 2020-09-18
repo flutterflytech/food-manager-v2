@@ -4,9 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
-import 'package:food_manager_v2/models/user.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
 import 'package:food_manager_v2/services/unverified_user.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
@@ -76,6 +74,9 @@ class _LogInPageState extends State<LogInPage> {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))
+        ),
         centerTitle: true,
         title: Text('LOGIN'),
       ),

@@ -7,7 +7,7 @@ class Record {
   String userFName;
   String qrData;
   String uid;
-  String time;
+  // String time;
   int mealType;
   int mealPrice;
   String mealName;
@@ -19,7 +19,7 @@ class Record {
       this.userFName,
       this.qrData,
       this.uid,
-      this.time,
+      // this.time,
       this.mealType,
       this.mealPrice,
       this.mealName);
@@ -34,7 +34,7 @@ class Record {
 
   Record.fromJson(Map<String, dynamic> json) {
     uid = json['uid'];
-    time = json['time'];
+    // time = json['time'];
     qrData = json['qrData'];
     userEmail = json['email'];
     userEmpId = json['empId'];
@@ -52,7 +52,7 @@ class Record {
 
   @override
   String toString() {
-    return 'Record{userEmail: $userEmail, userEmpId: $userEmpId, userSurname: $userSurname, userFName: $userFName, qrData: $qrData, uid: $uid, time: $time, mealType: $mealType, mealPrice: $mealPrice, mealName: $mealName}';
+    return 'Record{userEmail: $userEmail, userEmpId: $userEmpId, userSurname: $userSurname, userFName: $userFName, qrData: $qrData, uid: $uid,  mealType: $mealType, mealPrice: $mealPrice, mealName: $mealName}';
   }
 }
 

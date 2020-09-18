@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/bloc/meal_bloc.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/models/price_list.dart';
-import 'package:intl/intl.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../main.dart';
@@ -23,22 +21,17 @@ class QRPage extends StatefulWidget {
 }
 
 class _QRPageState extends State<QRPage> {
-  String timeStamp;
+  // String timeStamp;
   String userJson;
   int mealType = 0;
   String mealName = 'Lunch';
 
   @override
   void initState() {
-//    Extracting date in format yyyy-mm-dd
-    Timestamp timestamp = Timestamp.now();
-    var date = new DateTime.fromMillisecondsSinceEpoch(
-        timestamp.millisecondsSinceEpoch);
-    var formatter = new DateFormat('yyyy-MM-dd');
-    timeStamp = formatter.format(date);
+
 //    passing user QR data to JSON for future uses
     userJson =
-        '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
+        '{"uid": "${widget.user}","empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
     super.initState();
   }
 
@@ -76,7 +69,7 @@ class _QRPageState extends State<QRPage> {
 
                           // print(mealType);
                           userJson =
-                              '{"uid": "${widget.user}", "time": "$timeStamp","empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
+                              '{"uid": "${widget.user}", "empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
 
                           print(userJson);
                           // print(dropdownValue.foodName);

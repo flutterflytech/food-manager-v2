@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/bloc/payment_bloc.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
@@ -52,8 +53,9 @@ class _BookingsState extends State<Bookings> {
     return Card(
       color: Colors.lime[100],
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
-      ),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              topRight: Radius.circular(30.0))),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -96,17 +98,26 @@ class _BookingsState extends State<Bookings> {
                   height: 5,
                 ),
                 Container(
-                  width: screenData.width * 0.7,
+                  width: screenData.width * 0.71,
                   child: Row(
                     children: <Widget>[
                       Text(document['mealName'], style: body20Black),
                       Expanded(
                         child: Container(),
                       ),
-                      Text(
-                        document['timeStamp'],
-                        style: font22,
-                      )
+                     Column(
+                       crossAxisAlignment: CrossAxisAlignment.end,
+                       children: [
+                         Text(
+                           document['timeStamp'],
+                           style: font15,
+                         ),
+                         Text(
+                           document['bookingId'],
+
+                         )
+                       ],
+                     )
                     ],
                   ),
                 ),

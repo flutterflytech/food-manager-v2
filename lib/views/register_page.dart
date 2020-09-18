@@ -93,6 +93,9 @@ class _RegisterPageState extends State<RegisterPage> {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))
+        ),
         title: Text(title),
         centerTitle: true,
       ),

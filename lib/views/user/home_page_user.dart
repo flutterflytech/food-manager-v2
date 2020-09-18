@@ -10,7 +10,6 @@ import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
 import 'package:food_manager_v2/views/user/screens/profile_page_users.dart';
-import 'package:food_manager_v2/views/user/screens/dashboard_page.dart';
 
 class HomePageUser extends StatefulWidget {
   final String userName;
@@ -63,6 +62,10 @@ class _HomePageUserState extends State<HomePageUser> {
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.elliptical(80, 40),
+                      bottomRight: Radius.elliptical(80, 40))),
               title: Text('Food Manager'),
               centerTitle: true,
               actions: <Widget>[

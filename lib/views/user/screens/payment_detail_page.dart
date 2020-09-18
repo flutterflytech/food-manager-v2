@@ -6,10 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/bloc/payment_bloc.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/models/booking_list.dart';
-import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/loading_shimmer.dart';
 
-import '../../user_profile.dart';
 
 class PaymentPage extends StatefulWidget {
   final user;

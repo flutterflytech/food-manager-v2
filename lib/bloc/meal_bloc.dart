@@ -8,4 +8,8 @@ class MealBloc {
   StreamSink<PriceList> get choiceSink => stateStreamController.sink;
 
   Stream<PriceList> get choiceStream => stateStreamController.stream;
+
+  void dispose(){
+    stateStreamController.close();
+  }
 }

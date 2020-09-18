@@ -3,9 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:food_manager_v2/bloc/booking_status.dart';
 import 'package:food_manager_v2/main.dart';
 import 'package:food_manager_v2/models/record.dart';
-import 'package:food_manager_v2/widgets/open_dialog.dart';
+import 'package:food_manager_v2/utils/firebase_utils.dart';
 
 class ScanQr extends StatefulWidget {
   final String user;
@@ -20,12 +21,12 @@ class ScanQr extends StatefulWidget {
 }
 
 class _ScanQrState extends State<ScanQr> {
-  OpenDialog openDialog = OpenDialog();
+  BookingStatus bookingStatus = BookingStatus();
   List<dynamic> bookingList = List();
   List<dynamic> userList = List();
   String qrCode;
   bool paymentStatus = false;
-  bool bookingStatus;
+  int statusBooking ;
 
   Future<void> scanBarcodeNormal() async {
     // String barcodeScanRes;
@@ -41,17 +42,17 @@ class _ScanQrState extends State<ScanQr> {
     var a = await documentReference.get();
     List list = a["recentBookings"] as List;
 
-    if (a["lastBookingDate"] == record.time || a["lastBookingDate"] == null) {
+    if (a["lastBookingDate"] == getCurrentFireBaseServerDate() ||
+        a["lastBookingDate"] == null) {
       if (list.contains(record.mealType)) {
         print('Booking Error ');
-        setState(() {
-          bookingStatus = false;
-        });
 
+        bookingStatus.bookingStatusSink.add(statusBooking = 1);
+        openDialog(context);
       } else {
         list.add(record.mealType);
         documentReference.updateData({
-          "lastBookingDate": record.time,
+          "lastBookingDate": getCurrentFireBaseServerDate(),
           "recentBookings": list,
         });
         setState(() {
@@ -59,7 +60,7 @@ class _ScanQrState extends State<ScanQr> {
               Firestore.instance.collection('bookings').document();
           docRef.setData({
             "bookingId": docRef.documentID,
-            "timeStamp": record.time,
+            "timeStamp": getCurrentFireBaseServerDate(),
             "userId": record.uid,
             "vendorId": widget.user,
             "userFName": record.userFName,
@@ -71,14 +72,14 @@ class _ScanQrState extends State<ScanQr> {
             "mealName": priceList[record.mealType].foodName,
             "paymentStatus": paymentStatus,
           });
-          bookingStatus = true;
+          bookingStatus.bookingStatusSink.add(statusBooking = 0);
+          openDialog(context);
         });
-
       }
     } else {
       // list.add(record.mealType);
       documentReference.updateData({
-        "lastBookingDate": record.time,
+        "lastBookingDate": getCurrentFireBaseServerDate(),
         "recentBookings": [record.mealType],
       });
       setState(() {
@@ -86,7 +87,7 @@ class _ScanQrState extends State<ScanQr> {
             Firestore.instance.collection('bookings').document();
         docRef.setData({
           "bookingId": docRef.documentID,
-          "timeStamp": record.time,
+          "timeStamp": getCurrentFireBaseServerDate(),
           "userId": record.uid,
           "vendorId": widget.user,
           "userFName": record.userFName,
@@ -98,9 +99,9 @@ class _ScanQrState extends State<ScanQr> {
           "mealName": priceList[record.mealType].foodName,
           "paymentStatus": paymentStatus,
         });
-        bookingStatus = true;
+        bookingStatus.bookingStatusSink.add(statusBooking = 0);
+        openDialog(context);
       });
-
     }
   }
 
@@ -121,56 +122,102 @@ class _ScanQrState extends State<ScanQr> {
                 fit: BoxFit.cover,
                 color: Colors.blue[900],
               )),
-          GestureDetector(
-            onTap: () {
-              scanBarcodeNormal();
-              // if(bookingStatus==true){
-              //   OpenDialog();
-              // }else{
-              //   Dialog(
-              //     shape:
-              //     RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-              //     child: Container(
-              //         height: 200,
-              //         width: 200,
-              //         child: FlareActor(
-              //           // "assets/flare/scan_qr.flr",
-              //           // "assets/flare/Success Check.flr",
-              //           "assets/flare/failure.flr",
-              //           animation: "failure",
-              //           fit: BoxFit.cover,
-              //           color: Colors.blue[900],
-              //         )),
-              //   );
-              // }
-            },
-            child: Container(
-                width: 170,
-                height: 80,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      borderRadius: BorderRadius.circular(20.0),
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                            Colors.blue[100],
-                            Colors.blue[900],
-                            Colors.blue[100]
-                          ])),
-                  child: Center(
-                      child: Text(
-                    'Scan',
-                    style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
-                )),
+          StreamBuilder<int>(
+            stream: bookingStatus.bookingStatusStream,
+            builder: (context, snapshot) {
+              return GestureDetector(
+                onTap: () {
+                  scanBarcodeNormal();
+                },
+                child: Container(
+                    width: 170,
+                    height: 80,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(20.0),
+                          gradient: LinearGradient(
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                              colors: [
+                                Colors.blue[100],
+                                Colors.blue[900],
+                                Colors.blue[100]
+                              ])),
+                      child: Center(
+                          child: Text(
+                        'Scan',
+                        style: TextStyle(
+                            fontSize: 26,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      )),
+                    )),
+              );
+            }
           )
         ],
       ),
     );
   }
+
+  openDialog(BuildContext context) {
+    // Future.delayed(Duration(seconds: 4), () {
+    //   Navigator.of(context).pop(context);
+    // });
+    return showDialog(
+        context: context,
+
+        child: Dialog(
+          // insetAnimationDuration:const Duration(microseconds: 50),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          child: Container(
+            height: 200,
+            width: 200,
+            child: Padding(
+              padding: const EdgeInsets.all(13.0),
+              child: Container(
+                height: 100,
+                width: 100,
+                child: FlareActor( statusBooking == 0?
+                  "assets/flare/Success Check.flr":
+                "assets/flare/failure-check.flr",
+
+                  animation: "Untitled" ,
+                  fit: BoxFit.cover,
+                  // color: Colors.blue[900],
+                ),
+              ),
+            ),
+          ),
+        ));
+  }
+  // openDialogFailure(BuildContext context) {
+  //   return showDialog(
+  //       context: context,
+  //       child: Dialog(
+  //         insetAnimationDuration:const Duration(microseconds: 50),
+  //         shape:
+  //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+  //         child: Container(
+  //           height: 200,
+  //           width: 200,
+  //           child: Padding(
+  //             padding: const EdgeInsets.all(13.0),
+  //             child: Container(
+  //               height: 100,
+  //               width: 100,
+  //               child: FlareActor(
+  //
+  //                     "assets/flare/failure-check.flr",
+  //                 animation: "Untitled",
+  //                 fit: BoxFit.cover,
+  //                 // color: Colors.blue[900],
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ));
+  // }
 }

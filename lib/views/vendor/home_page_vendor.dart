@@ -7,7 +7,6 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/models/price_list.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/bookings_page.dart';
-import 'package:food_manager_v2/views/vendor/screens/dashboard_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
 import 'package:food_manager_v2/main.dart';
