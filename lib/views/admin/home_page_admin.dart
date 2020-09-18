@@ -68,10 +68,13 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
-
           //Action Button actions
           PopupMenuButton<String>(
             onSelected: handleClick,
@@ -129,7 +132,6 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 
-
   //Action Button Click Handler
   void handleClick(String value) {
     switch (value) {
@@ -141,11 +143,8 @@ class _HomePageAdminState extends State<HomePageAdmin> {
             ));
         break;
       case 'Registered Users':
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => RegisteredUsers()
-            ));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => RegisteredUsers()));
         break;
       case 'Registered Admins':
         Navigator.push(

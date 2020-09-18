@@ -17,6 +17,14 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
+        title: Text('Registered Admins'),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Container(
           child: Center(

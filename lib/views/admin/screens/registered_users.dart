@@ -19,6 +19,14 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
+      appBar:AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
+        title: Text('Registered Users'),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Container(
             child: SingleChildScrollView(

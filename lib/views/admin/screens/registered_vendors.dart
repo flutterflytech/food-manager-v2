@@ -17,6 +17,14 @@ class _RegisteredVendorsState extends State<RegisteredVendors> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
+        title: Text('Registered Vendors'),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Container(
           child: StreamBuilder<QuerySnapshot>(
