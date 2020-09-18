@@ -1,4 +1,4 @@
-// User Model
+// User Model for saving Logged In user Uid
 
 class User {
   final String uid;

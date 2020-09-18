@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+// Sets payment status if vendor approves from their end.
+
 class PaymentStatus {
   final stateStreamController = StreamController<bool>.broadcast();
 
@@ -20,6 +22,8 @@ class PaymentStatus {
     stateStreamController.close();
   }
 }
+
+// Add all due payments and streams for listener.
 
 class DueBalance {
   final stateStreamController = StreamController<int>.broadcast();

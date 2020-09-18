@@ -51,7 +51,6 @@ class _BookingsState extends State<Bookings> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
-      color: Colors.lime[100],
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
@@ -71,10 +70,7 @@ class _BookingsState extends State<Bookings> {
                   width: screenData.width * 0.7,
                   child: Row(
                     children: [
-                      Text(
-                          document['userFName'].toUpperCase() +
-                              ' ' +
-                              document['userLName'].toUpperCase(),
+                      Text(document['userFName'].toUpperCase() + ' ' + document['userLName'].toUpperCase(),
                           style: body22Black),
                       Expanded(
                         child: Container(),
@@ -157,8 +153,7 @@ class _BookingsState extends State<Bookings> {
     return showDialog(
         context: context,
         child: Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           child: Container(
             height: 150,
             child: Column(

@@ -28,23 +28,23 @@ dependencies:
   cloud_firestore: ^0.13.5
   fluttertoast: ^4.0.1
   progress_dialog: ^1.2.2
-  splashscreen: ^1.2.0
-  flutter_launcher_icons: ^0.7.5
+#  splashscreen: ^1.2.0
+#  flutter_launcher_icons: ^0.7.5
   font_awesome_flutter: ^8.8.1
   provider: ^4.0.4
   image_picker: ^0.6.6+1
   image_cropper: ^1.2.2
   firebase_storage: ^3.1.5
   path: ^1.6.4
-  firebase_database: ^3.1.6
-  flutter_image_compress: ^0.6.8
+#  firebase_database: ^3.1.6
+#  flutter_image_compress: ^0.6.8
   qr_flutter: ^3.2.0
-  qrscan: ^0.2.17
+#  qrscan: ^0.2.17
   flutter_barcode_scanner: ^1.0.1
   intl: ^0.16.1
   shared_preferences: ^0.5.7+3
   cached_network_image: ^2.2.0+1
-  charts_flutter: ^0.9.0
+#  charts_flutter: ^0.9.0
   shimmer: ^1.1.1
   json_serializable: ^3.4.1
   flare_flutter: ^2.0.6

@@ -1,3 +1,6 @@
+
+// Model for Generating QR based on user Choice and Showing PriceList to Vendor
+
 class PriceList {
   int foodType;
   String foodName;

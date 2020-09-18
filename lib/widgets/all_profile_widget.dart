@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
-import 'package:food_manager_v2/services/edit_profile.dart';
+import 'package:food_manager_v2/widgets/edit_profile.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/widgets/custom_text_widget_user_profile.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -42,11 +42,11 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
 
   @override
   void initState() {
-//    var userData = AllUserData.formFireStore();
     super.initState();
   }
 
 // getting image from device or from camera
+
   Future<void> _getImage(ImageSource source) async {
     // ignore: deprecated_member_use
     var image = await ImagePicker.pickImage(source: source);
@@ -79,7 +79,6 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
     StorageUploadTask uploadTask = storageReference.putFile(_imageFile);
     var downUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
     var url = downUrl.toString();
-//    print('$url');
     await uploadTask.onComplete;
     setState(() {
       imageUrl = url.toString();
@@ -237,7 +236,6 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
     );
   }
 
-// Fetching data of Logged In user
 
 //  Button action to select image from camera or from storage
   _onButtonPressed() {

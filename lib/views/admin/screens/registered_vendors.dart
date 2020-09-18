@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 
-import '../../user_profile.dart';
+import '../../../widgets/user_profile.dart';
 
 class RegisteredVendors extends StatefulWidget {
   final String user;

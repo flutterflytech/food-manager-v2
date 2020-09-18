@@ -5,7 +5,7 @@ import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
-import 'package:food_manager_v2/services/unverified_user.dart';
+import 'package:food_manager_v2/views/unverified_user.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
@@ -23,7 +23,6 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final AuthService _auth = AuthService();
 
-//  AllUserData _userData = AllUserData();
   Map userData;
   final _formKey = GlobalKey<FormState>();
   String email = '';
@@ -210,10 +209,8 @@ class _LogInPageState extends State<LogInPage> {
       CollectionReference ref = Firestore.instance.collection('account');
       QuerySnapshot eventsQuery = await ref.getDocuments();
       print(eventsQuery.documents);
-      // LoginService();
       if (result != null) {
         showProgressDialog(false);
-         // Firestore.instance.collection('account').snapshots();
 
         Navigator.pushReplacement(
           context,

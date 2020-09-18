@@ -78,8 +78,9 @@ class _HomePageVendorState extends State<HomePageVendor> {
     return Scaffold(
       appBar: AppBar(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))
-        ),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
@@ -151,7 +152,6 @@ class _HomePageVendorState extends State<HomePageVendor> {
   }
 
   openDialog(BuildContext context) {
-    // final myController = TextEditingController();
     PriceList dropdownValue = priceList[0];
     final mealBloc = MealBloc();
     return showDialog(
@@ -188,8 +188,6 @@ class _HomePageVendorState extends State<HomePageVendor> {
                           onChanged: (PriceList newValue) {
                             dropdownValue = newValue;
                             mealBloc.choiceSink.add(dropdownValue);
-                            // print(dropdownValue.foodName);
-                            // print(dropdownValue.price);
                           },
                           items: priceList.map<DropdownMenuItem<PriceList>>(
                               (PriceList value) {

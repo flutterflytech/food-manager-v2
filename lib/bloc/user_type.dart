@@ -1,5 +1,7 @@
 import 'dart:async';
 
+// It provides user type to display relevant User Screen
+
 class UserType {
   final stateStreamController = StreamController<int>.broadcast();
 

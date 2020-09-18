@@ -13,7 +13,7 @@ import 'package:food_manager_v2/views/user/home_page_user.dart';
 import 'package:food_manager_v2/views/vendor/home_page_vendor.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'firebase_services/login_service.dart';
+import '../services/firebase_services/login_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
@@ -35,8 +35,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   String photoUrl;
   String uid;
   ProgressDialog pr;
-
-  // int user;
 
   @override
   void initState() {
@@ -139,12 +137,8 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           photoUrl: photoUrl,
         );
 
-      // case 2:
       default:
         return Center(child: Text('Switch Default Case'));
-
-      // default:
-      //   return Center(child: Text('Oops, Something Unexpected occurred'));
     }
   }
 
@@ -222,7 +216,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         var userData = AllUserData.formFireStore(snapshot.data);
         print('data from model class ' + userData.userType.toString());
         userType = userData.userType;
-        // userValue.userSink.add(userType);
         userName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;
@@ -231,8 +224,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         uid = userData.uid;
         print('!@#@@' + uid);
         print(snapshot.data.toString());
-//        uid = snapshot.data['uid'];
-//        print('#@#' + widget.userType.toString());
       });
     }
   }

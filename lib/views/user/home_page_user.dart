@@ -40,12 +40,6 @@ class _HomePageUserState extends State<HomePageUser> {
       StreamController<int>();
   StreamController<int> _bottomTabController = StreamController<int>();
 
-  @override
-  void initState() {
-    super.initState();
-
-//    if user is not admin, these pages will be navigated
-  }
 
   @override
   void dispose() {
@@ -160,7 +154,6 @@ class _HomePageUserState extends State<HomePageUser> {
   }
 
   void handleClick(String value) {
-    // print('Handle Click');
     switch (value) {
       case 'All':
         _paymentFilterStreamController.sink.add(0);

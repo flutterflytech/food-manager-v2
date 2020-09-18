@@ -36,7 +36,6 @@ class HomePageAdmin extends StatefulWidget {
 }
 
 class _HomePageAdminState extends State<HomePageAdmin> {
-//  final AuthService _auth = AuthService();
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -49,6 +48,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   @override
   void initState() {
     super.initState();
+
 // If user is admin, these pages will be Navigated
 
     _childern = [
@@ -71,6 +71,8 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
+
+          //Action Button actions
           PopupMenuButton<String>(
             onSelected: handleClick,
             itemBuilder: (BuildContext context) {
@@ -91,11 +93,13 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         ],
       ),
       body: _childern[_currentIndex],
+      //Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         elevation: 0,
         currentIndex: _currentIndex,
         items: [
+          //Dashboard
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.home,
@@ -106,6 +110,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                 'Home',
                 style: bold,
               )),
+          //User Profile
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -124,43 +129,30 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 
-  // ignore: non_constant_identifier_names
-  UserPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredUsers(),
-        ));
-  }
 
-  // ignore: non_constant_identifier_names
-  VendorPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredVendors(),
-        ));
-  }
-
-  // ignore: non_constant_identifier_names
-  AdminPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredAdmins(),
-        ));
-  }
-
+  //Action Button Click Handler
   void handleClick(String value) {
     switch (value) {
       case 'Registered Vendors':
-        VendorPage();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisteredVendors(),
+            ));
         break;
       case 'Registered Users':
-        UserPage();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RegisteredUsers()
+            ));
         break;
       case 'Registered Admins':
-        AdminPage();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisteredAdmins(),
+            ));
         break;
       case 'Logout':
         logout();

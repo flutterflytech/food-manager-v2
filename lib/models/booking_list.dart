@@ -1,10 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 
+// Model Class for storing List-card details
+
 @JsonSerializable(nullable: false)
 class BookingList {
-  // String bookingId;
-  // String userId;
-  // String vendorId;
   String mealName;
   String vendorName;
   String timestamp;
@@ -19,9 +18,6 @@ class BookingList {
       this.mealPrice});
 
   factory BookingList.fromJson(Map<String, dynamic> json) => BookingList(
-      // bookingId: json["bookingId"],
-      // userId: json["userId"],
-      // vendorId: json["vendorId"],
       mealName: json["mealName"],
       vendorName: json["vendorFName"],
       timestamp: json["timeStamp"],
@@ -32,6 +28,4 @@ class BookingList {
   String toString() {
     return 'BookingList{ mealName: $mealName, vendorName: $vendorName, timestamp: $timestamp, paymentStatus: $paymentStatus, mealPrice: $mealPrice}';
   }
-// Map<String, dynamic> toJson() => _BookingListToJson(this);
-
 }

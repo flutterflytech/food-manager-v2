@@ -2,7 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-
+ // fetching firebase timestamp to save in DB.
  getCurrentFireBaseServerDate() {
   Timestamp timestamp = Timestamp.now();
   var date = new DateTime.fromMillisecondsSinceEpoch(timestamp.millisecondsSinceEpoch);

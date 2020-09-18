@@ -26,16 +26,13 @@ class _ScanQrState extends State<ScanQr> {
   List<dynamic> userList = List();
   String qrCode;
   bool paymentStatus = false;
-  int statusBooking ;
+  int statusBooking;
 
   Future<void> scanBarcodeNormal() async {
-    // String barcodeScanRes;
     String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
         "#ffffff", "Cancel", true, ScanMode.QR);
     Map map = jsonDecode(barcodeScanRes);
-    // print(barcodeScanRes);
     Record record = Record.fromJson(map);
-    // print(record.toString());
 
     DocumentReference documentReference =
         Firestore.instance.collection('account').document(record.uid);
@@ -77,7 +74,6 @@ class _ScanQrState extends State<ScanQr> {
         });
       }
     } else {
-      // list.add(record.mealType);
       documentReference.updateData({
         "lastBookingDate": getCurrentFireBaseServerDate(),
         "recentBookings": [record.mealType],
@@ -116,46 +112,43 @@ class _ScanQrState extends State<ScanQr> {
               width: MediaQuery.of(context).size.width * 1.0,
               child: FlareActor(
                 "assets/flare/scan_qr.flr",
-                // "assets/flare/Success Check.flr",
-                // "assets/flare/failure.flr",
                 animation: "scan",
                 fit: BoxFit.cover,
                 color: Colors.blue[900],
               )),
           StreamBuilder<int>(
-            stream: bookingStatus.bookingStatusStream,
-            builder: (context, snapshot) {
-              return GestureDetector(
-                onTap: () {
-                  scanBarcodeNormal();
-                },
-                child: Container(
-                    width: 170,
-                    height: 80,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(20.0),
-                          gradient: LinearGradient(
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.topCenter,
-                              colors: [
-                                Colors.blue[100],
-                                Colors.blue[900],
-                                Colors.blue[100]
-                              ])),
-                      child: Center(
-                          child: Text(
-                        'Scan',
-                        style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+              stream: bookingStatus.bookingStatusStream,
+              builder: (context, snapshot) {
+                return GestureDetector(
+                  onTap: () {
+                    scanBarcodeNormal();
+                  },
+                  child: Container(
+                      width: 170,
+                      height: 80,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(20.0),
+                            gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  Colors.blue[100],
+                                  Colors.blue[900],
+                                  Colors.blue[100]
+                                ])),
+                        child: Center(
+                            child: Text(
+                          'Scan',
+                          style: TextStyle(
+                              fontSize: 26,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        )),
                       )),
-                    )),
-              );
-            }
-          )
+                );
+              })
         ],
       ),
     );
@@ -167,9 +160,7 @@ class _ScanQrState extends State<ScanQr> {
     // });
     return showDialog(
         context: context,
-
         child: Dialog(
-          // insetAnimationDuration:const Duration(microseconds: 50),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
           child: Container(
@@ -180,44 +171,17 @@ class _ScanQrState extends State<ScanQr> {
               child: Container(
                 height: 100,
                 width: 100,
-                child: FlareActor( statusBooking == 0?
-                  "assets/flare/Success Check.flr":
-                "assets/flare/failure-check.flr",
+                child: FlareActor(
+                  statusBooking == 0
+                      ? "assets/flare/Success Check.flr"
+                      : "assets/flare/failure-check.flr",
 
-                  animation: "Untitled" ,
+                  animation: "Untitled",
                   fit: BoxFit.cover,
-                  // color: Colors.blue[900],
                 ),
               ),
             ),
           ),
         ));
   }
-  // openDialogFailure(BuildContext context) {
-  //   return showDialog(
-  //       context: context,
-  //       child: Dialog(
-  //         insetAnimationDuration:const Duration(microseconds: 50),
-  //         shape:
-  //         RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-  //         child: Container(
-  //           height: 200,
-  //           width: 200,
-  //           child: Padding(
-  //             padding: const EdgeInsets.all(13.0),
-  //             child: Container(
-  //               height: 100,
-  //               width: 100,
-  //               child: FlareActor(
-  //
-  //                     "assets/flare/failure-check.flr",
-  //                 animation: "Untitled",
-  //                 fit: BoxFit.cover,
-  //                 // color: Colors.blue[900],
-  //               ),
-  //             ),
-  //           ),
-  //         ),
-  //       ));
-  // }
 }

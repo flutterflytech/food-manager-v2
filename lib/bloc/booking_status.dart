@@ -1,5 +1,6 @@
-import 'dart:async';
+// Booking Status to show ScanResult PopUp dialog. It returns an Integer value into Stream for the listener.
 
+import 'dart:async';
 
 class BookingStatus {
   final stateStreamController = StreamController<int>.broadcast();
@@ -8,7 +9,7 @@ class BookingStatus {
 
   Stream<int> get bookingStatusStream => stateStreamController.stream;
 
-  void dispose(){
+  void dispose() {
     stateStreamController.close();
   }
 }

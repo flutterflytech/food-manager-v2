@@ -28,8 +28,6 @@ class _PaymentPageState extends State<PaymentPage> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Expanded(
-          // color: Colors.amber,
-          // height: screenData.height*0.79,
           child: StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
                 .collection('bookings')
@@ -70,8 +68,6 @@ class _PaymentPageState extends State<PaymentPage> {
                             prev +
                             (element.paymentStatus ? 0 : element.mealPrice));
                     dueBalance.dueSink.add(sum);
-                    print(sum); // print('Call received');
-
                     return Padding(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: new ListView(

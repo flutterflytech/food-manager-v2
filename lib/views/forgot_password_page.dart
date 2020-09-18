@@ -18,6 +18,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))),
         title: Text('Forgot Password?'),
       ),
       body: SafeArea(

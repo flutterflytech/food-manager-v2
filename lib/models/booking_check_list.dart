@@ -1,7 +1,7 @@
-class BookingCheckList {
-  int mealType;
-
-  BookingCheckList(this.mealType);
-
-
-}
+// class BookingCheckList {
+//   int mealType;
+//
+//   BookingCheckList(this.mealType);
+//
+//
+// }

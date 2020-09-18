@@ -28,8 +28,6 @@ class _RegisterPageState extends State<RegisterPage> {
   String email = '';
   String password = '';
   String url = '';
-
-  // String uid = '';
   int vendor = 0;
 
   @override
