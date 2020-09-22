@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
@@ -92,8 +93,9 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       appBar: AppBar(
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))
-        ),
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
         title: Text(title),
         centerTitle: true,
       ),
@@ -221,29 +223,20 @@ class _RegisterPageState extends State<RegisterPage> {
   void onRegisterClick() async {
     if (_formKey.currentState.validate()) {
       showProgressDialog(true);
-      dynamic result = await _auth.registerWithEmailAndPassword(
-          email, password, empId, firstName, lastName, vendor, url);
-      Navigator.pop(context);
-      AppUtils.showToast(registerToast, green, white);
-      if (result == null) {
-        setState(() {
-          error = registerErrorToast;
-        });
-      } else {
-        Navigator.pop(context);
-      }
-//      sending  verification mail
-      FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password)
-          .then((currentUser) {
-        try {
-          currentUser.user.sendEmailVerification();
-        } catch (e) {
+      try {
+        var data = await _auth.registerWithEmailAndPassword(
+            email, password, empId, firstName, lastName, vendor, url);
+
+        if (data is PlatformException) {
+          AppUtils.showToast(data.message, red, white);
+          Navigator.pop(context);
           showProgressDialog(false);
-          AppUtils.showToast(sendMailErrorToast, red, white);
-          print(e.message);
+        } else {
+          AppUtils.showToast(registerToast, green, white);
+          Navigator.pop(context);
+          showProgressDialog(false);
         }
-      });
+      } catch (e) {}
     }
   }
 }

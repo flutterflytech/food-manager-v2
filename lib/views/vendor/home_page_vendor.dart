@@ -5,6 +5,7 @@ import 'package:food_manager_v2/bloc/meal_bloc.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/models/price_list.dart';
+import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/bookings_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
@@ -42,6 +43,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
 
   int _currentIndex = 0;
   List<Widget> _children = [];
+  LogoutService logoutService = LogoutService();
 
   @override
   void initState() {
@@ -76,6 +78,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -93,13 +96,17 @@ class _HomePageVendorState extends State<HomePageVendor> {
           ),
           IconButton(
             onPressed: () {
-              logout();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => LogInPage(),
-                ),
-              );
+              try {
+                logoutService.logoutService();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => LogInPage(),
+                  ),
+                );
+              } catch (e) {
+                print("@@@@@@ERROR#####" + e.toString());
+              }
             },
             icon: Icon(Icons.exit_to_app),
           )
@@ -221,11 +228,5 @@ class _HomePageVendorState extends State<HomePageVendor> {
             ),
           ),
         ));
-  }
-
-  logout() {
-    FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LogInPage()));
   }
 }

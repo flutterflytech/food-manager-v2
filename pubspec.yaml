@@ -48,6 +48,7 @@ dependencies:
   shimmer: ^1.1.1
   json_serializable: ^3.4.1
   flare_flutter: ^2.0.6
+  rxdart: ^0.24.1
 
 dev_dependencies:
   flutter_test:

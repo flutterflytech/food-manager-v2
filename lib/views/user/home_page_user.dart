@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
@@ -36,6 +37,7 @@ class HomePageUser extends StatefulWidget {
 }
 
 class _HomePageUserState extends State<HomePageUser> {
+  LogoutService logoutService = LogoutService();
   StreamController<int> _paymentFilterStreamController =
       StreamController<int>();
   StreamController<int> _bottomTabController = StreamController<int>();
@@ -83,13 +85,18 @@ class _HomePageUserState extends State<HomePageUser> {
                     : Container(),
                 IconButton(
                   onPressed: () {
-                    logout();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LogInPage(),
-                      ),
-                    );
+                    try{
+                      logoutService.logoutService();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LogInPage(),
+                        ),
+                      );
+                    }catch(e){
+                      print("EERROORR"+e.toString());
+                    }
+
                   },
                   icon: Icon(Icons.exit_to_app),
                 ),
@@ -149,9 +156,6 @@ class _HomePageUserState extends State<HomePageUser> {
     _bottomTabController.sink.add(index);
   }
 
-  logout() {
-    FirebaseAuth.instance.signOut();
-  }
 
   void handleClick(String value) {
     switch (value) {

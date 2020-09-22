@@ -2,7 +2,7 @@ import 'dart:async';
 
 // It provides user type to display relevant User Screen
 
-class UserType {
+class UserTypeBLoC {
   final stateStreamController = StreamController<int>.broadcast();
 
   StreamSink<int> get userSink => stateStreamController.sink;

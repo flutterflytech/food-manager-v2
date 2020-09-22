@@ -13,7 +13,7 @@ import 'package:food_manager_v2/views/user/home_page_user.dart';
 import 'package:food_manager_v2/views/vendor/home_page_vendor.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../services/firebase_services/login_service.dart';
+import '../services/firebase_services/login_user_data_service.dart';
 
 class UnverifiedUserUI extends StatefulWidget {
   final String user;
@@ -25,7 +25,7 @@ class UnverifiedUserUI extends StatefulWidget {
 }
 
 class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
-  UserType userValue = UserType();
+  UserTypeBLoC userValue = UserTypeBLoC();
   bool _isEmailVerified = false;
   int userType;
   String userName;
@@ -59,10 +59,13 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return StreamBuilder<int>(
+        stream: userValue.userStream,
+        builder: (context, snapshot) {
+          return Scaffold(
             body: _isEmailVerified
                 ? _getVerifiedUserData(
-                    userType,
+                    snapshot.data,
                     uid,
                     userName,
                     userSurname,
@@ -72,7 +75,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
                   )
                 : _getUnverifiedUserScreen(),
           );
-
+        });
   }
 
 // To check email id is verified or not
@@ -119,7 +122,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
         );
 
       case 1:
-        return HomePageAdmin(
+        return RegisteredList(
           user: widget.user,
           userName: userName,
           userSurname: userSurname,
@@ -209,12 +212,13 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
   getLoggedInUserData() async {
-    LoginService loginService = LoginService();
-    DocumentSnapshot snapshot = await loginService.loginUserData(widget.user);
+    LoginUserData loginUserData = LoginUserData();
+    DocumentSnapshot snapshot = await loginUserData.loginUserData(widget.user);
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
         print('data from model class ' + userData.userType.toString());
+        userValue.userSink.add(userData.userType);
         userType = userData.userType;
         userName = userData.userFName;
         userEmail = userData.userEmail;

@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_admins.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_users.dart';
+import 'package:food_manager_v2/views/admin/screens/registered_list.dart';
 import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_vendors.dart';
 
 import '../login_page.dart';
 
-class HomePageAdmin extends StatefulWidget {
+class RegisteredList extends StatefulWidget {
   final String user;
   final String userName;
   final String userEmail;
@@ -20,7 +19,7 @@ class HomePageAdmin extends StatefulWidget {
   final String photoUrl;
   final String uid;
 
-  const HomePageAdmin(
+  const RegisteredList(
       {Key key,
       this.user,
       this.userName,
@@ -32,10 +31,12 @@ class HomePageAdmin extends StatefulWidget {
       : super(key: key);
 
   @override
-  _HomePageAdminState createState() => _HomePageAdminState();
+  _RegisteredListState createState() => _RegisteredListState();
 }
 
-class _HomePageAdminState extends State<HomePageAdmin> {
+class _RegisteredListState extends State<RegisteredList> {
+  LogoutService logoutService = LogoutService();
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -126,12 +127,6 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     );
   }
 
-  logout() {
-    FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LogInPage()));
-  }
-
   //Action Button Click Handler
   void handleClick(String value) {
     switch (value) {
@@ -139,22 +134,29 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RegisteredVendors(),
+              builder: (context) => RegisteredAdmins(userType: 2,appBarTitle: "Registered Vendors",),
             ));
         break;
       case 'Registered Users':
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => RegisteredUsers()));
+            MaterialPageRoute(builder: (context) => RegisteredAdmins(appBarTitle: "Registered Users",userType: 0,)));
         break;
       case 'Registered Admins':
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RegisteredAdmins(),
+              builder: (context) => RegisteredAdmins(userType: 1,appBarTitle: "Registered Admins",),
             ));
         break;
       case 'Logout':
-        logout();
+        try {
+          logoutService.logoutService();
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => LogInPage()));
+        } catch (e) {
+          print("EERROORR" + e.toString());
+        }
+
         break;
       case 'App Info':
         showAboutDialog(

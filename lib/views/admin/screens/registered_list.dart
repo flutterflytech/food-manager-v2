@@ -4,61 +4,60 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 
 import '../../../widgets/user_profile.dart';
 
-class RegisteredUsers extends StatefulWidget {
+class RegisteredAdmins extends StatefulWidget {
   final String user;
   final int userType;
+  final String appBarTitle;
 
-  const RegisteredUsers({Key key, this.user, this.userType}) : super(key: key);
+  const RegisteredAdmins({Key key, this.user, this.userType, this.appBarTitle})
+      : super(key: key);
 
   @override
-  _RegisteredUsersState createState() => _RegisteredUsersState();
+  _RegisteredAdminsState createState() => _RegisteredAdminsState();
 }
 
-class _RegisteredUsersState extends State<RegisteredUsers> {
+class _RegisteredAdminsState extends State<RegisteredAdmins> {
   @override
   Widget build(BuildContext context) {
-    var screenData = MediaQuery.of(context).size;
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.elliptical(80, 40),
                 bottomRight: Radius.elliptical(80, 40))),
-        title: Text('Registered Users'),
+        title: Text(widget.appBarTitle),
         centerTitle: true,
       ),
       body: SafeArea(
         child: Container(
-            child: SingleChildScrollView(
-          child: Container(
-              height: screenData.height * 1.0,
+          child: Center(
               child: StreamBuilder<QuerySnapshot>(
-                stream: Firestore.instance
-                    .collection('account')
-                    .where("vendor", isEqualTo: 0)
-                    .snapshots(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.hasError)
-                    return new Text('Error: ${snapshot.error}');
-                  switch (snapshot.connectionState) {
-                    case ConnectionState.waiting:
-                      return new Text('Loading...');
-                    default:
-                      return Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 10, left: 10, right: 10),
-                        child: new ListView(
-                          children: snapshot.data.documents
-                              .map((DocumentSnapshot document) {
-                            return Container(child: _userCardView(document));
-                          }).toList(),
-                        ),
-                      );
-                  }
-                },
-              )),
-        )),
+            stream: Firestore.instance
+                .collection('account')
+                .where("vendor", isEqualTo: widget.userType)
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.hasError)
+                return new Text('Error: ${snapshot.error}');
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return new Text('Loading...');
+                default:
+                  return Padding(
+                    padding:
+                        const EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                    child: new ListView(
+                      children: snapshot.data.documents
+                          .map((DocumentSnapshot document) {
+                        return Container(child: _userCardView(document));
+                      }).toList(),
+                    ),
+                  );
+              }
+            },
+          )),
+        ),
       ),
     );
   }
@@ -90,16 +89,17 @@ class _RegisteredUsersState extends State<RegisteredUsers> {
                     child: Container(
                         height: 60,
                         width: 60,
-                        child: document['url'] == null
-                            ? Image(
-                                image: NetworkImage(
-                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                                fit: BoxFit.fill,
-                              )
-                            : Image(
-                                image: NetworkImage(document['url']),
-                                fit: BoxFit.fill,
-                              ) /*,*/
+                        child:
+                            document['url'] == null || document['url'].isEmpty
+                                ? Image(
+                                    image: NetworkImage(
+                                        'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                    fit: BoxFit.fill,
+                                  )
+                                : Image(
+                                    image: NetworkImage(document['url']),
+                                    fit: BoxFit.fill,
+                                  ) /*,*/
                         )),
                 SizedBox(
                   width: 20,

@@ -104,84 +104,87 @@ class _ScanQrState extends State<ScanQr> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-              height: MediaQuery.of(context).size.width * 1.0,
-              width: MediaQuery.of(context).size.width * 1.0,
-              child: FlareActor(
-                "assets/flare/scan_qr.flr",
-                animation: "scan",
-                fit: BoxFit.cover,
-                color: Colors.blue[900],
-              )),
-          StreamBuilder<int>(
-              stream: bookingStatus.bookingStatusStream,
-              builder: (context, snapshot) {
-                return GestureDetector(
-                  onTap: () {
-                    scanBarcodeNormal();
-                  },
-                  child: Container(
-                      width: 170,
-                      height: 80,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(20.0),
-                            gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                                colors: [
-                                  Colors.blue[100],
-                                  Colors.blue[900],
-                                  Colors.blue[100]
-                                ])),
-                        child: Center(
-                            child: Text(
-                          'Scan',
-                          style: TextStyle(
-                              fontSize: 26,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+                height: MediaQuery.of(context).size.width * 1.0,
+                width: MediaQuery.of(context).size.width * 1.0,
+                child: FlareActor(
+                  "assets/flare/scan_qr.flr",
+                  animation: "scan",
+                  fit: BoxFit.cover,
+                  color: Colors.blue[900],
+                )),
+            StreamBuilder<int>(
+                stream: bookingStatus.bookingStatusStream,
+                builder: (context, snapshot) {
+                  return GestureDetector(
+                    onTap: () {
+                      scanBarcodeNormal();
+                    },
+                    child: Container(
+                        width: 170,
+                        height: 80,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(20.0),
+                              gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: [
+                                    Colors.blue[100],
+                                    Colors.blue[900],
+                                    Colors.blue[100]
+                                  ])),
+                          child: Center(
+                              child: Text(
+                            'Scan',
+                            style: TextStyle(
+                                fontSize: 26,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          )),
                         )),
-                      )),
-                );
-              })
-        ],
+                  );
+                })
+          ],
+        ),
       ),
     );
   }
 
   openDialog(BuildContext context) {
-    // Future.delayed(Duration(seconds: 4), () {
-    //   Navigator.of(context).pop(context);
-    // });
     return showDialog(
         context: context,
-        child: Dialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
-          child: Container(
-            height: 200,
-            width: 200,
-            child: Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: Container(
-                height: 100,
-                width: 100,
-                child: FlareActor(
-                  statusBooking == 0
-                      ? "assets/flare/Success Check.flr"
-                      : "assets/flare/failure-check.flr",
-
-                  animation: "Untitled",
-                  fit: BoxFit.cover,
+        builder: (context) {
+          Future.delayed(Duration(seconds: 4), () {
+            Navigator.of(context).pop(true);
+          });
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0)),
+            child: Container(
+              height: 200,
+              width: 200,
+              child: Padding(
+                padding: const EdgeInsets.all(13.0),
+                child: Container(
+                  height: 100,
+                  width: 100,
+                  child: FlareActor(
+                    statusBooking == 0
+                        ? "assets/flare/Success Check.flr"
+                        : "assets/flare/failure-check.flr",
+                    animation: "Untitled",
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-        ));
+          );
+        });
   }
 }

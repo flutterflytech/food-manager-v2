@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -39,10 +38,12 @@ class UserProfileWidget extends StatefulWidget {
 class _UserProfileWidgetState extends State<UserProfileWidget> {
   File _imageFile;
   String imageUrl;
+  String url;
 
   @override
   void initState() {
     super.initState();
+    url = widget.photoUrl;
   }
 
 // getting image from device or from camera
@@ -78,7 +79,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
         .child('${Path.basename(_imageFile.path)}}');
     StorageUploadTask uploadTask = storageReference.putFile(_imageFile);
     var downUrl = await (await uploadTask.onComplete).ref.getDownloadURL();
-    var url = downUrl.toString();
+    url = downUrl.toString();
     await uploadTask.onComplete;
     setState(() {
       imageUrl = url.toString();
@@ -111,14 +112,14 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                     child: Container(
                         height: 200,
                         width: 200,
-                        child: widget.photoUrl == null
+                        child: url == null || url.isEmpty
                             ? Image(
                                 image: NetworkImage(
                                     'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
                                 fit: BoxFit.fill,
                               )
-                            : CachedNetworkImage(
-                                imageUrl: widget.photoUrl,
+                            : Image.network(
+                                url,
                               ))),
                 Positioned(
                   right: 10.0,
@@ -235,7 +236,6 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
       ),
     );
   }
-
 
 //  Button action to select image from camera or from storage
   _onButtonPressed() {
