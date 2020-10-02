@@ -1,4 +1,4 @@
-// User Model
+// User Model for saving Logged In user Uid
 
 class User {
   final String uid;
@@ -14,12 +14,12 @@ class AllUserData {
   String userEmail;
   String userEmpId;
   String photoUrl;
-  String qrData;
+  // String qrData;
   String uid;
   int userType;
 
   AllUserData(this.userFName, this.userSurname, this.userEmail, this.userEmpId,
-      this.photoUrl, this.qrData,this.uid ,this.userType);
+      this.photoUrl, this.uid, this.userType);
 
   AllUserData.formFireStore(Map<String, dynamic> data)
       : userFName = data['fname'],
@@ -30,18 +30,17 @@ class AllUserData {
         uid = data['uid'],
         userType = data['vendor'];
 
-  AllUserData.fromJson(Map<String, dynamic> json){
+  AllUserData.fromJson(Map<String, dynamic> json) {
     userFName = json['fname'];
     userSurname = json['surname'];
     userEmail = json['email'];
     userEmpId = json['empId'];
     photoUrl = json['url'];
-    qrData = json['qrData'];
+    // qrData = json['qrData'];
     userType = json['vendor'];
   }
 
-  Map<String, dynamic> toJson() =>
-      {
+  Map<String, dynamic> toJson() => {
         'fname': userFName,
         'surname': userSurname,
         'email': userEmail,
@@ -49,9 +48,4 @@ class AllUserData {
         'url': photoUrl,
         'vendor': userType
       };
-
-
 }
-
-
-

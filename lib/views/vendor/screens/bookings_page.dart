@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/bloc/payment_bloc.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
@@ -17,6 +18,7 @@ class Bookings extends StatefulWidget {
 
 class _BookingsState extends State<Bookings> {
   final paymentStatus = PaymentStatus();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,6 +51,10 @@ class _BookingsState extends State<Bookings> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(30),
+              topRight: Radius.circular(30.0))),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -91,16 +97,28 @@ class _BookingsState extends State<Bookings> {
                   height: 5,
                 ),
                 Container(
-                  width: screenData.width * 0.7,
+                  width: screenData.width * 0.71,
                   child: Row(
                     children: <Widget>[
-                      Text(document['mealName'], style: body30),
+                      Text(document['mealName'], style: body20Black),
                       Expanded(
                         child: Container(),
                       ),
-                      Text(
-                        document['timeStamp'],
-                        style: font22,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            document['timeStamp'],
+                            style: font15,
+                          ),
+                          Container(
+                            width: screenData.width * 0.34,
+                            child: Text(
+                              document['bookingId'],
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -162,22 +180,22 @@ class _BookingsState extends State<Bookings> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           StreamBuilder<bool>(
-                            stream: paymentStatus.choiceStream,
-                            builder: (context, snapshot) {
-                              return IconButton(
-                                icon: Icon(
-                                  FontAwesomeIcons.checkCircle,
-                                  color: Colors.green,
-                                  size: 35,
-                                ),
-                                onPressed: () {
-                                  paymentStatus.paymentConformation(document['bookingId']);
-                                  print(paymentStatus);
-                                  Navigator.pop(context);
-                                },
-                              );
-                            }
-                          ),
+                              stream: paymentStatus.choiceStream,
+                              builder: (context, snapshot) {
+                                return IconButton(
+                                  icon: Icon(
+                                    FontAwesomeIcons.checkCircle,
+                                    color: Colors.green,
+                                    size: 35,
+                                  ),
+                                  onPressed: () {
+                                    paymentStatus.paymentConformation(
+                                        document['bookingId']);
+                                    print(paymentStatus);
+                                    Navigator.pop(context);
+                                  },
+                                );
+                              }),
                           // SizedBox(width: 20.0,),
                           IconButton(
                             icon: Icon(

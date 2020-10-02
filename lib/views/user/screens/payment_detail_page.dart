@@ -1,55 +1,132 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_manager_v2/bloc/payment_bloc.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/models/booking_list.dart';
 import 'package:food_manager_v2/views/vendor/screens/loading_shimmer.dart';
 
-import '../../user_profile.dart';
 
 class PaymentPage extends StatefulWidget {
   final user;
+  final filterState;
 
-  const PaymentPage({Key key, this.user}) : super(key: key);
+  const PaymentPage({Key key, this.user, this.filterState}) : super(key: key);
 
   @override
   _PaymentPageState createState() => _PaymentPageState();
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  DueBalance dueBalance = DueBalance();
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: StreamBuilder<QuerySnapshot>(
-        stream: Firestore.instance
-            .collection('bookings')
-            .where("userId", isEqualTo: widget.user)
-            .snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasError) return new Text('Error: ${snapshot.error}');
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return LoadingListPage();
-            default:
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 10, left: 10, right: 10),
-                child: new ListView(
-                  children:
-                      snapshot.data.documents.map((DocumentSnapshot document) {
-                    return Container(child: _userCardView(document));
-                  }).toList(),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: StreamBuilder<QuerySnapshot>(
+            stream: Firestore.instance
+                .collection('bookings')
+                .where("userId", isEqualTo: widget.user)
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.hasError)
+                return new Text('Error: ${snapshot.error}');
+              switch (snapshot.connectionState) {
+                case ConnectionState.waiting:
+                  return LoadingListPage();
+                default:
+                  {
+                    List<BookingList> bookingList = snapshot.data.documents
+                        .map((e) => BookingList.fromJson(e.data))
+                        .toList();
+
+                    switch (widget.filterState) {
+                      case 0:
+                        break;
+                      case 1:
+                        bookingList = bookingList
+                            .where((element) => element.paymentStatus)
+                            .toList();
+                        break;
+                      case 2:
+                        bookingList = bookingList
+                            .where((element) => !element.paymentStatus)
+                            .toList();
+
+                        break;
+                    }
+
+                    int sum = bookingList.fold(
+                        0,
+                        (prev, element) =>
+                            prev +
+                            (element.paymentStatus ? 0 : element.mealPrice));
+                    dueBalance.dueSink.add(sum);
+                    return Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: new ListView(
+                            children: bookingList.map((BookingList document) {
+                          return Container(child: _userCardView(document));
+                        }).toList()));
+                  }
+              }
+            },
+          ),
+        ),
+        widget.filterState == 0 || widget.filterState == 2
+            ? Card(
+                color: Colors.blue[100],
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text('Total Due',
+                            style: TextStyle(
+                                fontSize: 25, fontWeight: FontWeight.bold)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Row(
+                          children: [
+                            Icon(FontAwesomeIcons.rupeeSign),
+                            StreamBuilder<int>(
+                                stream: dueBalance.dueStream,
+                                builder: (context, snapshot) {
+                                  return Text(
+                                    snapshot.data.toString(),
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                    ),
+                                  );
+                                })
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-              );
-          }
-        },
-      ),
+              )
+            : Container()
+      ],
     );
   }
 
-  _userCardView(document) {
+  _userCardView(BookingList document) {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
+      ),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -66,14 +143,14 @@ class _PaymentPageState extends State<PaymentPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          document['mealName'],
+                          document.mealName,
                           style: body20Black,
                         ),
                         SizedBox(
                           height: 10.0,
                         ),
                         Text(
-                          'From : ' + document['vendorFName'],
+                          'From : ' + document.vendorName,
                           style: body20Black,
                         )
                       ],
@@ -84,7 +161,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   ),
                   Container(
                       // width: screenData.width*0.85,
-                      child: document['paymentStatus'] == false
+                      child: document.paymentStatus == false
                           ? Image.asset(
                               'assets/images/unpaid.png',
                               height: 40,
@@ -103,7 +180,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Text(document['timeStamp'], style: font15),
+                        Text(document.timestamp, style: font15),
                         // Expanded(child: Container(),),
 
                         Stack(
@@ -125,7 +202,7 @@ class _PaymentPageState extends State<PaymentPage> {
                                     FontAwesomeIcons.rupeeSign,
                                     size: 20.0,
                                   ),
-                                  Text(document['mealPrice'].toString(),
+                                  Text(document.mealPrice.toString(),
                                       style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold))

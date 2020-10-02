@@ -2,12 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 
-import '../../user_profile.dart';
+import '../../../widgets/user_profile.dart';
 
 class RegisteredAdmins extends StatefulWidget {
   final String user;
+  final int userType;
+  final String appBarTitle;
 
-  const RegisteredAdmins({Key key, this.user}) : super(key: key);
+  const RegisteredAdmins({Key key, this.user, this.userType, this.appBarTitle})
+      : super(key: key);
 
   @override
   _RegisteredAdminsState createState() => _RegisteredAdminsState();
@@ -17,13 +20,21 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
+        title: Text(widget.appBarTitle),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Container(
           child: Center(
               child: StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
                 .collection('account')
-                .where("vendor", isEqualTo: 1)
+                .where("vendor", isEqualTo: widget.userType)
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -78,16 +89,17 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
                     child: Container(
                         height: 60,
                         width: 60,
-                        child: document['url'] == null
-                            ? Image(
-                                image: NetworkImage(
-                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                                fit: BoxFit.fill,
-                              )
-                            : Image(
-                                image: NetworkImage(document['url']),
-                                fit: BoxFit.fill,
-                              ) /*,*/
+                        child:
+                            document['url'] == null || document['url'].isEmpty
+                                ? Image(
+                                    image: NetworkImage(
+                                        'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                    fit: BoxFit.fill,
+                                  )
+                                : Image(
+                                    image: NetworkImage(document['url']),
+                                    fit: BoxFit.fill,
+                                  ) /*,*/
                         )),
                 SizedBox(
                   width: 20,

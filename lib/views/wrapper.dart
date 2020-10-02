@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_manager_v2/models/user.dart';
-import 'package:food_manager_v2/services/unverified_user.dart';
+import 'package:food_manager_v2/views/unverified_user.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:provider/provider.dart';
 

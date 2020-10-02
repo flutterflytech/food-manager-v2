@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/views/vendor/screens/loading_shimmer.dart';
-import '../../user_profile.dart';
 
 class MealPage extends StatefulWidget {
   final user;
@@ -50,6 +49,9 @@ class _MealPageState extends State<MealPage> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
+      ),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -73,6 +75,7 @@ class _MealPageState extends State<MealPage> {
                           height: 10.0,
                         ),
                         Text(document['timeStamp'], style: font15),
+                        Text(document['bookingId'], ),
                       ],
                     ),
                   ),

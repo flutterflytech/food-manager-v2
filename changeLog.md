@@ -307,3 +307,27 @@
 ### 1. Making Chart with booking data
 ### 2. Sorting bookings (latest one on top of the list)
 ### 3. Showing Name of vendor and user on booking list tile
+
+# Day-39 (date: 08-09-2020)
+
+### 1. Set Choices of MealType(BLoC)
+### 2. Set Meal Price
+### 3. Show Details on Dialog
+### 4. Store MealType in QR
+### 5. Storing mealType, mealName, mealPrice in DB
+
+# Day-40 (date: 09-09-2020)
+
+### 1. Shimmer Effect on List Loading
+### 2. User Booked meal details
+### 3. Card view of Vendor and User
+### 4. Change payment Status by Vendor
+
+# Day-41 (date: 10-09-2020)
+
+### 1. List of all bookings with payment status
+### 2. User Payment View
+
+# Day-42 (date: 11-09-2020)
+
+### 1. 

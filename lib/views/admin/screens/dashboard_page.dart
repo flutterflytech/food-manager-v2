@@ -32,8 +32,8 @@ class _DashboardState extends State<Dashboard> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                    welcome + ' ' + widget.userName + ' ' + widget.userSurname),
+                // User First and Last Names
+                Text(welcome + ' ' + widget.userName + ' ' + widget.userSurname),
                 Text(iconInfo),
                 Icon(
                   FontAwesomeIcons.users,
@@ -46,6 +46,4 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
   }
-// Fetching data of Logged In user
-
 }

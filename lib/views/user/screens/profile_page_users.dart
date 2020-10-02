@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_manager_v2/widgets/profile_widget.dart';
+import 'package:food_manager_v2/widgets/all_profile_widget.dart';
 
 class UserProfileUsers extends StatefulWidget {
   final String user;

@@ -6,25 +6,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/paid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/price-tag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/unpaid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/bloc/meal_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/bloc/payment_bloc.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/models/price_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/vendor/screens/loading_shimmer.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/services/firebase_services/logout_service.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/utils/image_preference.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/style_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/style_constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/record.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/record.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/bloc/user_type.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/bloc/user_type.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/firebase_services/auth.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/firebase_services/login_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/firebase_services/login_user_data_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/app_utils.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/app_utils.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/registered_admins.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/screens/registered_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/registered_users.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/admin/screens/registered_vendors.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/unverified_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/user/screens/generate_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/generate_qr_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/user/screens/meal_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/meal_detail_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/user/screens/payment_detail_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/screens/payment_detail_page.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/bookings_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/bookings_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/loading_shimmer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/loading_shimmer.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/screens/scan_qr_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/all_profile_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/all_profile_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
@@ -37,7 +40,6 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_30" />
   <component name="FavoritesManager">
     <favorites_list name="food-manager-v2" />
   </component>
@@ -51,7 +53,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,17 +75,25 @@
   <component name="PropertiesComponent">
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/social_login_ui-task_status" />
-    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/widgets" />
+      <recent name="$PROJECT_DIR$/lib/views" />
+      <recent name="$PROJECT_DIR$/lib" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\assets\images" />
       <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\admin\screens" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\screens" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\views\user\user\screens" />
-      <recent name="C:\Users\NEERAJ\Documents\office-flutter\food-manager-v2\lib\services\firebase_services" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/assets/flare" />
+      <recent name="$PROJECT_DIR$/android/app" />
     </key>
   </component>
   <component name="RunManager">
@@ -102,55 +112,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588306872026</updated>
-    </task>
-    <task id="LOCAL-00009" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
-      <created>1588939080163</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1588939080163</updated>
-    </task>
-    <task id="LOCAL-00010" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
-      <created>1588939232692</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1588939232692</updated>
-    </task>
-    <task id="LOCAL-00011" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
-      <created>1589122302523</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1589122302523</updated>
-    </task>
-    <task id="LOCAL-00012" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
-      <created>1589122365689</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1589122365689</updated>
-    </task>
-    <task id="LOCAL-00013" summary="DAY-6 Bug fixes, All registered Users are Shown on UI, Forget Password enabled">
-      <created>1589122390182</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1589122390182</updated>
-    </task>
-    <task id="LOCAL-00014" summary="DAY-7 PR">
-      <created>1589168216156</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1589168216156</updated>
-    </task>
-    <task id="LOCAL-00015" summary="DAY-7 User Profile, PR, Bug Fixes">
-      <created>1589200978910</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1589200978911</updated>
     </task>
     <task id="LOCAL-00016" summary="DAY-8 User Profile, Bug Fixes">
       <created>1589297700103</created>
@@ -446,7 +407,56 @@
       <option name="project" value="LOCAL" />
       <updated>1592913903746</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="DAY-42">
+      <created>1599823756958</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1599823756958</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Booking Check based on Date and mealType">
+      <created>1600324267035</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1600324267036</updated>
+    </task>
+    <task id="LOCAL-00060" summary="scan popup duration, readme">
+      <created>1600411404104</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1600411404106</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Code formatting and Commenting">
+      <created>1600425910658</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1600425910659</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Code formatting and Commenting">
+      <created>1600429346057</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1600429346057</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Code formatting and Commenting">
+      <created>1600429534872</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1600429534872</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Code formatting and Commenting">
+      <created>1600429603909</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1600429603909</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -477,11 +487,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="DAY-14 AppDisplayLabel, userDisplay, bugFixes" />
-    <MESSAGE value="DAY-15 Admin Login, Normal User Login, bugFixes" />
-    <MESSAGE value="DAY-16 code formatting and debugging" />
-    <MESSAGE value="DAY-17 folder structure, new admin, user, and vendor" />
-    <MESSAGE value="DAY-18 popup menu, userView according to user type" />
     <MESSAGE value="DAY-19 launcher_icon" />
     <MESSAGE value="DAY-19" />
     <MESSAGE value="DAY-20" />
@@ -502,87 +507,129 @@
     <MESSAGE value="DAY-36" />
     <MESSAGE value="DAY-37" />
     <MESSAGE value="DAY-38" />
-    <option name="LAST_COMMIT_MESSAGE" value="DAY-38" />
+    <MESSAGE value="DAY-42" />
+    <MESSAGE value="Booking Check based on Date and mealType" />
+    <MESSAGE value="scan popup duration" />
+    <MESSAGE value="scan popup duration, readme" />
+    <MESSAGE value="Code formatting and Commenting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code formatting and Commenting" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="403" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1599625464628">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="549" y="276" width="561" height="414" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600165610436">
+      <screen x="0" y="27" width="1366" height="708" />
+    </state>
+    <state x="549" y="276" width="561" height="414" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1366.708@0.27.1366.708" timestamp="1600165610436" />
+    <state x="358" y="134" width="374" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1599809830228">
+      <screen x="0" y="27" width="1366" height="688" />
     </state>
     <state x="403" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1599625464628" />
-    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1599554383130">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="358" y="134" width="374" height="562" key="#com.intellij.ide.util.MemberChooser/0.27.1366.688@0.27.1366.688" timestamp="1599809830228" />
+    <state x="399" y="144" width="624" height="547" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1600055595749">
+      <screen x="0" y="27" width="1366" height="688" />
     </state>
     <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1599554383130" />
-    <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1591081763645">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="399" y="144" width="624" height="547" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.27.1366.688@0.27.1366.688" timestamp="1600055595749" />
+    <state x="416" y="126" width="524" height="499" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1600776323695">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
-    <state x="326" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591081763645" />
+    <state x="416" y="126" width="524" height="499" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.27.1366.700@0.27.1366.700" timestamp="1600776323695" />
     <state x="387" y="120" key="#xdebugger.evaluate" timestamp="1599641390213">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="387" y="120" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1599641390213" />
-    <state x="333" y="0" key="CommitChangelistDialog2" timestamp="1592913902423">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="296" y="27" width="731" height="700" key="CommitChangelistDialog2" timestamp="1600429603798">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="333" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1592913902423" />
-    <state width="426" height="466" key="DebuggerActiveHint" timestamp="1591088113457">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="426" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1591088113457" />
-    <state x="389" y="171" key="FileChooserDialogImpl" timestamp="1595397192288">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="296" y="27" width="877" height="688" key="CommitChangelistDialog2/0.27.1366.688@0.27.1366.688" timestamp="1599823756116" />
+    <state x="296" y="27" width="731" height="700" key="CommitChangelistDialog2/0.27.1366.700@0.27.1366.700" timestamp="1600429603798" />
+    <state x="346" y="172" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600668967657">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="389" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595397192288" />
-    <state width="1050" height="131" key="GridCell.Tab.0.bottom" timestamp="1599739168833">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="346" y="172" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.700@0.27.1366.700" timestamp="1600668967657" />
+    <state width="1324" height="53" key="GridCell.Tab.0.bottom" timestamp="1600776343977">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
-    <state width="1050" height="131" key="GridCell.Tab.0.center" timestamp="1599739168833">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1322" height="113" key="GridCell.Tab.0.bottom/0.27.1366.688@0.27.1366.688" timestamp="1600072366834" />
+    <state width="1324" height="53" key="GridCell.Tab.0.bottom/0.27.1366.700@0.27.1366.700" timestamp="1600776343977" />
+    <state width="1020" height="191" key="GridCell.Tab.0.bottom/0.27.1366.704@0.27.1366.704" timestamp="1600083904124" />
+    <state width="1324" height="182" key="GridCell.Tab.0.bottom/0.27.1366.708@0.27.1366.708" timestamp="1600232358569" />
+    <state width="1020" height="53" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1600085192464" />
+    <state width="1267" height="175" key="GridCell.Tab.0.bottom/53.27.1313.741@53.27.1313.741" timestamp="1599797864157" />
+    <state width="1324" height="53" key="GridCell.Tab.0.center" timestamp="1600776343976">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
-    <state width="1050" height="131" key="GridCell.Tab.0.left" timestamp="1599739168833">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1322" height="113" key="GridCell.Tab.0.center/0.27.1366.688@0.27.1366.688" timestamp="1600072366834" />
+    <state width="1324" height="53" key="GridCell.Tab.0.center/0.27.1366.700@0.27.1366.700" timestamp="1600776343976" />
+    <state width="1020" height="191" key="GridCell.Tab.0.center/0.27.1366.704@0.27.1366.704" timestamp="1600083904123" />
+    <state width="1324" height="182" key="GridCell.Tab.0.center/0.27.1366.708@0.27.1366.708" timestamp="1600232358568" />
+    <state width="1020" height="53" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1600085192463" />
+    <state width="1267" height="175" key="GridCell.Tab.0.center/53.27.1313.741@53.27.1313.741" timestamp="1599797864156" />
+    <state width="1324" height="53" key="GridCell.Tab.0.left" timestamp="1600776343975">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
-    <state width="1050" height="131" key="GridCell.Tab.0.right" timestamp="1599739168833">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1322" height="113" key="GridCell.Tab.0.left/0.27.1366.688@0.27.1366.688" timestamp="1600072366834" />
+    <state width="1324" height="53" key="GridCell.Tab.0.left/0.27.1366.700@0.27.1366.700" timestamp="1600776343975" />
+    <state width="1020" height="191" key="GridCell.Tab.0.left/0.27.1366.704@0.27.1366.704" timestamp="1600083904123" />
+    <state width="1324" height="182" key="GridCell.Tab.0.left/0.27.1366.708@0.27.1366.708" timestamp="1600232358568" />
+    <state width="1020" height="53" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1600085192463" />
+    <state width="1267" height="175" key="GridCell.Tab.0.left/53.27.1313.741@53.27.1313.741" timestamp="1599797864156" />
+    <state width="1324" height="53" key="GridCell.Tab.0.right" timestamp="1600776343976">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
-    <state x="193" y="155" key="IDE.errors.dialog" timestamp="1591595932252">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="193" y="155" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1591595932252" />
-    <state x="0" y="55" width="914" height="714" key="SettingsEditor" timestamp="1592748654494">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1322" height="113" key="GridCell.Tab.0.right/0.27.1366.688@0.27.1366.688" timestamp="1600072366834" />
+    <state width="1324" height="53" key="GridCell.Tab.0.right/0.27.1366.700@0.27.1366.700" timestamp="1600776343976" />
+    <state width="1020" height="191" key="GridCell.Tab.0.right/0.27.1366.704@0.27.1366.704" timestamp="1600083904124" />
+    <state width="1324" height="182" key="GridCell.Tab.0.right/0.27.1366.708@0.27.1366.708" timestamp="1600232358569" />
+    <state width="1020" height="53" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1600085192464" />
+    <state width="1267" height="175" key="GridCell.Tab.0.right/53.27.1313.741@53.27.1313.741" timestamp="1599797864157" />
+    <state x="0" y="27" width="1027" height="708" key="SettingsEditor" timestamp="1600230287974">
+      <screen x="0" y="27" width="1366" height="708" />
     </state>
     <state x="0" y="55" width="914" height="714" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1592748654494" />
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1592913906848">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="0" y="27" width="1027" height="688" key="SettingsEditor/0.27.1366.688@0.27.1366.688" timestamp="1600056092301" />
+    <state x="0" y="27" key="SettingsEditor/0.27.1366.704@0.27.1366.704" timestamp="1600078401808" />
+    <state x="0" y="27" width="1027" height="708" key="SettingsEditor/0.27.1366.708@0.27.1366.708" timestamp="1600230287974" />
+    <state x="0" y="38" width="900" height="730" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1599799506567" />
+    <state x="321" y="141" width="800" height="565" key="Vcs.Push.Dialog.v2" timestamp="1600429605329">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1592913906848" />
-    <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1599726819962">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="321" y="139" width="800" height="565" key="Vcs.Push.Dialog.v2/0.27.1366.688@0.27.1366.688" timestamp="1599823762312" />
+    <state x="321" y="141" width="800" height="565" key="Vcs.Push.Dialog.v2/0.27.1366.700@0.27.1366.700" timestamp="1600429605329" />
+    <state x="0" y="183" width="1068" height="498" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1600660643003">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1599726819962" />
-    <state x="432" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591339684939">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="0" y="181" width="1068" height="488" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.688@0.27.1366.688" timestamp="1600055646455" />
+    <state x="0" y="183" width="1068" height="498" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.700@0.27.1366.700" timestamp="1600660643003" />
+    <state x="0" y="185" width="1068" height="503" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.708@0.27.1366.708" timestamp="1600185845426" />
+    <state x="141" y="27" width="762" height="688" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600067098197">
+      <screen x="0" y="27" width="1366" height="688" />
     </state>
-    <state x="432" y="329" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1591339684939" />
-    <state x="253" y="190" key="run.anything.popup" timestamp="1599646584686">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="141" y="27" width="762" height="688" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.27.1366.688@0.27.1366.688" timestamp="1600067098197" />
+    <state x="422" y="323" width="471" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599797656318">
+      <screen x="53" y="27" width="1313" height="741" />
+    </state>
+    <state x="422" y="323" width="471" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/53.27.1313.741@53.27.1313.741" timestamp="1599797656318" />
+    <state x="0" y="27" width="773" height="700" key="find.popup" timestamp="1600253943178">
+      <screen x="0" y="27" width="1366" height="700" />
+    </state>
+    <state x="0" y="27" width="773" height="700" key="find.popup/0.27.1366.700@0.27.1366.700" timestamp="1600253943178" />
+    <state x="225" y="188" key="run.anything.popup" timestamp="1600671302265">
+      <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="253" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1599646584686" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/views/home.dart</url>
-          <line>91</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="225" y="188" key="run.anything.popup/0.27.1366.700@0.27.1366.700" timestamp="1600671302265" />
+    <state x="225" y="190" key="run.anything.popup/0.27.1366.708@0.27.1366.708" timestamp="1600230949090" />
+    <state x="346" y="47" width="672" height="678" key="search.everywhere.popup" timestamp="1600690635091">
+      <screen x="0" y="27" width="1366" height="700" />
+    </state>
+    <state x="346" y="47" width="672" height="678" key="search.everywhere.popup/0.27.1366.700@0.27.1366.700" timestamp="1600690635091" />
   </component>
 </project>

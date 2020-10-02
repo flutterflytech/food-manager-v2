@@ -11,10 +11,10 @@ void main() {
 }
 
 List<PriceList> priceList = [
-  PriceList(0,50,"Lunch"),
-  PriceList(1,25,"Poha"),
-  PriceList(2,45,"Maggi"),
-  PriceList(3,35,"Beverages"),
+  PriceList(0, 50, "Lunch"),
+  PriceList(1, 25, "Poha"),
+  PriceList(2, 45, "Maggi"),
+  PriceList(3, 35, "Beverages"),
 ];
 
 class MyApp extends StatelessWidget {
