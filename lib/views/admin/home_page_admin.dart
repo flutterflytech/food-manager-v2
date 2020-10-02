@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
+import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_admins.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_users.dart';
+import 'package:food_manager_v2/views/admin/screens/registered_list.dart';
 import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
-import 'package:food_manager_v2/views/admin/screens/registered_vendors.dart';
 
 import '../login_page.dart';
 
-class HomePageAdmin extends StatefulWidget {
+class RegisteredList extends StatefulWidget {
   final String user;
   final String userName;
   final String userEmail;
@@ -20,7 +19,7 @@ class HomePageAdmin extends StatefulWidget {
   final String photoUrl;
   final String uid;
 
-  const HomePageAdmin(
+  const RegisteredList(
       {Key key,
       this.user,
       this.userName,
@@ -32,11 +31,12 @@ class HomePageAdmin extends StatefulWidget {
       : super(key: key);
 
   @override
-  _HomePageAdminState createState() => _HomePageAdminState();
+  _RegisteredListState createState() => _RegisteredListState();
 }
 
-class _HomePageAdminState extends State<HomePageAdmin> {
-//  final AuthService _auth = AuthService();
+class _RegisteredListState extends State<RegisteredList> {
+  LogoutService logoutService = LogoutService();
+
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -49,6 +49,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   @override
   void initState() {
     super.initState();
+
 // If user is admin, these pages will be Navigated
 
     _childern = [
@@ -68,9 +69,14 @@ class _HomePageAdminState extends State<HomePageAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
+          //Action Button actions
           PopupMenuButton<String>(
             onSelected: handleClick,
             itemBuilder: (BuildContext context) {
@@ -91,11 +97,13 @@ class _HomePageAdminState extends State<HomePageAdmin> {
         ],
       ),
       body: _childern[_currentIndex],
+      //Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         elevation: 0,
         currentIndex: _currentIndex,
         items: [
+          //Dashboard
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.home,
@@ -106,6 +114,7 @@ class _HomePageAdminState extends State<HomePageAdmin> {
                 'Home',
                 style: bold,
               )),
+          //User Profile
           BottomNavigationBarItem(
               icon: Icon(
                 FontAwesomeIcons.houseUser,
@@ -118,52 +127,36 @@ class _HomePageAdminState extends State<HomePageAdmin> {
     );
   }
 
-  logout() {
-    FirebaseAuth.instance.signOut();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LogInPage()));
-  }
-
-  // ignore: non_constant_identifier_names
-  UserPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredUsers(),
-        ));
-  }
-
-  // ignore: non_constant_identifier_names
-  VendorPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredVendors(),
-        ));
-  }
-
-  // ignore: non_constant_identifier_names
-  AdminPage() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => RegisteredAdmins(),
-        ));
-  }
-
+  //Action Button Click Handler
   void handleClick(String value) {
     switch (value) {
       case 'Registered Vendors':
-        VendorPage();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisteredAdmins(userType: 2,appBarTitle: "Registered Vendors",),
+            ));
         break;
       case 'Registered Users':
-        UserPage();
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => RegisteredAdmins(appBarTitle: "Registered Users",userType: 0,)));
         break;
       case 'Registered Admins':
-        AdminPage();
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => RegisteredAdmins(userType: 1,appBarTitle: "Registered Admins",),
+            ));
         break;
       case 'Logout':
-        logout();
+        try {
+          logoutService.logoutService();
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => LogInPage()));
+        } catch (e) {
+          print("EERROORR" + e.toString());
+        }
+
         break;
       case 'App Info':
         showAboutDialog(

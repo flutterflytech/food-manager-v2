@@ -1,11 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
-import 'package:food_manager_v2/services/firebase_services/login_service.dart';
-import 'package:food_manager_v2/services/unverified_user.dart';
+import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/views/unverified_user.dart';
 import 'package:food_manager_v2/views/forgot_password_page.dart';
 import 'package:food_manager_v2/views/register_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
@@ -23,7 +25,6 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> {
   final AuthService _auth = AuthService();
 
-//  AllUserData _userData = AllUserData();
   Map userData;
   final _formKey = GlobalKey<FormState>();
   String email = '';
@@ -74,6 +75,10 @@ class _LogInPageState extends State<LogInPage> {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.elliptical(80, 40),
+                bottomRight: Radius.elliptical(80, 40))),
         centerTitle: true,
         title: Text('LOGIN'),
       ),
@@ -201,18 +206,24 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   _onLogInClick() async {
+
     if (_formKey.currentState.validate()) {
-      showProgressDialog(true);
-      dynamic result = await _auth.signInWithEmailAndPassword(email, password);
-      LoginService();
-      if (result != null) {
+      try {
+        showProgressDialog(true);
+        dynamic result = await _auth.signInWithEmailAndPassword(email, password);
+        if (result is PlatformException) {
+          AppUtils.showToast(result.message, red, white);
+          showProgressDialog(false);
+        } else{
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UnverifiedUserUI(),
+            ),
+          );
+        }
+      } catch (e) {
         showProgressDialog(false);
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => UnverifiedUserUI(),
-          ),
-        );
       }
     }
   }
