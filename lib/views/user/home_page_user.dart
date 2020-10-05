@@ -60,8 +60,8 @@ class _HomePageUserState extends State<HomePageUser> {
             appBar: AppBar(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(80, 40),
-                      bottomRight: Radius.elliptical(80, 40))),
+                      bottomLeft: Radius.elliptical(40, 20),
+                      bottomRight: Radius.elliptical(40, 20))),
               title: Text('Food Manager'),
               centerTitle: true,
               actions: <Widget>[

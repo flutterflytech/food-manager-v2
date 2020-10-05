@@ -4,6 +4,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:food_manager_v2/bloc/image_url_bloc.dart';
+import 'package:food_manager_v2/bloc/upload_progress.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/widgets/edit_profile.dart';
@@ -36,6 +38,8 @@ class UserProfileWidget extends StatefulWidget {
 }
 
 class _UserProfileWidgetState extends State<UserProfileWidget> {
+  ImageUrlBloc imageUrlBloc = ImageUrlBloc();
+  UploadProgressBloC uploadProgressBloC = UploadProgressBloC();
   File _imageFile;
   String imageUrl;
   String url;
@@ -44,6 +48,9 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   void initState() {
     super.initState();
     url = widget.photoUrl;
+    print("@@@@@@@"+url);
+    // imageUrlBloc.urlStreamController.sink.add(url);
+    imageUrlBloc.urlSink.add(url);
   }
 
 // getting image from device or from camera
@@ -74,6 +81,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
 
 // Upload image file to fireStore Storage and get image URL
   Future uploadFile() async {
+    uploadProgressBloC.progressStreamController.sink.add(true);
     StorageReference storageReference = FirebaseStorage.instance
         .ref()
         .child('${Path.basename(_imageFile.path)}}');
@@ -86,11 +94,13 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
     });
 //    Show message on successful image upload
     AppUtils.showToast('Picture Uploaded', green, white);
+    uploadProgressBloC.progressStreamController.sink.add(false);
 //    Updating database with Image URL
     Firestore.instance
         .collection('account')
         .document(widget.user)
         .updateData({"url": imageUrl});
+
   }
 
   @override
@@ -106,21 +116,41 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
             ),
             Stack(
               children: <Widget>[
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(200.0),
-                    clipBehavior: Clip.hardEdge,
-                    child: Container(
+                StreamBuilder<bool>(
+                  stream: uploadProgressBloC.progressStreamController.stream,
+                  initialData: false,
+                  builder: (context, snapshot) {
+                    if(snapshot.data){
+                      return Container(
                         height: 200,
-                        width: 200,
-                        child: url == null || url.isEmpty
-                            ? Image(
-                                image: NetworkImage(
-                                    'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
-                                fit: BoxFit.fill,
-                              )
-                            : Image.network(
-                                url,
-                              ))),
+                          width: 200,
+                          child: CircularProgressIndicator()
+                      );
+                    }
+                    return StreamBuilder<String>(
+                      stream: imageUrlBloc.urlStream,
+                      builder: (context, snapshot) {
+                        print("########"+snapshot.data.toString());
+                        return ClipRRect(
+                            borderRadius: BorderRadius.circular(200.0),
+                            clipBehavior: Clip.hardEdge,
+                            child: Container(
+                                height: 200,
+                                width: 200,
+                                child: snapshot.data == null || snapshot.data.isEmpty
+                                    ? Image(
+                                  image: NetworkImage(
+                                      'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                                  fit: BoxFit.fill,
+                                )
+                                    : Image.network(
+                                  snapshot.data,
+                                )));
+                      }
+                    );
+
+                  }
+                ),
                 Positioned(
                   right: 10.0,
                   bottom: 5.0,

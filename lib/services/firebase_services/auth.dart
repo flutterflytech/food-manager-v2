@@ -23,20 +23,22 @@ class AuthService {
       String empId,
       String firstName,
       String lastName,
-      int vendor,
+      int userType,
       String url) async {
     try {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
+
       Firestore.instance.collection('account').document(user.uid).setData({
-        "email": email,
-        "empId": empId,
-        "fname": firstName,
-        "surname": lastName,
+        "userEmail": email,
+        "userEmpId": empId,
+        "userFName": firstName,
+        "userSurname": lastName,
         "uid": user.uid,
-        "vendor": vendor,
+        "userType": userType,
         "url": url,
+        "recentBookings":[]
       });
       return _userFromFirebaseUser(user);
     } catch (error) {

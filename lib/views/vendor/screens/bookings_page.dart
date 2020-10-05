@@ -51,6 +51,7 @@ class _BookingsState extends State<Bookings> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      color: Colors.blueGrey[50],
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
@@ -73,7 +74,7 @@ class _BookingsState extends State<Bookings> {
                       Text(
                           document['userFName'].toUpperCase() +
                               ' ' +
-                              document['userLName'].toUpperCase(),
+                              document['userSurname'].toUpperCase(),
                           style: body22Black),
                       Expanded(
                         child: Container(),

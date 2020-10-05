@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/bloc/payment_bloc.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/models/booking_list.dart';
 import 'package:food_manager_v2/views/vendor/screens/loading_shimmer.dart';
-
 
 class PaymentPage extends StatefulWidget {
   final user;
@@ -122,11 +122,12 @@ class _PaymentPageState extends State<PaymentPage> {
 
   _userCardView(BookingList document) {
     var screenData = MediaQuery.of(context).size;
-
     return Card(
+      color: Colors.blueGrey[50],
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
-      ),
+          borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(17),
+              topRight: Radius.circular(17.0))),
       elevation: 10,
       child: Padding(
         padding: const EdgeInsets.all(8.0),

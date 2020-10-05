@@ -22,30 +22,30 @@ class AllUserData {
       this.photoUrl, this.uid, this.userType);
 
   AllUserData.formFireStore(Map<String, dynamic> data)
-      : userFName = data['fname'],
-        userSurname = data['surname'],
-        userEmail = data['email'],
-        userEmpId = data['empId'],
+      : userFName = data['userFName'],
+        userSurname = data['userSurname'],
+        userEmail = data['userEmail'],
+        userEmpId = data['userEmpId'],
         photoUrl = data['url'],
         uid = data['uid'],
-        userType = data['vendor'];
+        userType = data['userType'];
 
   AllUserData.fromJson(Map<String, dynamic> json) {
-    userFName = json['fname'];
-    userSurname = json['surname'];
-    userEmail = json['email'];
-    userEmpId = json['empId'];
+    userFName = json['userFName'];
+    userSurname = json['userSurname'];
+    userEmail = json['userEmail'];
+    userEmpId = json['userEmpId'];
     photoUrl = json['url'];
     // qrData = json['qrData'];
-    userType = json['vendor'];
+    userType = json['userType'];
   }
 
   Map<String, dynamic> toJson() => {
-        'fname': userFName,
-        'surname': userSurname,
-        'email': userEmail,
-        'empId': userEmpId,
+        'userFName': userFName,
+        'userSurname': userSurname,
+        'userEmail': userEmail,
+        'userEmpId': userEmpId,
         'url': photoUrl,
-        'vendor': userType
+        'userType': userType
       };
 }

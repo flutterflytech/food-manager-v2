@@ -10,6 +10,8 @@ import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:wave/config.dart';
+import 'package:wave/wave.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -91,129 +93,180 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     var screenData = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.elliptical(80, 40),
-                bottomRight: Radius.elliptical(80, 40))),
-        title: Text(title),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Container(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: SingleChildScrollView(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: <Widget>[
-                    CustomTextFormField(
-                      validator: firstNameValidator,
-                      onChanged: (value) {
-                        setState(() {
-                          firstName = value;
-                        });
-                      },
-                      hintText: 'First Name*',
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    CustomTextFormField(
-                      validator: lastNameValidator,
-                      onChanged: (value) {
-                        setState(() {
-                          lastName = value;
-                        });
-                      },
-                      hintText: 'Last Name*',
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    CustomTextFormField(
-                      validator: employeeIdValidator,
-                      onChanged: (value) {
-                        setState(() {
-                          empId = 'MOB' + value;
-                        });
-                      },
-                      hintText: 'Employee Id*',
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    CustomTextFormField(
-                      validator: emailValidator,
-                      onChanged: (value) {
-                        setState(() {
-                          email = value;
-                        });
-                      },
-                      hintText: 'Email*',
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    CustomTextFormField(
-                      validator: pwdValidator,
-                      onChanged: (value) {
-                        setState(() {
-                          password = value;
-                        });
-                      },
-                      hintText: 'Password*',
-                      obscure: true,
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    SizedBox(
-                      height: screenData.height * 0.01,
-                    ),
-                    GestureDetector(
-                      onTap: onRegisterClick,
-                      child: SizedBox(
-                        height: screenData.height * 0.07,
-                        width: screenData.width * 1.0,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  colors: [darkBlue2, lightBlue2]),
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Center(
-                              child: Text(
-                            "Register",
-                            style: body15,
-                          )),
+      backgroundColor: Colors.grey[300],
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  color: Colors.blueAccent,
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20))),
+              child: Stack(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Food Manager',
+                          style: TextStyle(color: Colors.white, fontSize: 30),
                         ),
                       ),
+                    ],
+                  ),
+                  WaveWidget(
+                    config: CustomConfig(
+                      gradients: [
+                        [Colors.blue, Colors.blueAccent[100]],
+                        [Colors.blue[100], Colors.blueAccent[100]],
+                        [Colors.blue[300], Colors.blueAccent[400]],
+                        [Colors.blue[200], Colors.blueAccent[400]]
+                      ],
+                      durations: [35000, 19440, 10800, 6000],
+                      heightPercentages: [0.20, 0.23, 0.25, 0.30],
+                      blur: MaskFilter.blur(BlurStyle.solid, 10),
+                      gradientBegin: Alignment.bottomLeft,
+                      gradientEnd: Alignment.topRight,
                     ),
-                    SizedBox(
-                      height: screenData.height * 0.02,
+                    waveAmplitude: 0,
+                    size: Size(
+                      double.infinity,
+                      double.infinity,
                     ),
-                    Text(existingAccount),
-                    SizedBox(
-                      height: screenData.height * 0.03,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LogInPage()));
-                      },
-                      child: Text(
-                        loginButton,
-                        style: bold,
+                  ),
+                  Container(
+                    height: 500,
+                  )
+                ],
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  height: 550,
+                  width: 600,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 18,bottom: 18),
+                            child: Text('REGISTER', style: TextStyle(color: Colors.blue,fontSize: 24,fontWeight: FontWeight.bold),),
+                          ),
+                          Form(
+                            key: _formKey,
+                            child: Column(
+                              children: <Widget>[
+                                CustomTextFormField(
+                                  validator: firstNameValidator,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      firstName = value;
+                                    });
+                                  },
+                                  hintText: 'First Name*',
+                                ),
+                                SizedBox(
+                                  height: screenData.height * 0.01,
+                                ),
+                                CustomTextFormField(
+                                  validator: lastNameValidator,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      lastName = value;
+                                    });
+                                  },
+                                  hintText: 'Last Name*',
+                                ),
+                                SizedBox(
+                                  height: screenData.height * 0.01,
+                                ),
+                                CustomTextFormField(
+                                  validator: employeeIdValidator,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      empId = 'MOB' + value;
+                                    });
+                                  },
+                                  hintText: 'Employee Id*',
+                                ),
+                                SizedBox(
+                                  height: screenData.height * 0.01,
+                                ),
+                                CustomTextFormField(
+                                  validator: emailValidator,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      email = value;
+                                    });
+                                  },
+                                  hintText: 'Email*',
+                                ),
+                                SizedBox(
+                                  height: screenData.height * 0.01,
+                                ),
+                                CustomTextFormField(
+                                  validator: pwdValidator,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      password = value;
+                                    });
+                                  },
+                                  hintText: 'Password*',
+                                  obscure: true,
+                                ),
+                                SizedBox(
+                                  height: screenData.height * 0.01,
+                                ),
+
+
+
+                                SizedBox(
+                                  height: screenData.height * 0.02,
+                                ),
+
+
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: InkWell(
+                              onTap: onRegisterClick,
+                              child: Container(
+                                height: 60,
+                                width: 180,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: Colors.blueAccent
+                                ),
+                                child: Center(child: Text('Register', style: TextStyle(color: Colors.white,fontSize: 24),)),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+
+                        ],
                       ),
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+
+          ],
         ),
       ),
     );
@@ -226,6 +279,8 @@ class _RegisterPageState extends State<RegisterPage> {
       try {
         var data = await _auth.registerWithEmailAndPassword(
             email, password, empId, firstName, lastName, vendor, url);
+        FirebaseUser user = await FirebaseAuth.instance.currentUser();
+        user.sendEmailVerification();
 
         if (data is PlatformException) {
           AppUtils.showToast(data.message, red, white);

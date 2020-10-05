@@ -29,7 +29,7 @@ class _QRPageState extends State<QRPage> {
   void initState() {
 //    passing user QR data to JSON for future uses
     userJson =
-        '{"uid": "${widget.user}","empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
+        '{"uid": "${widget.user}","userEmpId" : "${widget.userEmpId}", "userFName":"${widget.userFName}", "userSurname": "${widget.userSurname}", "mealType":$mealType}';
     super.initState();
   }
 
@@ -64,8 +64,9 @@ class _QRPageState extends State<QRPage> {
                           mealType = dropdownValue.foodType;
                           mealName = dropdownValue.foodName;
                           userJson =
-                              '{"uid": "${widget.user}", "empId" : "${widget.userEmpId}", "fname":"${widget.userFName}", "surname": "${widget.userSurname}", "mealType":$mealType}';
-                        },
+                              '{"uid": "${widget.user}", "userEmpId" : "${widget.userEmpId}", "userFName":"${widget.userFName}", "userSurname": "${widget.userSurname}", "mealType":$mealType}';
+                          print(userJson);
+                          },
                         items: priceList.map<DropdownMenuItem<PriceList>>(
                             (PriceList value) {
                           return DropdownMenuItem<PriceList>(

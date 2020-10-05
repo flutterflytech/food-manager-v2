@@ -49,8 +49,9 @@ class _MealPageState extends State<MealPage> {
     var screenData = MediaQuery.of(context).size;
 
     return Card(
+      color: Colors.blueGrey[50],
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30),topRight: Radius.circular(30.0))
+          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(17),topRight: Radius.circular(17.0))
       ),
       elevation: 10,
       child: Padding(

@@ -34,7 +34,7 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
               child: StreamBuilder<QuerySnapshot>(
             stream: Firestore.instance
                 .collection('account')
-                .where("vendor", isEqualTo: widget.userType)
+                .where("userType", isEqualTo: widget.userType)
                 .snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -63,7 +63,7 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
   }
 
   _userCardView(document) {
-    if (document['email'] == widget.user) {
+    if (document['userEmail'] == widget.user) {
       return null;
     } else
       return GestureDetector(
@@ -71,10 +71,10 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
             context,
             MaterialPageRoute(
                 builder: (context) => UserProfile(
-                      email: document['email'],
-                      fName: document['fname'],
-                      surname: document['surname'],
-                      empId: document['empId'],
+                      email: document['userEmail'],
+                      fName: document['userFName'],
+                      surname: document['userSurname'],
+                      empId: document['userEmpId'],
                       url: document['url'],
                     ))),
         child: Card(
@@ -107,18 +107,18 @@ class _RegisteredAdminsState extends State<RegisteredAdmins> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(document['empId'], style: bold15),
+                    Text(document['userEmpId'], style: bold15),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
-                      document['fname'] + ' ' + document['surname'],
+                      document['userFName'] + ' ' + document['userSurname'],
                       style: bold18,
                     ),
                     SizedBox(
                       height: 5,
                     ),
-                    Text(document['email'], style: font15),
+                    Text(document['userEmail'], style: font15),
                   ],
                 ),
               ],

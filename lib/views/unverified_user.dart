@@ -28,7 +28,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   UserTypeBLoC userValue = UserTypeBLoC();
   bool _isEmailVerified = false;
   int userType;
-  String userName;
+  String userFName;
   String userEmail;
   String userEmpId;
   String userSurname;
@@ -67,7 +67,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
                 ? _getVerifiedUserData(
                     snapshot.data,
                     uid,
-                    userName,
+                    userFName,
                     userSurname,
                     userEmpId,
                     userEmail,
@@ -81,19 +81,20 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 // To check email id is verified or not
   _checkVerificationStatus() async {
     try {
-      FirebaseAuth.instance.currentUser().then((user) {
-        _isEmailVerified = user.isEmailVerified;
+
+      FirebaseAuth.instance.currentUser().then((user){
+
+        // _isEmailVerified = user.isEmailVerified;
         if (user.isEmailVerified) {
-          setState(() {
-            _isEmailVerified = true;
-          });
+          print(user.isEmailVerified);
+         Navigator.push(context,  MaterialPageRoute(builder: (context)=>_getVerifiedUserData(userType, uid, userFName, userSurname, userEmpId, userEmail, photoUrl)));
         } else {
           AppUtils.showToast(notVerified, red, white);
         }
       });
     } catch (e) {
       print(errorVerification);
-      AppUtils.showToast(errorVerification, red, white);
+      AppUtils.showToast(e.toString(), red, white);
       print(e.message);
     }
   }
@@ -200,7 +201,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // Check if user email is verified or not
-  void getCurrentUserData() async {
+  getCurrentUserData() async {
     try {
       FirebaseUser user = await FirebaseAuth.instance.currentUser();
       setState(() {
@@ -217,10 +218,10 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
     if (snapshot.data != null) {
       setState(() {
         var userData = AllUserData.formFireStore(snapshot.data);
-        print('data from model class ' + userData.userType.toString());
+        print('data from model class ' + userData.toString());
         userValue.userSink.add(userData.userType);
         userType = userData.userType;
-        userName = userData.userFName;
+        userFName = userData.userFName;
         userEmail = userData.userEmail;
         userEmpId = userData.userEmpId;
         userSurname = userData.userSurname;

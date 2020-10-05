@@ -82,8 +82,8 @@ class _HomePageVendorState extends State<HomePageVendor> {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-                bottomLeft: Radius.elliptical(80, 40),
-                bottomRight: Radius.elliptical(80, 40))),
+                bottomLeft: Radius.elliptical(40, 20),
+                bottomRight: Radius.elliptical(40, 20))),
         title: Text('Food Manager'),
         centerTitle: true,
         actions: <Widget>[
@@ -105,7 +105,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
                   ),
                 );
               } catch (e) {
-                print("@@@@@@ERROR#####" + e.toString());
+                // print("@@@@@@ERROR#####" + e.toString());
               }
             },
             icon: Icon(Icons.exit_to_app),

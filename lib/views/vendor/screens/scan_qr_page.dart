@@ -33,7 +33,7 @@ class _ScanQrState extends State<ScanQr> {
         "#ffffff", "Cancel", true, ScanMode.QR);
     Map map = jsonDecode(barcodeScanRes);
     Record record = Record.fromJson(map);
-
+    print("################"+barcodeScanRes);
     DocumentReference documentReference =
         Firestore.instance.collection('account').document(record.uid);
     var a = await documentReference.get();
@@ -62,8 +62,8 @@ class _ScanQrState extends State<ScanQr> {
             "vendorId": widget.user,
             "userFName": record.userFName,
             "vendorFName": widget.userFName,
-            "userLName": record.userSurname,
-            "vendorLName": widget.userSurname,
+            "userSurname": record.userSurname,
+            "vendorSurname": widget.userSurname,
             "mealType": record.mealType,
             "mealPrice": priceList[record.mealType].price,
             "mealName": priceList[record.mealType].foodName,
@@ -88,7 +88,7 @@ class _ScanQrState extends State<ScanQr> {
           "vendorId": widget.user,
           "userFName": record.userFName,
           "vendorFName": widget.userFName,
-          "userLName": record.userSurname,
+          "userSurname": record.userSurname,
           "vendorLName": widget.userSurname,
           "mealType": record.mealType,
           "mealPrice": priceList[record.mealType].price,
