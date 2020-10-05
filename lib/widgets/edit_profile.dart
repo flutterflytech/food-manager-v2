@@ -30,6 +30,7 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   final _formKey = GlobalKey<FormState>();
 
+
   String firstName;
   String lastName;
   String editJson;
@@ -190,11 +191,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
   update() {
 
     Record record = Record(userFName: firstName, userSurname: lastName);
-    print(record.toString());
 
-    //TODO use model class to update data instead of "{'fname': fNameController.text,'surname':surNameController.text,'jobTitle':jobTitleController.text}"
-    Firestore.instance.collection('account').document(widget.user).updateData(record.toJson());
-    AppUtils.showToast('Update Successful', green, white);
-    Navigator.pop(context);
+    try{
+      Firestore.instance.collection('account').document(widget.user).updateData({'userFName':record.userFName, 'userSurname':record.userSurname});
+      AppUtils.showToast('Update Successful', green, white);
+      Navigator.pop(context);
+    }catch(e){
+
+    }
+
+
+
+
   }
 }

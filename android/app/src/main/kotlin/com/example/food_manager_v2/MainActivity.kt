@@ -1,4 +1,5 @@
-package com.example.food_manager_v2
+package com.flutterfly.foodmanager
+
 
 import io.flutter.embedding.android.FlutterActivity
 

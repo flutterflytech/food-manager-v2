@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class UploadProgressBloC{
-  final progressStreamController = StreamController<bool>.broadcast();
+  final progressStreamController = StreamController<bool>();
 
 
   void dispose() {
