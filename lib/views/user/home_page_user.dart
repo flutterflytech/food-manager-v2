@@ -94,7 +94,7 @@ class _HomePageUserState extends State<HomePageUser> {
                         ),
                       );
                     }catch(e){
-                      print("EERROORR"+e.toString());
+
                     }
 
                   },

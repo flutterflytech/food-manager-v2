@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LogoutService{
-  logoutService()async{
-    return await FirebaseAuth.instance.signOut();
+
+  Future logoutService() async{
+     await FirebaseAuth.instance.signOut();
+     return true;
   }
 }

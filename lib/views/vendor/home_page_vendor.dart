@@ -95,9 +95,9 @@ class _HomePageVendorState extends State<HomePageVendor> {
             tooltip: 'Set Price',
           ),
           IconButton(
-            onPressed: () {
+            onPressed: () async {
               try {
-                logoutService.logoutService();
+               await logoutService.logoutService();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -105,7 +105,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
                   ),
                 );
               } catch (e) {
-                // print("@@@@@@ERROR#####" + e.toString());
+                print(" ==============> hgdshsdgsdhsdg <========" + e.toString());
               }
             },
             icon: Icon(Icons.exit_to_app),

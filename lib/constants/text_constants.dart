@@ -25,7 +25,7 @@ const String sendMailErrorToast =
 // Email verification Constants
 const String errorVerification =
     'An error occurred while trying to check email is verified or not!';
-const String notVerified = 'You haven\'t verified your email yet!';
+const String notVerified = 'Please logout from this screen and login again';
 
 // Send verification mail
 const String sendMail = 'Email verification link send successfully.';

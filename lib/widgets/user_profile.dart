@@ -37,10 +37,15 @@ class _UserProfileState extends State<UserProfile> {
                   child: Container(
                       height: 200,
                       width: 200,
-                      child: Image(
-                        image: NetworkImage(widget.url.toString()),
-                        fit: BoxFit.fill,
-                      ))),
+                      child: widget.url == null || widget.url.isEmpty
+                          ? Image(
+                              image: NetworkImage('https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
+                              fit: BoxFit.fill,
+                            )
+                          : Image(
+                              image: NetworkImage(widget.url.toString()),
+                              fit: BoxFit.fill,
+                            ))),
               SizedBox(
                 height: 20.0,
               ),

@@ -260,38 +260,7 @@ class _LogInPageState extends State<LogInPage> {
                         SizedBox(
                           height: screenData.height * 0.01,
                         ),
-                        // InkWell(
-                        //     onTap: () async {
-                        //       try {
-                        //         await _googleSignIn.signIn();
-                        //         setState(() {
-                        //
-                        //           loggedInEmail =
-                        //               _googleSignIn.currentUser.email;
-                        //           print("########" + loggedInEmail);
-                        //         });
-                        //         Navigator.push(
-                        //             context,
-                        //             MaterialPageRoute(
-                        //                 builder: (context) => GoogleLogin(
-                        //                       name: _googleSignIn
-                        //                           .currentUser.displayName,
-                        //                       url: _googleSignIn
-                        //                           .currentUser.photoUrl,
-                        //                     )));
-                        //       } catch (e) {
-                        //         print(e);
-                        //       }
-                        //     },
-                        //     splashColor: Colors.blueAccent,
-                        //     borderRadius: BorderRadius.circular(10.0),
-                        //     child: Icon(
-                        //       FontAwesomeIcons.google,
-                        //       color: Colors.red,
-                        //     )),
-                        // SizedBox(
-                        //   height: screenData.height * 0.01,
-                        // ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

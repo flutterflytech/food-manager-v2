@@ -86,7 +86,6 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
 
         // _isEmailVerified = user.isEmailVerified;
         if (user.isEmailVerified) {
-          print(user.isEmailVerified);
          Navigator.push(context,  MaterialPageRoute(builder: (context)=>_getVerifiedUserData(userType, uid, userFName, userSurname, userEmpId, userEmail, photoUrl)));
         } else {
           AppUtils.showToast(notVerified, red, white);

@@ -36,7 +36,7 @@ class _DashboardState extends State<Dashboard> {
                 Text(welcome + ' ' + widget.userName + ' ' + widget.userSurname),
                 Text(iconInfo),
                 Icon(
-                  FontAwesomeIcons.users,
+                  FontAwesomeIcons.ellipsisV,
                 ),
                 Text(iconAction)
               ],

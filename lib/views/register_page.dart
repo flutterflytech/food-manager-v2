@@ -3,11 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
-import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
-import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:wave/config.dart';
@@ -50,7 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String emailValidator(String value) {
-    if (value.isEmpty) {
+    if (value == null || value.trim().toString() == '') {
       return emailValMsg;
     } else {
       return null;
@@ -58,7 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String pwdValidator(String value) {
-    if (value.length < 8) {
+    if (value.length < 8 || value.trim().toString() == '') {
       return pwdValMsg;
     } else {
       return null;
@@ -66,7 +64,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String firstNameValidator(String value) {
-    if (value.length == 0) {
+    if (value == null || value.trim().toString() == '') {
       return nameValMsg;
     } else {
       return null;
@@ -74,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String lastNameValidator(String value) {
-    if (value.length == 0) {
+    if (value == null || value.trim().toString() == '') {
       return nameValMsg;
     } else {
       return null;
@@ -82,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   String employeeIdValidator(String value) {
-    if (value.length != 3) {
+    if (value.length != 3 || value.trim().toString() == '') {
       return empValMsg;
     } else {
       return null;
