@@ -6,6 +6,8 @@ import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/auth.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
+import 'package:food_manager_v2/utils/keyboard_utils.dart';
+import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/widgets/custom_text_form_filed.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:wave/config.dart';
@@ -93,178 +95,204 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  color: Colors.blueAccent,
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20))),
-              child: Stack(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Food Manager',
-                          style: TextStyle(color: Colors.white, fontSize: 30),
+        child: GestureDetector(
+          onTap: (){
+            HideKeyboard.hideKeyboard(context);
+          },
+          child: Stack(
+            children: [
+
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(20))),
+                child: Stack(
+                  children: [
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Food Manager',
+                            style: TextStyle(color: Colors.white, fontSize: 30),
+                          ),
+                        ),
+                      ],
+                    ),
+                    WaveWidget(
+                      config: CustomConfig(
+                        gradients: [
+                          [Colors.blue, Colors.blueAccent[100]],
+                          [Colors.blue[100], Colors.blueAccent[100]],
+                          [Colors.blue[300], Colors.blueAccent[400]],
+                          [Colors.blue[200], Colors.blueAccent[400]]
+                        ],
+                        durations: [35000, 19440, 10800, 6000],
+                        heightPercentages: [0.20, 0.23, 0.25, 0.30],
+                        blur: MaskFilter.blur(BlurStyle.solid, 10),
+                        gradientBegin: Alignment.bottomLeft,
+                        gradientEnd: Alignment.topRight,
+                      ),
+                      waveAmplitude: 0,
+                      size: Size(
+                        double.infinity,
+                        double.infinity,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50)
+                        ),
+                        child: IconButton(
+                          color: Colors.blue,
+                          icon: Icon(Icons.arrow_back),
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
                         ),
                       ),
-                    ],
-                  ),
-                  WaveWidget(
-                    config: CustomConfig(
-                      gradients: [
-                        [Colors.blue, Colors.blueAccent[100]],
-                        [Colors.blue[100], Colors.blueAccent[100]],
-                        [Colors.blue[300], Colors.blueAccent[400]],
-                        [Colors.blue[200], Colors.blueAccent[400]]
-                      ],
-                      durations: [35000, 19440, 10800, 6000],
-                      heightPercentages: [0.20, 0.23, 0.25, 0.30],
-                      blur: MaskFilter.blur(BlurStyle.solid, 10),
-                      gradientBegin: Alignment.bottomLeft,
-                      gradientEnd: Alignment.topRight,
                     ),
-                    waveAmplitude: 0,
-                    size: Size(
-                      double.infinity,
-                      double.infinity,
-                    ),
-                  ),
-                  Container(
-                    height: 500,
-                  )
-                ],
+                    Container(
+                      height: 500,
+                    )
+                  ],
+                ),
               ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  height: 550,
-                  width: 600,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 18,bottom: 18),
-                            child: Text('REGISTER', style: TextStyle(color: Colors.blue,fontSize: 24,fontWeight: FontWeight.bold),),
-                          ),
-                          Form(
-                            key: _formKey,
-                            child: Column(
-                              children: <Widget>[
-                                CustomTextFormField(
-                                  validator: firstNameValidator,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      firstName = value;
-                                    });
-                                  },
-                                  hintText: 'First Name*',
-                                ),
-                                SizedBox(
-                                  height: screenData.height * 0.01,
-                                ),
-                                CustomTextFormField(
-                                  validator: lastNameValidator,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      lastName = value;
-                                    });
-                                  },
-                                  hintText: 'Last Name*',
-                                ),
-                                SizedBox(
-                                  height: screenData.height * 0.01,
-                                ),
-                                CustomTextFormField(
-                                  validator: employeeIdValidator,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      empId = 'MOB' + value;
-                                    });
-                                  },
-                                  hintText: 'Employee Id*',
-                                ),
-                                SizedBox(
-                                  height: screenData.height * 0.01,
-                                ),
-                                CustomTextFormField(
-                                  validator: emailValidator,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      email = value;
-                                    });
-                                  },
-                                  hintText: 'Email*',
-                                ),
-                                SizedBox(
-                                  height: screenData.height * 0.01,
-                                ),
-                                CustomTextFormField(
-                                  validator: pwdValidator,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      password = value;
-                                    });
-                                  },
-                                  hintText: 'Password*',
-                                  obscure: true,
-                                ),
-                                SizedBox(
-                                  height: screenData.height * 0.01,
-                                ),
-
-
-
-                                SizedBox(
-                                  height: screenData.height * 0.02,
-                                ),
-
-
-                              ],
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+                    height: 550,
+                    width: 600,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 18,bottom: 18),
+                              child: Text('REGISTER', style: TextStyle(color: Colors.blue,fontSize: 24,fontWeight: FontWeight.bold),),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              onTap: onRegisterClick,
-                              child: Container(
-                                height: 60,
-                                width: 180,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: Colors.blueAccent
-                                ),
-                                child: Center(child: Text('Register', style: TextStyle(color: Colors.white,fontSize: 24),)),
+                            Form(
+                              key: _formKey,
+                              child: Column(
+                                children: <Widget>[
+                                  CustomTextFormField(
+                                    validator: firstNameValidator,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        firstName = value;
+                                      });
+                                    },
+                                    hintText: 'First Name*',
+                                  ),
+                                  SizedBox(
+                                    height: screenData.height * 0.01,
+                                  ),
+                                  CustomTextFormField(
+                                    validator: lastNameValidator,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        lastName = value;
+                                      });
+                                    },
+                                    hintText: 'Last Name*',
+                                  ),
+                                  SizedBox(
+                                    height: screenData.height * 0.01,
+                                  ),
+                                  CustomTextFormField(
+                                    validator: employeeIdValidator,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        empId = 'MOB' + value;
+                                      });
+                                    },
+                                    hintText: 'Employee Id*',
+                                  ),
+                                  SizedBox(
+                                    height: screenData.height * 0.01,
+                                  ),
+                                  CustomTextFormField(
+                                    validator: emailValidator,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        email = value;
+                                      });
+                                    },
+                                    hintText: 'Email*',
+                                  ),
+                                  SizedBox(
+                                    height: screenData.height * 0.01,
+                                  ),
+                                  CustomTextFormField(
+                                    validator: pwdValidator,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        password = value;
+                                      });
+                                    },
+                                    hintText: 'Password*',
+                                    obscure: true,
+                                  ),
+                                  SizedBox(
+                                    height: screenData.height * 0.01,
+                                  ),
+
+
+
+                                  SizedBox(
+                                    height: screenData.height * 0.02,
+                                  ),
+
+
+                                ],
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                onTap: onRegisterClick,
+                                child: Container(
+                                  height: 60,
+                                  width: 180,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Colors.blueAccent
+                                  ),
+                                  child: Center(child: Text('Register', style: TextStyle(color: Colors.white,fontSize: 24),)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
 
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-          ],
+            ],
+          ),
         ),
       ),
     );

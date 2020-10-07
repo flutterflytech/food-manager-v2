@@ -6,7 +6,7 @@ import 'package:food_manager_v2/constants/style_constants.dart';
 import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/admin/screens/dashboard_page.dart';
 import 'package:food_manager_v2/views/admin/screens/registered_list.dart';
-import 'package:food_manager_v2/views/admin/screens/profile_page_admin.dart';
+import 'package:food_manager_v2/widgets/all_profile_widget.dart';
 
 import '../login_page.dart';
 
@@ -54,7 +54,7 @@ class _RegisteredListState extends State<RegisteredList> {
 
     _childern = [
       Dashboard(userName: widget.userName, userSurname: widget.userSurname),
-      UserProfileAdmin(
+      UserProfileWidget(
         user: widget.user,
         fName: widget.userName,
         photoUrl: widget.photoUrl,

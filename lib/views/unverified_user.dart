@@ -138,6 +138,11 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           userEmpId: userEmpId,
           userEmail: userEmail,
           photoUrl: photoUrl,
+          onUrlChange: (url){
+            setState(() {
+              photoUrl = url;
+            });
+          },
         );
 
       default:

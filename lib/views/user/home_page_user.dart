@@ -10,7 +10,7 @@ import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/user/screens/meal_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/payment_detail_page.dart';
 import 'package:food_manager_v2/views/user/screens/generate_qr_page.dart';
-import 'package:food_manager_v2/views/user/screens/profile_page_users.dart';
+import 'package:food_manager_v2/widgets/all_profile_widget.dart';
 
 class HomePageUser extends StatefulWidget {
   final String userName;
@@ -205,13 +205,14 @@ class _HomePageUserState extends State<HomePageUser> {
           userSurname: widget.userSurname,
         );
       case 3:
-        return UserProfileUsers(
+        return UserProfileWidget(
           user: widget.user,
           fName: widget.userName,
           photoUrl: widget.photoUrl,
           userEmail: widget.userEmail,
           userEmpId: widget.userEmpId,
           userSurname: widget.userSurname,
+
         );
     }
   }

@@ -8,9 +8,9 @@ import 'package:food_manager_v2/models/price_list.dart';
 import 'package:food_manager_v2/services/firebase_services/logout_service.dart';
 import 'package:food_manager_v2/views/login_page.dart';
 import 'package:food_manager_v2/views/vendor/screens/bookings_page.dart';
-import 'package:food_manager_v2/views/vendor/screens/profile_page_vendor.dart';
 import 'package:food_manager_v2/views/vendor/screens/scan_qr_page.dart';
 import 'package:food_manager_v2/main.dart';
+import 'package:food_manager_v2/widgets/all_profile_widget.dart';
 
 class HomePageVendor extends StatefulWidget {
   final String userName;
@@ -19,6 +19,7 @@ class HomePageVendor extends StatefulWidget {
   final String userSurname;
   final String photoUrl;
   final String user;
+  final Function(String) onUrlChange;
 
   const HomePageVendor(
       {Key key,
@@ -27,7 +28,7 @@ class HomePageVendor extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.user})
+      this.user, this.onUrlChange})
       : super(key: key);
 
   @override
@@ -44,11 +45,12 @@ class _HomePageVendorState extends State<HomePageVendor> {
   int _currentIndex = 0;
   List<Widget> _children = [];
   LogoutService logoutService = LogoutService();
+  String photoUrl;
 
   @override
   void initState() {
     super.initState();
-
+    photoUrl = widget.photoUrl;
 //    if user is not admin, these pages will be navigated
 
     _children = [
@@ -64,10 +66,13 @@ class _HomePageVendorState extends State<HomePageVendor> {
       Bookings(
         user: widget.user,
       ),
-      UserProfileVendor(
+      UserProfileWidget(
         user: widget.user,
         fName: widget.userName,
-        photoUrl: widget.photoUrl,
+        onUrlChange: (url) {
+          photoUrl = url;
+        },
+        photoUrl: photoUrl,
         userEmail: widget.userEmail,
         userEmpId: widget.userEmpId,
         userSurname: widget.userSurname,
@@ -97,7 +102,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
           IconButton(
             onPressed: () async {
               try {
-               await logoutService.logoutService();
+                await logoutService.logoutService();
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
@@ -105,7 +110,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
                   ),
                 );
               } catch (e) {
-                print(" ==============> hgdshsdgsdhsdg <========" + e.toString());
+                print(" ==============> error <========" + e.toString());
               }
             },
             icon: Icon(Icons.exit_to_app),

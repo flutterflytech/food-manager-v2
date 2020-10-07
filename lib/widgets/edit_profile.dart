@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:food_manager_v2/bloc/edit_profile_bloc.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/style_constants.dart';
@@ -36,7 +37,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   String lastName;
   String editJson;
 
-  String firstNameValidator(String value) {
+   String firstNameValidator(String value) {
     if (value == null || value.trim().toString() == '') {
       return 'This Field can not be left empty';
     } else {
@@ -80,6 +81,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        initialValue: widget.userFName != null && widget.userFName != ''
+                  ? widget.userFName
+                      : 'No First Name',
                         decoration: InputDecoration(
                           labelText: 'First Name',
                           hintText: widget.userFName.toUpperCase(),
@@ -88,7 +92,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         onChanged: (value) {
                           setState(() {
                             firstName = value;
-                            editProfileBLoC.firstNameStreamController.sink.add(firstName);
                           });
                         },
                       ),
@@ -96,14 +99,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         height: 30.0,
                       ),
                       TextFormField(
+                        initialValue: widget.userSurname != null && widget.userSurname != ''
+                            ? widget.userSurname
+                            : 'No Last Name',
                         decoration: InputDecoration(
-                            hintText: widget.userSurname.toUpperCase(),
+                            hintText: 'Enter last name',
                             labelText: 'Last Name'),
                         validator: lastNameValidator,
                         onChanged: (value) {
                           setState(() {
                             lastName = value;
-                            editProfileBLoC.lastNameStreamController.sink.add(lastName);
                           });
                         },
                       ),
@@ -152,8 +157,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        if (_formKey.currentState.validate())
-                          update();
+                        if (_formKey.currentState.validate()) update();
                       },
                       child: SizedBox(
                         height: screenData.height * 0.07,
@@ -182,7 +186,9 @@ class _EditProfilePageState extends State<EditProfilePage> {
   }
 
   update() {
-    Record record = Record(userFName: firstName, userSurname: lastName);
+    Record record = Record(
+        userFName: firstName,
+        userSurname: lastName);
 
     try {
       Firestore.instance.collection('account').document(widget.user).updateData(

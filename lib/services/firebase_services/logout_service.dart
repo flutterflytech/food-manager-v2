@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class LogoutService{
 
   Future logoutService() async{
-     await FirebaseAuth.instance.signOut();
-     return true;
+     return await FirebaseAuth.instance.signOut().catchError((onError){
+       print("================"+onError+"=================");
+     });
   }
 }

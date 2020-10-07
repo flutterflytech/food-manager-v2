@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,6 +25,8 @@ class UserProfileWidget extends StatefulWidget {
   final String userEmpId;
   final String userSurname;
   final String photoUrl;
+  final Function(String) onUrlChange;
+
 
   const UserProfileWidget(
       {Key key,
@@ -32,7 +35,7 @@ class UserProfileWidget extends StatefulWidget {
       this.userEmail,
       this.userEmpId,
       this.userSurname,
-      this.photoUrl})
+      this.photoUrl, this.onUrlChange})
       : super(key: key);
 
   @override
@@ -42,7 +45,7 @@ class UserProfileWidget extends StatefulWidget {
 class _UserProfileWidgetState extends State<UserProfileWidget> {
   ImageUrlBloc imageUrlBloc = ImageUrlBloc();
   UploadProgressBloC uploadProgressBloC = UploadProgressBloC();
-  EditProfileBLoC editProfileBLoC = EditProfileBLoC();
+  // EditProfileBLoC editProfileBLoC = EditProfileBLoC();
   File _imageFile;
   String imageUrl;
   String url;
@@ -52,8 +55,8 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   void initState() {
     super.initState();
     url = widget.photoUrl;
-    print("@@@@@@@" + url);
-    // imageUrlBloc.urlStreamController.sink.add(url);
+    // print("@@@@@@@" + url);
+   // imageUrlBloc.urlStreamController.sink.add(url);
     imageUrlBloc.urlSink.add(url);
   }
 
@@ -61,7 +64,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   void onRefresh() async{
     await Future.delayed(Duration(milliseconds: 1000));
     url = widget.photoUrl;
-    print("@@@@@@@" + url);
+    // print("@@@@@@@" + url);
     // imageUrlBloc.urlStreamController.sink.add(url);
     imageUrlBloc.urlSink.add(url);
     refreshController.refreshCompleted();
@@ -71,7 +74,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   void onLoading() async{
     await Future.delayed(Duration(milliseconds: 1000));
     url = widget.photoUrl;
-    print("@@@@@@@" + url);
+    // print("@@@@@@@" + url);
     // imageUrlBloc.urlStreamController.sink.add(url);
     imageUrlBloc.urlSink.add(url);
     refreshController.loadComplete();
@@ -115,6 +118,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
     await uploadTask.onComplete;
     setState(() {
       imageUrl = url.toString();
+      widget.onUrlChange(imageUrl);
     });
 //    Show message on successful image upload
     AppUtils.showToast('Picture Uploaded', green, white);
@@ -172,8 +176,8 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                                   'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
                                               fit: BoxFit.fill,
                                             )
-                                          : Image.network(
-                                              snapshot.data,
+                                          : CachedNetworkImage(
+                                            imageUrl: snapshot.data,
                                             )));
                             });
                       }),
