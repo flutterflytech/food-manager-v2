@@ -18,6 +18,7 @@ class RegisteredList extends StatefulWidget {
   final String userSurname;
   final String photoUrl;
   final String uid;
+  final Function(String) onUrlChange;
 
   const RegisteredList(
       {Key key,
@@ -27,7 +28,7 @@ class RegisteredList extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.uid})
+      this.uid, this.onUrlChange})
       : super(key: key);
 
   @override
@@ -44,20 +45,24 @@ class _RegisteredListState extends State<RegisteredList> {
   }
 
   int _currentIndex = 0;
-  List<Widget> _childern = [];
+  List<Widget> _children = [];
+  String photoUrl;
 
   @override
   void initState() {
     super.initState();
-
+    photoUrl = widget.photoUrl;
 // If user is admin, these pages will be Navigated
 
-    _childern = [
+    _children = [
       Dashboard(userName: widget.userName, userSurname: widget.userSurname),
       UserProfileWidget(
         user: widget.user,
         fName: widget.userName,
-        photoUrl: widget.photoUrl,
+        onUrlChange: (url){
+          photoUrl = url;
+        },
+        photoUrl: photoUrl,
         userEmail: widget.userEmail,
         userEmpId: widget.userEmpId,
         userSurname: widget.userSurname,
@@ -96,7 +101,7 @@ class _RegisteredListState extends State<RegisteredList> {
           ),
         ],
       ),
-      body: _childern[_currentIndex],
+      body: _children[_currentIndex],
       //Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,

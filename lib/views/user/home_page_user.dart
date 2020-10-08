@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
@@ -20,6 +19,7 @@ class HomePageUser extends StatefulWidget {
   final String photoUrl;
   final int userType;
   final String user;
+  final Function(String) onUrlChange;
 
   const HomePageUser(
       {Key key,
@@ -29,7 +29,7 @@ class HomePageUser extends StatefulWidget {
       this.userSurname,
       this.photoUrl,
       this.userType,
-      this.user})
+      this.user, this.onUrlChange})
       : super(key: key);
 
   @override
@@ -37,11 +37,67 @@ class HomePageUser extends StatefulWidget {
 }
 
 class _HomePageUserState extends State<HomePageUser> {
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  int _currentIndex = 0;
+  List<Widget> _children = [];
+  String photoUrl;
+
   LogoutService logoutService = LogoutService();
   StreamController<int> _paymentFilterStreamController =
       StreamController<int>();
   StreamController<int> _bottomTabController = StreamController<int>();
 
+
+
+  @override
+  void initState() {
+    super.initState();
+    if (!_paymentFilterStreamController.isClosed) {
+      _paymentFilterStreamController.close();
+    }
+    _paymentFilterStreamController = StreamController<int>();
+    photoUrl = widget.photoUrl;
+
+    _children = [
+
+      StreamBuilder<Object>(
+          stream: _paymentFilterStreamController.stream,
+          initialData: 0,
+          builder: (context, snapshot) {
+            return PaymentPage(
+              user: widget.user,
+              filterState: snapshot.data,
+            );
+          }),
+      MealPage(
+        user: widget.user,
+      ),
+      QRPage(
+        user: widget.user,
+        userEmpId: widget.userEmpId,
+        userFName: widget.userName,
+        userSurname: widget.userSurname,
+      ),
+      UserProfileWidget(
+        user: widget.user,
+        fName: widget.userName,
+        onUrlChange: (url){
+          photoUrl = url;
+        },
+        photoUrl: photoUrl,
+        userEmail: widget.userEmail,
+        userEmpId: widget.userEmpId,
+        userSurname: widget.userSurname,
+
+      )
+    ];
+  }
 
   @override
   void dispose() {
@@ -102,7 +158,7 @@ class _HomePageUserState extends State<HomePageUser> {
                 ),
               ],
             ),
-            body: getChildWidgetOnBottomBarClicked(snapshot.data),
+            body: _children[_currentIndex],
             bottomNavigationBar: BottomNavigationBar(
               onTap: onTabTapped,
               elevation: 0,
@@ -152,9 +208,7 @@ class _HomePageUserState extends State<HomePageUser> {
         });
   }
 
-  void onTabTapped(int index) {
-    _bottomTabController.sink.add(index);
-  }
+
 
 
   void handleClick(String value) {
@@ -171,49 +225,49 @@ class _HomePageUserState extends State<HomePageUser> {
     }
   }
 
-  getChildWidgetOnBottomBarClicked(int position) {
-    switch (position) {
-      // case 0:
-      //   return DashboardUser(
-      //     user: widget.user,
-      //     userName: widget.userName,
-      //     userSurname: widget.userSurname,
-      //   );
-      case 0:
-        if (!_paymentFilterStreamController.isClosed) {
-          _paymentFilterStreamController.close();
-        }
-        _paymentFilterStreamController = StreamController<int>();
-        return StreamBuilder<Object>(
-            stream: _paymentFilterStreamController.stream,
-            initialData: 0,
-            builder: (context, snapshot) {
-              return PaymentPage(
-                user: widget.user,
-                filterState: snapshot.data,
-              );
-            });
-      case 1:
-        return MealPage(
-          user: widget.user,
-        );
-      case 2:
-        return QRPage(
-          user: widget.user,
-          userEmpId: widget.userEmpId,
-          userFName: widget.userName,
-          userSurname: widget.userSurname,
-        );
-      case 3:
-        return UserProfileWidget(
-          user: widget.user,
-          fName: widget.userName,
-          photoUrl: widget.photoUrl,
-          userEmail: widget.userEmail,
-          userEmpId: widget.userEmpId,
-          userSurname: widget.userSurname,
-
-        );
-    }
-  }
+  // getChildWidgetOnBottomBarClicked(int position) {
+  //   switch (position) {
+  //     // case 0:
+  //     //   return DashboardUser(
+  //     //     user: widget.user,
+  //     //     userName: widget.userName,
+  //     //     userSurname: widget.userSurname,
+  //     //   );
+  //     case 0:
+  //       if (!_paymentFilterStreamController.isClosed) {
+  //         _paymentFilterStreamController.close();
+  //       }
+  //       _paymentFilterStreamController = StreamController<int>();
+  //       return StreamBuilder<Object>(
+  //           stream: _paymentFilterStreamController.stream,
+  //           initialData: 0,
+  //           builder: (context, snapshot) {
+  //             return PaymentPage(
+  //               user: widget.user,
+  //               filterState: snapshot.data,
+  //             );
+  //           });
+  //     case 1:
+  //       return MealPage(
+  //         user: widget.user,
+  //       );
+  //     case 2:
+  //       return QRPage(
+  //         user: widget.user,
+  //         userEmpId: widget.userEmpId,
+  //         userFName: widget.userName,
+  //         userSurname: widget.userSurname,
+  //       );
+  //     case 3:
+  //       return UserProfileWidget(
+  //         user: widget.user,
+  //         fName: widget.userName,
+  //         photoUrl: widget.photoUrl,
+  //         userEmail: widget.userEmail,
+  //         userEmpId: widget.userEmpId,
+  //         userSurname: widget.userSurname,
+  //
+  //       );
+  //   }
+  // }
 }
