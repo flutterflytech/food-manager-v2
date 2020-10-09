@@ -28,7 +28,8 @@ class RegisteredList extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.uid, this.onUrlChange})
+      this.uid,
+      this.onUrlChange})
       : super(key: key);
 
   @override
@@ -45,29 +46,32 @@ class _RegisteredListState extends State<RegisteredList> {
   }
 
   int _currentIndex = 0;
-  List<Widget> _children = [];
   String photoUrl;
 
   @override
   void initState() {
     super.initState();
     photoUrl = widget.photoUrl;
-// If user is admin, these pages will be Navigated
+  }
 
-    _children = [
-      Dashboard(userName: widget.userName, userSurname: widget.userSurname),
-      UserProfileWidget(
-        user: widget.user,
-        fName: widget.userName,
-        onUrlChange: (url){
-          photoUrl = url;
-        },
-        photoUrl: photoUrl,
-        userEmail: widget.userEmail,
-        userEmpId: widget.userEmpId,
-        userSurname: widget.userSurname,
-      ),
-    ];
+  getBody(int position) {
+    switch (position) {
+      case 0:
+        return Dashboard(
+            userName: widget.userName, userSurname: widget.userSurname);
+      case 1:
+        return UserProfileWidget(
+          user: widget.user,
+          fName: widget.userName,
+          onUrlChange: (url) {
+            photoUrl = url;
+          },
+          photoUrl: photoUrl,
+          userEmail: widget.userEmail,
+          userEmpId: widget.userEmpId,
+          userSurname: widget.userSurname,
+        );
+    }
   }
 
   @override
@@ -101,7 +105,7 @@ class _RegisteredListState extends State<RegisteredList> {
           ),
         ],
       ),
-      body: _children[_currentIndex],
+      body: getBody(_currentIndex),
       //Bottom Navigation Bar
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
@@ -139,18 +143,29 @@ class _RegisteredListState extends State<RegisteredList> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RegisteredAdmins(userType: 2,appBarTitle: "Registered Vendors",),
+              builder: (context) => RegisteredAdmins(
+                userType: 2,
+                appBarTitle: "Registered Vendors",
+              ),
             ));
         break;
       case 'Registered Users':
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => RegisteredAdmins(appBarTitle: "Registered Users",userType: 0,)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RegisteredAdmins(
+                      appBarTitle: "Registered Users",
+                      userType: 0,
+                    )));
         break;
       case 'Registered Admins':
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => RegisteredAdmins(userType: 1,appBarTitle: "Registered Admins",),
+              builder: (context) => RegisteredAdmins(
+                userType: 1,
+                appBarTitle: "Registered Admins",
+              ),
             ));
         break;
       case 'Logout':

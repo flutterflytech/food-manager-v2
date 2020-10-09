@@ -6,12 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="551f1a55-82b1-4e57-bde8-05cd3799e04c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/text_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/text_constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/services/firebase_services/logout_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/services/firebase_services/logout_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/admin/home_page_admin.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/forgot_password_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/unverified_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/unverified_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user/home_page_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/vendor/home_page_vendor.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/all_profile_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/all_profile_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,7 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="ZY322BWWB2" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3a_XL_API_30" />
   <component name="FavoritesManager">
     <favorites_list name="food-manager-v2" />
   </component>
@@ -95,13 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1588306872026</updated>
-    </task>
-    <task id="LOCAL-00020" summary="DAY-8 User Profile, Bug Fixes, const creation">
-      <created>1589304090948</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1589304090949</updated>
     </task>
     <task id="LOCAL-00021" summary="DAY-9 Code Review and formatting">
       <created>1589368495261</created>
@@ -439,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601987343432</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="bug fixes">
+      <created>1602158764557</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1602158764557</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,17 +526,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="387" y="120" key="#xdebugger.evaluate/0.0.1536.824@0.0.1536.824" timestamp="1599641390213" />
-    <state x="296" y="27" width="731" height="700" key="CommitChangelistDialog2" timestamp="1602070162505">
-      <screen x="0" y="27" width="1366" height="700" />
+    <state x="416" y="27" width="731" height="700" key="CommitChangelistDialog2" timestamp="1602158764429">
+      <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state x="296" y="27" width="877" height="688" key="CommitChangelistDialog2/0.27.1366.688@0.27.1366.688" timestamp="1599823756116" />
     <state x="296" y="27" width="731" height="700" key="CommitChangelistDialog2/0.27.1366.700@0.27.1366.700" timestamp="1602070162505" />
+    <state x="416" y="27" key="CommitChangelistDialog2/0.27.1920.999@0.27.1920.999" timestamp="1602158764429" />
+    <state width="519" height="646" key="DebuggerActiveHint" timestamp="1602246602722">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state width="519" height="646" key="DebuggerActiveHint/0.27.1920.999@0.27.1920.999" timestamp="1602246602722" />
     <state x="346" y="172" width="424" height="484" key="FileChooserDialogImpl" timestamp="1600668967657">
       <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="389" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1595397192288" />
     <state x="346" y="172" width="424" height="484" key="FileChooserDialogImpl/0.27.1366.700@0.27.1366.700" timestamp="1600668967657" />
-    <state width="1874" height="285" key="GridCell.Tab.0.bottom" timestamp="1602157489586">
+    <state width="1404" height="219" key="GridCell.Tab.0.bottom" timestamp="1602246943870">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
@@ -541,9 +550,9 @@
     <state width="1020" height="191" key="GridCell.Tab.0.bottom/0.27.1366.704@0.27.1366.704" timestamp="1600083904124" />
     <state width="1324" height="182" key="GridCell.Tab.0.bottom/0.27.1366.708@0.27.1366.708" timestamp="1600232358569" />
     <state width="1020" height="53" key="GridCell.Tab.0.bottom/0.27.1366.741@0.27.1366.741" timestamp="1600085192464" />
-    <state width="1874" height="285" key="GridCell.Tab.0.bottom/0.27.1920.999@0.27.1920.999" timestamp="1602157489586" />
+    <state width="1404" height="219" key="GridCell.Tab.0.bottom/0.27.1920.999@0.27.1920.999" timestamp="1602246943870" />
     <state width="1267" height="175" key="GridCell.Tab.0.bottom/53.27.1313.741@53.27.1313.741" timestamp="1599797864157" />
-    <state width="1874" height="285" key="GridCell.Tab.0.center" timestamp="1602157489585">
+    <state width="1404" height="219" key="GridCell.Tab.0.center" timestamp="1602246943869">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
@@ -552,9 +561,9 @@
     <state width="1020" height="191" key="GridCell.Tab.0.center/0.27.1366.704@0.27.1366.704" timestamp="1600083904123" />
     <state width="1324" height="182" key="GridCell.Tab.0.center/0.27.1366.708@0.27.1366.708" timestamp="1600232358568" />
     <state width="1020" height="53" key="GridCell.Tab.0.center/0.27.1366.741@0.27.1366.741" timestamp="1600085192463" />
-    <state width="1874" height="285" key="GridCell.Tab.0.center/0.27.1920.999@0.27.1920.999" timestamp="1602157489585" />
+    <state width="1404" height="219" key="GridCell.Tab.0.center/0.27.1920.999@0.27.1920.999" timestamp="1602246943869" />
     <state width="1267" height="175" key="GridCell.Tab.0.center/53.27.1313.741@53.27.1313.741" timestamp="1599797864156" />
-    <state width="1874" height="285" key="GridCell.Tab.0.left" timestamp="1602157489585">
+    <state width="1404" height="219" key="GridCell.Tab.0.left" timestamp="1602246943869">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
@@ -563,9 +572,9 @@
     <state width="1020" height="191" key="GridCell.Tab.0.left/0.27.1366.704@0.27.1366.704" timestamp="1600083904123" />
     <state width="1324" height="182" key="GridCell.Tab.0.left/0.27.1366.708@0.27.1366.708" timestamp="1600232358568" />
     <state width="1020" height="53" key="GridCell.Tab.0.left/0.27.1366.741@0.27.1366.741" timestamp="1600085192463" />
-    <state width="1874" height="285" key="GridCell.Tab.0.left/0.27.1920.999@0.27.1920.999" timestamp="1602157489585" />
+    <state width="1404" height="219" key="GridCell.Tab.0.left/0.27.1920.999@0.27.1920.999" timestamp="1602246943869" />
     <state width="1267" height="175" key="GridCell.Tab.0.left/53.27.1313.741@53.27.1313.741" timestamp="1599797864156" />
-    <state width="1874" height="285" key="GridCell.Tab.0.right" timestamp="1602157489586">
+    <state width="1404" height="219" key="GridCell.Tab.0.right" timestamp="1602246943869">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state width="1050" height="131" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1599739168833" />
@@ -574,7 +583,7 @@
     <state width="1020" height="191" key="GridCell.Tab.0.right/0.27.1366.704@0.27.1366.704" timestamp="1600083904124" />
     <state width="1324" height="182" key="GridCell.Tab.0.right/0.27.1366.708@0.27.1366.708" timestamp="1600232358569" />
     <state width="1020" height="53" key="GridCell.Tab.0.right/0.27.1366.741@0.27.1366.741" timestamp="1600085192464" />
-    <state width="1874" height="285" key="GridCell.Tab.0.right/0.27.1920.999@0.27.1920.999" timestamp="1602157489586" />
+    <state width="1404" height="219" key="GridCell.Tab.0.right/0.27.1920.999@0.27.1920.999" timestamp="1602246943869" />
     <state width="1267" height="175" key="GridCell.Tab.0.right/53.27.1313.741@53.27.1313.741" timestamp="1599797864157" />
     <state x="266" y="122" width="824" height="508" key="IDE.errors.dialog" timestamp="1602052322643">
       <screen x="0" y="27" width="1366" height="700" />
@@ -592,19 +601,24 @@
     <state x="0" y="27" width="1027" height="708" key="SettingsEditor/0.27.1366.708@0.27.1366.708" timestamp="1600230287974" />
     <state x="0" y="38" width="900" height="730" key="SettingsEditor/0.27.1366.741@0.27.1366.741" timestamp="1599799506567" />
     <state x="0" y="27" width="1022" height="737" key="SettingsEditor/0.27.1920.999@0.27.1920.999" timestamp="1602151596638" />
-    <state x="321" y="141" width="800" height="565" key="Vcs.Push.Dialog.v2" timestamp="1601987352828">
-      <screen x="0" y="27" width="1366" height="700" />
+    <state x="451" y="190" width="800" height="565" key="Vcs.Push.Dialog.v2" timestamp="1602158771846">
+      <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state x="321" y="139" width="800" height="565" key="Vcs.Push.Dialog.v2/0.27.1366.688@0.27.1366.688" timestamp="1599823762312" />
     <state x="321" y="141" width="800" height="565" key="Vcs.Push.Dialog.v2/0.27.1366.700@0.27.1366.700" timestamp="1601987352828" />
-    <state x="0" y="250" width="1502" height="711" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1602151923298">
+    <state x="451" y="190" key="Vcs.Push.Dialog.v2/0.27.1920.999@0.27.1920.999" timestamp="1602158771846" />
+    <state width="727" height="499" key="XDebugger.FullValuePopup" timestamp="1602225907873">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state width="727" height="499" key="XDebugger.FullValuePopup/0.27.1920.999@0.27.1920.999" timestamp="1602225907873" />
+    <state x="0" y="250" width="1502" height="711" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1602235746564">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
     <state x="0" y="185" width="1200" height="584" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1536.824@0.0.1536.824" timestamp="1599726819962" />
     <state x="0" y="181" width="1068" height="488" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.688@0.27.1366.688" timestamp="1600055646455" />
     <state x="0" y="183" width="1068" height="498" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.700@0.27.1366.700" timestamp="1602041731456" />
     <state x="0" y="185" width="1068" height="503" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1366.708@0.27.1366.708" timestamp="1600185845426" />
-    <state x="0" y="250" width="1502" height="711" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1920.999@0.27.1920.999" timestamp="1602151923298" />
+    <state x="0" y="250" width="1502" height="711" key="com.android.tools.idea.avdmanager.AvdListDialog/0.27.1920.999@0.27.1920.999" timestamp="1602235746564" />
     <state x="198" y="27" width="770" height="779" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602155635052">
       <screen x="0" y="27" width="1920" height="999" />
     </state>
@@ -634,5 +648,36 @@
       <screen x="0" y="27" width="1366" height="700" />
     </state>
     <state x="346" y="47" width="672" height="678" key="search.everywhere.popup/0.27.1366.700@0.27.1366.700" timestamp="1600690635091" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/widgets/all_profile_widget.dart</url>
+          <line>76</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/widgets/all_profile_widget.dart</url>
+          <line>66</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/widgets/all_profile_widget.dart</url>
+          <line>121</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/widgets/all_profile_widget.dart</url>
+          <line>181</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/widgets/all_profile_widget.dart</url>
+          <line>180</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -28,7 +28,8 @@ class HomePageVendor extends StatefulWidget {
       this.userEmpId,
       this.userSurname,
       this.photoUrl,
-      this.user, this.onUrlChange})
+      this.user,
+      this.onUrlChange})
       : super(key: key);
 
   @override
@@ -43,7 +44,6 @@ class _HomePageVendorState extends State<HomePageVendor> {
   }
 
   int _currentIndex = 0;
-  List<Widget> _children = [];
   LogoutService logoutService = LogoutService();
   String photoUrl;
 
@@ -51,33 +51,33 @@ class _HomePageVendorState extends State<HomePageVendor> {
   void initState() {
     super.initState();
     photoUrl = widget.photoUrl;
-//    if user is not admin, these pages will be navigated
+  }
 
-    _children = [
-      // DashboardVendor(
-      //   userName: widget.userName,
-      //   userSurname: widget.userSurname,
-      // ),
-      ScanQr(
-        user: widget.user,
-        userFName: widget.userName,
-        userSurname: widget.userSurname,
-      ),
-      Bookings(
-        user: widget.user,
-      ),
-      UserProfileWidget(
-        user: widget.user,
-        fName: widget.userName,
-        onUrlChange: (url) {
-          photoUrl = url;
-        },
-        photoUrl: photoUrl,
-        userEmail: widget.userEmail,
-        userEmpId: widget.userEmpId,
-        userSurname: widget.userSurname,
-      ),
-    ];
+  getBody(int position) {
+    switch (position) {
+      case 0:
+        return ScanQr(
+          user: widget.user,
+          userFName: widget.userName,
+          userSurname: widget.userSurname,
+        );
+      case 1:
+        return Bookings(
+          user: widget.user,
+        );
+      case 2:
+        return UserProfileWidget(
+          user: widget.user,
+          fName: widget.userName,
+          onUrlChange: (url) {
+            photoUrl = url;
+          },
+          photoUrl: photoUrl,
+          userEmail: widget.userEmail,
+          userEmpId: widget.userEmpId,
+          userSurname: widget.userSurname,
+        );
+    }
   }
 
   @override
@@ -117,7 +117,7 @@ class _HomePageVendorState extends State<HomePageVendor> {
           )
         ],
       ),
-      body: _children[_currentIndex],
+      body: getBody(_currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
         elevation: 0,

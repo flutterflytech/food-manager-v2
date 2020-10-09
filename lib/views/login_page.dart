@@ -223,7 +223,7 @@ class _LogInPageState extends State<LogInPage> {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         InkWell(
-                                          child: Text(forgotPassword),
+                                          child: Text(forgotPassword, style:  TextStyle(color: darkBlue2),),
                                           onTap: () {
                                             Navigator.push(
                                                 context,
@@ -261,7 +261,7 @@ class _LogInPageState extends State<LogInPage> {
                           SizedBox(
                             height: screenData.height * 0.01,
                           ),
-                          Text('Or login using'),
+                          // Text('Or login using'),
                           SizedBox(
                             height: screenData.height * 0.01,
                           ),
@@ -271,7 +271,7 @@ class _LogInPageState extends State<LogInPage> {
                             children: [
                               Text(
                                 'Don\'t have an account? ',
-                                style: TextStyle(color: Colors.cyanAccent),
+                                style: TextStyle(color: Colors.blue),
                               ),
                               InkWell(
                                 onTap: () {
@@ -281,7 +281,7 @@ class _LogInPageState extends State<LogInPage> {
                                           builder: (context) => RegisterPage()));
                                 },
                                 child: Text('Sign Up',
-                                    style: TextStyle(color: Colors.cyanAccent)),
+                                    style: TextStyle(color: Colors.blue[800], fontWeight: FontWeight.w900)),
                               )
                             ],
                           )

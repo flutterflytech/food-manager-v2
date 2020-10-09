@@ -5,7 +5,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:food_manager_v2/bloc/edit_profile_bloc.dart';
 import 'package:food_manager_v2/bloc/image_url_bloc.dart';
 import 'package:food_manager_v2/bloc/upload_progress.dart';
 import 'package:food_manager_v2/constants/color_constants.dart';
@@ -27,7 +26,6 @@ class UserProfileWidget extends StatefulWidget {
   final String photoUrl;
   final Function(String) onUrlChange;
 
-
   const UserProfileWidget(
       {Key key,
       this.user,
@@ -35,7 +33,8 @@ class UserProfileWidget extends StatefulWidget {
       this.userEmail,
       this.userEmpId,
       this.userSurname,
-      this.photoUrl, this.onUrlChange})
+      this.photoUrl,
+      this.onUrlChange})
       : super(key: key);
 
   @override
@@ -45,23 +44,25 @@ class UserProfileWidget extends StatefulWidget {
 class _UserProfileWidgetState extends State<UserProfileWidget> {
   ImageUrlBloc imageUrlBloc = ImageUrlBloc();
   UploadProgressBloC uploadProgressBloC = UploadProgressBloC();
+
   // EditProfileBLoC editProfileBLoC = EditProfileBLoC();
   File _imageFile;
   String imageUrl;
   String url;
-  RefreshController refreshController = RefreshController(initialRefresh: false);
+  RefreshController refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   void initState() {
     super.initState();
     url = widget.photoUrl;
     // print("@@@@@@@" + url);
-   // imageUrlBloc.urlStreamController.sink.add(url);
+    // imageUrlBloc.urlStreamController.sink.add(url);
     imageUrlBloc.urlSink.add(url);
   }
 
   // on refresh get data
-  void onRefresh() async{
+  void onRefresh() async {
     await Future.delayed(Duration(milliseconds: 1000));
     url = widget.photoUrl;
     // print("@@@@@@@" + url);
@@ -71,7 +72,7 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
   }
 
   // on load get data
-  void onLoading() async{
+  void onLoading() async {
     await Future.delayed(Duration(milliseconds: 1000));
     url = widget.photoUrl;
     // print("@@@@@@@" + url);
@@ -150,7 +151,8 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
               Stack(
                 children: <Widget>[
                   StreamBuilder<bool>(
-                      stream: uploadProgressBloC.progressStreamController.stream,
+                      stream:
+                          uploadProgressBloC.progressStreamController.stream,
                       initialData: false,
                       builder: (context, snapshot) {
                         if (snapshot.data) {
@@ -176,8 +178,8 @@ class _UserProfileWidgetState extends State<UserProfileWidget> {
                                                   'https://cdn1.iconfinder.com/data/icons/technology-devices-2/100/Profile-512.png'),
                                               fit: BoxFit.fill,
                                             )
-                                          : CachedNetworkImage(
-                                            imageUrl: snapshot.data,
+                                          : Image.network(
+                                               snapshot.data,
                                             )));
                             });
                       }),

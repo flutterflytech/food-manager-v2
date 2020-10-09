@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_manager_v2/constants/color_constants.dart';
 import 'package:food_manager_v2/constants/text_constants.dart';
 import 'package:food_manager_v2/utils/app_utils.dart';
 import 'package:food_manager_v2/views/login_page.dart';
@@ -20,7 +21,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
       appBar: AppBar(
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(bottomLeft: Radius.elliptical(80,40),bottomRight: Radius.elliptical(80,40))),
-        title: Text('Forgot Password?'),
+        title: Text('Forgot Password?', style: TextStyle(color: Colors.blue),),
       ),
       body: SafeArea(
         child: Form(

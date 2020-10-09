@@ -29,7 +29,8 @@ class HomePageUser extends StatefulWidget {
       this.userSurname,
       this.photoUrl,
       this.userType,
-      this.user, this.onUrlChange})
+      this.user,
+      this.onUrlChange})
       : super(key: key);
 
   @override
@@ -37,15 +38,14 @@ class HomePageUser extends StatefulWidget {
 }
 
 class _HomePageUserState extends State<HomePageUser> {
-
   void onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
+      _bottomTabController.sink.add(_currentIndex);
     });
   }
 
   int _currentIndex = 0;
-  List<Widget> _children = [];
   String photoUrl;
 
   LogoutService logoutService = LogoutService();
@@ -53,50 +53,53 @@ class _HomePageUserState extends State<HomePageUser> {
       StreamController<int>();
   StreamController<int> _bottomTabController = StreamController<int>();
 
-
-
   @override
   void initState() {
     super.initState();
-    if (!_paymentFilterStreamController.isClosed) {
-      _paymentFilterStreamController.close();
-    }
-    _paymentFilterStreamController = StreamController<int>();
+
     photoUrl = widget.photoUrl;
+  }
 
-    _children = [
-
-      StreamBuilder<Object>(
-          stream: _paymentFilterStreamController.stream,
-          initialData: 0,
-          builder: (context, snapshot) {
-            return PaymentPage(
-              user: widget.user,
-              filterState: snapshot.data,
-            );
-          }),
-      MealPage(
-        user: widget.user,
-      ),
-      QRPage(
-        user: widget.user,
-        userEmpId: widget.userEmpId,
-        userFName: widget.userName,
-        userSurname: widget.userSurname,
-      ),
-      UserProfileWidget(
-        user: widget.user,
-        fName: widget.userName,
-        onUrlChange: (url){
-          photoUrl = url;
-        },
-        photoUrl: photoUrl,
-        userEmail: widget.userEmail,
-        userEmpId: widget.userEmpId,
-        userSurname: widget.userSurname,
-
-      )
-    ];
+  getBody(int position) {
+    switch (position) {
+      case 0:
+        if (!_paymentFilterStreamController.isClosed) {
+          _paymentFilterStreamController.close();
+        }
+        _paymentFilterStreamController = StreamController<int>();
+        return StreamBuilder<Object>(
+            stream: _paymentFilterStreamController.stream,
+            initialData: 0,
+            builder: (context, snapshot) {
+              return PaymentPage(
+                user: widget.user,
+                filterState: snapshot.data,
+              );
+            });
+      case 1:
+        return MealPage(
+          user: widget.user,
+        );
+      case 2:
+        return QRPage(
+          user: widget.user,
+          userEmpId: widget.userEmpId,
+          userFName: widget.userName,
+          userSurname: widget.userSurname,
+        );
+      case 3:
+        return UserProfileWidget(
+          user: widget.user,
+          fName: widget.userName,
+          onUrlChange: (url) {
+            photoUrl = url;
+          },
+          photoUrl: photoUrl,
+          userEmail: widget.userEmail,
+          userEmpId: widget.userEmpId,
+          userSurname: widget.userSurname,
+        );
+    }
   }
 
   @override
@@ -112,6 +115,7 @@ class _HomePageUserState extends State<HomePageUser> {
         stream: _bottomTabController.stream,
         initialData: 0,
         builder: (context, snapshot) {
+          snapshot.data.toString();
           return Scaffold(
             appBar: AppBar(
               shape: RoundedRectangleBorder(
@@ -141,24 +145,19 @@ class _HomePageUserState extends State<HomePageUser> {
                     : Container(),
                 IconButton(
                   onPressed: () {
-                    try{
-                      logoutService.logoutService();
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => LogInPage(),
-                        ),
-                      );
-                    }catch(e){
-
-                    }
-
+                    logoutService.logoutService();
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LogInPage(),
+                      ),
+                    );
                   },
                   icon: Icon(Icons.exit_to_app),
                 ),
               ],
             ),
-            body: _children[_currentIndex],
+            body: getBody(_currentIndex),
             bottomNavigationBar: BottomNavigationBar(
               onTap: onTabTapped,
               elevation: 0,
@@ -208,9 +207,6 @@ class _HomePageUserState extends State<HomePageUser> {
         });
   }
 
-
-
-
   void handleClick(String value) {
     switch (value) {
       case 'All':
@@ -225,49 +221,49 @@ class _HomePageUserState extends State<HomePageUser> {
     }
   }
 
-  // getChildWidgetOnBottomBarClicked(int position) {
-  //   switch (position) {
-  //     // case 0:
-  //     //   return DashboardUser(
-  //     //     user: widget.user,
-  //     //     userName: widget.userName,
-  //     //     userSurname: widget.userSurname,
-  //     //   );
-  //     case 0:
-  //       if (!_paymentFilterStreamController.isClosed) {
-  //         _paymentFilterStreamController.close();
-  //       }
-  //       _paymentFilterStreamController = StreamController<int>();
-  //       return StreamBuilder<Object>(
-  //           stream: _paymentFilterStreamController.stream,
-  //           initialData: 0,
-  //           builder: (context, snapshot) {
-  //             return PaymentPage(
-  //               user: widget.user,
-  //               filterState: snapshot.data,
-  //             );
-  //           });
-  //     case 1:
-  //       return MealPage(
-  //         user: widget.user,
-  //       );
-  //     case 2:
-  //       return QRPage(
-  //         user: widget.user,
-  //         userEmpId: widget.userEmpId,
-  //         userFName: widget.userName,
-  //         userSurname: widget.userSurname,
-  //       );
-  //     case 3:
-  //       return UserProfileWidget(
-  //         user: widget.user,
-  //         fName: widget.userName,
-  //         photoUrl: widget.photoUrl,
-  //         userEmail: widget.userEmail,
-  //         userEmpId: widget.userEmpId,
-  //         userSurname: widget.userSurname,
-  //
-  //       );
-  //   }
-  // }
+// getChildWidgetOnBottomBarClicked(int position) {
+//   switch (position) {
+//     // case 0:
+//     //   return DashboardUser(
+//     //     user: widget.user,
+//     //     userName: widget.userName,
+//     //     userSurname: widget.userSurname,
+//     //   );
+//     case 0:
+//       if (!_paymentFilterStreamController.isClosed) {
+//         _paymentFilterStreamController.close();
+//       }
+//       _paymentFilterStreamController = StreamController<int>();
+//       return StreamBuilder<Object>(
+//           stream: _paymentFilterStreamController.stream,
+//           initialData: 0,
+//           builder: (context, snapshot) {
+//             return PaymentPage(
+//               user: widget.user,
+//               filterState: snapshot.data,
+//             );
+//           });
+//     case 1:
+//       return MealPage(
+//         user: widget.user,
+//       );
+//     case 2:
+//       return QRPage(
+//         user: widget.user,
+//         userEmpId: widget.userEmpId,
+//         userFName: widget.userName,
+//         userSurname: widget.userSurname,
+//       );
+//     case 3:
+//       return UserProfileWidget(
+//         user: widget.user,
+//         fName: widget.userName,
+//         photoUrl: widget.photoUrl,
+//         userEmail: widget.userEmail,
+//         userEmpId: widget.userEmpId,
+//         userSurname: widget.userSurname,
+//
+//       );
+//   }
+// }
 }

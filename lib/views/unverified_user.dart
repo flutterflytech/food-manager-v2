@@ -79,22 +79,28 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
   }
 
 // To check email id is verified or not
-  _checkVerificationStatus() async {
+  void _checkVerificationStatus() async {
+    showProgressDialog(true);
     try {
-
-      FirebaseAuth.instance.currentUser().then((user){
-
-        // _isEmailVerified = user.isEmailVerified;
-        if (user.isEmailVerified) {
-         Navigator.push(context,  MaterialPageRoute(builder: (context)=>_getVerifiedUserData(userType, uid, userFName, userSurname, userEmpId, userEmail, photoUrl)));
-        } else {
-          AppUtils.showToast(notVerified, red, white);
-        }
+      FirebaseUser user = await FirebaseAuth.instance.currentUser();
+      UserUpdateInfo userUpdateInfo = new UserUpdateInfo();
+      userUpdateInfo.displayName = user.displayName;
+      user.updateProfile(userUpdateInfo).then((onValue) {
+        FirebaseAuth.instance.currentUser().then((user) {
+          showProgressDialog(false);
+          _isEmailVerified = user.isEmailVerified;
+          if (user.isEmailVerified) {
+            setState(() {
+              _isEmailVerified = true;
+            });
+          } else {
+            AppUtils.showToast(notVerified, red, white);
+          }
+        });
       });
     } catch (e) {
-      print(errorVerification);
-      AppUtils.showToast(e.toString(), red, white);
-      print(e.message);
+      showProgressDialog(false);
+      AppUtils.showToast(errorVerification, red, white);
     }
   }
 
@@ -138,7 +144,7 @@ class _UnverifiedUserUIState extends State<UnverifiedUserUI> {
           userEmpId: userEmpId,
           userEmail: userEmail,
           photoUrl: photoUrl,
-          onUrlChange: (url){
+          onUrlChange: (url) {
             setState(() {
               photoUrl = url;
             });
